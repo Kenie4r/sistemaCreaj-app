@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`grado` (
   `seccion` VARCHAR(45) NULL,
   `nivel_idnivel` INT NOT NULL,
   PRIMARY KEY (`idgrado`, `nivel_idnivel`),
-  INDEX `fk_grado_nivel1_idx` (`nivel_idnivel` ASC) VISIBLE,
+  INDEX `fk_grado_nivel1_idx` (`nivel_idnivel` ASC),
   CONSTRAINT `fk_grado_nivel1`
     FOREIGN KEY (`nivel_idnivel`)
     REFERENCES `mydb`.`nivel` (`idnivel`)
@@ -100,8 +100,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`proyecto` (
   `grado_idgrado` INT NOT NULL,
   `materia_idmateria` INT NOT NULL,
   PRIMARY KEY (`idproyecto`, `grado_idgrado`, `materia_idmateria`),
-  INDEX `fk_proyecto_grado1_idx` (`grado_idgrado` ASC) VISIBLE,
-  INDEX `fk_proyecto_materia1_idx` (`materia_idmateria` ASC) VISIBLE,
+  INDEX `fk_proyecto_grado1_idx` (`grado_idgrado` ASC),
+  INDEX `fk_proyecto_materia1_idx` (`materia_idmateria` ASC) ,
   CONSTRAINT `fk_proyecto_grado1`
     FOREIGN KEY (`grado_idgrado`)
     REFERENCES `mydb`.`grado` (`idgrado`)
@@ -125,8 +125,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`equipo` (
   `estudiante_idestudiante` VARCHAR(8) NOT NULL,
   `proyecto_idproyecto` INT NOT NULL,
   PRIMARY KEY (`idequipo`, `estudiante_idestudiante`, `proyecto_idproyecto`),
-  INDEX `fk_equipo_estudiante_idx` (`estudiante_idestudiante` ASC) VISIBLE,
-  INDEX `fk_equipo_proyecto1_idx` (`proyecto_idproyecto` ASC) VISIBLE,
+  INDEX `fk_equipo_estudiante_idx` (`estudiante_idestudiante` ASC),
+  INDEX `fk_equipo_proyecto1_idx` (`proyecto_idproyecto` ASC),
   CONSTRAINT `fk_equipo_estudiante`
     FOREIGN KEY (`estudiante_idestudiante`)
     REFERENCES `mydb`.`estudiante` (`idestudiante`)
@@ -151,8 +151,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`rubrica` (
   `materia_idmateria` INT NOT NULL,
   `nivel_idnivel` INT NOT NULL,
   PRIMARY KEY (`idrubrica`, `materia_idmateria`, `nivel_idnivel`),
-  INDEX `fk_rubrica_materia1_idx` (`materia_idmateria` ASC) VISIBLE,
-  INDEX `fk_rubrica_nivel1_idx` (`nivel_idnivel` ASC) VISIBLE,
+  INDEX `fk_rubrica_materia1_idx` (`materia_idmateria` ASC),
+  INDEX `fk_rubrica_nivel1_idx` (`nivel_idnivel` ASC) ,
   CONSTRAINT `fk_rubrica_materia1`
     FOREIGN KEY (`materia_idmateria`)
     REFERENCES `mydb`.`materia` (`idmateria`)
@@ -178,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`criterios` (
   `puntaje` INT NULL,
   `rubrica_idrubrica` VARCHAR(15) NOT NULL,
   PRIMARY KEY (`idcriterios`, `rubrica_idrubrica`),
-  INDEX `fk_criterios_rubrica1_idx` (`rubrica_idrubrica` ASC) VISIBLE,
+  INDEX `fk_criterios_rubrica1_idx` (`rubrica_idrubrica` ASC),
   CONSTRAINT `fk_criterios_rubrica1`
     FOREIGN KEY (`rubrica_idrubrica`)
     REFERENCES `mydb`.`rubrica` (`idrubrica`)
@@ -198,9 +198,9 @@ CREATE TABLE IF NOT EXISTS `mydb`.`asignacionJ` (
   `materia_idmateria` INT NOT NULL,
   `grado_idgrado` INT NOT NULL,
   PRIMARY KEY (`idasignacionJ`, `usuario_idUsuario`, `materia_idmateria`, `grado_idgrado`),
-  INDEX `fk_asignacionJ_usuario1_idx` (`usuario_idUsuario` ASC) VISIBLE,
-  INDEX `fk_asignacionJ_materia1_idx` (`materia_idmateria` ASC) VISIBLE,
-  INDEX `fk_asignacionJ_grado1_idx` (`grado_idgrado` ASC) VISIBLE,
+  INDEX `fk_asignacionJ_usuario1_idx` (`usuario_idUsuario` ASC) ,
+  INDEX `fk_asignacionJ_materia1_idx` (`materia_idmateria` ASC) ,
+  INDEX `fk_asignacionJ_grado1_idx` (`grado_idgrado` ASC) ,
   CONSTRAINT `fk_asignacionJ_usuario1`
     FOREIGN KEY (`usuario_idUsuario`)
     REFERENCES `mydb`.`usuario` (`idUsuario`)
@@ -229,7 +229,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`puntos` (
   `puntos` INT NULL,
   `criterios_idcriterios` INT NOT NULL,
   PRIMARY KEY (`idpuntos`, `criterios_idcriterios`),
-  INDEX `fk_puntos_criterios1_idx` (`criterios_idcriterios` ASC) VISIBLE,
+  INDEX `fk_puntos_criterios1_idx` (`criterios_idcriterios` ASC) ,
   CONSTRAINT `fk_puntos_criterios1`
     FOREIGN KEY (`criterios_idcriterios`)
     REFERENCES `mydb`.`criterios` (`idcriterios`)
@@ -250,9 +250,9 @@ CREATE TABLE IF NOT EXISTS `mydb`.`puntaje` (
   `puntaje` DECIMAL(3) NULL,
   `puntos_idpuntos` INT NOT NULL,
   PRIMARY KEY (`idpuntaje`, `proyecto_idproyecto`, `usuario_idUsuario`, `puntos_idpuntos`),
-  INDEX `fk_puntaje_proyecto1_idx` (`proyecto_idproyecto` ASC) VISIBLE,
-  INDEX `fk_puntaje_usuario1_idx` (`usuario_idUsuario` ASC) VISIBLE,
-  INDEX `fk_puntaje_puntos1_idx` (`puntos_idpuntos` ASC) VISIBLE,
+  INDEX `fk_puntaje_proyecto1_idx` (`proyecto_idproyecto` ASC) ,
+  INDEX `fk_puntaje_usuario1_idx` (`usuario_idUsuario` ASC) ,
+  INDEX `fk_puntaje_puntos1_idx` (`puntos_idpuntos` ASC) ,
   CONSTRAINT `fk_puntaje_proyecto1`
     FOREIGN KEY (`proyecto_idproyecto`)
     REFERENCES `mydb`.`proyecto` (`idproyecto`)
@@ -283,8 +283,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Ranking` (
   `proyecto_materia_idmateria` INT NOT NULL,
   `puntaje_idpuntaje` INT NOT NULL,
   PRIMARY KEY (`idRanking`, `proyecto_idproyecto`, `proyecto_grado_idgrado`, `proyecto_materia_idmateria`, `puntaje_idpuntaje`),
-  INDEX `fk_Ranking_proyecto1_idx` (`proyecto_idproyecto` ASC, `proyecto_grado_idgrado` ASC, `proyecto_materia_idmateria` ASC) VISIBLE,
-  INDEX `fk_Ranking_puntaje1_idx` (`puntaje_idpuntaje` ASC) VISIBLE,
+  INDEX `fk_Ranking_proyecto1_idx` (`proyecto_idproyecto` ASC, `proyecto_grado_idgrado` ASC, `proyecto_materia_idmateria` ASC) ,
+  INDEX `fk_Ranking_puntaje1_idx` (`puntaje_idpuntaje` ASC) ,
   CONSTRAINT `fk_Ranking_proyecto1`
     FOREIGN KEY (`proyecto_idproyecto` , `proyecto_grado_idgrado` , `proyecto_materia_idmateria`)
     REFERENCES `mydb`.`proyecto` (`idproyecto` , `grado_idgrado` , `materia_idmateria`)
