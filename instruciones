@@ -1,0 +1,8 @@
+
+
+Nombres de archivos: Deben ser en ingles por ejemolo
+        createGrades.html
+
+se va a usar TailWind CSS por medio de CDN deben poner la siguiente linea
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
