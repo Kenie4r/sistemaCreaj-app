@@ -1,6 +1,6 @@
 <?php
 
-class Conexion{
+class Conection{
 
     public function _getConection(){
 

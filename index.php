@@ -3,7 +3,7 @@
 require_once("modelo/conection.php");
 require_once("modelo/query.php");
 
-$consulta = new Consultas;
+$consulta = new Query;
 
 $usuarios = $consulta->getUsers();
 

@@ -1,11 +1,11 @@
 <?php
 
-class Consultas{
+class Query{
 
     //Obtener todos los usuarios existentes
     public function getUsers(){
         
-        $modelo = new Conexion;
+        $modelo = new Conection;
         $conexion = $modelo->_getConection();
         $sql = "SELECT * FROM usuario";
         $sentencia = $conexion->prepare($sql);
@@ -22,7 +22,7 @@ class Consultas{
     //Obtener todos el usuario activo
     public function getUserActivo($nombre, $pass){
         
-        $modelo = new Conexion_DB;
+        $modelo = new Conection;
         $conexion = $modelo->_getConection();
         $sql = "SELECT * FROM usuario WHERE usario = :nombre AND password = :pass";
         $sentencia = $conexion->prepare($sql);
