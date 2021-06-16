@@ -1,8 +1,13 @@
+Credenciales PHPMYADMIN
+Usuario: admin
+Password: 123456
 
+Nombres de archivos: Deben ser en ingles, por ejemplo
+		createGrades.html
 
-Nombres de archivos: Deben ser en ingles por ejemolo
-        createGrades.html
+Se va a usar TailWind CSS por medio de CDN deben poner la siguiente linea
+	<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 
-se va a usar TailWind CSS por medio de CDN deben poner la siguiente linea
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+También se va a usar JQuery, lo colocan con la siguiente linea
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
