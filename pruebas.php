@@ -23,7 +23,7 @@ $usuarios = $consulta->getUsers();
 echo count($usuarios);
 
 
-$bool = $consulta->updateUser(2, "tecnico.cientifico", "Miembro", "Salesiano", "t", "hola");
+$bool = $consulta-> saveUser( "tecnico.cientifico", "Miembro", "Salesiano", "t", "hola");
 
 if($bool){
     echo "Modificación realizada";

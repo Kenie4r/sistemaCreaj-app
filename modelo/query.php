@@ -2,6 +2,182 @@
 
 class Query{
 
+    //funciones para guardar 
+    //Guardar usuario
+    public function saveUser($userName,$name, $last_name, $rol, $password ){
+
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql  = "INSERT INTO usuario (usario, nombres, apellidos, rol, password) VALUES ( :username , :name, :last_name, :rol,:password )";
+        $sentencia= $connection->prepare($sql);
+        $sentencia ->bindParam(":username", $userName);
+        $sentencia->bindParam(":name", $name);
+        $sentencia->bindParam(":last_name", $last_name);
+        $sentencia->bindParam(":rol", $rol);
+        $sentencia -> bindParam(":password", $password);
+
+        if(!$sentencia){
+                return "Error, por favor revisar los datos ingresados";
+        }else{
+            $sentencia -> execute();
+            return "Datos ingresados de manera exitosa";
+        }
+
+    }
+    //guardar Rubrica
+    public function saveRubrica($name, $id_Materia, $id_nivel){
+        $conexion = new Conection();
+        $sql = "INSERT INTO rubrica(nombre, materia_idmateria, nivel_idnivel) VALUES(:name, :materia, :nivel)";
+        $sentencia= $conexion->prepare($sql);
+        $sentencia->bindParam(":name", $name);
+        $sentencia->bindParam(":nivel ", $id_nivel);
+        $sentencia->bindParam(":materia", $id_materia);
+        if(!$sentencia){
+            return "Error, existe un fallo";
+        }else{
+            $sentencia->execute();
+            return "Registro hecho";
+        }
+    }
+    //guardar criterio
+    public function saveCriterio($tittle, $desc, $puntos, $rubricaID){
+        $conexion = new Conection();
+        $sql = "INSERT INTO criterios(titulo, descripcion, puntaje, rubrica_idrubrica) VALUES(:titulo, :descripcion, :puntaje, :rubrica)";
+        $sentencia= $conexion->prepare($sql);
+        $sentencia->bindParam(":titulo", $tittle);
+        $sentencia->bindParam(":descripcion", $desc);
+        $sentencia->bindParam(":puntaje", $puntos);
+        $sentencia->bindParam(":rubrica", $rubricaID);
+        if(!$sentencia){
+            return "Error, existe un fallo";
+        }else{
+            $sentencia->execute();
+            return "Registro hecho";
+        }
+    }
+    //guardat Grado
+    public function saveGrado($name, $seccion, $nivel_idnivel){
+        $conexion = new Conection();
+        $sql = "INSERT INTO grado(nombre, seccion, nivel_idnivel) VALUES(:name, :seccion, :idnivel)";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":name", $name);
+        $sentencia->bindParam(":seccion", $seccion);
+        $sentencia->bindParam(":idnivel", $nivel_idnivel);
+        if(!$sentencia){
+            return "Error, existe un fallo";
+        }else{
+            $sentencia->execute();
+            return "Registro hecho";
+        }
+    }
+    //guardar nivel
+    public function saveNivel($name){
+        $conexion = new Conection();
+        $sql = "INSERT INTO grado(nombrel) VALUES(:name)";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":name", $name);
+        if(!$sentencia){
+            return "Error, existe un fallo";
+        }else{
+            $sentencia->execute();
+            return "Registro hecho";
+        }
+    }
+    //guardar equipo
+    public function saveTeam($id_estudiante, $proyecto){
+        $conexion = new Conection();
+        $sql = "INSERT INTO equipo(estudiante_idestudiante, proyecto_idproyecto) VALUES(:student, :proyecto)";
+        $sentencia= $conexion->prepare($sql);
+        $sentencia->bindParam(":student", $id_estudiante);
+        $sentencia->bindParam(":proyecto", $proyecto);
+        if(!$sentencia){
+            return "Error, existe un fallo";
+        }else{
+            $sentencia->execute();
+            return "Registro hecho";
+        }
+    }
+    
+    //guardar estudiante
+    public function saveStudent($id, $name, $last_name){
+        $conexion = new Conection();
+        $sql = "INSERT INTO estudiante VALUES ( :id, :name, :last_name)";
+        $sentencia= $conexion->prepare($sql);
+        $sentencia->bindParam(":id", $id);
+        $sentencia->bindParam(":name", $name);
+        $sentencia->bindParam(":last_name", $last_name);
+        if(!$sentencia){
+            return "Error, existe un fallo";
+        }else{
+            $sentencia->execute();
+            return "Registro hecho";
+        }
+    }
+
+    //save materia
+    public function saveMateria($nombre ){
+        $conexion = new Conection();
+        $sql = "INSERT INTO materia(nombre) VALUES(:name) ";
+        $sentencia= $conexion->prepare($sql);
+        $sentencia->bindParam(":name", $nombre);
+        if(!$sentencia){
+            return "Error, existe un fallo";
+        }else{
+            $sentencia->execute();
+            return "Registro hecho";
+        }
+
+    }
+
+    //guardar puntaje
+    public function savePuntaje($proyecto,  $usuario, $puntaje, $puntos){
+        $conexion = new Conection();
+        $sql= "INSERT INTO puntaje(proyecto_idproyecto, usuario_idUsario, puntaje, puntos_idpuntos) VALUES(:proyecto, :user, :puntaje, :puntos)";
+        $sentencia= $conexion->prepare($sql);
+        $sentencia->bindParam(":proyecto", $proyecto);
+        $sentencia->bindParam(":user", $usuario);
+        $sentencia->bindParam(":puntaje", $puntaje);
+        $sentencia->bindParam(":puntos", $puntos);
+        if(!$sentencia){
+            return "Error, existe un fallo";
+        }else{
+            $sentencia->execute();
+            return "Registro hecho";
+        }
+    }
+
+    //guardar puntos
+    public function savePuntos($puntos, $criterio){
+        $conexion = new Conection();
+        $sql= "INSERT INTO puntos(puntos, criterios_idcriterios) VALUES(:puntos , :criterio)";
+        $sentencia= $conexion->prepare($sql);
+        $sentencia->bindParam(":puntos", $puntos);
+        $sentencia->bindParam(":criterio", $criterio);
+        if(!$sentencia){
+            return "Error, existe un fallo";
+        }else{
+            $sentencia->execute();
+            return "Registro hecho";
+        }
+    }
+    //guardar rango
+    public function saveRank($proyecto, $materia, $grado,$puntaje){
+        $conexion = new Conection();
+        $sql="INSERT INTO ranking(proyecto_idproyecto, proyecto_grado_idgrado, proyecto_materia_idmateria, puntaje_idpuntaje) VALUES (
+        :poyecto, :grado, :materia, :puntaje)";
+        $sentencia= $conexion->prepare($sql);
+        $sentencia->bindParam(":proyecto", $proyecto);
+        $sentencia->bindParam(":grado", $grado);
+        $sentencia->bindParam(":materia", $materia);
+        $sentencia->bindParam(":puntaje", $puntaje);
+        if(!$sentencia){
+            return "Error, existe un fallo";
+        }else{
+            $sentencia->execute();
+            return "Registro hecho";
+        }
+    }
+
     //SELECT
 
     //Obtener todos los usuarios existentes
