@@ -5,7 +5,7 @@ class Query{
     //funciones para guardar 
     //Guardar usuario
     public function saveUser($userName,$name, $last_name, $rol, $password ){
-
+        $pass = md5($password);
         $model = new Conection();
         $connection  = $model->_getConection();
         $sql  = "INSERT INTO usuario (usario, nombres, apellidos, rol, password) VALUES ( :username , :name, :last_name, :rol,:password )";
@@ -14,7 +14,7 @@ class Query{
         $sentencia->bindParam(":name", $name);
         $sentencia->bindParam(":last_name", $last_name);
         $sentencia->bindParam(":rol", $rol);
-        $sentencia -> bindParam(":password", $password);
+        $sentencia -> bindParam(":password", $pass);
 
         if(!$sentencia){
                 return "Error, por favor revisar los datos ingresados";
