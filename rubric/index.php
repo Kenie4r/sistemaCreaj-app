@@ -1,3 +1,15 @@
+<?php
+
+require_once("../modelo/conection.php");
+require_once("../modelo/query.php");
+
+//Verificar session
+
+$consulta = new Query; //Crear una consulta
+$rubricas = $consulta->getRubrics(); //Get rúbricas
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -34,27 +46,23 @@
                     </tr>
                 </thead>
                 <tbody id="table-body-rubrica" class="bg-gray-200">
-                    <tr class="lol">
-                        <td class="p-4">1</td>
-                        <td class="p-4">Rúbrica XD</td>
-                        <td class="p-4">Editar</td>
-                        <td class="p-4">Relacionar</td>
-                        <td class="p-4">Eliminar</td>
-                    </tr>
-                    <tr>
-                        <td class="p-4">2</td>
-                        <td class="p-4">Rúbrica LOL</td>
-                        <td class="p-4">Editar</td>
-                        <td class="p-4">Relacionar</td>
-                        <td class="p-4">Eliminar</td>
-                    </tr>
-                    <tr>
-                        <td class="p-4">3</td>
-                        <td class="p-4">Rúbrica :V</td>
-                        <td class="p-4">Editar</td>
-                        <td class="p-4">Relacionar</td>
-                        <td class="p-4">Eliminar</td>
-                    </tr>
+<?php
+
+if(!empty($rubricas)){
+    echo "<tr class='lol'>";
+    echo "\t<td class='p-4'>" . $rubricas["idrubrica"] . "</td>";
+    echo "\t<td class='p-4'>" . $rubricas["nombre"] . "</td>";
+    echo "\t<td class='p-4'><span class='icon-eye'></span> Ver</td>";
+    echo "\t<td class='p-4'><span class='icon-pencil'></span> Editar</td>";
+    echo "\t<td class='p-4'><span class='icon-cross'></span> Eliminar</td>";
+    echo "</tr>";
+}else{
+    echo "<tr class='lol'>";
+    echo "\t<td colspan='5' class='p-4'><span class='icon-blocked'></span> No hay rubricas en el sistema<td>";
+    echo "</tr>";
+}
+
+?>
                 </tbody>
                 <tfoot class="bg-gray-900">
                     <tr>
