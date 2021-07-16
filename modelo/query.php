@@ -216,6 +216,23 @@ class Query{
         }
     }
 
+    //Obtener todos las rúbricas
+    public function getRubrics(){
+        
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT * FROM rubrica";
+        $sentencia = $conexion->prepare($sql);
+        if(!$sentencia){
+            return "";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
     //UPDATE
 
     //Usuario
