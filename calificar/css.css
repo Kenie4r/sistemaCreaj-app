@@ -1,0 +1,184 @@
+/*.gauge{
+    width: 100%;
+    max-width: 150px;
+}
+.gauge__body{
+    width: 100%;
+    height: 0;
+    padding-bottom: 50%;
+    background: rgb(159, 168, 167);
+    position: relative;
+    border-top-left-radius: 100% 200%;
+    border-top-right-radius: 100% 200%;
+    overflow: hidden;
+}
+.gauge__fill{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: inherit;
+    height: 100%;
+    background: #06611dea;
+    transform-origin: center top ;
+    transform:  rotate(0turn);
+    transition: transform 0.2s ease-in-out;
+}
+.gauge__cover{
+    width: 75%;
+    height: 150%;
+    background-color: white;
+    position: absolute;
+    border-radius: 50%;
+    top:  25%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 25%;
+    box-sizing: border-box;
+    font-size: 1.5em;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+*/
+
+.transicion{
+    transition:   5ms;
+}
+
+.bg-teal-900{
+    background-color: rgb(3, 54, 61);
+}
+input[type="range"] { 
+    margin: auto;
+    -webkit-appearance: none;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 0; 
+    height: 12px;
+    width: 200px;
+}
+
+::-webkit-slider-runnable-track {
+    background: #ddd;
+}
+
+/*
+ * 1. Set to 0 width and remove border for a slider without a thumb
+ */
+::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px; /* 1 */
+    height: 40px;
+    background: #fff;
+    box-shadow: -100vw 0 0 100vw dodgerblue;
+    border: 2px solid #999; /* 1 */
+}
+
+::-moz-range-track {
+    height: 40px;
+    background: #ddd;
+}
+
+::-moz-range-thumb {
+    background: #fff;
+    height: 40px;
+    width: 20px;
+    border: 3px solid #999;
+    border-radius: 0 !important;
+    box-shadow: -100vw 0 0 100vw dodgerblue;
+    box-sizing: border-box;
+}
+
+::-ms-fill-lower { 
+    background: dodgerblue;
+}
+
+::-ms-thumb { 
+    background: #fff;
+    border: 2px solid #999;
+    height: 40px;
+    width: 20px;
+    box-sizing: border-box;
+}
+
+::-ms-ticks-after { 
+    display: none; 
+}
+
+::-ms-ticks-before { 
+    display: none; 
+}
+
+::-ms-track { 
+    background: #ddd;
+    color: transparent;
+    height: 40px;
+    border: none;
+}
+
+::-ms-tooltip { 
+    display: none;
+}
+
+
+
+
+.contenido {
+    max-height: 0;
+    -webkit-transition: max-height .35s;
+    -o-transition: max-height .35s;
+    transition: max-height  .35;
+}
+.tab input:checked ~.contenido{
+    max-height: 100vh;
+    background-color: Dar;
+}
+
+.tab input:checked + label{
+    font-size: 1.25rem;
+    padding: 1.25rem;
+    border-left-width: 2px;
+    border-color: #f8fafc;
+    color: #6574cd;
+}
+/* Icon */
+.tab label::after {
+    float:right;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 1.5;
+    font-size: 1.25rem;
+    text-align: center;
+    -webkit-transition: all .35s;
+    -o-transition: all .35s;
+    transition: all .35s;
+}
+
+.tab input[type=checkbox] + label::after {
+    content: "\25BE";
+    font-weight:bold; 
+    border-width: 1px;
+    border-radius: 9999px; 
+    border-color: #b8c2cc; 
+}
+
+.tab input[type=checkbox]:checked + label::after {
+    transform: rotate(180deg);
+    background-color: #9da3c4; 
+    color: #f8fafc; 
+}
+           
+
+
+#progress{
+    width: 0;
+}
+.tb-inputs{
+    display: block;
+}
