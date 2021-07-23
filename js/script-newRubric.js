@@ -3,6 +3,15 @@ $(document).ready(
         //V A R I A B L E S   G E N E R A L E S
         var contenedorCriterio = $("#contenedor-criterios"); //Se busca el contenedor de los criterios
         var btnAddCriterio = $("#addCriterio"); //Se busca el botón de añadir criterio
+        var frmRubric = $("#frmNewRubric"); //El formulario
+        var btnSubmit = $("#btnSubmit"); //El botón para enviar el formulario
+
+        //FUNCIÓN DE ENVIAR EL FORMULARIO POR UN A
+        btnSubmit.on("click",
+            function(){
+                frmRubric.submit();
+            }
+        );
 
         //C R I T E R I O   P O R   D E F E C T O
         var puntaje1 = $("#1-nbPuntaje"); //Se busca el input puntaje del criterio por defecto

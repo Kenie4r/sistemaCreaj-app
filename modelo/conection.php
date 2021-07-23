@@ -7,7 +7,7 @@ class Conection{
         $user = "admin";
         $pass = "123456";
         $host = "localhost";
-        $db = "mydb";
+        $db = "calificador_creaj";
 
         $conectar = new PDO("mysql:host=$host;dbname=$db",$user,$pass);
         

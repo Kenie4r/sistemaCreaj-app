@@ -8,10 +8,10 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../js/script-editRubric.js"></script>
+    <script src="../js/script-newRubric.js"></script>
 </head>
 <body>
-    <form class="container box-content">
+    <form id="frmNewRubric" class="container box-content" method="POST" action="saveRubric.php">
         <div class="grid grid-cols-1 lg:grid-cols-2">
             <div class="flex flex-row items-center m-9 text-gray-500 text-3xl">
                 <input class="w-3/4 lg:w-full lg:text-5xl outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtNombreRubrica" id="txtNombreRubrica" value="Nueva Rúbrica" maxlength="45" required>
@@ -19,7 +19,7 @@
             </div>
             <div class="flex lg:justify-end ml-9 lg:m-9">
                 <div class="lg:m-2">
-                    <a href="saveRubric.html" class="block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700"><span class="icon-checkmark"></span> Guardar</a>
+                    <a href="#" id="btnSubmit" class="block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700"><span class="icon-checkmark"></span> Guardar</a>
                 </div>
                 <div class="mx-2 lg:m-2">
                     <a href="index.html" class="block text-red-600 border-red-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-red-600"><span class='icon-cross'></span> Cancelar</a>
