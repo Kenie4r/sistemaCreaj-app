@@ -60,13 +60,13 @@ $(document).ready(function(){
             $(thisBox).empty()
         })
         //aumento de barra
-        $('.gradeinput').change(function(){
+        $('.gradeinput').change( function(){
             var value  = $(this).val();
             var id  = $(this).attr('id');
             var IDbtn = id.split("_");
             var boxNumber = IDbtn[1]
-            var box = "#nota"+boxNumber;
-            $(box).text()
+            var box = "#nota_"+boxNumber;
+            $(box).text(value)
         })
         $('.notas').click(function(){
     
@@ -89,12 +89,12 @@ function inputCreation(number, contenedor, nivel){
     "</div>"+
     "<div class='w-full text-center font-bold m-2'>"+  
         "<p>La nota obtenida es:</p>"+ 
-        "<h1 class='text-4xl cursor-pointer notas' id='nota"+number+"'>0</h1>"+
+        "<h1 class='text-4xl cursor-pointer notas' id='nota_"+number+"'>0</h1>"+
     "</div>"+
     "<div  class='flex flex-row mt-2'>"+
         "<div class='mx-2'>1</div>"+
         "<div>"+
-            "<input type='range' class='gradeinput rounded-lg' max='10' min='8.9' step='0.1' value='0' id='Grade"+ number+ "'>"+
+            "<input type='number' class='gradeinput rounded-lg' max='10' min='8.9' step='0.1' value='0' id='Grade"+ number+ "'>"+
         "</div>"+
         "<div class='mx-2'>"+
             "10"+
