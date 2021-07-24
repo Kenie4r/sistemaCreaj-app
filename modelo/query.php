@@ -25,14 +25,15 @@ class Query{
 
     }
     //Guardar Rubrica
-    public function saveRubrica($id_rubrica, $name, $id_Materia, $id_nivel){
-        $conexion = new Conection();
-        $sql = "INSERT INTO rubrica(idrubrica, nombre, materia_idmateria, nivel_idnivel) VALUES(:idrubric, :name, :materia, :nivel)";
-        $sentencia= $conexion->prepare($sql);
-        $sentencia->bindParam(":idrubric", $id_rubrica);
-        $sentencia->bindParam(":name", $name);
-        $sentencia->bindParam(":nivel ", $id_nivel);
-        $sentencia->bindParam(":materia", $id_materia);
+    public function saveRubrica($id_rubrica, $name, $id_materia, $id_nivel){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "INSERT INTO rubrica (idrubrica, nombre, materia_idmateria, nivel_idnivel) VALUES(:idrubric, :nombr, :materia, :nivel)";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":idrubric", $id_rubrica, PDO::PARAM_STR);
+        $sentencia->bindParam(":nombr", $name, PDO::PARAM_STR);
+        $sentencia->bindParam(":materia", $id_materia, PDO::PARAM_INT);
+        $sentencia->bindParam(":nivel", $id_nivel, PDO::PARAM_INT);
         if(!$sentencia){
             return "Error, existe un fallo";
         }else{
@@ -42,12 +43,13 @@ class Query{
     }
     //Guardar criterio
     public function saveCriterio($tittle, $puntos, $rubricaID){
-        $conexion = new Conection();
+        $model = new Conection();
+        $connection  = $model->_getConection();
         $sql = "INSERT INTO criterios(titulo, puntaje, rubrica_idrubrica) VALUES(:titulo, :puntaje, :rubrica)";
-        $sentencia= $conexion->prepare($sql);
-        $sentencia->bindParam(":titulo", $tittle);
-        $sentencia->bindParam(":puntaje", $puntos);
-        $sentencia->bindParam(":rubrica", $rubricaID);
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":titulo", $tittle, PDO::PARAM_STR);
+        $sentencia->bindParam(":puntaje", $puntos, PDO::PARAM_INT);
+        $sentencia->bindParam(":rubrica", $rubricaID, PDO::PARAM_STR);
         if(!$sentencia){
             return "Error, existe un fallo";
         }else{
@@ -58,13 +60,14 @@ class Query{
 
     //Guardar nivel de aprobacion
     public function savenAprobacion($description, $range, $note, $id_criterio){
-        $conexion = new Conection();
+        $model = new Conection();
+        $connection  = $model->_getConection();
         $sql = "INSERT INTO naprovacion(descripcion, rango, nota, criterios_idcriterios) VALUES(:descrip, :rang, :note, :idcrit)";
-        $sentencia= $conexion->prepare($sql);
-        $sentencia->bindParam(":descrip", $tittle);
-        $sentencia->bindParam(":rang", $puntos);
-        $sentencia->bindParam(":note", $rubricaID);
-        $sentencia->bindParam(":idcrit", $rubricaID);
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":descrip", $description, PDO::PARAM_STR);
+        $sentencia->bindParam(":rang", $range, PDO::PARAM_STR);
+        $sentencia->bindParam(":note", $note);
+        $sentencia->bindParam(":idcrit", $id_criterio, PDO::PARAM_INT );
         if(!$sentencia){
             return "Error, existe un fallo";
         }else{
@@ -75,9 +78,10 @@ class Query{
 
     //guardat Grado
     public function saveGrado($name, $seccion, $nivel_idnivel){
-        $conexion = new Conection();
+        $model = new Conection();
+        $connection  = $model->_getConection();
         $sql = "INSERT INTO grado(nombre, seccion, nivel_idnivel) VALUES(:name, :seccion, :idnivel)";
-        $sentencia = $conexion->prepare($sql);
+        $sentencia = $connection->prepare($sql);
         $sentencia->bindParam(":name", $name);
         $sentencia->bindParam(":seccion", $seccion);
         $sentencia->bindParam(":idnivel", $nivel_idnivel);
@@ -90,9 +94,10 @@ class Query{
     }
     //guardar nivel
     public function saveNivel($name){
-        $conexion = new Conection();
+        $model = new Conection();
+        $connection  = $model->_getConection();
         $sql = "INSERT INTO grado(nombrel) VALUES(:name)";
-        $sentencia = $conexion->prepare($sql);
+        $sentencia = $connection->prepare($sql);
         $sentencia->bindParam(":name", $name);
         if(!$sentencia){
             return "Error, existe un fallo";
@@ -103,9 +108,10 @@ class Query{
     }
     //guardar equipo
     public function saveTeam($id_estudiante, $proyecto){
-        $conexion = new Conection();
+        $model = new Conection();
+        $connection  = $model->_getConection();
         $sql = "INSERT INTO equipo(estudiante_idestudiante, proyecto_idproyecto) VALUES(:student, :proyecto)";
-        $sentencia= $conexion->prepare($sql);
+        $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":student", $id_estudiante);
         $sentencia->bindParam(":proyecto", $proyecto);
         if(!$sentencia){
@@ -118,9 +124,10 @@ class Query{
     
     //guardar estudiante
     public function saveStudent($id, $name, $last_name){
-        $conexion = new Conection();
+        $model = new Conection();
+        $connection  = $model->_getConection();
         $sql = "INSERT INTO estudiante VALUES ( :id, :name, :last_name)";
-        $sentencia= $conexion->prepare($sql);
+        $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":id", $id);
         $sentencia->bindParam(":name", $name);
         $sentencia->bindParam(":last_name", $last_name);
@@ -134,9 +141,10 @@ class Query{
 
     //save materia
     public function saveMateria($nombre ){
-        $conexion = new Conection();
+        $model = new Conection();
+        $connection  = $model->_getConection();
         $sql = "INSERT INTO materia(nombre) VALUES(:name) ";
-        $sentencia= $conexion->prepare($sql);
+        $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":name", $nombre);
         if(!$sentencia){
             return "Error, existe un fallo";
@@ -149,9 +157,10 @@ class Query{
 
     //guardar puntaje
     public function savePuntaje($proyecto,  $usuario, $puntaje, $puntos){
-        $conexion = new Conection();
+        $model = new Conection();
+        $connection  = $model->_getConection();
         $sql= "INSERT INTO puntaje(proyecto_idproyecto, usuario_idUsario, puntaje, puntos_idpuntos) VALUES(:proyecto, :user, :puntaje, :puntos)";
-        $sentencia= $conexion->prepare($sql);
+        $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":proyecto", $proyecto);
         $sentencia->bindParam(":user", $usuario);
         $sentencia->bindParam(":puntaje", $puntaje);
@@ -166,9 +175,10 @@ class Query{
 
     //guardar puntos
     public function savePuntos($puntos, $criterio){
-        $conexion = new Conection();
+        $model = new Conection();
+        $connection  = $model->_getConection();
         $sql= "INSERT INTO puntos(puntos, criterios_idcriterios) VALUES(:puntos , :criterio)";
-        $sentencia= $conexion->prepare($sql);
+        $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":puntos", $puntos);
         $sentencia->bindParam(":criterio", $criterio);
         if(!$sentencia){
@@ -180,10 +190,11 @@ class Query{
     }
     //guardar rango
     public function saveRank($proyecto, $materia, $grado,$puntaje){
-        $conexion = new Conection();
+        $model = new Conection();
+        $connection  = $model->_getConection();
         $sql="INSERT INTO ranking(proyecto_idproyecto, proyecto_grado_idgrado, proyecto_materia_idmateria, puntaje_idpuntaje) VALUES (
         :poyecto, :grado, :materia, :puntaje)";
-        $sentencia= $conexion->prepare($sql);
+        $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":proyecto", $proyecto);
         $sentencia->bindParam(":grado", $grado);
         $sentencia->bindParam(":materia", $materia);
@@ -197,6 +208,23 @@ class Query{
     }
 
     //SELECT
+    //Get ID Criterio
+    public function getIDCriterio($titulo, $rubricaID){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT idcriterios FROM criterios WHERE titulo = :nombre AND rubrica_idrubrica = :idrubric";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":nombre", $titulo);
+        $sentencia->bindParam(":idrubric", $rubricaID);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
 
     //Obtener todos los usuarios existentes
     public function getUsers(){

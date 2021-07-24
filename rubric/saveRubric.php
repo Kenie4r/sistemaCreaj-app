@@ -7,12 +7,15 @@ require_once("../modelo/query.php");
 
 $consulta = new Query; //Crear una consulta
 
+$rangosNivelesAprobacion = array("Muy malo", "Malo", "Bueno", "Excelente");
+$notasNivelesAprobacion = array(25, 50, 75, 100);
+
 //Guardar rubrica
 $id_rubrica = $_POST["txtID"];
 $name = $_POST["txtNombreRubrica"];
-$id_Materia = $_POST["txtMateria"];
+$id_materia = $_POST["txtMateria"];
 $id_nivel = $_POST["txtNivel"];
-$estadoRubrica = $consulta->saveRubrica($id_rubrica, $name, $id_Materia, $id_nivel);
+$estadoRubrica = $consulta->saveRubrica($id_rubrica, $name, $id_materia, $id_nivel);
 
 //Guardar criterios
 $numeroCriterios = $_POST["nCriterios"];
@@ -24,16 +27,17 @@ for($i = 1; $i <= $numeroCriterios; $i++){
     $titulo = $_POST[$etiquetaNameCriterio];
     $puntajeCriterio = $_POST[$etiquetaPuntajeCriterio];
     $estadoCriterio = $consulta->saveCriterio($titulo, $puntajeCriterio, $id_rubrica);
+
+    $id_criterio = $consulta->getIDCriterio($titulo, $id_rubrica);
     
     //Guardar niveles
     for($j = 1; $j <= 4; $j++){
         $etiquetaDescriptioNivel = $i . "-" .  $j . "-descripcionNivel";
 
         $descriptionNivel = $_POST[$etiquetaDescriptioNivel];
-        $range;
-        $note;
-        //
-        $estadoNiveles = $consulta->savenAprobacion($description, $range, $note, $id_criterio);
+        $range = $rangosNivelesAprobacion[$j - 1];
+        $note = $notasNivelesAprobacion[$j - 1];
+        $estadoNiveles = $consulta->savenAprobacion($descriptionNivel, $range, $note, $id_criterio[0]["idcriterios"]);
     }
 }
 
@@ -52,7 +56,7 @@ for($i = 1; $i <= $numeroCriterios; $i++){
 </head>
 <body>
 <?php
-echo "Cantidad de criterios: " . $_POST["nCriterios"] . " - ";
+/*echo "Cantidad de criterios: " . $_POST["nCriterios"] . " - ";
 $numeroCriterios = $_POST["nCriterios"];
 
 for($i = 1; $i <= $numeroCriterios; $i++){
@@ -66,7 +70,8 @@ for($i = 1; $i <= $numeroCriterios; $i++){
         echo "<p>Muy malo: " . $_POST[$nameN] . "</p>";
     }
     echo "</div>";
-}
+}*/
+if($estadoRubrica == "Registro hecho"){
 ?>
     <section class="container">
         <div class="m-4 lg:m-7 bg-green-500 border-2 border-solid border-green-800 rounded-lg">
@@ -78,6 +83,9 @@ for($i = 1; $i <= $numeroCriterios; $i++){
             </div>
         </div>
     </section>
+<?php
+}else{
+?>
     <section class="container">
         <div class="m-4 lg:m-7 bg-red-400 border-2 border-solid border-red-800 rounded-lg">
             <div class="m-4 lg:m-7 text-center">
@@ -88,5 +96,8 @@ for($i = 1; $i <= $numeroCriterios; $i++){
             </div>
         </div>
     </section>
+    <?php
+}
+?>
 </body>
 </html>

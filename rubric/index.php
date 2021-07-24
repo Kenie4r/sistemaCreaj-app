@@ -53,13 +53,15 @@ if(!empty($rubricas)){
 <?php
 
 if(!empty($rubricas)){
-    echo "<tr class='lol'>";
-    echo "\t<td class='p-4'>" . $rubricas["idrubrica"] . "</td>";
-    echo "\t<td class='p-4'>" . $rubricas["nombre"] . "</td>";
+    for ($i=0; $i < count($rubricas); $i++) { 
+        echo "<tr class='lol'>";
+    echo "\t<td class='p-4'>" . $rubricas[$i]["idrubrica"] . "</td>";
+    echo "\t<td class='p-4'>" . $rubricas[$i]["nombre"] . "</td>";
     echo "\t<td class='p-4'><span class='icon-eye'></span> Ver</td>";
     echo "\t<td class='p-4'><span class='icon-pencil'></span> Editar</td>";
     echo "\t<td class='p-4'><span class='icon-cross'></span> Eliminar</td>";
     echo "</tr>";
+    }
 }else{
     echo "<tr class='lol'>";
     echo "\t<td colspan='5' class='p-4'><span class='icon-blocked'></span> No hay rubricas en el sistema<td>";
