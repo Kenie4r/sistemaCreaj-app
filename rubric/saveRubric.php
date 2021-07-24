@@ -1,3 +1,44 @@
+<?php
+
+require_once("../modelo/conection.php");
+require_once("../modelo/query.php");
+
+//Verificar session
+
+$consulta = new Query; //Crear una consulta
+
+//Guardar rubrica
+$id_rubrica = $_POST["txtID"];
+$name = $_POST["txtNombreRubrica"];
+$id_Materia = $_POST["txtMateria"];
+$id_nivel = $_POST["txtNivel"];
+$estadoRubrica = $consulta->saveRubrica($id_rubrica, $name, $id_Materia, $id_nivel);
+
+//Guardar criterios
+$numeroCriterios = $_POST["nCriterios"];
+
+for($i = 1; $i <= $numeroCriterios; $i++){
+    $etiquetaNameCriterio = $i . "-txtNombreCriterio";
+    $etiquetaPuntajeCriterio = $i . "-nbPuntaje";
+
+    $titulo = $_POST[$etiquetaNameCriterio];
+    $puntajeCriterio = $_POST[$etiquetaPuntajeCriterio];
+    $estadoCriterio = $consulta->saveCriterio($titulo, $puntajeCriterio, $id_rubrica);
+    
+    //Guardar niveles
+    for($j = 1; $j <= 4; $j++){
+        $etiquetaDescriptioNivel = $i . "-" .  $j . "-descripcionNivel";
+
+        $descriptionNivel = $_POST[$etiquetaDescriptioNivel];
+        $range;
+        $note;
+        //
+        $estadoNiveles = $consulta->savenAprobacion($description, $range, $note, $id_criterio);
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,10 +52,6 @@
 </head>
 <body>
 <?php
-echo "Nombre: " . $_POST["txtNombreRubrica"] . " - ";
-echo "ID: " . $_POST["txtID"] . " - ";
-echo "Materia: " . $_POST["txtMateria"] . " - ";
-echo "Nivel: " . $_POST["txtNivel"] . " - ";
 echo "Cantidad de criterios: " . $_POST["nCriterios"] . " - ";
 $numeroCriterios = $_POST["nCriterios"];
 

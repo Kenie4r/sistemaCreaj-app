@@ -1,3 +1,21 @@
+<?php
+
+require_once("../modelo/conection.php");
+require_once("../modelo/query.php");
+
+//Verificar session
+
+$consulta = new Query; //Crear una consulta
+$materias = $consulta->getMatter(); //Get materias
+$rubricas = $consulta->getRubrics(); //Get rúbricas
+$niveles = $consulta->getLevel(); //Get niveles
+
+//ID
+$nRubricas = count($rubricas);
+$yearActual = date("Y");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +49,17 @@
                 <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
                     <label for="txtID" class="p-2 bg-gray-700 text-white">ID</label>
                     <input type="text" name="txtID" id="txtID" value="
-2021-000
+<?php
+
+if($nRubricas < 10){
+    echo $yearActual . "-00" . $nRubricas;
+}else if($nRubricas < 100){
+    echo $yearActual . "-0" . $nRubricas;
+}else{
+    echo $yearActual . "-" . $nRubricas;
+}
+
+?>
                     " class="p-1 w-full rounded-r-lg outline-none" readonly>
                 </div>
             </div>
@@ -39,7 +67,18 @@
                 <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
                     <label for="txtMateria" class="p-2 bg-gray-700 text-white">Materia</label>
                     <select name="txtMateria" id="txtMateria" class="p-1 w-full rounded-r-lg outline-none">
-                        <option value="">Elige una materia para asignar...</option>
+<?php
+
+if(empty($materias)){
+    echo "<option value=''>No hay materias para elegir</option>\n";
+}else{
+    echo "<option value=''>Elige una materia para asignar...</option>\n";
+    foreach ($materias as $key => $materia) {
+        echo "<option value='" . $materia["idmateria"] . "'>" . $materia["nombre"] . "</option>\n";
+    }
+}
+
+?>
                     </select>
                 </div>
             </div>
@@ -47,7 +86,18 @@
                 <div class="flex flex-row items-center w-full lg:w-4/5 border-gray-700 border-solid border-2 rounded-lg">
                     <label for="txtNivel" class="p-2 bg-gray-700 text-white">Nivel</label>
                     <select name="txtNivel" id="txtNivel" class="p-1 w-full rounded-r-lg outline-none">
-                        <option value="">Elige un nivel para asignar...</option>
+<?php
+
+if(empty($materias)){
+    echo "<option value=''>No hay niveles para elegir</option>\n";
+}else{
+    echo "<option value=''>Elige un nivel para asignar...</option>\n";
+    foreach ($niveles as $key => $nivel) {
+        echo "<option value='" . $nivel["idnivel"] . "'>" . $nivel["nombre"] . "</option>\n";
+    }
+}
+
+?>
                     </select>
                 </div>
             </div>
@@ -93,7 +143,7 @@
                                     <div class='flex justify-center items-center border-r-2 border-solid border-red-900'>
                                         <p class='text-red-900 font-bold'>Muy malo</p>
                                     </div>
-                                    <textarea name='1-1-descripcionNivel' id='1-1-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-red-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-red-400'>[ Agregar descripción... ]</textarea>
+                                    <textarea name='1-1-descripcionNivel' id='1-1-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-red-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-red-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>
                                 </div>
                             </div>
                             <!-- N I V E L    2 -->
@@ -102,7 +152,7 @@
                                     <div class='flex justify-center items-center border-r-2 border-solid border-yellow-900'>
                                         <p class='text-yellow-900 font-bold'>Malo</p>
                                     </div>
-                                    <textarea name='1-2-descripcionNivel' id='1-2-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-yellow-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-yellow-400'>[ Agregar descripción... ]</textarea>
+                                    <textarea name='1-2-descripcionNivel' id='1-2-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-yellow-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-yellow-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>
                                 </div>
                             </div>
                             <!-- N I V E L    3 -->
@@ -111,7 +161,7 @@
                                     <div class='flex justify-center items-center border-r-2 border-solid border-blue-900'>
                                         <p class='text-blue-900 font-bold'>Bueno</p>
                                     </div>
-                                    <textarea name='1-3-descripcionNivel' id='1-3-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-blue-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-blue-400'>[ Agregar descripción... ]</textarea>
+                                    <textarea name='1-3-descripcionNivel' id='1-3-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-blue-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-blue-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>
                                 </div>
                             </div>
                             <!-- N I V E L    4 -->
@@ -120,7 +170,7 @@
                                     <div class='flex justify-center items-center border-r-2 border-solid border-green-900'>
                                         <p class='text-green-900 font-bold'>Excelente</p>
                                     </div>
-                                    <textarea name='1-4-descripcionNivel' id='1-4-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-green-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-green-400'>[ Agregar descripción... ]</textarea>
+                                    <textarea name='1-4-descripcionNivel' id='1-4-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-green-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-green-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>
                                 </div>
                             </div>
                         </div>

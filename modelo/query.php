@@ -24,11 +24,12 @@ class Query{
         }
 
     }
-    //guardar Rubrica
-    public function saveRubrica($name, $id_Materia, $id_nivel){
+    //Guardar Rubrica
+    public function saveRubrica($id_rubrica, $name, $id_Materia, $id_nivel){
         $conexion = new Conection();
-        $sql = "INSERT INTO rubrica(nombre, materia_idmateria, nivel_idnivel) VALUES(:name, :materia, :nivel)";
+        $sql = "INSERT INTO rubrica(idrubrica, nombre, materia_idmateria, nivel_idnivel) VALUES(:idrubric, :name, :materia, :nivel)";
         $sentencia= $conexion->prepare($sql);
+        $sentencia->bindParam(":idrubric", $id_rubrica);
         $sentencia->bindParam(":name", $name);
         $sentencia->bindParam(":nivel ", $id_nivel);
         $sentencia->bindParam(":materia", $id_materia);
@@ -39,13 +40,12 @@ class Query{
             return "Registro hecho";
         }
     }
-    //guardar criterio
-    public function saveCriterio($tittle, $desc, $puntos, $rubricaID){
+    //Guardar criterio
+    public function saveCriterio($tittle, $puntos, $rubricaID){
         $conexion = new Conection();
-        $sql = "INSERT INTO criterios(titulo, descripcion, puntaje, rubrica_idrubrica) VALUES(:titulo, :descripcion, :puntaje, :rubrica)";
+        $sql = "INSERT INTO criterios(titulo, puntaje, rubrica_idrubrica) VALUES(:titulo, :puntaje, :rubrica)";
         $sentencia= $conexion->prepare($sql);
         $sentencia->bindParam(":titulo", $tittle);
-        $sentencia->bindParam(":descripcion", $desc);
         $sentencia->bindParam(":puntaje", $puntos);
         $sentencia->bindParam(":rubrica", $rubricaID);
         if(!$sentencia){
@@ -55,6 +55,24 @@ class Query{
             return "Registro hecho";
         }
     }
+
+    //Guardar nivel de aprobacion
+    public function savenAprobacion($description, $range, $note, $id_criterio){
+        $conexion = new Conection();
+        $sql = "INSERT INTO naprovacion(descripcion, rango, nota, criterios_idcriterios) VALUES(:descrip, :rang, :note, :idcrit)";
+        $sentencia= $conexion->prepare($sql);
+        $sentencia->bindParam(":descrip", $tittle);
+        $sentencia->bindParam(":rang", $puntos);
+        $sentencia->bindParam(":note", $rubricaID);
+        $sentencia->bindParam(":idcrit", $rubricaID);
+        if(!$sentencia){
+            return "Error, existe un fallo";
+        }else{
+            $sentencia->execute();
+            return "Registro hecho";
+        }
+    }
+
     //guardat Grado
     public function saveGrado($name, $seccion, $nivel_idnivel){
         $conexion = new Conection();
@@ -222,6 +240,40 @@ class Query{
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
         $sql = "SELECT * FROM rubrica";
+        $sentencia = $conexion->prepare($sql);
+        if(!$sentencia){
+            return "";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
+    //Obtener todos los niveles
+    public function getMatter(){
+        
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT * FROM materia";
+        $sentencia = $conexion->prepare($sql);
+        if(!$sentencia){
+            return "";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
+    //Obtener todos los niveles
+    public function getLevel(){
+        
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT * FROM nivel";
         $sentencia = $conexion->prepare($sql);
         if(!$sentencia){
             return "";

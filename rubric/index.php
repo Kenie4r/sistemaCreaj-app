@@ -28,7 +28,7 @@ $rubricas = $consulta->getRubrics(); //Get rúbricas
                 <h1 class="text-5xl text-gray-500">Rúbricas</h1>
             </div>
             <div class="flex lg:justify-end">
-                <a href="newRubric.html" class="text-blue-600 border-blue-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-blue-600"><span class="icon-plus"></span> Nueva rúbrica</a>
+                <a href="newRubric.php" class="text-blue-600 border-blue-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-blue-600"><span class="icon-plus"></span> Nueva rúbrica</a>
             </div>
         </div>
 <?php

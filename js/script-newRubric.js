@@ -84,7 +84,7 @@ function criterio(numero) {
     texto += "<label for='" + numero + "-nbPuntaje' title='Editar' class='w-1/5'><span class='icon-pencil'></span></label>";
     texto += "</div>";
     texto += "<div class='flex justify-end'>";
-    texto += "<p id='" + numero + "-btnDelete' title='El formulario no se puede quedar sin ningún criterio' class='rounded-full w-8 h-8 flex items-center justify-center text-red-900 border-red-900 border-solid border-2 cursor-pointer'><span class='icon-cross'></span></p>";
+    texto += "<p id='" + numero + "-btnDelete' title='Eliminar el criterio' class='rounded-full w-8 h-8 flex items-center justify-center text-red-900 border-red-900 border-solid border-2 cursor-pointer'><span class='icon-cross'></span></p>";
     texto += "</div>";
     texto += "</div>";
     texto += "<div id='" + numero + "-nivelesAprobacion' class=''>";
@@ -93,7 +93,7 @@ function criterio(numero) {
     texto += "<div class='flex justify-center items-center border-r-2 border-solid border-red-900'>";
     texto += "<p class='text-red-900 font-bold'>Muy malo</p>";
     texto += "</div>";
-    texto += "<textarea name='" + numero + "-1-descripcionNivel' id='" + numero + "-1-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-red-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-red-400'>[ Agregar descripción... ]</textarea>";
+    texto += "<textarea name='" + numero + "-1-descripcionNivel' id='" + numero + "-1-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-red-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-red-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>";
     texto += "</div>";
     texto += "</div>";
     texto += "<div id='" + numero + "-2-nivelAprobacion' class=''>";
@@ -101,7 +101,7 @@ function criterio(numero) {
     texto += "<div class='flex justify-center items-center border-r-2 border-solid border-yellow-900'>";
     texto += "<p class='text-yellow-900 font-bold'>Malo</p>";
     texto += "</div>";
-    texto += "<textarea name='" + numero + "-2-descripcionNivel' id='" + numero + "-2-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-yellow-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-yellow-400'>[ Agregar descripción... ]</textarea>";
+    texto += "<textarea name='" + numero + "-2-descripcionNivel' id='" + numero + "-2-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-yellow-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-yellow-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>";
     texto += "</div>";
     texto += "</div>";
     texto += "<div id='" + numero + "-3-nivelAprobacion' class=''>";
@@ -109,7 +109,7 @@ function criterio(numero) {
     texto += "<div class='flex justify-center items-center border-r-2 border-solid border-blue-900'>";
     texto += "<p class='text-blue-900 font-bold'>Bueno</p>";
     texto += "</div>";
-    texto += "<textarea name='" + numero + "-3-descripcionNivel' id='" + numero + "-3-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-blue-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-blue-400'>[ Agregar descripción... ]</textarea>";
+    texto += "<textarea name='" + numero + "-3-descripcionNivel' id='" + numero + "-3-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-blue-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-blue-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>";
     texto += "</div>";
     texto += "</div>";
     texto += "<div id='" + numero + "-4-nivelAprobacion' class=''>";
@@ -117,7 +117,7 @@ function criterio(numero) {
     texto += "<div class='flex justify-center items-center border-r-2 border-solid border-green-900'>";
     texto += "<p class='text-green-900 font-bold'>Excelente</p>";
     texto += "</div>";
-    texto += "<textarea name='" + numero + "-4-descripcionNivel' id='" + numero + "-4-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-green-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-green-400'>[ Agregar descripción... ]</textarea>";
+    texto += "<textarea name='" + numero + "-4-descripcionNivel' id='" + numero + "-4-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-green-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-green-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>";
     texto += "</div>";
     texto += "</div>";
     texto += "</div>";
