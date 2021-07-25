@@ -226,6 +226,161 @@ class Query{
         }
     }
 
+    //Obtener las rubricas filtradas según el ID
+    public function searchRubricById($idrubrica){
+        $idrubrica = "%".$idrubrica."%";
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM rubrica WHERE idrubrica LIKE :rubricaID";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":rubricaID", $idrubrica);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
+    //Obtener las ultima rubrica
+    public function getEndRubric($idrubrica){
+        $idrubrica = "%".$idrubrica."%";
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM rubrica WHERE idrubrica LIKE :rubricaID ORDER BY idrubrica DESC LIMIT 1";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":rubricaID", $idrubrica);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado[0]["idrubrica"];
+        }
+    }
+
+    //Obtener la rubrica según el ID
+    public function getRubricById($idrubrica){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM rubrica WHERE idrubrica = :rubricaID";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":rubricaID", $idrubrica);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado[0];
+        }
+    }
+
+    //Obtener el id de los criterios según el ID rubric
+    public function getIdCriterioByIdRubric($idrubrica){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT idcriterios FROM criterios WHERE rubrica_idrubrica = :rubricaID";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":rubricaID", $idrubrica);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
+    //Obtener el id de los niveles según el ID criterio
+    public function getIdNivelByIdCriterio($idcriterio){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT idnaprovacion FROM naprovacion WHERE criterios_idcriterios = :criterioID";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":criterioID", $idcriterio);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
+    //Obtener los criterios según el ID rubric
+    public function getCriteriosByIdRubric($idrubrica){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM criterios WHERE rubrica_idrubrica = :rubricaID";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":rubricaID", $idrubrica);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
+    //Obtenerlos niveles según el ID criterio
+    public function getLevelsByIdCriterio($idcriterio){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM naprovacion WHERE criterios_idcriterios = :criterioID";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":criterioID", $idcriterio);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
+    //Obtener la materia según el ID
+    public function getMatterById($idmateria){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM materia WHERE idmateria = :materiaID";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":materiaID", $idmateria);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado[0];
+        }
+    }
+
+    //Obtener el nivel según el ID
+    public function getLevelById($idnivel){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM nivel WHERE idnivel = :nivelID";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":nivelID", $idnivel);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado[0];
+        }
+    }
+
     //Obtener todos los usuarios existentes
     public function getUsers(){
         
@@ -512,16 +667,32 @@ class Query{
     }
 
     //Criterio
-    public function updateCriterio($idCriterio, $titulo, $descripcion, $puntaje, $rubrica){
+    public function updateCriterio($idCriterio, $titulo, $puntaje){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "UPDATE criterios SET titulo = :titulo, descripcion = :descripcion, puntaje = :puntaje, rubrica_idrubrica = :rubrica WHERE criterios.idcriterios = :idCriterio";
+        $sql = "UPDATE criterios SET titulo = :titulo, puntaje = :puntaje WHERE criterios.idcriterios = :idCriterio";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":titulo", $titulo);
-        $sentencia->bindParam(":descripcion", $descripcion);
         $sentencia->bindParam(":puntaje", $puntaje);
-        $sentencia->bindParam(":rubrica", $rubrica);
         $sentencia->bindParam(":idCriterio", $idCriterio);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            return true;
+        }
+    }
+
+    //Niveles de aprobación
+    public function updateNAprobacion($idNAprobacion, $descripcion, $rango, $nota){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "UPDATE naprovacion SET descripcion = :descr, rango = :rang, nota = :note WHERE naprovacion.idnaprovacion = :naprobacionID";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":descr", $descripcion);
+        $sentencia->bindParam(":rang", $rango);
+        $sentencia->bindParam(":note", $nota);
+        $sentencia->bindParam(":naprobacionID", $idNAprobacion);
         if(!$sentencia){
             return false;
         }else{
@@ -545,6 +716,57 @@ class Query{
         }else{
             $sentencia->execute();
             return true;
+        }
+    }
+    
+    
+    //DELETE
+
+    //Eliminar la rubrica según el ID
+    public function deleteRubricById($idrubrica){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "DELETE FROM rubrica WHERE idrubrica = :rubricaID";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":rubricaID", $idrubrica);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            
+            return "Hecho";
+        }
+    }
+
+    //Eliminar el criterio según el ID
+    public function deleteCiterioById($idcriterio){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "DELETE FROM criterios WHERE idcriterios = :criteriosID";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":criteriosID", $idcriterio);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            
+            return "Hecho";
+        }
+    }
+
+    //Eliminar los niveles de aprobación según el ID
+    public function deleteNivelesAById($idnivel){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM naprovacion WHERE idnaprovacion = :nivelID";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":nivelID", $idnivel);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            
+            return "Hecho";
         }
     }
     

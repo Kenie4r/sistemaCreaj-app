@@ -10,10 +10,13 @@ $materias = $consulta->getMatter(); //Get materias
 $niveles = $consulta->getLevel(); //Get niveles
 
 //ID
-$yearActual = date("Y");
-$rubricas = $consulta->getEndRubric($yearActual); //Get ID rúbrica ultimo
-$rubricas = explode("-",$rubricas);
-$nRubricas = intval($rubricas[1]) + 1;
+$idrubrica = $_GET["idrubric"];
+
+$rubrica = $consulta->getRubricById($idrubrica);
+$materia_rubrica = $consulta->getMatterById($rubrica["materia_idmateria"]);
+$nivel_rubrica = $consulta->getLevelById($rubrica["nivel_idnivel"]);
+
+$criterios = $consulta->getCriteriosByIdRubric($idrubrica);
 
 ?>
 
@@ -33,7 +36,13 @@ $nRubricas = intval($rubricas[1]) + 1;
     <form id="frmNewRubric" class="container box-content" method="POST" action="saveRubric.php">
         <div class="grid grid-cols-1 lg:grid-cols-2">
             <div class="flex flex-row items-center m-9 text-gray-500 text-3xl">
-                <input class="w-3/4 lg:w-full lg:text-5xl outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtNombreRubrica" id="txtNombreRubrica" value="Nueva Rúbrica" maxlength="45" required>
+                <input class="w-3/4 lg:w-full lg:text-5xl outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtNombreRubrica" id="txtNombreRubrica" value="
+<?php
+
+echo $rubrica["nombre"];
+
+?>
+                " maxlength="45" required>
                 <label for="txtNombreRubrica" title="Editar" ><span class="icon-pencil"></span></label>
             </div>
             <div class="flex lg:justify-end ml-9 lg:m-9">
@@ -52,13 +61,7 @@ $nRubricas = intval($rubricas[1]) + 1;
                     <input type="text" name="txtID" id="txtID" value="
 <?php
 
-if($nRubricas < 10){
-    echo $yearActual . "-00" . $nRubricas;
-}else if($nRubricas < 100){
-    echo $yearActual . "-0" . $nRubricas;
-}else{
-    echo $yearActual . "-" . $nRubricas;
-}
+echo $idrubrica;
 
 ?>
                     " class="p-1 w-full rounded-r-lg outline-none" readonly>
@@ -70,11 +73,9 @@ if($nRubricas < 10){
                     <select name="txtMateria" id="txtMateria" class="p-1 w-full rounded-r-lg outline-none">
 <?php
 
-if(empty($materias)){
-    echo "<option value=''>No hay materias para elegir</option>\n";
-}else{
-    echo "<option value=''>Elige una materia para asignar...</option>\n";
-    foreach ($materias as $key => $materia) {
+echo "<option value='" . $materia_rubrica["idmateria"] . "'>" . $materia_rubrica["nombre"] . "</option>\n";
+foreach ($materias as $key => $materia) {
+    if($materia["idmateria"] != $materia_rubrica["idmateria"]){
         echo "<option value='" . $materia["idmateria"] . "'>" . $materia["nombre"] . "</option>\n";
     }
 }
@@ -89,11 +90,9 @@ if(empty($materias)){
                     <select name="txtNivel" id="txtNivel" class="p-1 w-full rounded-r-lg outline-none">
 <?php
 
-if(empty($materias)){
-    echo "<option value=''>No hay niveles para elegir</option>\n";
-}else{
-    echo "<option value=''>Elige un nivel para asignar...</option>\n";
-    foreach ($niveles as $key => $nivel) {
+echo "<option value='" . $nivel_rubrica["idnivel"] . "'>" . $nivel_rubrica["nombre"] . "</option>\n";
+foreach ($niveles as $key => $nivel) {
+    if($nivel["idnivel"] != $nivel_rubrica["idnivel"]){
         echo "<option value='" . $nivel["idnivel"] . "'>" . $nivel["nombre"] . "</option>\n";
     }
 }
@@ -119,66 +118,94 @@ if(empty($materias)){
             <div class="bg-gray-300 rounded-b-lg">
                 <!-- C R I T E R I O S -->
                 <div id="contenedor-criterios" class="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4">
-                    <!-- C R I T E R I O   1 -->
-                    <div id='1-criterio' class='bg-gray-500 rounded-lg shadow-lg container'>
+                    <!-- C R I T E R I O S   P H P -->
+<?php
+
+for ($i=0; $i < count($criterios); $i++) { 
+    $niveles_criterios = $consulta->getLevelsByIdCriterio($criterios[$i]["idcriterios"]);
+
+?>
+                    <div id='<?php echo $i; ?>-criterio' class='bg-gray-500 rounded-lg shadow-lg container'>
                         <!-- D A T O S -->
+                        <input type='hidden' id='<?php echo $i; ?>-idcriterio' name='<?php echo $i; ?>-idcriterio' value='<?php echo $criterios[$i]["idcriterios"]; ?>'>
                         <div class='grid grid-cols-3 m-4'>
                             <div class='w-full'>
-                                <input type='text' name='1-txtNombreCriterio' id='1-txtNombreCriterio' value='Criterio 1' maxlength='45' class='w-4/5 bg-gray-500 outline-none focus:border-gray-800 border-b-2 focus:border-solid'>
-                                <label for='1-txtNombreCriterio' title='Editar' class="w-1/5"><span class="icon-pencil"></span></label>
+                                <input type='text' name='<?php echo $i; ?>-txtNombreCriterio' id='<?php echo $i; ?>-txtNombreCriterio' value='
+<?php 
+echo $criterios[$i]["titulo"];
+?>
+                                ' maxlength='45' class='w-4/5 bg-gray-500 outline-none focus:border-gray-800 border-b-2 focus:border-solid'>
+                                <label for='<?php echo $i; ?>-txtNombreCriterio' title='Editar' class="w-1/5"><span class="icon-pencil"></span></label>
                             </div>
                             <div class='w-full'>
-                                <label for='1-nbPuntaje' class='w-2/5'>Porcentaje:</label>
-                                <input type='number' name='1-nbPuntaje' id='1-nbPuntaje' min='0' max='100' value='1' class='w-2/5 bg-gray-500 outline-none focus:border-gray-800 border-b-2 focus:border-solid'>
-                                <label for='1-nbPuntaje' title='Editar' class='w-1/5'><span class="icon-pencil"></span></label>
+                                <label for='<?php echo $i; ?>-nbPuntaje' class='w-2/5'>Porcentaje:</label>
+                                <input type='number' name='<?php echo $i; ?>-nbPuntaje' id='1-nbPuntaje' min='0' max='100' value='<?php echo $criterios[$i]["puntaje"]; ?>' class='w-2/5 bg-gray-500 outline-none focus:border-gray-800 border-b-2 focus:border-solid'>
+                                <label for='<?php echo $i; ?>-nbPuntaje' title='Editar' class='w-1/5'><span class="icon-pencil"></span></label>
                             </div>
                             <div class='flex justify-end'>
-                                <p id='1-btnDelete' title='El formulario no se puede quedar sin ningún criterio' class='rounded-full w-8 h-8 flex items-center justify-center text-red-900 border-red-900 border-solid border-2'></p>
+<?php
+if($i == 0){
+?>
+                                <p id='<?php echo $i; ?>-btnDelete' title='El formulario no se puede quedar sin ningún criterio' class='rounded-full w-8 h-8 flex items-center justify-center text-red-900 border-red-900 border-solid border-2'></p>
+<?php
+}else{
+?>
+                                <p id='<?php echo $i; ?>-btnDelete' title='Eliminar el criterio' class='rounded-full w-8 h-8 flex items-center justify-center text-red-900 border-red-900 border-solid border-2 cursor-pointer'><span class='icon-cross'></span></p>
+                                <?php
+}
+?>
                             </div>
                         </div>
                         <!-- N I V E L E S -->
-                        <div id='1-nivelesAprobacion' class=''>
+                        <div id='<?php echo $i; ?>-nivelesAprobacion' class=''>
                             <!-- N I V E L    1 -->
-                            <div id='1-1-nivelAprobacion' class=''>
+                            <div id='<?php echo $i; ?>-1-nivelAprobacion' class=''>
+                                <input type='hidden' id='<?php echo $i; ?>-1-idnivel' name='<?php echo $i; ?>-1-idnivel' value='<?php echo $niveles_criterios[0]["idnaprovacion"]; ?>'>
                                 <div class='grid grid-cols-3 m-4 border-red-900 border-2 border-solid rounded-lg'>
                                     <div class='flex justify-center items-center border-r-2 border-solid border-red-900'>
                                         <p class='text-red-900 font-bold'>Muy malo</p>
                                     </div>
-                                    <textarea name='1-1-descripcionNivel' id='1-1-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-red-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-red-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>
+                                    <textarea name='<?php echo $i; ?>-1-descripcionNivel' id='<?php echo $i; ?>-1-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-red-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-red-400 placeholder-black' placeholder='[ Agregar descripción... ]'><?php echo $niveles_criterios[0]["descripcion"]; ?></textarea>
                                 </div>
                             </div>
                             <!-- N I V E L    2 -->
-                            <div id='1-2-nivelAprobacion' class=''>
+                            <div id='<?php echo $i; ?>-2-nivelAprobacion' class=''>
+                            <input type='hidden' id='<?php echo $i; ?>-2-idnivel' name='<?php echo $i; ?>-2-idnivel' value='<?php echo $niveles_criterios[1]["idnaprovacion"]; ?>'>
                                 <div class='grid grid-cols-3 m-4 border-yellow-900 border-2 border-solid rounded-lg'>
                                     <div class='flex justify-center items-center border-r-2 border-solid border-yellow-900'>
                                         <p class='text-yellow-900 font-bold'>Malo</p>
                                     </div>
-                                    <textarea name='1-2-descripcionNivel' id='1-2-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-yellow-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-yellow-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>
+                                    <textarea name='<?php echo $i; ?>-2-descripcionNivel' id='<?php echo $i; ?>-2-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-yellow-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-yellow-400 placeholder-black' placeholder='[ Agregar descripción... ]'><?php echo $niveles_criterios[1]["descripcion"]; ?></textarea>
                                 </div>
                             </div>
                             <!-- N I V E L    3 -->
-                            <div id='1-3-nivelAprobacion' class=''>
+                            <div id='<?php echo $i; ?>-3-nivelAprobacion' class=''>
+                                <input type='hidden' id='<?php echo $i; ?>-3-idnivel' name='<?php echo $i; ?>-3-idnivel' value='<?php echo $niveles_criterios[2]["idnaprovacion"]; ?>'>
                                 <div class='grid grid-cols-3 m-4 border-blue-900 border-2 border-solid rounded-lg'>
                                     <div class='flex justify-center items-center border-r-2 border-solid border-blue-900'>
                                         <p class='text-blue-900 font-bold'>Bueno</p>
                                     </div>
-                                    <textarea name='1-3-descripcionNivel' id='1-3-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-blue-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-blue-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>
+                                    <textarea name='<?php echo $i; ?>-3-descripcionNivel' id='<?php echo $i; ?>-3-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-blue-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-blue-400 placeholder-black' placeholder='[ Agregar descripción... ]'><?php echo $niveles_criterios[2]["descripcion"]; ?></textarea>
                                 </div>
                             </div>
                             <!-- N I V E L    4 -->
-                            <div id='1-4-nivelAprobacion' class=''>
+                            <div id='<?php echo $i; ?>-4-nivelAprobacion' class=''>
+                                <input type='hidden' id='<?php echo $i; ?>-4-idnivel' name='<?php echo $i; ?>-4-idnivel' value='<?php echo $niveles_criterios[3]["idnaprovacion"]; ?>'>
                                 <div class='grid grid-cols-3 m-4 border-green-900 border-2 border-solid rounded-lg'>
                                     <div class='flex justify-center items-center border-r-2 border-solid border-green-900'>
                                         <p class='text-green-900 font-bold'>Excelente</p>
                                     </div>
-                                    <textarea name='1-4-descripcionNivel' id='1-4-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-green-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-green-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>
+                                    <textarea name='<?php echo $i; ?>-4-descripcionNivel' id='<?php echo $i; ?>-4-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-green-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-green-400 placeholder-black' placeholder='[ Agregar descripción... ]'><?php echo $niveles_criterios[3]["descripcion"]; ?></textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
+<?php
+}
+?>
                     <!-- Criterios n -->
-                    <input type="hidden" name="nCriterios" id="nCriterios" value="1">
-                    <input type="hidden" name="siguienteCriterio" id="siguienteCriterio" value="2">
+                    <input type="hidden" name="nCriterios" id="nCriterios" value="<?php echo count($criterios); ?>">
+                    <input type="hidden" name="siguienteCriterio" id="siguienteCriterio" value="<?php echo count($criterios) + 1; ?>">
                 </div>
                 <div class="p-4 flex justify-center">
                     <p id="addCriterio" class="text-blue-600 border-blue-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-blue-600 cursor-pointer"><span class="icon-plus"></span> Agregar criterios</p>
