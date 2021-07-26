@@ -30,10 +30,10 @@ $criterios = $consulta->getCriteriosByIdRubric($idrubrica);
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../js/script-newRubric.js"></script>
+    <script src="../js/script-editRubric.js"></script>
 </head>
 <body>
-    <form id="frmNewRubric" class="container box-content" method="POST" action="saveRubric.php">
+    <form id="frmNewRubric" class="container box-content" method="POST" action="updateRubric.php">
         <div class="grid grid-cols-1 lg:grid-cols-2">
             <div class="flex flex-row items-center m-9 text-gray-500 text-3xl">
                 <input class="w-3/4 lg:w-full lg:text-5xl outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtNombreRubrica" id="txtNombreRubrica" value="
@@ -130,16 +130,12 @@ for ($i=0; $i < count($criterios); $i++) {
                         <input type='hidden' id='<?php echo $i; ?>-idcriterio' name='<?php echo $i; ?>-idcriterio' value='<?php echo $criterios[$i]["idcriterios"]; ?>'>
                         <div class='grid grid-cols-3 m-4'>
                             <div class='w-full'>
-                                <input type='text' name='<?php echo $i; ?>-txtNombreCriterio' id='<?php echo $i; ?>-txtNombreCriterio' value='
-<?php 
-echo $criterios[$i]["titulo"];
-?>
-                                ' maxlength='45' class='w-4/5 bg-gray-500 outline-none focus:border-gray-800 border-b-2 focus:border-solid'>
+                                <input type='text' name='<?php echo $i; ?>-txtNombreCriterio' id='<?php echo $i; ?>-txtNombreCriterio' value='<?php echo $criterios[$i]["titulo"]; ?>' maxlength='45' class='w-4/5 bg-gray-500 outline-none focus:border-gray-800 border-b-2 focus:border-solid'>
                                 <label for='<?php echo $i; ?>-txtNombreCriterio' title='Editar' class="w-1/5"><span class="icon-pencil"></span></label>
                             </div>
                             <div class='w-full'>
                                 <label for='<?php echo $i; ?>-nbPuntaje' class='w-2/5'>Porcentaje:</label>
-                                <input type='number' name='<?php echo $i; ?>-nbPuntaje' id='1-nbPuntaje' min='0' max='100' value='<?php echo $criterios[$i]["puntaje"]; ?>' class='w-2/5 bg-gray-500 outline-none focus:border-gray-800 border-b-2 focus:border-solid'>
+                                <input type='number' name='<?php echo $i; ?>-nbPuntaje' id='<?php echo $i; ?>-nbPuntaje' min='0' max='100' value='<?php echo $criterios[$i]["puntaje"]; ?>' class='w-2/5 bg-gray-500 outline-none focus:border-gray-800 border-b-2 focus:border-solid'>
                                 <label for='<?php echo $i; ?>-nbPuntaje' title='Editar' class='w-1/5'><span class="icon-pencil"></span></label>
                             </div>
                             <div class='flex justify-end'>
@@ -205,7 +201,7 @@ if($i == 0){
 ?>
                     <!-- Criterios n -->
                     <input type="hidden" name="nCriterios" id="nCriterios" value="<?php echo count($criterios); ?>">
-                    <input type="hidden" name="siguienteCriterio" id="siguienteCriterio" value="<?php echo count($criterios) + 1; ?>">
+                    <input type="hidden" name="siguienteCriterio" id="siguienteCriterio" value="<?php echo count($criterios); ?>">
                 </div>
                 <div class="p-4 flex justify-center">
                     <p id="addCriterio" class="text-blue-600 border-blue-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-blue-600 cursor-pointer"><span class="icon-plus"></span> Agregar criterios</p>

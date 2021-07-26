@@ -494,7 +494,7 @@ class Query{
     public function updateRubrica($idRubrica, $name, $idMateria, $idNivel){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "UPDATE rubrica SET nombre = :usuario, materia_idmateria = :materia, nivel_idnivel = :nivel WHERE rubrica.idrubrica = :idRubrica";
+        $sql = "UPDATE rubrica SET nombre = :nombre, materia_idmateria = :materia, nivel_idnivel = :nivel WHERE rubrica.idrubrica = :idRubrica";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":idRubrica", $idRubrica);
         $sentencia->bindParam(":nombre", $name);
@@ -684,14 +684,12 @@ class Query{
     }
 
     //Niveles de aprobación
-    public function updateNAprobacion($idNAprobacion, $descripcion, $rango, $nota){
+    public function updateNAprobacion($idNAprobacion, $descripcion){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "UPDATE naprovacion SET descripcion = :descr, rango = :rang, nota = :note WHERE naprovacion.idnaprovacion = :naprobacionID";
+        $sql = "UPDATE naprovacion SET descripcion = :descr WHERE naprovacion.idnaprovacion = :naprobacionID";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":descr", $descripcion);
-        $sentencia->bindParam(":rang", $rango);
-        $sentencia->bindParam(":note", $nota);
         $sentencia->bindParam(":naprobacionID", $idNAprobacion);
         if(!$sentencia){
             return false;
@@ -749,7 +747,6 @@ class Query{
             return "Error";
         }else{
             $sentencia->execute();
-            
             return "Hecho";
         }
     }
@@ -758,14 +755,13 @@ class Query{
     public function deleteNivelesAById($idnivel){
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql = "SELECT * FROM naprovacion WHERE idnaprovacion = :nivelID";
+        $sql = "DELETE FROM naprovacion WHERE idnaprovacion = :nivelID";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":nivelID", $idnivel);
         if(!$sentencia){
             return "Error";
         }else{
             $sentencia->execute();
-            
             return "Hecho";
         }
     }
