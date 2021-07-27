@@ -32,7 +32,7 @@ for($i = 0; $i < count($criterios); $i++){
 
     for($j = 0; $j < 4; $j++){
         
-        $estadoNiveles = $consulta->deleteNivelesAById($niveles[$j]["idnaprovacion"]);
+        $estadoNiveles = $consulta->deleteNivelesAById($niveles[$j]["idnaprobacion"]);
     }
 
     //Eliminar criterio

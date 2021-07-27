@@ -156,7 +156,7 @@ if($i == 0){
                         <div id='<?php echo $i; ?>-nivelesAprobacion' class=''>
                             <!-- N I V E L    1 -->
                             <div id='<?php echo $i; ?>-1-nivelAprobacion' class=''>
-                                <input type='hidden' id='<?php echo $i; ?>-1-idnivel' name='<?php echo $i; ?>-1-idnivel' value='<?php echo $niveles_criterios[0]["idnaprovacion"]; ?>'>
+                                <input type='hidden' id='<?php echo $i; ?>-1-idnivel' name='<?php echo $i; ?>-1-idnivel' value='<?php echo $niveles_criterios[0]["idnaprobacion"]; ?>'>
                                 <div class='grid grid-cols-3 m-4 border-red-900 border-2 border-solid rounded-lg'>
                                     <div class='flex justify-center items-center border-r-2 border-solid border-red-900'>
                                         <p class='text-red-900 font-bold'>Muy malo</p>
@@ -166,7 +166,7 @@ if($i == 0){
                             </div>
                             <!-- N I V E L    2 -->
                             <div id='<?php echo $i; ?>-2-nivelAprobacion' class=''>
-                            <input type='hidden' id='<?php echo $i; ?>-2-idnivel' name='<?php echo $i; ?>-2-idnivel' value='<?php echo $niveles_criterios[1]["idnaprovacion"]; ?>'>
+                            <input type='hidden' id='<?php echo $i; ?>-2-idnivel' name='<?php echo $i; ?>-2-idnivel' value='<?php echo $niveles_criterios[1]["idnaprobacion"]; ?>'>
                                 <div class='grid grid-cols-3 m-4 border-yellow-900 border-2 border-solid rounded-lg'>
                                     <div class='flex justify-center items-center border-r-2 border-solid border-yellow-900'>
                                         <p class='text-yellow-900 font-bold'>Malo</p>
@@ -176,7 +176,7 @@ if($i == 0){
                             </div>
                             <!-- N I V E L    3 -->
                             <div id='<?php echo $i; ?>-3-nivelAprobacion' class=''>
-                                <input type='hidden' id='<?php echo $i; ?>-3-idnivel' name='<?php echo $i; ?>-3-idnivel' value='<?php echo $niveles_criterios[2]["idnaprovacion"]; ?>'>
+                                <input type='hidden' id='<?php echo $i; ?>-3-idnivel' name='<?php echo $i; ?>-3-idnivel' value='<?php echo $niveles_criterios[2]["idnaprobacion"]; ?>'>
                                 <div class='grid grid-cols-3 m-4 border-blue-900 border-2 border-solid rounded-lg'>
                                     <div class='flex justify-center items-center border-r-2 border-solid border-blue-900'>
                                         <p class='text-blue-900 font-bold'>Bueno</p>
@@ -186,7 +186,7 @@ if($i == 0){
                             </div>
                             <!-- N I V E L    4 -->
                             <div id='<?php echo $i; ?>-4-nivelAprobacion' class=''>
-                                <input type='hidden' id='<?php echo $i; ?>-4-idnivel' name='<?php echo $i; ?>-4-idnivel' value='<?php echo $niveles_criterios[3]["idnaprovacion"]; ?>'>
+                                <input type='hidden' id='<?php echo $i; ?>-4-idnivel' name='<?php echo $i; ?>-4-idnivel' value='<?php echo $niveles_criterios[3]["idnaprobacion"]; ?>'>
                                 <div class='grid grid-cols-3 m-4 border-green-900 border-2 border-solid rounded-lg'>
                                     <div class='flex justify-center items-center border-r-2 border-solid border-green-900'>
                                         <p class='text-green-900 font-bold'>Excelente</p>
