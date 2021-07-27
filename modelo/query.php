@@ -208,6 +208,24 @@ class Query{
     }
 
     //SELECT
+    //obtener datos de equipo
+    public function getTeamData($idTeam){
+        $model = new Conection();
+        $connection = $model->_getConection();
+        $sql = "SELECT *  FROM proyecto WHERE idProyecto= :idTeam";
+        $sentencia = $connection->prepare($sql);
+        $sentencia->bindParam(":idTeam", $idTeam);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+    }
+
+
+
     //Get ID Criterio
     public function getIDCriterio($titulo, $rubricaID){
         $model = new Conection();
