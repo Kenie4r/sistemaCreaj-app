@@ -208,7 +208,7 @@ function escribirNotaFIn(grade, number){
 
 
 function crearNotificacion(tipo, mensaje, opcion1, opcion2){
-    var classIcon, color, opciones;
+    var classIcon, color, opciones, end;
     if(tipo==0){
         classIcon = "icon-cross";
         color = "bg-redd-600"
@@ -220,10 +220,10 @@ function crearNotificacion(tipo, mensaje, opcion1, opcion2){
         color = "bg-green-500"
     }
     if(opcion1!=null && opcion2!=null){
-         opciones  = "<div class'flex flex-col text-sm '> <div class='bg-gray-200 p-1 rounded-lg cursor-pointer m-1 '>"+
+         opciones  = "<div class'flex flex-col text-sm '> <div class='bg-gray-200 p-1 rounded-lg cursor-pointer m-1 ' value' >"+
         "<h1>"+opcion1+"</h1>"+
     "</div>"+
-    "<div class='bg-gray-200 p-1 rounded-lg cursor-pointer m-1'>"+
+    "<div class='bg-gray-200 p-1 rounded-lg cursor-pointer m-1' >"+
         "<h1>"+opcion2+"</h1>"+
     "</div></div>";
     }else if(opcion1!=null){
@@ -245,6 +245,7 @@ function crearNotificacion(tipo, mensaje, opcion1, opcion2){
 
     document.body.innerHTML += notification;
 
+    return end;
 
 
 }
