@@ -300,7 +300,7 @@ class Query{
     public function getIdNivelByIdCriterio($idcriterio){
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql = "SELECT idnaprovacion FROM naprovacion WHERE criterios_idcriterios = :criterioID";
+        $sql = "SELECT idnaprobacion FROM naprobacion WHERE criterios_idcriterios = :criterioID";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":criterioID", $idcriterio);
         if(!$sentencia){
@@ -334,7 +334,7 @@ class Query{
     public function getLevelsByIdCriterio($idcriterio){
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql = "SELECT * FROM naprovacion WHERE criterios_idcriterios = :criterioID";
+        $sql = "SELECT * FROM naprobacion WHERE criterios_idcriterios = :criterioID";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":criterioID", $idcriterio);
         if(!$sentencia){
@@ -687,7 +687,7 @@ class Query{
     public function updateNAprobacion($idNAprobacion, $descripcion){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "UPDATE naprovacion SET descripcion = :descr WHERE naprovacion.idnaprovacion = :naprobacionID";
+        $sql = "UPDATE naprobacion SET descripcion = :descr WHERE naprobacion.idnaprobacion = :naprobacionID";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":descr", $descripcion);
         $sentencia->bindParam(":naprobacionID", $idNAprobacion);
@@ -755,7 +755,7 @@ class Query{
     public function deleteNivelesAById($idnivel){
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql = "DELETE FROM naprovacion WHERE idnaprovacion = :nivelID";
+        $sql = "DELETE FROM naprobacion WHERE idnaprobacion = :nivelID";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":nivelID", $idnivel);
         if(!$sentencia){
