@@ -22,66 +22,92 @@ $(document).ready(function(){
         }
         divCalificar+=divNumber;
         descripDiv+=divNumber;
-        switch(rangoGanado){
-            case "promedio1":
-                nivel = "Básico"
-                break;
-            case "promedio2":
-                nivel = "Bueno"
-                break;
-            case "promedio3":
-                nivel = "Muy bueno"
-            break;
-            case "promedio4":
-                nivel = "Excelente"
-            break;
-            default:
-                nivel = "indefinido";
-        }
         notaDiv+=divNumber;
-  
+        nivel = definirNivel(rangoGanado);
         $(contenedor).fadeOut('fast');
         $(descripDiv).fadeOut('fast');
         //función de escribir el input
         inputCreation(divNumber, divCalificar , nivel)
         $(divCalificar).fadeIn('slow');
-        //volver atras boton
+        //Funcionanmiento del botón de volver atras
         $('.backbutton').click(function(){
-            var id = $(this).attr("id");
-            var IDbtn = id.split("_");
-            var boxNumber = IDbtn[1]
+            var IDbtn = id_Number( $(this).attr("id"));
+            var boxNumber = IDbtn
             var box = "#div"+boxNumber;
             var thisBox = "#calificar"+boxNumber;
             descripDiv   = "#descr"+boxNumber;
-            $(box).fadeIn('slow')
+            //animaciones para hacer más bonito el cambio de bloques
+            $(box).fadeIn('slow')//esta hace que desaparezca
             $(descripDiv).fadeIn('slow')
-      
-            $(thisBox).fadeOut('slow')
+            $(thisBox).fadeOut('slow')//esta hace aparecer
             $(thisBox).empty()
         })
-        //aumento de barra
-        $('.gradeinput').change( function(){
+        //función para obtener, verificar el valor de la barra range que nos da  la nota
+        $('.gradeinput').change( function(){      
             var value  = $(this).val();
-            var id  = $(this).attr('id');
-            var IDbtn = id.split("_");
-            var boxNumber = IDbtn[1]
+            var IDbtn = id_Number( $(this).attr('id'));
+            var boxNumber = IDbtn;
             var box = "#nota_"+boxNumber;
-            $(box).text(value)
+          $(box).text(value);
         })
         $('.notas').click(function(){
-    
-            $(this).text("10");
+            var max= $(this).attr('value');
+            $(this).text(max);
+            var NumberId = id_Number($(this).attr('id'));
+            var input = "#Grade_"+NumberId;
+            $(input).val(parseFloat(max));
         })
+        $('.btnGuardar').click(function(){
+            var idBox  = id_Number(  $(this).attr('id'));
+            var input = "#Grade_"+ idBox;
+            var grade = $(input).val();
+           var  gradeEnd = grade *  $('#valor' + idBox).val();
+            var nowGrade = $('#finalGrade').text();
+            var NewGrade = parseFloat(nowGrade);
+            NewGrade+= gradeEnd;
+            if( NewGrade<=100){
+                $('#finalGrade').text(NewGrade.toFixed(2));
+                var width = NewGrade+"%";
+                $('#progress').css('width', width);
+            }
+            $('#Final' + idBox).val(gradeEnd.toFixed(2));
+            $('#calificar' + idBox).empty();
+            var text = escribirNotaFIn(grade, idBox);
+            $('#descr' + idBox).fadeIn('slow');
+            $('#calificar' + idBox).append(text);
+
+            //funcionamiento de editar
+            $('.btnEdit').click(function(){
+                idBox= id_Number($(this).attr('id'));
+                var minusGrade = $('#Final' + idBox).val();
+                NewGrade-= minusGrade;
+                $('#finalGrade').text(NewGrade.toFixed(2));
+                var width = NewGrade+"%";
+                $('#progress').css('width', width);
+                var box = "#div"+idBox;
+                $(box).fadeIn('slow')//esta hace que aparezca
+                $('#calificar'+idBox).empty();
+                
+            })
+
+        } )
     });
+
+    $('#btnTerminar').click(function(){
+        crearNotificacion(1,"¿Está seguro de guardar? si lo guarda no podrá volver a editar", "Guardar", /*"No, quiero revisar"*/)
+    })
 });
 
-//genera el input más todos aqullos datos del front-end, con ayuda de AJAX se obtendrán datos como descripciones y 
-//también la nota máxima que este pude llegar a tener
+/*UNA DE LAS FUNCIONES MÁS IMPORTANTES, EN ESTA COMENZAMOS A ESCRIBIR TODO LO NECESARIO PARA GENERAR 
+EL FORMULARIO PARA EL INGRESO DE LA NOTA, TENIENDO EN CUENTA A LAS SELECCIÓN ANTERIOR DE DATOS
+COMO EL NIVEL Y EL CRITERIO ESCOGIDO ANTERIORMENTE POR EL USUARIO */
 function inputCreation(number, contenedor, nivel){
+    var notas   = ObtenerRNotas(nivel);
+
     var gradeInput = " <div class= 'p-5 flex flex-col content-center items-center '>" +
     "<div  class='bg-gray-200 borderb-2 border-black flex flex-row justify-start items-center w-full cursor-pointer'>"+
             "<div  class='bg-gray-300 p-3 font-bold text-xl backbutton' id='btnBack_"+number+"'><</div>" +
-            "<div class='mx-2 font-bold text-xl'><h1>Nivel de rango escogido "+nivel+"</h1></div>"+
+            "<div class='mx-2 font-bold text-xl'><h1>Nivel de rango escogido <span id= max_"+number+"> "+nivel+"</span></h1></div>"+
     "</div>"+
    "<div class='w-full text-center'>"+
         "<h1> Descripción del rango obtenido</h1>"+
@@ -89,20 +115,137 @@ function inputCreation(number, contenedor, nivel){
     "</div>"+
     "<div class='w-full text-center font-bold m-2'>"+  
         "<p>La nota obtenida es:</p>"+ 
-        "<h1 class='text-4xl cursor-pointer notas' id='nota_"+number+"'>0</h1>"+
+        "<h1 class='text-4xl cursor-pointer notas' id='nota_"+number+"'  value='"+notas[0]+"'>"+notas[1]+"</h1>"+
     "</div>"+
     "<div  class='flex flex-row mt-2'>"+
-        "<div class='mx-2'>1</div>"+
+      "<div class='mx-2'>"+notas[1]+ "</div>"+
         "<div>"+
-            "<input type='number' class='gradeinput rounded-lg' max='10' min='8.9' step='0.1' value='0' id='Grade"+ number+ "'>"+
+            "<input type='range' class='gradeinput rounded-lg' max="+ notas[0]+" min="+notas[1]+" step='0.1' value="+ notas[1]+" id='Grade_"+ number+ "'>"+
         "</div>"+
-        "<div class='mx-2'>"+
-            "10"+
-       "</div>"+
+        "<div class='mx-2'>"+ notas[0]+"</div>"+
     "</div>"+
     "<div  class='text-center m-2'>"+
-            "<div class='border-2 border-blue-400 bg-blue-400 text-white p-1 rounded-lg cursor-pointer'>Guardar</div>"+
+            "<div class='border-2 border-blue-400 bg-blue-400 text-white p-1 rounded-lg cursor-pointer btnGuardar' id='btnG_"+number+"'>Guardar</div>"+
    "</div>"+
 "</div> ";
     $(contenedor).append(gradeInput);     
+
+}
+
+
+
+
+/**************************************************************************************************
+ ********************* AQUÍ COMIENZAN LAS FUNCIONES SECUNDARIAS **********************
+ ***************************************************************************************************/
+
+//función que se usara para obtener las notas desde la base de datos con AJAX
+function ObtenerRNotas(nivel){
+    var nMax, nMin;
+
+    // por el momento ya que no se usa base de datos aun solo manejamos estas notas
+    switch(nivel){
+        case "Básico":
+            nMin = 0;
+            nMax = 39
+        break;
+        case "Muy bueno":
+            nMin = 60;
+            nMax = 88;
+        break;
+        case "Bueno":
+            nMin = 40;
+            nMax = 59
+        break;
+        case "Excelente":
+                nMax = 100;
+                nMin = 89;
+        break;
+
+    }
+    return  [  nMax , nMin];
+}
+
+//pequeña función la cual no entrega solo el valor del ID, para facilitar la lectura del código
+function id_Number(id){
+  var idSplited = id.split("_");
+  return idSplited[1];
+}
+
+//funcion de niveles
+
+function definirNivel(rangoGanado){
+    switch(rangoGanado){
+        case "promedio1":
+            nivel = "Básico"
+            break;
+        case "promedio2":
+            nivel = "Bueno"
+            break;
+        case "promedio3":
+            nivel = "Muy bueno"
+        break;
+        case "promedio4":
+            nivel = "Excelente"
+        break;
+    }
+    return nivel;
+}
+
+
+function escribirNotaFIn(grade, number){
+    var text = "<div class='w-full text-center font-bold m-2 col-span-2'>"+  
+        "<p>La nota obtenida en este criterio es:</p>"+ 
+        "<h1 class='text-4xl  notas' id='notaFin" + number+ "'>"+ grade + "</h1>"+
+        "</div>"+
+    
+        "<div class='w-60 m-auto text-lg text-center text-blue-500 border-blue-500  border-2 cursor-pointer p-1 hover:bg-blue-500 hover:text-white btnEdit' id='btnEdit_"+number+"'>"+
+        "<span class='icon-pencil  '> EDITAR NOTA</span>"+
+"   </div>";
+     return text;
+}
+
+
+
+function crearNotificacion(tipo, mensaje, opcion1, opcion2){
+    var classIcon, color, opciones, end;
+    if(tipo==0){
+        classIcon = "icon-cross";
+        color = "bg-redd-600"
+    }else if( tipo == 1){
+        color = "bg-yellow-500"
+        classIcon = "icon-notification";
+    }else if( tipo==2){
+        classIcon  ="icon-checkmark"
+        color = "bg-green-500"
+    }
+    if(opcion1!=null && opcion2!=null){
+         opciones  = "<div class'flex flex-col text-sm '> <div class='bg-gray-200 p-1 rounded-lg cursor-pointer m-1 ' value' >"+
+        "<h1>"+opcion1+"</h1>"+
+    "</div>"+
+    "<div class='bg-gray-200 p-1 rounded-lg cursor-pointer m-1' >"+
+        "<h1>"+opcion2+"</h1>"+
+    "</div></div>";
+    }else if(opcion1!=null){
+        opciones  = "<div class='bg-gray-200 p-2 rounded-lg cursor-pointer '>"+
+        "<h1>"+opcion1+"</h1>"+
+        "</div>";
+    }
+
+
+    var notification  = "    <div class='container  max-w-full  w-screen bg-gray-900 fixed h-screen bg-opacity-75 top-0  flex flex-col justify-center items-center'>"+
+    "<div class='bg-white max-w-sm text-center opacity-100 p-2 flex flex-col items-center justify-center w-full sm:max-w-md'>"+
+    "<div class='w-10 h-10 "+ color + " text-white text-2xl flex items-center justify-center rounded-full'>"+
+     "   <span class='"+classIcon+"'></span>"+
+    "</div>"+
+   "<div class='text-lg'>"+
+    "<h1>"+mensaje+"</h1>"+
+    "</div>"+ opciones
+"</div>";
+
+    document.body.innerHTML += notification;
+
+    return end;
+
+
 }

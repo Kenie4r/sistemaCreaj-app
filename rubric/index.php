@@ -20,6 +20,7 @@ $rubricas = $consulta->getRubrics(); //Get rúbricas
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../js/script-rubric.js"></script>
 </head>
 <body>
     <article class="container">
@@ -35,7 +36,7 @@ $rubricas = $consulta->getRubrics(); //Get rúbricas
 if(!empty($rubricas)){
     echo "<div class='flex flex-row items-center m-7'>";
     echo "\t<div class=''>";
-    echo "\t<input type='text' name='' id='' class='p-1 border-gray-700 border-solid border-2 rounded-lg outline-none' placeholder='Buscar...'>";
+    echo "\t<input type='text' name='txtBusquedaId' id='txtBusquedaId' class='p-1 border-gray-700 border-solid border-2 rounded-lg outline-none' placeholder='Buscar por ID...'>";
     echo "\t</div>";
     echo "</div>";
 }
@@ -53,13 +54,15 @@ if(!empty($rubricas)){
 <?php
 
 if(!empty($rubricas)){
-    echo "<tr class='lol'>";
-    echo "\t<td class='p-4'>" . $rubricas["idrubrica"] . "</td>";
-    echo "\t<td class='p-4'>" . $rubricas["nombre"] . "</td>";
-    echo "\t<td class='p-4'><span class='icon-eye'></span> Ver</td>";
-    echo "\t<td class='p-4'><span class='icon-pencil'></span> Editar</td>";
-    echo "\t<td class='p-4'><span class='icon-cross'></span> Eliminar</td>";
+    for ($i=0; $i < count($rubricas); $i++) { 
+        echo "<tr class='lol'>";
+    echo "\t<td class='p-4'>" . $rubricas[$i]["idrubrica"] . "</td>";
+    echo "\t<td class='p-4'>" . $rubricas[$i]["nombre"] . "</td>";
+    echo "\t<td class='p-4'><a href='rubric.php?idrubric=" . $rubricas[$i]["idrubrica"] . "' class='hover:text-blue-900'><span class='icon-eye'></span> Ver</a></td>";
+    echo "\t<td class='p-4'><a href='editRubric.php?idrubric=" . $rubricas[$i]["idrubrica"] . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Editar</a></td>";
+    echo "\t<td class='p-4'><a href='deleteRubric.php?idrubric=" . $rubricas[$i]["idrubrica"] . "' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
     echo "</tr>";
+    }
 }else{
     echo "<tr class='lol'>";
     echo "\t<td colspan='5' class='p-4'><span class='icon-blocked'></span> No hay rubricas en el sistema<td>";

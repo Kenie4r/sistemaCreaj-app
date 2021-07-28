@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crea J | Perfil</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <section class="container">
+        <article class="grid grid-cols-1 lg:grid-cols-2 m-9">
+            <div class="mb-7 lg:m-0 text-5xl flex flex-row gap-2">
+                <h1 class="hidden lg:block text-gray-500">Usuarios</h1>
+            </div>
+            <div class="flex lg:justify-end">
+                <a href="newRubric.html" class="text-blue-600 border-blue-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-blue-600">E Nuevo usuario</a>
+            </div>
+        </article>
+        <article class="flex flex-row items-center m-7">
+            <div class="">
+                <input type="text" name="" id="" class="p-1 border-gray-700 border-solid border-2 rounded-lg outline-none" placeholder="Buscar...">
+            </div>
+        </article>
+        <article class="box-border m-7">
+            <table class="w-full border-collapse text-center">
+                <thead class="bg-gray-900 text-white">
+                    <tr>
+                        <td class="rounded-tl-lg p-4">Usuario</td>
+                        <td colspan="4" class="rounded-tr-lg p-4">Opciones</td>
+                    </tr>
+                </thead>
+                <tbody id="table-body-rubrica" class="bg-gray-200">
+                    <tr class="lol">
+                        <td class="p-4">User1</td>
+                        <td class="p-4">Validar</td>
+                        <td class="p-4">Ver</td>
+                        <td class="p-4">Editar</td>
+                        <td class="p-4">Eliminar</td>
+                    </tr>
+                </tbody>
+                <tfoot class="bg-gray-900">
+                    <tr>
+                        <td colspan="5" class="rounded-b-lg p-2"> </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </article>
+    </section>
+</body>
+</html>
