@@ -8,7 +8,7 @@
 	    <!-- Formulario -->
         <section id="cajaLogin">
             <h1 id="titulo01">Sistema de calificación<br>Inició de Sesión</h1>
-            <form action="#" method="POST" id="formLogin">
+            <form action="Dashboard/Dashboard.php" method="POST" id="formLogin">
                 <div class="grupo01" id="txtNombre">
                     <label for="text01"><span>Usuario:</span></label>
                     <input type="text" name="usuario" id="text01" class="text" maxlength="20" size="30" placeholder="Código" title="Ingresa tu código de usuario para ingresar al sistema" autofocus required>
@@ -28,7 +28,7 @@
 			            require('controlador/login.php');
 			            $user=filter_input(INPUT_POST,'usuario');
 			            $pass=filter_input(INPUT_POST,'contra');
-			            Logear($user,$pass);
+			            logear($user,$pass);
 			        }
 			?>    
                     <a href="contrasenaOlvidada.php" class="enlace01">He olvidado mi contraseña...</a>

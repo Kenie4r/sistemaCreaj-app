@@ -28,7 +28,7 @@ class Query{
     public function _UserBus($user, $pass){
         $conexion = new Conection();
         $connection  = $model->_getConection();
-        $sql="SELECT * FROM usuario WHERE idUsuario= :user AND password = : pass ";
+        $sql="SELECT * FROM usuario WHERE usario= :user AND password = : pass ";
         $estado= $connection->prepare($sql);
             $estado->bindParam(':user', $user);
             $estado->bindParam(':pass', $pass);

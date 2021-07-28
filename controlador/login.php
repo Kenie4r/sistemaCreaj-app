@@ -1,10 +1,13 @@
 <?php
-    function logear( $user, $pass ){
-        $consulta = new Consultas_U();
+    function logear( $user, $pass){
+        $consulta = new Query();
         $usuario = $consulta->getUserActivo($user,$pass);
+        
+        print_r ($usuario['rol']);
         if( count($usuario) > 0 ){
             session_start();
             $_SESSION['uid'] = $user;
+            $_SESSION['rol'] = $usuario['rol'];
             header('Location: http://');
             return true;
         }else{
@@ -25,7 +28,7 @@
         header("Location: http://");
     }
 
-
+   
 
 
 
