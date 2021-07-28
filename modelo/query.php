@@ -24,6 +24,19 @@ class Query{
         }
 
     }
+    //Login
+    public function _UserBus($user, $pass){
+        $conexion = new Conection();
+        $connection  = $model->_getConection();
+        $sql="SELECT * FROM usuario WHERE idUsuario= :user AND password = : pass ";
+        $estado= $connection->prepare($sql);
+            $estado->bindParam(':user', $user);
+            $estado->bindParam(':pass', $pass);
+            $estado->execute();
+            $usuarios=$estado->rowCount();
+            return $usuarios;
+    }
+    
     //Guardar Rubrica
     public function saveRubrica($id_rubrica, $name, $id_Materia, $id_nivel){
         $conexion = new Conection();
