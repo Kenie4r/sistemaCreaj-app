@@ -4,23 +4,23 @@ class Query{
 
     //funciones para guardar 
     //Guardar usuario
-    public function saveUser($userName,$name, $last_name, $rol, $password ){
+    public function saveUser($userName, $name, $last_name, $rol, $password, $email){
         $pass = md5($password);
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql  = "INSERT INTO usuario (usario, nombres, apellidos, rol, password) VALUES ( :username , :name, :last_name, :rol,:password )";
+        $sql  = "INSERT INTO usuario (usario, nombres, apellidos, rol, password, email) VALUES ( :username , :name, :last_name, :rol,:password, :correo)";
         $sentencia= $connection->prepare($sql);
         $sentencia ->bindParam(":username", $userName);
         $sentencia->bindParam(":name", $name);
         $sentencia->bindParam(":last_name", $last_name);
         $sentencia->bindParam(":rol", $rol);
-        $sentencia -> bindParam(":password", $pass);
-
+        $sentencia->bindParam(":password", $pass);
+        $sentencia->bindParam(":correo", $email);
         if(!$sentencia){
-                return "Error, por favor revisar los datos ingresados";
+                return "Error";
         }else{
-            $sentencia -> execute();
-            return "Datos ingresados de manera exitosa";
+            $sentencia->execute();
+            return "Hecho";
         }
 
     }
@@ -265,6 +265,24 @@ class Query{
         $sql = "SELECT * FROM rubrica WHERE idrubrica LIKE :rubricaID";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":rubricaID", $idrubrica);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
+    //Obtener los usuarios filtrados según el nombre de usuario
+    public function searchUserByName($nameRubric){
+        $nameRubric = "%".$nameRubric."%";
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM usuario WHERE usario LIKE :userName";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":userName", $nameRubric);
         if(!$sentencia){
             return "Error";
         }else{
