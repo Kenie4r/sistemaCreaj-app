@@ -449,7 +449,7 @@ class Query{
 
     //Obtener todos el usuario activo
     public function getUserActivo($nombre, $pass){
-        
+        $pass = md5($pass);
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
         $sql = "SELECT * FROM usuario WHERE usario = :nombre AND password = :pass";
