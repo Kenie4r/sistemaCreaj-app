@@ -11,9 +11,9 @@ $(document).ready(function(){
             crearNotificacion(1, "Aún no has terminado de calificar", null , "Ok");
         }else{
             var contador = 0;
-            var notasCriterios = document.getElementsByClassName('final').lenght;
-            for (let index =1; index <=  notasCriterios; index++) {
-                if($('#Final'+index).val()==""){
+            var notasCriterios = document.getElementsByClassName('final');
+            for (let index =1; index <   notasCriterios.lenght; index++) {
+                if(notasCriterios[index].value==""){
                     contador++;
                 }
             }
@@ -45,23 +45,25 @@ function funcionamiento(){
         $('#calificar'+idBox).empty();    
      })
   $('#btnTerminar').click(function(){
-        var nota = $('#inputGrade').val();
+         var nota = $('#inputGrade').val();
         if( nota==""){
             crearNotificacion(1, "Aún no has terminado de calificar", null , "Ok");
         }else{
-            var c = 0;
-            var notasCriterios = document.getElementsByClassName('final').lenght;
-            for (let index =1; index <=  notasCriterios; index++) {
-                if($('#Final'+index).val()==""){
-                    c++;
+            var contador = 0;
+            var notasCriterios = document.getElementsByClassName('final');
+            for (let index =1; index <   notasCriterios.lenght; index++) {
+                if(notasCriterios[index].value==""){
+                    contador++;
                 }
             }
-            if (c==0 ){
-                 crearNotificacion(1, "¿Quiéres guardar la nota?","Guardar", "Cancelar")
+            if (contador==0 ){
+                crearNotificacion(1, "¿Quiéres guardar la nota?","Guardar", "Cancelar")
             }else{
                 crearNotificacion(1, "Aún no has terminado de calificar", null , "Ok");
             }
  
+        }
+
         }
 
     })
