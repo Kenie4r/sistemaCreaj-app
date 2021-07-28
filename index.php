@@ -11,15 +11,9 @@
     <img class="w-full h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg" src="recursos_login/img/fotoColegio.jpg">
     <h1 class="pt-4 text-2xl">Sistema de calificación</h1>
 	    <!-- Formulario -->
-<<<<<<< HEAD
         <section class="ml-20">
             
-            <form class="px-8 pt-6 pb-8 mb-4 bg-white rounded" action="Dashboard/Dashboard.php" method="POST" id="formLogin">
-=======
-        <section id="cajaLogin">
-            <h1 id="titulo01">Sistema de calificación<br>Inició de Sesión</h1>
-            <form action="index.php" method="POST" id="formLogin">
->>>>>>> 04a0d2583c5293ec06bd40ddf9d4e889ebdfd598
+            <form class="px-8 pt-6 pb-8 mb-4 bg-white rounded" action="index.php" method="POST" id="formLogin">
                 <div class="grupo01" id="txtNombre">
                     <label class="block mb-2 text-sm font-bold text-gray-700" for="text01"><span>Usuario:</span></label>
                     <input type="text" name="usuario" id="text01" class=" px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" maxlength="20" size="30" placeholder="Código" title="Ingresa tu código de usuario para ingresar al sistema" autofocus required>
