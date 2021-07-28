@@ -2,16 +2,17 @@
     function logear( $user, $pass){
         $consulta = new Query();
         $usuario = $consulta->getUserActivo($user,$pass);
-        
-        print_r ($usuario['rol']);
-        if( count($usuario) > 0 ){
+        if( !empty($usuario) ){
             session_start();
             $_SESSION['uid'] = $user;
             $_SESSION['rol'] = $usuario['rol'];
-            header('Location: http://');
+            print_r ($usuario);
+            echo "<script>alert('".$_SESSION['uid']."')</script>";
+            echo "<script>alert('".$_SESSION['rol']."')</script>";
+            header('Location: Dashboard/Dashboard.php');
             return true;
         }else{
-            header('Location: http://');
+            header('Location: http://creaj21/');
             return false;
         }
     }
@@ -25,7 +26,8 @@
     }
     function cerrar(){
         session_destroy($_SESSION['uid']);
-        header("Location: http://");
+        session_destroy($_SESSION['rol']);
+        header("Location: http//creaj21/");
     }
 
    

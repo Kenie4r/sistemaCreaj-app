@@ -4,23 +4,23 @@ class Query{
 
     //funciones para guardar 
     //Guardar usuario
-    public function saveUser($userName,$name, $last_name, $rol, $password ){
+    public function saveUser($userName, $name, $last_name, $rol, $password, $email){
         $pass = md5($password);
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql  = "INSERT INTO usuario (usario, nombres, apellidos, rol, password) VALUES ( :username , :name, :last_name, :rol,:password )";
+        $sql  = "INSERT INTO usuario (usario, nombres, apellidos, rol, password, email) VALUES ( :username , :name, :last_name, :rol,:password, :correo)";
         $sentencia= $connection->prepare($sql);
         $sentencia ->bindParam(":username", $userName);
         $sentencia->bindParam(":name", $name);
         $sentencia->bindParam(":last_name", $last_name);
         $sentencia->bindParam(":rol", $rol);
-        $sentencia -> bindParam(":password", $pass);
-
+        $sentencia->bindParam(":password", $pass);
+        $sentencia->bindParam(":correo", $email);
         if(!$sentencia){
-                return "Error, por favor revisar los datos ingresados";
+                return "Error";
         }else{
-            $sentencia -> execute();
-            return "Datos ingresados de manera exitosa";
+            $sentencia->execute();
+            return "Hecho";
         }
 
     }
@@ -275,6 +275,24 @@ class Query{
         }
     }
 
+    //Obtener los usuarios filtrados según el nombre de usuario
+    public function searchUserByName($nameRubric){
+        $nameRubric = "%".$nameRubric."%";
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM usuario WHERE usario LIKE :userName";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":userName", $nameRubric);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
     //Obtener las ultima rubrica
     public function getEndRubric($idrubrica){
         $idrubrica = "%".$idrubrica."%";
@@ -431,7 +449,7 @@ class Query{
 
     //Obtener todos el usuario activo
     public function getUserActivo($nombre, $pass){
-        
+        $pass = md5($pass);
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
         $sql = "SELECT * FROM usuario WHERE usario = :nombre AND password = :pass";
