@@ -2,13 +2,16 @@
     function logear( $user, $pass){
         $consulta = new Query();
         $usuario = $consulta->getUserActivo($user,$pass);
-        
+        echo "<script>alert('".$usuario['rol']."')</script>";
         print_r ($usuario['rol']);
         if( count($usuario) > 0 ){
             session_start();
             $_SESSION['uid'] = $user;
+            echo "<script>alert('".$_SESSION['rol']."')</script>";
+            print_r ($usuario);
             $_SESSION['rol'] = $usuario['rol'];
-            header('Location: http://');
+            
+            //header('Location: http://');
             return true;
         }else{
             header('Location: http://');
@@ -25,7 +28,8 @@
     }
     function cerrar(){
         session_destroy($_SESSION['uid']);
-        header("Location: http://");
+        session_destroy($_SESSION['rol']);
+        header("Location: http//creaj21");
     }
 
    

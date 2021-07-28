@@ -22,6 +22,7 @@
                 </div>
                 <div class="grupo01" id="btnOC">
 			<?php 
+            //action="Dashboard/Dashboard.php"
 			        if(isset($_POST['enviar'])){
 			            require('modelo/conection.php');
 			            require('modelo/query.php');
