@@ -8,9 +8,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body onload="Iniciar()">
-<<<<<<< HEAD
-    
-    
 	    <!-- Formulario -->
         
         <section class="">
@@ -43,31 +40,15 @@
 			            logear($user,$pass);
 			        }
 			?>    
-                    <a href="contrasenaOlvidada.php" class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800">He olvidado mi contraseña...</a>
                 </div>
-                
-<<<<<<< HEAD
 				<div class="ml-16" id="btnEnviar">
                     <button type="submit" name="enviar" class="mr-20 mt-5 px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline  ">Iniciar</button>
                 </div>
-
-              
-=======
-				<div class="" id="btnEnviar">
-                    <button type="submit" name="enviar" class="w-medium px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-">Iniciar</button>
-                </div>
-
-                
->>>>>>> 070a792c250e287d94b9f7f06cbca2b9444b2778
             </form>
        </article> 
         </section>
     <!-- Pie de página -->
-<<<<<<< HEAD
-        <footer class="text-center mt-20 text-white p-10 mb-0 bg-black p">- Copyright Colegio Don Bosco 2020 -</footer>
-=======
-        <footer class="text-center mt-20 p-11 text-white bg-black px-4 py-2 bottom-auto">- Copyright Colegio Don Bosco 2020 -</footer>
->>>>>>> 070a792c250e287d94b9f7f06cbca2b9444b2778
+        <footer class="text-center mt-24 py-9 text-white bg-black px-4 py-2 bottom-auto">- Copyright Colegio Don Bosco 2020 -</footer>
     </div>
 </body>
 </html>
