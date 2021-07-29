@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crea J | Nuevo Perfil</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../recursos/icons/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../js/script-editProfile.js"></script>
+</head>
+<body>
+    <form action="" method="POST" class="container box-content" id="frmProfile">
+        <div class="grid grid-cols-1 lg:grid-cols-2 lg:m-9">
+            <div class="lg:m-0">
+                <h1 class="text-5xl text-gray-500">Nuevo Perfil</h1>
+            </div>
+            <div class="flex lg:justify-end">
+                <div class="lg:m-2">
+                    <a href="#" id="btnSubmit" class="block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700"><span class="icon-checkmark"></span> Guardar</a>
+                </div>
+                <div class="mb-2 lg:m-2">
+                    <a href="index.php" class="block text-red-600 border-red-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-red-600"><span class='icon-cross'></span> Cancelar</a>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 m-9">
+            <div>
+                <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
+                    <label for="txtNameProfile" class="p-2 bg-gray-700 text-white">Nombre:</label>
+                    <input type="text" name="txtNameProfile" id="txtNameProfile" maxlength="50" class="p-1 w-full rounded-r-lg outline-none" autofocus required>
+                </div>
+            </div>
+            <div>
+                <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
+                    <label for="txtLastNameProfile" class="p-2 bg-gray-700 text-white">Apellido:</label>
+                    <input type="text" name="txtLastNameProfile" id="txtLastNameProfile" maxlength="50" class="p-1 w-full rounded-r-lg outline-none" required>
+                </div>
+            </div>
+            <div>
+                <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
+                    <label for="txtUserProfile" class="p-2 bg-gray-700 text-white">Usuario:</label>
+                    <input type="text" name="txtUserProfile" id="txtUserProfile" value="" class="p-1 w-full rounded-r-lg outline-none" readonly>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 m-9">
+            <div>
+                <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
+                    <label for="txtEmailProfile" class="p-2 bg-gray-700 text-white">EMAIL:</label>
+                    <input type="email" name="txtEmailProfile" id="txtEmailProfile" class="p-1 w-full rounded-r-lg outline-none" required>
+                </div>
+            </div>
+            <div>
+                <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
+                    <label for="txtPassProfile" class="p-2 bg-gray-700 text-white">Password:</label>
+                    <input type="password" name="txtPassProfile" id="txtPassProfile" value="donboscoSV" class="p-1 w-full rounded-r-lg outline-none" title="donboscoSV" readonly>
+                </div>
+            </div>
+            <div>
+                <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
+                    <label for="txtRolProfile" class="p-2 bg-gray-700 text-white">Rol:</label>
+                    <select name="txtRolProfile" id="txtRolProfile" class="p-1 w-full rounded-r-lg outline-none" required>
+                        <option value="">Escogue un rol...</option>
+                        <option value="a">Administrador</option>
+                        <option value="c">Técnico - Científico</option>
+                        <option value="j">Jurado</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

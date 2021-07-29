@@ -1,0 +1,11 @@
+.btn {
+  @apply text-base font-medium rounded-lg p-3;
+}
+
+.btn--primary {
+  @apply bg-rose-500 text-white;
+}
+
+.btn--secondary {
+  @apply bg-gray-100 text-black;
+}
