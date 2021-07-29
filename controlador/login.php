@@ -9,7 +9,7 @@
             print_r ($usuario);
             echo "<script>alert('".$_SESSION['uid']."')</script>";
             echo "<script>alert('".$_SESSION['rol']."')</script>";
-            header('Location: Dashboard/Dashboard.php');
+            header('Location: http://creaj21/Dashboard/Dashboard.php');
             return true;
         }else{
             header('Location: http://creaj21/');
