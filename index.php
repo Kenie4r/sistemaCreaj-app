@@ -8,20 +8,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body onload="Iniciar()">
-    <img class="w-full h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg" src="recursos_login/img/fotoColegio.jpg">
-    <h1 class="pt-4 text-2xl">Sistema de calificación</h1>
+    <div>
+        <img class=" ml-auto -mb-32 hidden lg:block w-2/3 h-auto rounded-l-lg" src="recursos_login/img/fotoColegio.jpg">
+    </div>
+    
 	    <!-- Formulario -->
-        <section class="ml-20">
-            
+        <section class="-mt-96 ml-20 ">
+            <h1 class="pt-2 text-2xl ">Sistema de calificación</h1>
             <form class="px-8 pt-6 pb-8 mb-4 bg-white rounded" action="index.php" method="POST" id="formLogin">
-                <div class="grupo01" id="txtNombre">
-                    <label class="block mb-2 text-sm font-bold text-gray-700" for="text01"><span>Usuario:</span></label>
-                    <input type="text" name="usuario" id="text01" class=" px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" maxlength="20" size="30" placeholder="Código" title="Ingresa tu código de usuario para ingresar al sistema" autofocus required>
+                <div class="mb-4" >
+                    <label class="block mb-2 text-sm font-bold text-gray-700"><span>Usuario:</span></label>
+                    <input type="text" name="usuario"  class=" px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" maxlength="20" size="30" placeholder="Código" title="Ingresa tu código de usuario para ingresar al sistema" autofocus required>
                 </div>
-                <div class="grupo01" id="txtPass">
-                    <label class="block mb-2 text-sm font-bold text-gray-700" for="text02"><span>Contraseña:</span></label>
+                <div>
+                    <label class="block mb-2 text-sm font-bold text-gray-700" ><span>Contraseña:</span></label>
                     <div class="text" id="contenedor02">
-                        <input type="password" name="contra" id="text02" class="px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" maxlength="20" size="25" placeholder="Contraseña" title="Ingresa tu contraseña para ingresar al sistema" required>
+                        <input type="password" name="contra" class="px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" maxlength="20" size="25" placeholder="Contraseña" title="Ingresa tu contraseña para ingresar al sistema" required>
                         <button type="button" id="cambiarType" class="eye" onclick="cambiar01()"></button>
                     </div>
                 </div>
@@ -41,17 +43,15 @@
                 </div>
                 
 				<div class="" id="btnEnviar">
-                    <button type="submit" name="enviar" class="mr-20 mt-5 px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline  ">Iniciar</button>
+                    <button type="submit" name="enviar" class="w-medium px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-">Iniciar</button>
                 </div>
 
-                <div id="btnAyuda">
-                    <button href="ayuda.html" class="ml-20  px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline  ">Ayuda</button>
-                </div>
+                
             </form>
             
         </section>
     <!-- Pie de página -->
-        <footer class="text-center mb-0">- Copyright Colegio Don Bosco 2020 -</footer>
+        <footer class="text-center mt-20 p-11 text-white bg-black px-4 py-2 bottom-auto">- Copyright Colegio Don Bosco 2020 -</footer>
     </div>
 </body>
 </html>
