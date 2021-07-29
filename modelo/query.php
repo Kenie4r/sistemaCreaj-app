@@ -225,7 +225,7 @@ class Query{
     public function getTeamData($idTeam){
         $model = new Conection();
         $connection = $model->_getConection();
-        $sql = "SELECT *  FROM proyecto WHERE idProyecto= :idTeam";
+        $sql = "SELECT proyecto.idproyecto, proyecto.nombreProyecto, proyecto.descripcion, grado.*, materia.idmateria, materia.nombre AS nombreMateria FROM proyecto JOIN grado JOIN materia WHERE proyecto.idproyecto =:idTeam  ";
         $sentencia = $connection->prepare($sql);
         $sentencia->bindParam(":idTeam", $idTeam);
         if(!$sentencia){
@@ -237,6 +237,50 @@ class Query{
         }
     }
 
+    public function obtainTeamMates($idTeam){
+        $model = new Conection();
+        $connection = $model->_getConection();
+        $sql = "SELECT equipo.idequipo, estudiante.idestudiante, estudiante.nombre, estudiante.apellidos FROM equipo INNER JOIN estudiante ON estudiante_idestudiante = estudiante.idestudiante WHERE proyecto_idproyecto = :idTeam";
+        $sentencia = $connection->prepare($sql);
+        $sentencia->bindParam(":idTeam", $idTeam);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+    }
+    //Obtener Rubricar por nivel y materia
+    public function getNewRubric($idMateria, $idNivel){
+        $model = new Conection();
+        $conexion = $model->_getConection();
+        $sql = "SELECT rubrica.idrubrica FROM rubrica  WHERE rubrica.materia_idmateria =:idMateria AND rubrica.nivel_idnivel = :idNivel";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(':idMateria', $idMateria);
+        $sentencia->bindParam(':idNivel', $idNivel);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result= $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+    }
+    public function obtainCritics($idRubrica){
+        $model = new Conection();
+        $conexion = $model->_getConection();
+        $sql = "SELECT * FROM criterios  WHERE criterios.rubrica_idrubrica = :idRubrica";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(':idRubrica', $idRubrica);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result= $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+    }
 
 
     //Get ID Criterio
