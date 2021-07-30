@@ -6,10 +6,12 @@
             session_start();
             $_SESSION['uid'] = $user;
             $_SESSION['rol'] = $usuario['rol'];
-            print_r ($usuario);
-            echo "<script>alert('".$_SESSION['uid']."')</script>";
-            echo "<script>alert('".$_SESSION['rol']."')</script>";
-            header('Location: http://creaj21/Dashboard/Dashboard.php');
+            $_SESSION['usario']=$usuario['usario'];
+            $_SESSION['nombres']=$usuario['nombres'];
+            $_SESSION['apellidos']=$usuario['apellidos'];
+            $_SESSION['password']=$usuario['password'];
+            $_SESSION['email']=$usuario['email'];
+            header('Location: http://creaj21/Dashboard/profile.php');
             return true;
         }else{
             header('Location: http://creaj21/');
@@ -21,7 +23,7 @@
         if( !empty($_SESSION['uid']) ){
             return $_SESSION['uid'];
         }else{
-            header("Location: http://");
+            header("Location: http://creaj21/");
         }
     }
     function cerrar(){

@@ -12,8 +12,8 @@ $niveles = $consulta->getLevel(); //Get niveles
 //ID
 $yearActual = date("Y");
 $rubricas = $consulta->getEndRubric($yearActual); //Get ID rúbrica ultimo
-if(isset($rubricas[0]["idrubricas"])){
-    $rubricas = $rubricas[0]["idrubricas"];
+if(isset($rubricas)){
+    $rubricas = $rubricas[0]["idrubrica"];
     $rubricas = explode("-",$rubricas);
     $nRubricas = intval($rubricas[1]) + 1;
 }else{
@@ -34,8 +34,12 @@ if(isset($rubricas[0]["idrubricas"])){
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/script-newRubric.js"></script>
+    <script src="../Dashboard/button.js"></script>
 </head>
 <body>
+<?php
+require('../Dashboard/Dashboard.php');
+?>
     <form id="frmNewRubric" class="container box-content" method="POST" action="saveRubric.php">
         <div class="grid grid-cols-1 lg:grid-cols-2">
             <div class="flex flex-row items-center m-9 text-gray-500 text-3xl">

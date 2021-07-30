@@ -3,13 +3,12 @@ $(document).ready(
         //V A R I A B L E S   G E N E R A L E S
         var contenedorCriterio = $("#contenedor-criterios"); //Se busca el contenedor de los criterios
         var btnAddCriterio = $("#addCriterio"); //Se busca el botón de añadir criterio
-        var frmRubric = $("#frmNewRubric"); //El formulario
         var btnSubmit = $("#btnSubmit"); //El botón para enviar el formulario
 
         //FUNCIÓN DE ENVIAR EL FORMULARIO POR UN A
         btnSubmit.on("click",
             function(){
-                frmRubric.submit();
+                formValidate();
             }
         );
 
@@ -210,5 +209,52 @@ function disminuirCriterios() {
 function seCompletoPuntajeTotal(suma) {
     if( suma == 100 ){
         alert("Felicidades, ha completado el porcentaje máximo de esta rúbrica.");
+    }
+}
+
+//Verifica si el formulario esta correcto, para enviarlo
+function formValidate(){
+    var frmRubric = $("#frmNewRubric"); //El formulario
+    var txtNameRubric = $("#txtNombreRubrica");
+    var txtMateriaRubric = $("#txtMateria");
+    var txtNivelRubric = $("#txtNivel");
+    var errores = 0;
+    var criteriosActuales = parseInt($("#siguienteCriterio").val());
+    var etiquetaNombreCriterio = "";
+    var etiquetaPuntajeCriterio = "";
+    var etiquetaDescripcionNivel = "";
+
+    //Validacion Rubrica
+    if(txtNameRubric.val() == ""){
+        errores++;
+    }else if(txtMateriaRubric.val() == ""){
+        errores++;
+    }else if(txtNivelRubric.val() == ""){
+        errores++;
+    }
+
+    //Validacion Criterios
+    for (let i = 1; i < criteriosActuales; i++) {
+        etiquetaNombreCriterio = "#" + i + "-txtNombreCriterio";
+        etiquetaPuntajeCriterio = "#" + i + "-nbPuntaje";
+
+        if($(etiquetaNombreCriterio).val() == ""){
+            errores++;
+        }else if($(etiquetaPuntajeCriterio).val() <= 0){
+            errores++;
+        }
+        for(let j = 1; j <= 4; j++){
+            etiquetaDescripcionNivel = "#" + i + "-" + j + "-descripcionNivel";
+            if($(etiquetaDescripcionNivel).val() == ""){
+                errores++;
+            }
+        }
+    }
+
+    //Ver cuantos errores hay para enviar el formulario
+    if(errores > 0){
+        alert("Error: Llene todos los campos.")
+    }else{
+        frmRubric.submit();
     }
 }

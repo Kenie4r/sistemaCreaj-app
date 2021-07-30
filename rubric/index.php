@@ -2,8 +2,7 @@
 
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
-
-//Verificar session
+require_once("../controlador/login.php");
 
 $consulta = new Query; //Crear una consulta
 $rubricas = $consulta->getRubrics(); //Get rúbricas
@@ -21,8 +20,12 @@ $rubricas = $consulta->getRubrics(); //Get rúbricas
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/script-rubric.js"></script>
+    <script src="../Dashboard/button.js"></script>
 </head>
 <body>
+<?php
+require('../Dashboard/Dashboard.php');
+?>
     <article class="container">
         <div class="grid grid-cols-1 lg:grid-cols-2 m-9">
             <div class="mb-7 lg:m-0">
