@@ -30,7 +30,7 @@ $(document).ready(function(){
 
 
 function funcionamiento(){
-     //funcionamiento de editar
+    //funcionamiento de editar
     $('.btnEdit').click(function(){
         idBox= id_Number($(this).attr('id'));
         var minusGrade = $('#Final' + idBox).val();
@@ -62,11 +62,10 @@ function funcionamiento(){
             }
         }
 
-        });
-
-    })
+    });
     mainActivity();
     sencondActivity()
+    
 }
 
 function mainActivity(){
