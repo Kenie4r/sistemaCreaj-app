@@ -4,32 +4,12 @@ $(document).ready(function(){
     var fullGrade = 0;
     $('.calificaciones').fadeOut('fast');
    mainActivity();
-
-    $('#btnTerminar').click(function(){
-        var nota = $('#inputGrade').val();
-        if( nota==""){
-            crearNotificacion(1, "Aún no has terminado de calificar", null , "Ok");
-        }else{
-            var contador = 0;
-            var notasCriterios = document.getElementsByClassName('final');
-            for (let index =1; index <   notasCriterios.lenght; index++) {
-                if(notasCriterios[index].value==""){
-                    contador++;
-                }
-            }
-            if (contador==0 ){
-                crearNotificacion(1, "¿Quiéres guardar la nota?","Guardar", "Cancelar")
-            }else{
-                crearNotificacion(1, "Aún no has terminado de calificar", null , "Ok");
-            }
- 
-        }
-
-    })
+   sencondActivity();
+   funcionamientoEdit();
 });
 
 
-function funcionamiento(){
+function funcionamientoEdit(){
     //funcionamiento de editar
     $('.btnEdit').click(function(){
         idBox= id_Number($(this).attr('id'));
@@ -44,24 +24,19 @@ function funcionamiento(){
         $('#calificar'+idBox).empty();    
      })
   $('#btnTerminar').click(function(){
-         var nota = $('#inputGrade').val();
-        if( nota==""){
-            crearNotificacion(1, "Aún no has terminado de calificar", null , "Ok");
-        }else{
-            var contador = 0;
-            var notasCriterios = document.getElementsByClassName('final');
-            for (let index =1; index <   notasCriterios.lenght; index++) {
-                if(notasCriterios[index].value==""){
-                    contador++;
-                }
-            }
-            if (contador==0 ){
-                crearNotificacion(1, "¿Quiéres guardar la nota?","Guardar", "Cancelar")
-            }else{
-                crearNotificacion(1, "Aún no has terminado de calificar", null , "Ok");
+        var nota = $('#inputGrade').val();
+        var inputs = document.getElementsByClassName('final');
+        var alone = 0;
+        for(i= 0; i<inputs.length;i++){
+            if(inputs[i].value == ""){
+                alone++;
             }
         }
-
+        if(nota=="" && alone>0){
+            crearNotificacion(0, "Aún no has terminado de calificar", null, "Ok");
+        }else if(nota!="" && alone==0){
+            crearNotificacion(1, "¿Seguro quieres guardar?", "Sí", "No");
+        }
     });
     mainActivity();
     sencondActivity()
@@ -124,7 +99,7 @@ function sencondActivity(){
              $(this).text(max);
              var NumberId = id_Number($(this).attr('id'));
              var input = "#Grade_"+NumberId;
-             $(input).val(parseFloat(max));
+            inputt.value = max;
          })
          $('.btnGuardar').click(function(){
              var idBox  = id_Number(  $(this).attr('id'));
@@ -171,7 +146,8 @@ function inputCreation(number, contenedor, nivel){
         "gradeName": nivel,
         "idNumber": number
     },function(result){
-        $(contenedor).append(result);  
+        $(contenedor).html(result);  
+        sencondActivity();
     }, 
     "html");
 }
@@ -298,7 +274,7 @@ function crearNotificacion(tipo, mensaje, opcion1, opcion2){
     })
     $('#option-2').click(function(){
         $('#notification').remove();
-        funcionamiento();
+        funcionamientoEdit();
     })
 
 
