@@ -14,7 +14,7 @@
                 <link rel="stylesheet" href="../recursos/icons/style.css">
                 <link rel="stylesheet" href="css/styles_insertG.css">
             </head>
-            <body  class="bg-green-500 w-screen h-screen rounded-lg overflow-x-hidden">
+            <body  class="bg-teal-900 w-screen h-screen rounded-lg overflow-x-hidden">
                 <div class="container bg-white w-9/12 max-w-xl  m-auto max-w-xl  rounded-2xl mt-2">
                         <div class="bg-gray-100 p-2  ">
                             <div class="text-2xl font-bold uppercase">
@@ -145,10 +145,10 @@
                         <input type='radio'  id='promedio2_$index' name='promedios$index' class='promedios absolute opacity-0' required>
                         <input type='radio'  id='promedio3_$index' name='promedios$index' class='promedios absolute opacity-0' required>
                         <input type='radio'  id='promedio4_$index' name='promedios$index' class='promedios absolute opacity-0 ' required>
-                        <label for='promedio1_$index'class='promediosL rounded-lg border-2 border-blue-500 text-blue-500 p-1 text-md  text-center hover:bg-blue-400 hover:text-white cursor-pointer'>Nivel Básico</label>
-                        <label for='promedio2_$index' class='promediosL rounded-lg border-2 border-blue-500 text-blue-500 p-1 text-md  text-center hover:bg-blue-400 hover:text-white cursor-pointer'>Bueno</label>
-                        <label for='promedio3_$index' class='promediosL rounded-lg border-2 border-blue-500 text-blue-500 p-1 text-md  text-center hover:bg-blue-400 hover:text-white cursor-pointer'>Muy Bueno</label>
-                        <label for='promedio4_$index' class='promediosL rounded-lg border-2 border-blue-500 text-blue-500 p-1 text-md  text-center hover:bg-blue-400 hover:text-white cursor-pointer'>Excelente </label>
+                        <label for='promedio1_$index'class='promediosL rounded-lg border-2 border-red-500 text-blue-500 p-1 text-md  text-center hover:bg-blue-400 hover:text-white cursor-pointer'>Muy Malo</label>
+                        <label for='promedio2_$index' class='promediosL rounded-lg border-2 border-yellow-500 text-blue-500 p-1 text-md  text-center hover:bg-blue-400 hover:text-white cursor-pointer'>Malo</label>
+                        <label for='promedio3_$index' class='promediosL rounded-lg border-2 border-blue-500 text-blue-500 p-1 text-md  text-center hover:bg-blue-400 hover:text-white cursor-pointer'>Bueno</label>
+                        <label for='promedio4_$index' class='promediosL rounded-lg border-2 border-green-500 text-blue-500 p-1 text-md  text-center hover:bg-blue-400 hover:text-white cursor-pointer'>Excelente </label>
                     </div>
                     <div  class='p-5 transicion calificaciones' id='calificar$index'>
                     </div>
