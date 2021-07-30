@@ -118,22 +118,14 @@ function sencondActivity(){
              var boxNumber = IDbtn;
              var box = "#nota_"+boxNumber;
            $(box).text(value);
-<<<<<<< HEAD
-        })
-        $('.notas').click(function(){
-          var maxGrade = $(this).val();
-            alert(maxGrade);
-        })
-=======
          })
          $('.notas').click(function(){
              var max= $(this).attr('value');
              $(this).text(max);
              var NumberId = id_Number($(this).attr('id'));
              var input = "#Grade_"+NumberId;
-             $(input).val(parseFloat(max));
+            $(input).val(max)
          })
->>>>>>> parent of 2456b99 (Last change)
          $('.btnGuardar').click(function(){
              var idBox  = id_Number(  $(this).attr('id'));
              var input = "#Grade_"+ idBox;
@@ -180,6 +172,7 @@ function inputCreation(number, contenedor, nivel){
         "idNumber": number
     },function(result){
         $(contenedor).append(result);  
+        sencondActivity();
     }, 
     "html");
 }
