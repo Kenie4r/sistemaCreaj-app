@@ -21,8 +21,12 @@ $usuarios = $consulta->getUsers(); //Obtener usuarios
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/script-profile.js"></script>
+    <script src="../Dashboard/button.js"></script>
 </head>
 <body>
+<?php
+require('../Dashboard/Dashboard.php');
+?>
     <article class="container">
         <div class="grid grid-cols-1 lg:grid-cols-2 m-9">
             <div class="mb-7 lg:m-0">

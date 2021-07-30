@@ -135,6 +135,7 @@
         for($index = 0; $index<count($myCID); $index++){
             $html.=" <div class='tab'class='criterio p-5'>
             <input type='hidden' name='' value='{$criterioValue[$index]}' id='valor{$index}'>
+            <input type='hidden' name='idCriterio' value='$myCID[$index]' id='idC$index'>
             <input type='checkbox' class='absolute opacity-0' id='btnCriterio{$index}'>
             <input type='hidden' id='Final{$index}' value='' class='final'>
             <label for='btnCriterio{$index}' class='block p-5 leading-normal cursor-pointer'>{$criterioName[$index]} </label>
