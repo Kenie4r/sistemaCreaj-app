@@ -13,27 +13,68 @@
     <?php
          require('Dashboard.php');
     ?>
-    <img class="h-3/6 w-5/12 mt-8 ml-96" src="img/paisaje.jpeg" alt="">
-    <img class="h-32 w-40 -mt-14  rounded-full " src="img/perfil.jpg" alt="">
-    <section class="rounded-full text-center bg-gray-300  ml-80 mr-80">
-    <h1 class=" text-2xl ml-4 ">Perfil</h1>
-        <article class="p-4 ">
-        
-
-        </article>
-        <article>
-            <h1>Detalles</h1><br>
-            <h1 class="text-center">  <?php echo $_SESSION['nombres'] ?> </h1>
-
-            <h1 class="text-center"><?php echo $_SESSION['apellidos'];  ?> </h1>
-           
-            <h1>Email:  <?php echo $_SESSION['email']; ?></h1>
-        
-            <h1>Usuario: <?php echo $_SESSION['usario'] ?></h1>
-
-            <h1>password:   <?php  echo $_SESSION['password']; ?></h1>
-          
-        </article>
-    </section>
+    <!-- This example requires Tailwind CSS v2.0+ -->
+<div class="px-52 mt-20 bg-white shadow overflow-hidden sm:rounded-lg">
+  <div class="px-4 py-5 sm:px-6">
+    <h3 class="text-xl leading-6 font-medium text-gray-900">
+      Perfil
+    </h3>
+    <p class="mt-1 max-w-2xl text-base text-gray-500">
+      Informacion personal
+    </p>
+  </div>
+  <div class="border-t border-gray-200">
+    <dl>
+      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-lg font-medium text-gray-500">
+          Nombre
+        </dt>
+        <dd class="mt-1 text-lg text-gray-900 sm:mt-0 sm:col-span-2">
+         <?php echo $_SESSION['nombres'];?> 
+        </dd>
+      </div>
+      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-lg font-medium text-gray-500">
+          Apellido
+        </dt>
+        <dd class="mt-1 text-lg text-gray-900 sm:mt-0 sm:col-span-2">
+        <?php echo $_SESSION['apellidos'];?> 
+        </dd>
+      </div>
+      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-lg font-medium text-gray-500">
+          Email 
+        </dt>
+        <dd class="mt-1 text-lg text-gray-900 sm:mt-0 sm:col-span-2">
+        <?php echo $_SESSION['email'];?> 
+        </dd>
+      </div>
+      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+        <dt class="text-lg font-medium text-gray-500">
+          Rol
+        </dt>
+        <dd class="mt-1 text-lg text-gray-900 sm:mt-0 sm:col-span-2">
+        <?php
+         switch($_SESSION['rol']){
+            case 'a':
+                echo "Administrador";
+            break;
+            case 'c':
+                echo "Tecnico cientifico" ;
+            break;
+            case 'j':
+                echo "Jurado";
+            break;
+        }
+        ?>
+        <div class="mt-2 flex -ml-64 flex-row items-center justify-center p-5 w-full">
+            <div class="border-2 border-blue-500 text-xl p-2 text-blue-500 hover:bg-blue-400 hover:text-white cursor-pointer" >
+               <a href="../users_profile/index.php" > Editar </a>
+            </div>
+        </div>
+        </dd>
+      </div>
+    </dl>
+  </div>
 </body>
 </html> 
