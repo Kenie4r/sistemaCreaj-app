@@ -14,7 +14,7 @@ $last_name = $_POST["txtLastNameProfile"];
 $rol = $_POST["txtRolProfile"];
 $password = $_POST["txtPassProfile"];
 $email = $_POST["txtEmailProfile"];
-//$consulta->saveUser($userName, $name, $last_name, $rol, $password, $email);
+$estadoUsuario = $consulta->saveUser($userName, $name, $last_name, $rol, $password, $email);
 
 
 ?>
@@ -29,10 +29,12 @@ $email = $_POST["txtEmailProfile"];
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../Dashboard/button.js"></script>
 </head>
 <body>
 <?php
-if($estadoRubrica == "Registro hecho"){
+require('../Dashboard/Dashboard.php');
+if($estadoUsuario == "Hecho"){
 ?>
     <section class="container">
         <div class="m-4 lg:m-7 bg-green-500 border-2 border-solid border-green-800 rounded-lg">

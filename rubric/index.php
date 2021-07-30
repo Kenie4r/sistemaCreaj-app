@@ -2,7 +2,6 @@
 
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
-require_once("../controlador/login.php");
 
 $consulta = new Query; //Crear una consulta
 $rubricas = $consulta->getRubrics(); //Get rúbricas

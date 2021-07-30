@@ -17,7 +17,7 @@ class Query{
         $sentencia->bindParam(":password", $pass);
         $sentencia->bindParam(":correo", $email);
         if(!$sentencia){
-                return "Error";
+            return "Error";
         }else{
             $sentencia->execute();
             return "Hecho";

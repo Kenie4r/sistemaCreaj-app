@@ -9,9 +9,13 @@
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/script-editProfile.js"></script>
+    <script src="../Dashboard/button.js"></script>
 </head>
 <body>
-    <form action="" method="POST" class="container box-content" id="frmProfile">
+<?php
+require('../Dashboard/Dashboard.php');
+?>
+    <form action="saveProfile.php" method="POST" class="container box-content" id="frmProfile">
         <div class="grid grid-cols-1 lg:grid-cols-2 lg:m-9">
             <div class="lg:m-0">
                 <h1 class="text-5xl text-gray-500">Nuevo Perfil</h1>
