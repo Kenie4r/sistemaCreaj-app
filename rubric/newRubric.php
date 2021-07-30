@@ -12,8 +12,8 @@ $niveles = $consulta->getLevel(); //Get niveles
 //ID
 $yearActual = date("Y");
 $rubricas = $consulta->getEndRubric($yearActual); //Get ID rúbrica ultimo
-if(isset($rubricas[0]["idrubricas"])){
-    $rubricas = $rubricas[0]["idrubricas"];
+if(isset($rubricas)){
+    $rubricas = $rubricas[0]["idrubrica"];
     $rubricas = explode("-",$rubricas);
     $nRubricas = intval($rubricas[1]) + 1;
 }else{

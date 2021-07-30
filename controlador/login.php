@@ -23,7 +23,7 @@
         if( !empty($_SESSION['uid']) ){
             return $_SESSION['uid'];
         }else{
-            header("Location: http://");
+            header("Location: http://creaj21/");
         }
     }
     function cerrar(){
