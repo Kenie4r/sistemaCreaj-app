@@ -62,7 +62,7 @@ class Query{
     public function savenAprobacion($description, $range, $note, $id_criterio){
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql = "INSERT INTO naprovacion(descripcion, rango, nota, criterios_idcriterios) VALUES(:descrip, :rang, :note, :idcrit)";
+        $sql = "INSERT INTO naprobacion(descripcion, rango, nota, criterios_idcriterios) VALUES(:descrip, :rang, :note, :idcrit)";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":descrip", $description, PDO::PARAM_STR);
         $sentencia->bindParam(":rang", $range, PDO::PARAM_STR);

@@ -27,7 +27,6 @@ for($i = 1; $i <= $numeroCriterios; $i++){
     $titulo = $_POST[$etiquetaNameCriterio];
     $puntajeCriterio = $_POST[$etiquetaPuntajeCriterio];
     $estadoCriterio = $consulta->saveCriterio($titulo, $puntajeCriterio, $id_rubrica);
-
     $id_criterio = $consulta->getIDCriterio($titulo, $id_rubrica);
     
     //Guardar niveles
@@ -40,7 +39,6 @@ for($i = 1; $i <= $numeroCriterios; $i++){
         $estadoNiveles = $consulta->savenAprobacion($descriptionNivel, $range, $note, $id_criterio[0]["idcriterios"]);
     }
 }
-
 ?>
 
 <!DOCTYPE html>
