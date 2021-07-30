@@ -129,7 +129,7 @@ function sencondActivity(){
              var idBox  = id_Number(  $(this).attr('id'));
              var input = "#Grade_"+ idBox;
              var grade = $(input).val();
-            var  gradeEnd = grade *  $('#valor' + idBox).val();
+            var  gradeEnd = grade *  ($('#valor' + idBox).val()/100);
              var nowGrade = $('#finalGrade').text();
              var NewGrade = parseFloat(nowGrade);
              NewGrade+= gradeEnd;

@@ -2,6 +2,7 @@
     require('../modelo/conection.php');
     require('../modelo/query.php');
     require('libs/libs.php');
+    require('../Dashboard/Dashboard.php');
     //definimos variables que se usaran en todo el documento
     $idRubric  = array();
     //Crea la primera parte del header, antes de leer los datos
