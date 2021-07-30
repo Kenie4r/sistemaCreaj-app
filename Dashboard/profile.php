@@ -13,11 +13,12 @@
     <?php
          require('Dashboard.php');
     ?>
-    <section class="text-center bg-gray-300 mt-8 ml-80 mr-80">
+    <img class="h-3/6 w-5/12 mt-8 ml-96" src="img/paisaje.jpeg" alt="">
+    <img class="h-32 w-40 -mt-14  rounded-full " src="img/perfil.jpg" alt="">
+    <section class="rounded-full text-center bg-gray-300  ml-80 mr-80">
     <h1 class=" text-2xl ml-4 ">Perfil</h1>
         <article class="p-4 ">
-        <img class="h-3/6 w-5/12 " src="img/paisaje.jpeg" alt="">
-        <img class="h-32 w-40 -mt-14  rounded-full " src="img/perfil.jpg" alt="">
+        
 
         </article>
         <article>

@@ -38,7 +38,7 @@
                   switch($_SESSION['rol']){
                     case 'a':
                   ?>
-                  <a href="../users_profile/index.php" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Usuarios</a>
+                  <a href="../users_profile/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Usuarios</a>
                  
                   <a href="../rubric/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Rubrica</a>
       
