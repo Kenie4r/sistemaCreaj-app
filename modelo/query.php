@@ -254,7 +254,22 @@ class Query{
             return $result;
         }
     }
-
+    //obtener información de 1 nivel por el IDCRITERIO y RANGO
+    public function getRange($idCriterio, $rangeName){
+        $model = new Conection();
+        $conexion = $model->_getConection();
+        $sql = "SELECT * FROM naprobacion WHERE naprobacion.criterios_idcriterios = :idCriterio AND naprobacion.rango = :rangeName ";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(':idCriterio', $idCriterio);
+        $sentencia->bindParam(':rangeName', $rangeName);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
+    }
     //Get ID Criterio
     public function getIDCriterio($titulo, $rubricaID){
         $model = new Conection();

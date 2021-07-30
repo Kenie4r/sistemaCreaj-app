@@ -165,33 +165,14 @@ EL FORMULARIO PARA EL INGRESO DE LA NOTA, TENIENDO EN CUENTA A LAS SELECCIÓN AN
 COMO EL NIVEL Y EL CRITERIO ESCOGIDO ANTERIORMENTE POR EL USUARIO */
 function inputCreation(number, contenedor, nivel){
     var notas   = ObtenerRNotas(nivel);
-
-    var gradeInput = " <div class= 'p-5 flex flex-col content-center items-center '>" +
-    "<div  class='bg-gray-200 borderb-2 border-black flex flex-row justify-start items-center w-full cursor-pointer'>"+
-            "<div  class='bg-gray-300 p-3 font-bold text-xl backbutton' id='btnBack_"+number+"'><</div>" +
-            "<div class='mx-2 font-bold text-xl'><h1>Nivel de rango escogido <span id= max_"+number+"> "+nivel+"</span></h1></div>"+
-    "</div>"+
-   "<div class='w-full text-center'>"+
-        "<h1> Descripción del rango obtenido</h1>"+
-            "<p class='text-justify p-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum veniam ea unde mollitia aspernatur, asperiores at deleniti consequatur? Nam, quod natus. Tempora amet mollitia totam voluptas praesentium dolorem, molestias placeat.</p>" +
-    "</div>"+
-    "<div class='w-full text-center font-bold m-2'>"+  
-        "<p>La nota obtenida es:</p>"+ 
-        "<h1 class='text-4xl cursor-pointer notas' id='nota_"+number+"'  value='"+notas[0]+"'>"+notas[1]+"</h1>"+
-    "</div>"+
-    "<div  class='flex flex-row mt-2'>"+
-      "<div class='mx-2'>"+notas[1]+ "</div>"+
-        "<div>"+
-            "<input type='range' class='gradeinput rounded-lg' max="+ notas[0]+" min="+notas[1]+" step='0.1' value="+ notas[1]+" id='Grade_"+ number+ "' required>"+
-        "</div>"+
-        "<div class='mx-2'>"+ notas[0]+"</div>"+
-    "</div>"+
-    "<div  class='text-center m-2'>"+
-            "<div class='border-2 border-blue-400 bg-blue-400 text-white p-1 rounded-lg cursor-pointer btnGuardar' id='btnG_"+number+"'>Guardar</div>"+
-   "</div>"+
-"</div> ";
-    $(contenedor).append(gradeInput);     
-
+    $.post("../controlador/searchCriterio.php", {
+        "idCriterio": $('#idC'+number).val(),
+        "gradeName": nivel,
+        "idNumber": number
+    },function(result){
+        $(contenedor).append(result);  
+    }, 
+    "html");
 }
 
 
@@ -207,15 +188,15 @@ function ObtenerRNotas(nivel){
 
     // por el momento ya que no se usa base de datos aun solo manejamos estas notas
     switch(nivel){
-        case "Básico":
+        case "Muy Malo":
             nMin = 0;
             nMax = 39
         break;
-        case "Muy bueno":
+        case "Bueno":
             nMin = 60;
             nMax = 88;
         break;
-        case "Bueno":
+        case "Malo":
             nMin = 40;
             nMax = 59
         break;
@@ -239,13 +220,13 @@ function id_Number(id){
 function definirNivel(rangoGanado){
     switch(rangoGanado){
         case "promedio1":
-            nivel = "Básico"
+            nivel = "Muy Malo"
             break;
         case "promedio2":
-            nivel = "Bueno"
+            nivel = "Malo"
             break;
         case "promedio3":
-            nivel = "Muy bueno"
+            nivel = "Bueno"
         break;
         case "promedio4":
             nivel = "Excelente"

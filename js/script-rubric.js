@@ -10,6 +10,7 @@ $(document).ready(
                 $.post("../controlador/searchRubric.php", 
                     {
                         "idrubric": txtBusqueda.val()
+
                     },
                     function(respuesta){
                         var contenedorFilasRubric = $("#table-body-rubrica");
