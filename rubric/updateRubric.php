@@ -61,8 +61,7 @@ for($i = 0; $i < $ultimoCriterio; $i++){
             //Actualizamos el criterio
             $estadoCriterio = $consulta->updateCriterio($id_criterio, $titulo, $puntajeCriterio);
         }else{
-            //En el caso de que sea nuevo
-
+            //En el caso de que sea nuevoS
             //Guardamos el criterio
             $estadoCriterio = $consulta->saveCriterio($titulo, $puntajeCriterio, $id_rubrica);
             $id_criterio = $consulta->getIDCriterio($titulo, $id_rubrica); //Obtenemos el id del recien creado criterio
@@ -89,9 +88,7 @@ for ($i=0; $i < count($criteriosIDS); $i++) {
     if(!isset($_POST[$etiquetaIdCriterio])){
         //Eliminar niveles
         $niveles = $consulta->getIdNivelByIdCriterio($criteriosIDS[$i]["idcriterios"]);
-
         for($j = 0; $j < 4; $j++){
-            
             $estadoNiveles = $consulta->deleteNivelesAById($niveles[$j]["idnaprobacion"]);
         }
 
@@ -112,9 +109,11 @@ for ($i=0; $i < count($criteriosIDS); $i++) {
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../Dashboard/button.js"></script>
 </head>
 <body>
 <?php
+require('../Dashboard/Dashboard.php');
 if($estadoRubrica){
 ?>
     <section class="container">

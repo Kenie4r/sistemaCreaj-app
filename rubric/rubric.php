@@ -36,8 +36,12 @@ for ($i=0; $i < count($criterios); $i++) {
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../Dashboard/button.js"></script>
 </head>
 <body>
+<?php
+require('../Dashboard/Dashboard.php');
+?>
     <section class="container box-content">
         <div class="grid grid-cols-1 lg:grid-cols-2">
             <div class="m-9 text-gray-500 text-3xl">

@@ -19,9 +19,11 @@ $consulta = new Query; //Crear una consulta
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../Dashboard/button.js"></script>
 </head>
 <body>
 <?php
+require('../Dashboard/Dashboard.php');
 
 $idrubric = $_GET["idrubric"];
 $criterios = $consulta->getIdCriterioByIdRubric($idrubric);
@@ -29,9 +31,7 @@ $criterios = $consulta->getIdCriterioByIdRubric($idrubric);
 for($i = 0; $i < count($criterios); $i++){
     //Eliminar niveles
     $niveles = $consulta->getIdNivelByIdCriterio($criterios[$i]["idcriterios"]);
-
     for($j = 0; $j < 4; $j++){
-        
         $estadoNiveles = $consulta->deleteNivelesAById($niveles[$j]["idnaprobacion"]);
     }
 

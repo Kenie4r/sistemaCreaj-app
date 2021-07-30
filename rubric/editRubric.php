@@ -31,8 +31,12 @@ $criterios = $consulta->getCriteriosByIdRubric($idrubrica);
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/script-editRubric.js"></script>
+    <script src="../Dashboard/button.js"></script>
 </head>
 <body>
+<?php
+require('../Dashboard/Dashboard.php');
+?>
     <form id="frmNewRubric" class="container box-content" method="POST" action="updateRubric.php">
         <div class="grid grid-cols-1 lg:grid-cols-2">
             <div class="flex flex-row items-center m-9 text-gray-500 text-3xl">

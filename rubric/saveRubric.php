@@ -51,24 +51,11 @@ for($i = 1; $i <= $numeroCriterios; $i++){
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../Dashboard/button.js"></script>
 </head>
 <body>
 <?php
-/*echo "Cantidad de criterios: " . $_POST["nCriterios"] . " - ";
-$numeroCriterios = $_POST["nCriterios"];
-
-for($i = 1; $i <= $numeroCriterios; $i++){
-    $nameC = $i . "-txtNombreCriterio";
-    $puntajeC = $i . "-nbPuntaje";
-    echo "<div>";
-    echo "<p>" . $_POST[$nameC] . "</p>";
-    echo "<p>" . $_POST[$puntajeC] . "</p>";
-    for($j = 1; $j <= 4; $j++){
-        $nameN = $i . "-" .  $j . "-descripcionNivel";
-        echo "<p>Muy malo: " . $_POST[$nameN] . "</p>";
-    }
-    echo "</div>";
-}*/
+require('../Dashboard/Dashboard.php');
 if($estadoRubrica == "Registro hecho"){
 ?>
     <section class="container">

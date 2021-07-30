@@ -573,12 +573,28 @@ class Query{
     public function updateRubrica($idRubrica, $name, $idMateria, $idNivel){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "UPDATE rubrica SET nombre = :usuario, materia_idmateria = :materia, nivel_idnivel = :nivel WHERE rubrica.idrubrica = :idRubrica";
+        $sql = "UPDATE rubrica SET nombre = :nombreR, materia_idmateria = :materia, nivel_idnivel = :nivel WHERE rubrica.idrubrica = :idRubrica";
         $sentencia = $conexion->prepare($sql);
-        $sentencia->bindParam(":idRubrica", $idRubrica);
-        $sentencia->bindParam(":nombre", $name);
+        $sentencia->bindParam(":nombreR", $name);
         $sentencia->bindParam(":materia", $idMateria);
         $sentencia->bindParam(":nivel", $idNivel);
+        $sentencia->bindParam(":idRubrica", $idRubrica);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            return true;
+        }
+    }
+
+    //Niveles de aprobación
+    public function updateNAprobacion($idNAprobacion, $descripcion){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "UPDATE naprobacion SET descripcion = :descr WHERE naprobacion.idnaprobacion = :naprobacionID";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":descr", $descripcion);
+        $sentencia->bindParam(":naprobacionID", $idNAprobacion);
         if(!$sentencia){
             return false;
         }else{
@@ -746,15 +762,13 @@ class Query{
     }
 
     //Criterio
-    public function updateCriterio($idCriterio, $titulo, $descripcion, $puntaje, $rubrica){
+    public function updateCriterio($idCriterio, $titulo, $puntaje){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "UPDATE criterios SET titulo = :titulo, descripcion = :descripcion, puntaje = :puntaje, rubrica_idrubrica = :rubrica WHERE criterios.idcriterios = :idCriterio";
+        $sql = "UPDATE criterios SET titulo = :titulo, puntaje = :puntaje WHERE criterios.idcriterios = :idCriterio";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":titulo", $titulo);
-        $sentencia->bindParam(":descripcion", $descripcion);
         $sentencia->bindParam(":puntaje", $puntaje);
-        $sentencia->bindParam(":rubrica", $rubrica);
         $sentencia->bindParam(":idCriterio", $idCriterio);
         if(!$sentencia){
             return false;
@@ -792,6 +806,54 @@ class Query{
         }else{
             $sentencia->execute();
             return true;
+        }
+    }
+
+    //Eliminar la rubrica según el ID
+    public function deleteRubricById($idrubrica){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "DELETE FROM rubrica WHERE idrubrica = :rubricaID";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":rubricaID", $idrubrica);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            
+            return "Hecho";
+        }
+    }
+
+    //Eliminar el criterio según el ID
+    public function deleteCiterioById($idcriterio){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "DELETE FROM criterios WHERE idcriterios = :criteriosID";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":criteriosID", $idcriterio);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            
+            return "Hecho";
+        }
+    }
+
+    //Eliminar los niveles de aprobación según el ID
+    public function deleteNivelesAById($idnivel){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "DELETE FROM naprobacion WHERE idnaprobacion = :nivelID";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":nivelID", $idnivel);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            
+            return "Hecho";
         }
     }
 }
