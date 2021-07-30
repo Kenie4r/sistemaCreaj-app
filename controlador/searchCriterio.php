@@ -8,9 +8,21 @@
     foreach($array as $r){
         $resultado[] = $r;
     }
-    $max = floatval($resultado[3]);
-    $min = floatval($max) - 24;
-  
+    $max = $resultado[3];
+    $min = $max - 25;
+    header('Content-Type : application/json');
+    $array= array(
+        "ID"=>$resultado[0],
+        "Descr"=>$resultado[0],
+        "Name"=>$resultado[1],
+        "Range"=>$resultado[2],
+        "Max"=>$resultado[3],
+        "IDC"=>$resultado[4]
+    );
+
+echo json_encode($array);
+
+  /*
     $html ="<div class= 'p-5 flex flex-col content-center items-center '> 
     <div  class='bg-gray- 200 borderb-2 border-black flex flex-row justify-start items-center w-full cursor-pointer'>
             <div  class='bg-gray-300 p-3 font-bold text-xl backbutton' id='btnBack_$number'><</div> 
@@ -27,7 +39,7 @@
     <div  class='flex flex-row mt-2'>
       <div class='mx-2'>$min </div>
         <div>
-            <input type='range' class='gradeinput rounded-lg' max='$max' min=$min step='0.1' value='$min' id='Grade_$number ' required>
+            <input type='range' class='gradeinput rounded-lg' max='$max' min='$min' step='0.1' value='$min' id='Grade_$number ' required>
         </div>
         <div class='mx-2'> $max</div>
     </div>
@@ -35,7 +47,7 @@
             <div class='border-2 border-blue-400 bg-blue-400 text-white p-1 rounded-lg cursor-pointer btnGuardar' id='btnG_$number'>Guardar</div>
    </div>
 </div> ";
-
+*/
 print($html);
 
 

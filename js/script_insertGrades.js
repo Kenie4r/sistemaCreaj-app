@@ -87,20 +87,17 @@ function sencondActivity(){
              $(thisBox).empty()
          })
          //función para obtener, verificar el valor de la barra range que nos da  la nota
-         $('.gradeinput').change( function(){      
+        $('.gradeinput').change( function(){      
              var value  = $(this).val();
              var IDbtn = id_Number( $(this).attr('id'));
              var boxNumber = IDbtn;
              var box = "#nota_"+boxNumber;
            $(box).text(value);
-         })
-         $('.notas').click(function(){
-             var max= $(this).attr('value');
-             $(this).text(max);
-             var NumberId = id_Number($(this).attr('id'));
-             var input = "#Grade_"+NumberId;
-            inputt.value = max;
-         })
+        })
+        $('.notas').click(function(){
+          var maxGrade = $(this).val();
+            alert(maxGrade);
+        })
          $('.btnGuardar').click(function(){
              var idBox  = id_Number(  $(this).attr('id'));
              var input = "#Grade_"+ idBox;
