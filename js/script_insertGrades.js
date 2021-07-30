@@ -100,6 +100,7 @@ function mainActivity(){
 function sencondActivity(){
     $('.backbutton').click(function(){
              var IDbtn = id_Number( $(this).attr("id"));
+             alert(IDbtn);
              var boxNumber = IDbtn
              var box = "#div"+boxNumber;
              var thisBox = "#calificar"+boxNumber;
