@@ -20,19 +20,20 @@ $(document).ready(
                 var nombre = $("#txtNameProfile").val();
                 var apellido = $("#txtLastNameProfile").val();
                 var rol = $("#txtRolProfile").val();
+                var errores = 0;
                 if(nombre == "" || nombre.length > 50){
-                    alert("Error");
+                    errores++;
+                }else if(apellido == "" || apellido.length > 50){
+                    errores++;
+                }else if(rol == ""){
+                    errores++;
                 }
 
-                if(apellido == "" || apellido.length > 50){
-                    alert("Error");
+                if(errores > 0){
+                    alert("Error: Llene los campos");
+                }else{
+                    $("#frmProfile").submit();
                 }
-
-                if(rol == ""){
-                    alert("Error");
-                }
-                //
-                //$("#frmProfile").submit();
             }
         )
     }
