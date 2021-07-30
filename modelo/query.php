@@ -267,21 +267,6 @@ class Query{
             return $result;
         }
     }
-    public function obtainCritics($idRubrica){
-        $model = new Conection();
-        $conexion = $model->_getConection();
-        $sql = "SELECT * FROM criterios  WHERE criterios.rubrica_idrubrica = :idRubrica";
-        $sentencia = $conexion->prepare($sql);
-        $sentencia->bindParam(':idRubrica', $idRubrica);
-        if(!$sentencia){
-            return false;
-        }else{
-            $sentencia->execute();
-            $result= $sentencia->fetchAll(PDO::FETCH_ASSOC);
-            return $result;
-        }
-    }
-
 
     //Get ID Criterio
     public function getIDCriterio($titulo, $rubricaID){

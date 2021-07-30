@@ -30,7 +30,6 @@ $(document).ready(function(){
 
 
 function funcionamiento(){
-    
      //funcionamiento de editar
     $('.btnEdit').click(function(){
         idBox= id_Number($(this).attr('id'));
@@ -61,10 +60,9 @@ function funcionamiento(){
             }else{
                 crearNotificacion(1, "Aún no has terminado de calificar", null , "Ok");
             }
- 
         }
 
-        }
+        });
 
     })
     mainActivity();

@@ -13,5 +13,5 @@
     //los datos del equipo, como descripción y también el nombre del equipo
    $idRubric =  $htmlCreator->getTeam(2);//nos ayudara a obtener los datos de para buscar la rúbrica
     $htmlCreator->writeRubric($idRubric[0], $idRubric[1]);
-
+    $htmlCreator->endDocument();
 ?>
