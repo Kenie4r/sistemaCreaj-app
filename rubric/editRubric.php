@@ -163,7 +163,7 @@ if($i == 0){
                                 <input type='hidden' id='<?php echo $i; ?>-1-idnivel' name='<?php echo $i; ?>-1-idnivel' value='<?php echo $niveles_criterios[0]["idnaprobacion"]; ?>'>
                                 <div class='grid grid-cols-3 m-4 border-red-900 border-2 border-solid rounded-lg'>
                                     <div class='flex justify-center items-center border-r-2 border-solid border-red-900'>
-                                        <p class='text-red-900 font-bold'>Muy malo</p>
+                                        <p class='text-red-900 font-bold'>Inicial receptivo</p>
                                     </div>
                                     <textarea name='<?php echo $i; ?>-1-descripcionNivel' id='<?php echo $i; ?>-1-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-red-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-red-400 placeholder-black' placeholder='[ Agregar descripción... ]'><?php echo $niveles_criterios[0]["descripcion"]; ?></textarea>
                                 </div>
@@ -173,7 +173,7 @@ if($i == 0){
                             <input type='hidden' id='<?php echo $i; ?>-2-idnivel' name='<?php echo $i; ?>-2-idnivel' value='<?php echo $niveles_criterios[1]["idnaprobacion"]; ?>'>
                                 <div class='grid grid-cols-3 m-4 border-yellow-900 border-2 border-solid rounded-lg'>
                                     <div class='flex justify-center items-center border-r-2 border-solid border-yellow-900'>
-                                        <p class='text-yellow-900 font-bold'>Malo</p>
+                                        <p class='text-yellow-900 font-bold'>Básico</p>
                                     </div>
                                     <textarea name='<?php echo $i; ?>-2-descripcionNivel' id='<?php echo $i; ?>-2-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-yellow-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-yellow-400 placeholder-black' placeholder='[ Agregar descripción... ]'><?php echo $niveles_criterios[1]["descripcion"]; ?></textarea>
                                 </div>
@@ -183,7 +183,7 @@ if($i == 0){
                                 <input type='hidden' id='<?php echo $i; ?>-3-idnivel' name='<?php echo $i; ?>-3-idnivel' value='<?php echo $niveles_criterios[2]["idnaprobacion"]; ?>'>
                                 <div class='grid grid-cols-3 m-4 border-blue-900 border-2 border-solid rounded-lg'>
                                     <div class='flex justify-center items-center border-r-2 border-solid border-blue-900'>
-                                        <p class='text-blue-900 font-bold'>Bueno</p>
+                                        <p class='text-blue-900 font-bold'>Autónomo</p>
                                     </div>
                                     <textarea name='<?php echo $i; ?>-3-descripcionNivel' id='<?php echo $i; ?>-3-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-blue-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-blue-400 placeholder-black' placeholder='[ Agregar descripción... ]'><?php echo $niveles_criterios[2]["descripcion"]; ?></textarea>
                                 </div>
@@ -193,7 +193,7 @@ if($i == 0){
                                 <input type='hidden' id='<?php echo $i; ?>-4-idnivel' name='<?php echo $i; ?>-4-idnivel' value='<?php echo $niveles_criterios[3]["idnaprobacion"]; ?>'>
                                 <div class='grid grid-cols-3 m-4 border-green-900 border-2 border-solid rounded-lg'>
                                     <div class='flex justify-center items-center border-r-2 border-solid border-green-900'>
-                                        <p class='text-green-900 font-bold'>Excelente</p>
+                                        <p class='text-green-900 font-bold'>Estratégico</p>
                                     </div>
                                     <textarea name='<?php echo $i; ?>-4-descripcionNivel' id='<?php echo $i; ?>-4-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-green-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-green-400 placeholder-black' placeholder='[ Agregar descripción... ]'><?php echo $niveles_criterios[3]["descripcion"]; ?></textarea>
                                 </div>

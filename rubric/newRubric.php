@@ -152,7 +152,7 @@ if(empty($materias)){
                             <div id='1-1-nivelAprobacion' class=''>
                                 <div class='grid grid-cols-3 m-4 border-red-900 border-2 border-solid rounded-lg'>
                                     <div class='flex justify-center items-center border-r-2 border-solid border-red-900'>
-                                        <p class='text-red-900 font-bold'>Muy malo</p>
+                                        <p class='text-red-900 font-bold'>Inicial receptivo</p>
                                     </div>
                                     <textarea name='1-1-descripcionNivel' id='1-1-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-red-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-red-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>
                                 </div>
@@ -161,7 +161,7 @@ if(empty($materias)){
                             <div id='1-2-nivelAprobacion' class=''>
                                 <div class='grid grid-cols-3 m-4 border-yellow-900 border-2 border-solid rounded-lg'>
                                     <div class='flex justify-center items-center border-r-2 border-solid border-yellow-900'>
-                                        <p class='text-yellow-900 font-bold'>Malo</p>
+                                        <p class='text-yellow-900 font-bold'>Básico</p>
                                     </div>
                                     <textarea name='1-2-descripcionNivel' id='1-2-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-yellow-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-yellow-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>
                                 </div>
@@ -170,7 +170,7 @@ if(empty($materias)){
                             <div id='1-3-nivelAprobacion' class=''>
                                 <div class='grid grid-cols-3 m-4 border-blue-900 border-2 border-solid rounded-lg'>
                                     <div class='flex justify-center items-center border-r-2 border-solid border-blue-900'>
-                                        <p class='text-blue-900 font-bold'>Bueno</p>
+                                        <p class='text-blue-900 font-bold'>Autónomo</p>
                                     </div>
                                     <textarea name='1-3-descripcionNivel' id='1-3-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-blue-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-blue-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>
                                 </div>
@@ -179,7 +179,7 @@ if(empty($materias)){
                             <div id='1-4-nivelAprobacion' class=''>
                                 <div class='grid grid-cols-3 m-4 border-green-900 border-2 border-solid rounded-lg'>
                                     <div class='flex justify-center items-center border-r-2 border-solid border-green-900'>
-                                        <p class='text-green-900 font-bold'>Excelente</p>
+                                        <p class='text-green-900 font-bold'>Estratégico</p>
                                     </div>
                                     <textarea name='1-4-descripcionNivel' id='1-4-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-green-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-green-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>
                                 </div>

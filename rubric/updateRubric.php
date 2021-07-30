@@ -8,8 +8,8 @@ require_once("../modelo/query.php");
 $consulta = new Query; //Crear una consulta
 
 //Declarar los datos que tendrán los niveles de aprobación en criterios
-$rangosNivelesAprobacion = array("Muy malo", "Malo", "Bueno", "Excelente");
-$notasNivelesAprobacion = array(25, 50, 75, 100);
+$rangosNivelesAprobacion = array("Inicial receptivo", "Básico", "Autónomo", "Estratégico");
+$notasNivelesAprobacion = array(69, 79, 89, 100);
 
 //Traer los datos de la rúbrica
 $id_rubrica = $_POST["txtID"];

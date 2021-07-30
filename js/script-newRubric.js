@@ -90,7 +90,7 @@ function criterio(numero) {
     texto += "<div id='" + numero + "-1-nivelAprobacion' class=''>";
     texto += "<div class='grid grid-cols-3 m-4 border-red-900 border-2 border-solid rounded-lg'>";
     texto += "<div class='flex justify-center items-center border-r-2 border-solid border-red-900'>";
-    texto += "<p class='text-red-900 font-bold'>Muy malo</p>";
+    texto += "<p class='text-red-900 font-bold'>Inicial receptivo</p>";
     texto += "</div>";
     texto += "<textarea name='" + numero + "-1-descripcionNivel' id='" + numero + "-1-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-red-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-red-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>";
     texto += "</div>";
@@ -98,7 +98,7 @@ function criterio(numero) {
     texto += "<div id='" + numero + "-2-nivelAprobacion' class=''>";
     texto += "<div class='grid grid-cols-3 m-4 border-yellow-900 border-2 border-solid rounded-lg'>";
     texto += "<div class='flex justify-center items-center border-r-2 border-solid border-yellow-900'>";
-    texto += "<p class='text-yellow-900 font-bold'>Malo</p>";
+    texto += "<p class='text-yellow-900 font-bold'>Básico</p>";
     texto += "</div>";
     texto += "<textarea name='" + numero + "-2-descripcionNivel' id='" + numero + "-2-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-yellow-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-yellow-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>";
     texto += "</div>";
@@ -106,7 +106,7 @@ function criterio(numero) {
     texto += "<div id='" + numero + "-3-nivelAprobacion' class=''>";
     texto += "<div class='grid grid-cols-3 m-4 border-blue-900 border-2 border-solid rounded-lg'>";
     texto += "<div class='flex justify-center items-center border-r-2 border-solid border-blue-900'>";
-    texto += "<p class='text-blue-900 font-bold'>Bueno</p>";
+    texto += "<p class='text-blue-900 font-bold'>Autónomo</p>";
     texto += "</div>";
     texto += "<textarea name='" + numero + "-3-descripcionNivel' id='" + numero + "-3-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-blue-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-blue-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>";
     texto += "</div>";
@@ -114,7 +114,7 @@ function criterio(numero) {
     texto += "<div id='" + numero + "-4-nivelAprobacion' class=''>";
     texto += "<div class='grid grid-cols-3 m-4 border-green-900 border-2 border-solid rounded-lg'>";
     texto += "<div class='flex justify-center items-center border-r-2 border-solid border-green-900'>";
-    texto += "<p class='text-green-900 font-bold'>Excelente</p>";
+    texto += "<p class='text-green-900 font-bold'>Estratégico</p>";
     texto += "</div>";
     texto += "<textarea name='" + numero + "-4-descripcionNivel' id='" + numero + "-4-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-green-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-green-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>";
     texto += "</div>";
