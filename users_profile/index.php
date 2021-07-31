@@ -33,7 +33,7 @@ require('../Dashboard/Dashboard.php');
                 <h1 class="text-5xl text-gray-500">Usuarios</h1>
             </div>
             <div class="flex lg:justify-end">
-                <a href="newProfile.html" class="text-blue-600 border-blue-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-blue-600"><span class="icon-plus"></span> Nuevo Usuario</a>
+                <a href="newProfile.php" class="text-blue-600 border-blue-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-blue-600"><span class="icon-plus"></span> Nuevo Usuario</a>
             </div>
         </div>
 <?php
