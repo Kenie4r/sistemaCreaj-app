@@ -2,14 +2,9 @@
 
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
-
-//Verificar session
+require_once("../controlador/infoNivelesAprobacion.php");
 
 $consulta = new Query; //Crear una consulta
-
-//Declarar los datos que tendrán los niveles de aprobación en criterios
-$rangosNivelesAprobacion = array("Inicial receptivo", "Básico", "Autónomo", "Estratégico");
-$notasNivelesAprobacion = array(69, 79, 89, 100);
 
 //Traer los datos de la rúbrica
 $id_rubrica = $_POST["txtID"];
@@ -45,7 +40,7 @@ for($i = 0; $i < $ultimoCriterio; $i++){
             $nivelesIDS = $consulta->getIdNivelByIdCriterio($criteriosIDS[$i]["idcriterios"]);
 
             //Actualizamos los niveles del criterio
-            for($j = 1; $j <= 4; $j++){
+            for($j = 0; $j < 4; $j++){
                 //Las etiquetas para obtener los datos
                 $etiquetaDescriptioNivel = $i . "-" .  $j . "-descripcionNivel";
                 $etiquetaIdNivel = $i . "-" . $j . "-idnivel";
@@ -67,12 +62,12 @@ for($i = 0; $i < $ultimoCriterio; $i++){
             $id_criterio = $consulta->getIDCriterio($titulo, $id_rubrica); //Obtenemos el id del recien creado criterio
 
             //Guardar niveles
-            for($j = 1; $j <= 4; $j++){
+            for($j = 0; $j < 4; $j++){
                 $etiquetaDescriptioNivel = $i . "-" .  $j . "-descripcionNivel";
                 $etiquetaIdNivel = $i . "-" . $j . "-idcriterio";
                 $descriptionNivel = $_POST[$etiquetaDescriptioNivel];
-                $range = $rangosNivelesAprobacion[$j - 1];
-                $note = $notasNivelesAprobacion[$j - 1];
+                $range = $rangosNivelesAprobacion[$j];
+                $note = $notasNivelesAprobacion[$j];
                 $estadoNiveles = $consulta->savenAprobacion($descriptionNivel, $range, $note, $id_criterio[0]["idcriterios"]);
             }
         }

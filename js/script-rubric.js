@@ -1,16 +1,18 @@
 $(document).ready(
     function(){
         //Objetos globales
-        var txtBusqueda = $("#txtBusquedaId");
+        var txtBusqueda = $("#txtBusqueda");
         var btnDelete = $(".btn-delete");
+        var tipoBusqueda = $("#sltBusqueda");
 
         //Filtrar las rubricas segun el textbox busqueda
         txtBusqueda.on("input",
             function(){
+
                 $.post("../controlador/searchRubric.php", 
                     {
-                        "idrubric": txtBusqueda.val()
-
+                        "filtrorubric": txtBusqueda.val(),
+                        "tiporubric" : tipoBusqueda.val()
                     },
                     function(respuesta){
                         var contenedorFilasRubric = $("#table-body-rubrica");
@@ -19,6 +21,13 @@ $(document).ready(
                     },
                     "html"
                 );
+            }
+        );
+
+        //Vaciar la busqueda cuando se cambie de tipo de busqueda
+        tipoBusqueda.on("change",
+            function(){
+                txtBusqueda.val("");
             }
         );
 

@@ -36,11 +36,17 @@ require('../Dashboard/Dashboard.php');
         </div>
 <?php
 if(!empty($rubricas)){
-    echo "<div class='flex flex-row items-center m-7'>";
-    echo "\t<div class=''>";
-    echo "\t<input type='text' name='txtBusquedaId' id='txtBusquedaId' class='p-1 border-gray-700 border-solid border-2 rounded-lg outline-none' placeholder='Buscar por ID...'>";
-    echo "\t</div>";
-    echo "</div>";
+?>
+        <div class='flex flex-row items-center m-7'>
+            <div class='flex flex-row'>
+                <input type='text' name='txtBusqueda' id='txtBusqueda' class='p-1 border-gray-700 border-solid border-2 rounded-tl-lg rounded-bl-lg  outline-none' placeholder='Buscar por...'>
+                <select name="sltBusqueda" id="sltBusqueda" class="p-1 border-gray-700 border-solid border-2 rounded-tr-lg rounded-br-lg bg-gray-700 text-white outline-none">
+                    <option value="id">ID</option>
+                    <option value="nombre">Nombre</option>
+                </select>
+            </div>
+        </div>
+<?php
 }
 ?>
         <div class="box-border m-7">

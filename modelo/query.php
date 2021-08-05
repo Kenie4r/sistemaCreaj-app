@@ -306,6 +306,41 @@ class Query{
         }
     }
 
+    //Obtener las rubricas filtradas según el nombre
+    public function searchRubricByName($namerubrica){
+        $namerubrica = "%".$namerubrica."%";
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM rubrica WHERE nombre LIKE :rubricaName";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":rubricaName", $namerubrica);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
+    //Obtener las rubricas filtradas según el ID
+    public function searchRubricsByIdAndName($namerubrica){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT idrubrica FROM rubrica WHERE nombre = :namerubrica";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":namerubrica", $namerubrica);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
     //Obtener los usuarios filtrados según el nombre de usuario
     public function searchUserByName($nameRubric){
         $nameRubric = "%".$nameRubric."%";
@@ -503,6 +538,23 @@ class Query{
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
         $sql = "SELECT * FROM rubrica";
+        $sentencia = $conexion->prepare($sql);
+        if(!$sentencia){
+            return "";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
+    //Obtener todos las rúbricas DESC
+    public function getRubricsDESC(){
+        
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT * FROM rubrica ORDER BY idrubrica DESC";
         $sentencia = $conexion->prepare($sql);
         if(!$sentencia){
             return "";
