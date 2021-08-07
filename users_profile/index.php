@@ -66,9 +66,14 @@ if(!empty($usuarios)){
         echo "\t<td class='p-4'>" . $usuarios[$i]["usario"] . "</td>";
         echo "\t<td class='p-4'>" . $usuarios[$i]["nombres"] . "</td>";
         echo "\t<td class='p-4'>" . $usuarios[$i]["apellidos"] . "</td>";
-        echo "\t<td class='p-4'>" . $usuarios[$i]["rol"] . "</td>";
+        if($usuarios[$i]["rol"] == "a"){
+            echo "\t<td class='p-4'>Administrador</td>";
+        }else if($usuarios[$i]["rol"] == "c"){
+            echo "\t<td class='p-4'>Técnico-Científico</td>";
+        }else if($usuarios[$i]["rol"] == "j"){
+            echo "\t<td class='p-4'>Jurado</td>";
+        }
         echo "\t<td class='p-4'>" . $usuarios[$i]["email"] . "</td>";
-        echo "\t<td class='p-4'><a href='#' class='hover:text-blue-900'><span class='icon-eye'></span> Ver</a></td>";
         echo "\t<td class='p-4'><a href='#' class='hover:text-blue-900'><span class='icon-pencil'></span> Editar</a></td>";
         echo "\t<td class='p-4'><a href='deleteRubric.php?idrubric=variable' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
         echo "</tr>";

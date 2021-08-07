@@ -2,8 +2,7 @@
 
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
-
-//Verificar session
+require_once("../controlador/infoNivelesAprobacion.php");
 
 $consulta = new Query; //Crear una consulta
 $materias = $consulta->getMatter(); //Get materias
@@ -114,7 +113,7 @@ for ($i=0; $i < count($criterios); $i++) {
                             <div id='<?php echo $i; ?>-1-nivelAprobacion' class=''>
                                 <div class='grid grid-cols-3 m-4 border-red-900 border-2 border-solid rounded-lg'>
                                     <div class='flex justify-center items-center border-r-2 border-solid border-red-900'>
-                                        <p class='text-red-900 font-bold'>Inicial receptivo</p>
+                                        <p class='text-red-900 font-bold'><?php echo $rangosNivelesAprobacion[0]; ?></p>
                                     </div>
                                     <p class='col-span-2 bg-red-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-red-400 placeholder-black'><?php echo $niveles_criterios[0]["descripcion"]; ?></p>
                                 </div>
@@ -123,7 +122,7 @@ for ($i=0; $i < count($criterios); $i++) {
                             <div id='<?php echo $i; ?>-2-nivelAprobacion' class=''>
                                 <div class='grid grid-cols-3 m-4 border-yellow-900 border-2 border-solid rounded-lg'>
                                     <div class='flex justify-center items-center border-r-2 border-solid border-yellow-900'>
-                                        <p class='text-yellow-900 font-bold'>Básico</p>
+                                        <p class='text-yellow-900 font-bold'><?php echo $rangosNivelesAprobacion[1]; ?></p>
                                     </div>
                                     <p class='col-span-2 bg-yellow-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-yellow-400 placeholder-black' readonly><?php echo $niveles_criterios[1]["descripcion"]; ?></p>
                                 </div>
@@ -132,7 +131,7 @@ for ($i=0; $i < count($criterios); $i++) {
                             <div id='<?php echo $i; ?>-3-nivelAprobacion' class=''>
                                 <div class='grid grid-cols-3 m-4 border-blue-900 border-2 border-solid rounded-lg'>
                                     <div class='flex justify-center items-center border-r-2 border-solid border-blue-900'>
-                                        <p class='text-blue-900 font-bold'>Autónomo</p>
+                                        <p class='text-blue-900 font-bold'><?php echo $rangosNivelesAprobacion[2]; ?></p>
                                     </div>
                                     <p class='col-span-2 bg-blue-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-blue-400 placeholder-black' readonly><?php echo $niveles_criterios[2]["descripcion"]; ?></p>
                                 </div>
@@ -141,7 +140,7 @@ for ($i=0; $i < count($criterios); $i++) {
                             <div id='<?php echo $i; ?>-4-nivelAprobacion' class=''>
                                 <div class='grid grid-cols-3 m-4 border-green-900 border-2 border-solid rounded-lg'>
                                     <div class='flex justify-center items-center border-r-2 border-solid border-green-900'>
-                                        <p class='text-green-900 font-bold'>Estratégico</p>
+                                        <p class='text-green-900 font-bold'><?php echo $rangosNivelesAprobacion[3]; ?></p>
                                     </div>
                                     <p class='col-span-2 bg-green-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-green-400 placeholder-black' readonly><?php echo $niveles_criterios[3]["descripcion"]; ?></p>
                                 </div>

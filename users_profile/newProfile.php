@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/script-editProfile.js"></script>
+    <script src="../js/script-frmUserValidate.js"></script>
     <script src="../Dashboard/button.js"></script>
 </head>
 <body>
 <?php
 require('../Dashboard/Dashboard.php');
 ?>
-    <form action="saveProfile.php" method="POST" class="container box-content" id="frmProfile">
+    <form action="saveProfile.php" method="POST" class="container box-content" name="frmProfile" id="frmProfile">
         <div class="grid grid-cols-1 lg:grid-cols-2 lg:m-9">
             <div class="lg:m-0">
                 <h1 class="text-5xl text-gray-500">Nuevo Perfil</h1>
@@ -67,7 +68,15 @@ require('../Dashboard/Dashboard.php');
                     <label for="txtRolProfile" class="p-2 bg-gray-700 text-white">Rol:</label>
                     <select name="txtRolProfile" id="txtRolProfile" class="p-1 w-full rounded-r-lg outline-none" required>
                         <option value="">Escogue un rol...</option>
+<?php
+
+if($_SESSION['rol'] == "a"){
+?>
                         <option value="a">Administrador</option>
+<?php
+}
+
+?>
                         <option value="c">Técnico - Científico</option>
                         <option value="j">Jurado</option>
                     </select>

@@ -71,6 +71,9 @@
             <div class="border-2 border-blue-500 text-xl p-2 text-blue-500 hover:bg-blue-400 hover:text-white cursor-pointer" >
                <a href="../users_profile/index.php" > Editar </a>
             </div>
+            <div class="border-2 border-blue-500 text-xl ml-2 p-2 text-blue-500 hover:bg-blue-400 hover:text-white cursor-pointer" >
+               <a href="../profile/editPassword.php">Cambiar contraseña</a>
+            </div>
         </div>
         </dd>
       </div>

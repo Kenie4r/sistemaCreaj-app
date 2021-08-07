@@ -306,6 +306,41 @@ class Query{
         }
     }
 
+    //Obtener las rubricas filtradas según el nombre
+    public function searchRubricByName($namerubrica){
+        $namerubrica = "%".$namerubrica."%";
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM rubrica WHERE nombre LIKE :rubricaName";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":rubricaName", $namerubrica);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
+    //Obtener las rubricas filtradas según el ID
+    public function searchRubricsByIdAndName($namerubrica){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT idrubrica FROM rubrica WHERE nombre = :namerubrica";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":namerubrica", $namerubrica);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
     //Obtener los usuarios filtrados según el nombre de usuario
     public function searchUserByName($nameRubric){
         $nameRubric = "%".$nameRubric."%";
@@ -497,6 +532,40 @@ class Query{
         }
     }
 
+    //Obtener todos el usuario por el username
+    public function getUserByUsername($username){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT * FROM usuario WHERE usario = :nombre";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":nombre", $username);
+        if(!$sentencia){
+            return "";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
+    //Obtener las rubricas filtradas según el ID
+    public function getUsersByUsername($nameuser){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM usuario WHERE usario = :nameuser";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":nameuser", $nameuser);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
     //Obtener todos las rúbricas
     public function getRubrics(){
         
@@ -519,6 +588,23 @@ class Query{
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
         $sql = "SELECT * FROM estudiante";
+        $sentencia = $conexion->prepare($sql);
+        if(!$sentencia){
+            return "";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
+    //Obtener todos las rúbricas DESC
+    public function getRubricsDESC(){
+        
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT * FROM rubrica ORDER BY idrubrica DESC";
         $sentencia = $conexion->prepare($sql);
         if(!$sentencia){
             return "";
@@ -581,17 +667,33 @@ class Query{
     //UPDATE
 
     //Usuario
-    public function updateUser($idUser, $nameUser, $name, $last_name, $rol, $password){
+    public function updateUser($idUser, $nameUser, $name, $last_name, $rol){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "UPDATE usuario SET usario = :usuario, nombres = :nombre, apellidos = :apellido, rol = :rol, password = :contra WHERE usuario.idUsuario = :idUsuario";
+        $sql = "UPDATE usuario SET usario = :usuario, nombres = :nombre, apellidos = :apellido, rol = :rol WHERE usuario.idUsuario = :idUsuario";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":usuario", $nameUser);
         $sentencia->bindParam(":nombre", $name);
         $sentencia->bindParam(":apellido", $last_name);
         $sentencia->bindParam(":rol", $rol);
-        $sentencia->bindParam(":contra", $password);
         $sentencia->bindParam(":idUsuario", $idUser);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            return true;
+        }
+    }
+
+    //Usuario password
+    public function updateUserPassword($nameUser, $contra){
+        $contra = md5($contra);
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "UPDATE usuario SET 	password = :contra WHERE usario = :username";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":contra", $contra);
+        $sentencia->bindParam(":username", $nameUser);
         if(!$sentencia){
             return false;
         }else{

@@ -2,13 +2,9 @@
 
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
-
-//Verificar session
+require_once("../controlador/infoNivelesAprobacion.php");
 
 $consulta = new Query; //Crear una consulta
-
-$rangosNivelesAprobacion = array("Inicial receptivo", "Básico", "Autónomo", "Estratégico");
-$notasNivelesAprobacion = array(69, 79, 89, 100);
 
 //Guardar rubrica
 $id_rubrica = $_POST["txtID"];
@@ -18,25 +14,27 @@ $id_nivel = $_POST["txtNivel"];
 $estadoRubrica = $consulta->saveRubrica($id_rubrica, $name, $id_materia, $id_nivel);
 
 //Guardar criterios
-$numeroCriterios = $_POST["nCriterios"];
+$numeroCriterios = $_POST["siguienteCriterio"];
 
-for($i = 1; $i <= $numeroCriterios; $i++){
+for($i = 0; $i < $numeroCriterios; $i++){
     $etiquetaNameCriterio = $i . "-txtNombreCriterio";
     $etiquetaPuntajeCriterio = $i . "-nbPuntaje";
 
-    $titulo = $_POST[$etiquetaNameCriterio];
-    $puntajeCriterio = $_POST[$etiquetaPuntajeCriterio];
-    $estadoCriterio = $consulta->saveCriterio($titulo, $puntajeCriterio, $id_rubrica);
-    $id_criterio = $consulta->getIDCriterio($titulo, $id_rubrica);
-    
-    //Guardar niveles
-    for($j = 1; $j <= 4; $j++){
-        $etiquetaDescriptioNivel = $i . "-" .  $j . "-descripcionNivel";
+    if( isset($_POST[$etiquetaNameCriterio]) ){
+        $titulo = $_POST[$etiquetaNameCriterio];
+        $puntajeCriterio = $_POST[$etiquetaPuntajeCriterio];
+        $estadoCriterio = $consulta->saveCriterio($titulo, $puntajeCriterio, $id_rubrica);
+        $id_criterio = $consulta->getIDCriterio($titulo, $id_rubrica);
+        
+        //Guardar niveles
+        for($j = 0; $j < 4; $j++){
+            $etiquetaDescriptioNivel = $i . "-" .  $j . "-descripcionNivel";
 
-        $descriptionNivel = $_POST[$etiquetaDescriptioNivel];
-        $range = $rangosNivelesAprobacion[$j - 1];
-        $note = $notasNivelesAprobacion[$j - 1];
-        $estadoNiveles = $consulta->savenAprobacion($descriptionNivel, $range, $note, $id_criterio[0]["idcriterios"]);
+            $descriptionNivel = $_POST[$etiquetaDescriptioNivel];
+            $range = $rangosNivelesAprobacion[$j];
+            $note = $notasNivelesAprobacion[$j];
+            $estadoNiveles = $consulta->savenAprobacion($descriptionNivel, $range, $note, $id_criterio[0]["idcriterios"]);
+        }
     }
 }
 ?>
