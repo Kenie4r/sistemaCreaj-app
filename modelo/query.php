@@ -513,6 +513,22 @@ class Query{
             return $resultado;
         }
     }
+    //obtener todos los estudiantes
+
+    public function getEstudiantes(){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT * FROM estudiante";
+        $sentencia = $conexion->prepare($sql);
+        if(!$sentencia){
+            return "";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
 
     //Obtener todos los niveles
     public function getMatter(){
