@@ -4,7 +4,11 @@ require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
 
 $consulta = new Query; //Crear una consulta
-$rubricas = $consulta->searchRubricById($_POST["idrubric"]); //Get rúbricas
+if($_POST["tiporubric"] == "id"){
+    $rubricas = $consulta->searchRubricById($_POST["filtrorubric"]); //Get rúbricas by id
+}else{
+    $rubricas = $consulta->searchRubricByName($_POST["filtrorubric"]); //Get rúbricas by nombre
+}
 
 if(!empty($rubricas)){
     for ($i=0; $i < count($rubricas); $i++) { 
@@ -18,7 +22,7 @@ if(!empty($rubricas)){
     }
 }else{
     echo "<tr class='lol'>";
-    echo "\t<td colspan='5' class='p-4'><span class='icon-blocked'></span> No hay ninguna rúbrica con ese ID<td>";
+    echo "\t<td colspan='5' class='p-4'><span class='icon-blocked'></span> No hay ninguna rúbrica con ese " . $_POST["tiporubric"] . "<td>";
     echo "</tr>";
 }
 

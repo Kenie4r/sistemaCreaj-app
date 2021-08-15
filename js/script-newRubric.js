@@ -3,17 +3,9 @@ $(document).ready(
         //V A R I A B L E S   G E N E R A L E S
         var contenedorCriterio = $("#contenedor-criterios"); //Se busca el contenedor de los criterios
         var btnAddCriterio = $("#addCriterio"); //Se busca el botón de añadir criterio
-        var btnSubmit = $("#btnSubmit"); //El botón para enviar el formulario
-
-        //FUNCIÓN DE ENVIAR EL FORMULARIO POR UN A
-        btnSubmit.on("click",
-            function(){
-                formValidate();
-            }
-        );
 
         //C R I T E R I O   P O R   D E F E C T O
-        var puntaje1 = $("#1-nbPuntaje"); //Se busca el input puntaje del criterio por defecto
+        var puntaje1 = $("#0-nbPuntaje"); //Se busca el input puntaje del criterio por defecto
 
         //Se configura el evento de modificar puntaje en el criterio por defecto
         puntaje1.on("input",
@@ -87,36 +79,36 @@ function criterio(numero) {
     texto += "</div>";
     texto += "</div>";
     texto += "<div id='" + numero + "-nivelesAprobacion' class=''>";
-    texto += "<div id='" + numero + "-1-nivelAprobacion' class=''>";
+    texto += "<div id='" + numero + "-0-nivelAprobacion' class=''>";
     texto += "<div class='grid grid-cols-3 m-4 border-red-900 border-2 border-solid rounded-lg'>";
     texto += "<div class='flex justify-center items-center border-r-2 border-solid border-red-900'>";
     texto += "<p class='text-red-900 font-bold'>Inicial receptivo</p>";
     texto += "</div>";
-    texto += "<textarea name='" + numero + "-1-descripcionNivel' id='" + numero + "-1-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-red-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-red-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>";
+    texto += "<textarea name='" + numero + "-0-descripcionNivel' id='" + numero + "-0-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-red-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-red-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>";
     texto += "</div>";
     texto += "</div>";
-    texto += "<div id='" + numero + "-2-nivelAprobacion' class=''>";
+    texto += "<div id='" + numero + "-1-nivelAprobacion' class=''>";
     texto += "<div class='grid grid-cols-3 m-4 border-yellow-900 border-2 border-solid rounded-lg'>";
     texto += "<div class='flex justify-center items-center border-r-2 border-solid border-yellow-900'>";
     texto += "<p class='text-yellow-900 font-bold'>Básico</p>";
     texto += "</div>";
-    texto += "<textarea name='" + numero + "-2-descripcionNivel' id='" + numero + "-2-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-yellow-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-yellow-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>";
+    texto += "<textarea name='" + numero + "-1-descripcionNivel' id='" + numero + "-1-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-yellow-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-yellow-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>";
     texto += "</div>";
     texto += "</div>";
-    texto += "<div id='" + numero + "-3-nivelAprobacion' class=''>";
+    texto += "<div id='" + numero + "-2-nivelAprobacion' class=''>";
     texto += "<div class='grid grid-cols-3 m-4 border-blue-900 border-2 border-solid rounded-lg'>";
     texto += "<div class='flex justify-center items-center border-r-2 border-solid border-blue-900'>";
     texto += "<p class='text-blue-900 font-bold'>Autónomo</p>";
     texto += "</div>";
-    texto += "<textarea name='" + numero + "-3-descripcionNivel' id='" + numero + "-3-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-blue-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-blue-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>";
+    texto += "<textarea name='" + numero + "-2-descripcionNivel' id='" + numero + "-2-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-blue-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-blue-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>";
     texto += "</div>";
     texto += "</div>";
-    texto += "<div id='" + numero + "-4-nivelAprobacion' class=''>";
+    texto += "<div id='" + numero + "-3-nivelAprobacion' class=''>";
     texto += "<div class='grid grid-cols-3 m-4 border-green-900 border-2 border-solid rounded-lg'>";
     texto += "<div class='flex justify-center items-center border-r-2 border-solid border-green-900'>";
     texto += "<p class='text-green-900 font-bold'>Estratégico</p>";
     texto += "</div>";
-    texto += "<textarea name='" + numero + "-4-descripcionNivel' id='" + numero + "-4-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-green-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-green-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>";
+    texto += "<textarea name='" + numero + "-3-descripcionNivel' id='" + numero + "-3-descripcionNivel' cols='50' rows='3' class='col-span-2 bg-green-500 rounded-r-lg p-4 w-full bg-transparent outline-none focus:bg-green-400 placeholder-black' placeholder='[ Agregar descripción... ]'></textarea>";
     texto += "</div>";
     texto += "</div>";
     texto += "</div>";
@@ -128,6 +120,7 @@ function criterio(numero) {
 //Coloca el total de los criterios en el input number Total
 function colocarPuntajeTotal(inputActual) {
     var cantidadCriterios = parseInt($("#nCriterios").val()); //Debemos saber cuantos criterios existen
+    var maximoCriterios = parseInt($("#siguienteCriterio").val()); //Cuantos criterios han existido
     var contenedorPuntaje = $("#puntajeTotal"); //Se busca el contenedor del puntaje total de la rúbrica
     var suma = 0;
     
@@ -137,15 +130,14 @@ function colocarPuntajeTotal(inputActual) {
         contenedorPuntaje.val( suma );
         seCompletoPuntajeTotal( suma );
     }else if( cantidadCriterios > 1 ){
-        suma = sumaCriterios(cantidadCriterios);
-        corroborarSuma(suma, contenedorPuntaje, inputActual, cantidadCriterios);
+        suma = sumaCriterios(maximoCriterios);
+        corroborarSuma(suma, contenedorPuntaje, inputActual, maximoCriterios);
     }
 }
 
 //Devuelve el valor del input number Puntaje validado dentro de los limites permitidos
 function obtenerPuntajeValidado(inputPuntaje) {
     var valPuntaje = parseInt(inputPuntaje.val());
-    var limiteMax = parseInt($("#restante").val());
     
     if( valPuntaje > 100 ){
         inputPuntaje.val(100);
@@ -164,13 +156,16 @@ function obtenerPuntajeValidado(inputPuntaje) {
 
 //Devuelve la suma de todos los puntajes criterios existentes
 function sumaCriterios(cantidadCriterios) {
-    var i, suma = 0;
-    var puntajeInput; //Nos ayudará más adelante
-    var restante = parseInt($("#restante").val());
+    var suma = 0;
+    var puntajeInput = ""; //Nos ayudará más adelante
+    var etiquetaCriterio = "";
 
-    for( i = 1; i <= cantidadCriterios; i++ ){
-        puntajeInput = "#" + i + "-nbPuntaje";
-        suma += obtenerPuntajeValidado( $(puntajeInput) );
+    for( let i = 0; i < cantidadCriterios; i++ ){
+        etiquetaCriterio = "#" + i + "-criterio";
+        if($(etiquetaCriterio).length > 0){
+            puntajeInput = "#" + i + "-nbPuntaje";
+            suma += obtenerPuntajeValidado( $(puntajeInput) );
+        }
     }
 
     return suma;
@@ -209,52 +204,5 @@ function disminuirCriterios() {
 function seCompletoPuntajeTotal(suma) {
     if( suma == 100 ){
         alert("Felicidades, ha completado el porcentaje máximo de esta rúbrica.");
-    }
-}
-
-//Verifica si el formulario esta correcto, para enviarlo
-function formValidate(){
-    var frmRubric = $("#frmNewRubric"); //El formulario
-    var txtNameRubric = $("#txtNombreRubrica");
-    var txtMateriaRubric = $("#txtMateria");
-    var txtNivelRubric = $("#txtNivel");
-    var errores = 0;
-    var criteriosActuales = parseInt($("#siguienteCriterio").val());
-    var etiquetaNombreCriterio = "";
-    var etiquetaPuntajeCriterio = "";
-    var etiquetaDescripcionNivel = "";
-
-    //Validacion Rubrica
-    if(txtNameRubric.val() == ""){
-        errores++;
-    }else if(txtMateriaRubric.val() == ""){
-        errores++;
-    }else if(txtNivelRubric.val() == ""){
-        errores++;
-    }
-
-    //Validacion Criterios
-    for (let i = 1; i < criteriosActuales; i++) {
-        etiquetaNombreCriterio = "#" + i + "-txtNombreCriterio";
-        etiquetaPuntajeCriterio = "#" + i + "-nbPuntaje";
-
-        if($(etiquetaNombreCriterio).val() == ""){
-            errores++;
-        }else if($(etiquetaPuntajeCriterio).val() <= 0){
-            errores++;
-        }
-        for(let j = 1; j <= 4; j++){
-            etiquetaDescripcionNivel = "#" + i + "-" + j + "-descripcionNivel";
-            if($(etiquetaDescripcionNivel).val() == ""){
-                errores++;
-            }
-        }
-    }
-
-    //Ver cuantos errores hay para enviar el formulario
-    if(errores > 0){
-        alert("Error: Llene todos los campos.")
-    }else{
-        frmRubric.submit();
     }
 }
