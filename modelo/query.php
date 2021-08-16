@@ -208,6 +208,26 @@ class Query{
     }
 
     //SELECT
+    //obtener la cantidad de proyectos asignados  a un usuario 
+    public function getCountProjects($userID){
+        $model = new Conection();
+        $connection = $model->_getConection();
+        $sql = "SELECT COUNT(*) FROM asignacionj WHERE asignacionj.usuario_idUsuario = :userID";
+        $sentencia = $connection->prepare($sql);
+        $sentencia->bindParam(":userID", $userID);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+        }
+    }
+
+
+
+
+
     //obtener datos de equipo
     public function getTeamData($idTeam){
         $model = new Conection();

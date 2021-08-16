@@ -25,7 +25,10 @@
 
         print($header);
      }
-    
+
+
+
+
     //siguiente función para leer datos
     function getTeam($idTeam){
         $query = new Query();
@@ -185,7 +188,64 @@ HEREDOC;
         print($endOfFile);
 
     }
+    function watchProjects(){
+        $header = <<<'EDO'
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Equipos a calificar</title>
+            <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <link rel="stylesheet" href="../recursos/icons/style.css">
+            <link rel="stylesheet" href="css/styles_insertG.css">
+        </head>
+        EDO;
+
+        print($header);
+    }
+    function theresProjects( $userID){
+        $query = new Query();
+        $answer = $query-> getCountProjects($userID);
+        foreach( $answer as $res =>$a){
+            foreach($a as $b){
+                $count = $b;
+            }
+        }
+        if($count==0){
+            $html =<<<'EDO'
+            <div class="flex flex-col   justify-center items-center w-full h-full">
+            <div class="text-gray-400 text-xl">
+                <h1 class="text-center text-6xl">
+                    <span class="icon-wondering2"></span>
+                </h1>
+                <h1>
+                    Aún no hay ningún proyecto para calificar.
+                </h1>
+        
+        
+            </div>
+            EDO;
+        
+            print($html);
+        }else{
+            searchAll($userID);
+        }
+    }
+    function nothing(){
+      
+    }
+    function searchAll($userID){
+        $query = new Query();
+       // $answer = 
+    }
+
+
 }
+
+
 
 
 
