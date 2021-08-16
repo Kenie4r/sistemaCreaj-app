@@ -210,7 +210,7 @@ HEREDOC;
     }
     function theresProjects($username ){
         $query = new Query();
-        $html ="";
+        $html =""; $c = 0;
         $user = $query->getUserByUsername($username);
         $userID = $user['idUsuario'];
         $answer = $query-> getCountProjects($userID);
@@ -253,8 +253,12 @@ HEREDOC;
           $data = $query->getProjectsinfo($userID);
           foreach($data as $campo){
             $info = $query->getAllProjects($campo['materia_idmateria'], $campo['grado_idgrado']);
+            
             foreach($info as $result){
-                $html.="<div class='bg-white w-8/12  border border-2 p-5 roundend-full m-auto shadow-md my-7'>
+                if(empty($info)){
+                    $c++;
+                }else{
+                    $html.="<div class='bg-white w-8/12  border border-2 p-5 roundend-full m-auto shadow-md my-7'>
                 <div class='flex w-full flex-row items-center justify-between'>
                     <div class='text-lg font-bold '>
                         <h1>{$result['nombreProyecto'] }</h1>
@@ -272,15 +276,26 @@ HEREDOC;
                     </div>   
                 </div>
         </div>
-                
-                
-                
                 ";
-     
+                }
             }
           }
         }
-
+        if($c>0){
+            $html =<<<'EDO'
+            <div class="flex flex-col   justify-center items-center w-full h-full">
+            <div class="text-gray-400 text-xl">
+                <h1 class="text-center text-6xl">
+                    <span class="icon-wondering2"></span>
+                </h1>
+                <h1>
+                    Aún no hay ningún proyecto para calificar.
+                </h1>
+        
+        
+            </div>
+            EDO;
+        }
         print($html);
     }
 
