@@ -209,6 +209,7 @@ class Query{
 
     //SELECT
     //obtener la cantidad de proyectos asignados  a un usuario 
+    
     public function getCountProjects($userID){
         $model = new Conection();
         $connection = $model->_getConection();
@@ -224,7 +225,37 @@ class Query{
         }
     }
 
-
+    //obtener los datos de asignación de proyectos
+    public function getProjectsinfo($userID){
+        $model = new Conection();
+        $connection = $model->_getConection();
+        $sql = "SELECT * FROM asignacionj WHERE asignacionj.usuario_idUsuario = :userID";
+        $sentencia = $connection->prepare($sql);
+        $sentencia->bindParam(":userID", $userID);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+        }
+    }
+    //obtener los proyectos asignados
+    public function getAllProjects($idMateria, $idGrado){
+        $model = new Conection();
+        $connection = $model->_getConection();
+        $sql = "SELECT * FROM proyecto WHERE proyecto.grado_idgrado =:idMateria  AND proyecto.materia_idmateria =:idGrado";
+        $sentencia = $connection->prepare($sql);
+        $sentencia ->bindParam(":idMateria", $idMateria);
+        $sentencia->bindParam(":idGrado", $idGrado);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+        }
+    }
 
 
 

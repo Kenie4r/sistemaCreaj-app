@@ -200,14 +200,19 @@ HEREDOC;
             <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
             <link rel="stylesheet" href="../recursos/icons/style.css">
-            <link rel="stylesheet" href="css/styles_insertG.css">
         </head>
+        <body >
+            <div class='container h-screen bg-white w-screen'>
+                <div class='mx-auto'>
         EDO;
 
         print($header);
     }
-    function theresProjects( $userID){
+    function theresProjects($username ){
         $query = new Query();
+        $html ="";
+        $user = $query->getUserByUsername($username);
+        $userID = $user['idUsuario'];
         $answer = $query-> getCountProjects($userID);
         foreach( $answer as $res =>$a){
             foreach($a as $b){
@@ -229,18 +234,56 @@ HEREDOC;
             </div>
             EDO;
         
-            print($html);
         }else{
-            searchAll($userID);
+            $html.="<div class='bg-black w-11/12 p-2 text-white mx-auto rounded-sm my-2 flex flex-row justify-between items-center' >
+            <div class='text-xl'>
+                <h2>Proyectos a calificar</h2>
+            </div>
+            <div>
+                <div class='w-max'>
+                    <div class='bg-gray-300 m-2 rounded-sm'>
+                        <input type='text' name='' id='' class='text-black p-1'>
+                        <span class='icon-search p-2'></span>
+                    </div>
+                
+                </div>
+            </div>
+
+        </div>";
+          $data = $query->getProjectsinfo($userID);
+          foreach($data as $campo){
+            $info = $query->getAllProjects($campo['materia_idmateria'], $campo['grado_idgrado']);
+            foreach($info as $result){
+                $html.="<div class='bg-white w-8/12  border border-2 p-5 roundend-full m-auto shadow-md my-7'>
+                <div class='flex w-full flex-row items-center justify-between'>
+                    <div class='text-lg font-bold '>
+                        <h1>{$result['nombreProyecto'] }</h1>
+                    </div>
+                    <div class='text-center '>
+                        <p class='p-1 border border-2 border-blue-400 text-blue-400 w-40 mx-auto mt-2 hover:bg-blue-400 hover:text-white  cursor-pointer'>
+                            <a href='calificar.php?teamID={$result['idproyecto']}'>
+                                Calificar proyecto
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                    <div>
+                            {$result['descripcion']}
+                    </div>   
+                </div>
+        </div>
+                
+                
+                
+                ";
+     
+            }
+          }
         }
+
+        print($html);
     }
-    function nothing(){
-      
-    }
-    function searchAll($userID){
-        $query = new Query();
-       // $answer = 
-    }
+
 
 
 }
