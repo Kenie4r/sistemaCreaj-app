@@ -209,6 +209,7 @@ HEREDOC;
         print($header);
     }
     function theresProjects($username ){
+        $c = false;
         $query = new Query();
         $html =""; $c = 0;
         $user = $query->getUserByUsername($username);
@@ -221,10 +222,10 @@ HEREDOC;
         }
         if($count==0){
             $html =<<<'EDO'
-            <div class="flex flex-col   justify-center items-center w-full h-full">
-            <div class="text-gray-400 text-xl">
-                <h1 class="text-center text-6xl">
-                    <span class="icon-wondering2"></span>
+            <div class='flex flex-col   justify-center items-center w-full h-full'>
+            <div class='text-gray-400 text-xl'>
+                <h1 class='text-center text-6xl'>
+                    <span class='icon-wondering2'></span>
                 </h1>
                 <h1>
                     Aún no hay ningún proyecto para calificar.
@@ -235,7 +236,7 @@ HEREDOC;
             EDO;
         
         }else{
-            $html.="<div class='bg-black w-11/12 p-2 text-white mx-auto rounded-sm my-2 flex flex-row justify-between items-center' >
+            $html.="<div class='bg-blue-900 w-11/12 p-2 text-white mx-auto rounded-sm my-2 flex flex-row justify-between items-center' >
             <div class='text-xl'>
                 <h2>Proyectos a calificar</h2>
             </div>
@@ -255,46 +256,50 @@ HEREDOC;
             $info = $query->getAllProjects($campo['materia_idmateria'], $campo['grado_idgrado']);
             
             foreach($info as $result){
-                if(empty($info)){
-                    $c++;
-                }else{
-                    $html.="<div class='bg-white w-8/12  border border-2 p-5 roundend-full m-auto shadow-md my-7'>
-                <div class='flex w-full flex-row items-center justify-between'>
-                    <div class='text-lg font-bold '>
-                        <h1>{$result['nombreProyecto'] }</h1>
-                    </div>
-                    <div class='text-center '>
-                        <p class='p-1 border border-2 border-blue-400 text-blue-400 w-40 mx-auto mt-2 hover:bg-blue-400 hover:text-white  cursor-pointer'>
-                            <a href='calificar.php?teamID={$result['idproyecto']}'>
-                                Calificar proyecto
-                            </a>
-                        </p>
-                    </div>
-                </div>
-                    <div>
-                            {$result['descripcion']}
-                    </div>   
-                </div>
-        </div>
-                ";
+                $calificado = $query->isSavedProject($result['idproyecto'], $userID);
+                foreach( $calificado as $camp){
+                    foreach($camp as $myre){
+                        if($myre>0){
+                                $c=true;
+                        }else{ 
+                            $c=false;
+                            $html.="<div class='bg-white w-8/12  border border-2 p-5 roundend-full m-auto shadow-md my-7'>
+                                                <div class='flex w-full flex-row items-center justify-between'>
+                                                        <div class='text-lg font-bold '>
+                                                            <h1>{$result['nombreProyecto'] }</h1>
+                                                        </div>
+                                                        <div class='text-center '>
+                                                            <p class='p-1 border border-2 border-blue-400 text-blue-400 w-40 mx-auto mt-2 hover:bg-blue-400 hover:text-white  cursor-pointer'>
+                                                                <a href='calificar.php?teamID={$result['idproyecto']}'>
+                                                                    Calificar proyecto
+                                                                </a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        {$result['descripcion']}
+                                                    </div>   
+                                                </div>
+                                            </div>";
+                        
+                        }
+                    }
                 }
             }
           }
         }
-        if($c>0){
-            $html =<<<'EDO'
-            <div class="flex flex-col   justify-center items-center w-full h-full">
-            <div class="text-gray-400 text-xl">
-                <h1 class="text-center text-6xl">
-                    <span class="icon-wondering2"></span>
-                </h1>
-                <h1>
-                    Aún no hay ningún proyecto para calificar.
-                </h1>
-        
-        
-            </div>
-            EDO;
+        if($c==true){
+                $html.= " <div class='flex flex-col   justify-center items-center w-full h-7 my-24'>
+                <div class='text-gray-400 text-xl'>
+                    <h1 class='text-center text-6xl'>
+                        <span class='icon-happy2'></span>
+                    </h1>
+                    <h1>
+                        Todos los proyectos han sido calificados.
+                    </h1>
+            
+            
+                </div>";
         }
         print($html);
     }

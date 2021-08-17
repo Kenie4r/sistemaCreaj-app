@@ -240,6 +240,24 @@ class Query{
             return $resultado;
         }
     }
+    //revisar si está calificado un proyecto
+    public function isSavedProject($idProject, $idUser){
+        $model = new Conection();
+        $connection = $model->_getConection();
+        $sql = "SELECT COUNT(*)FROM puntaje WHERE puntaje.proyecto_idproyecto =:idProject  AND puntaje.usuario_idUsuario =:idUser";
+        $sentencia = $connection->prepare($sql);
+        $sentencia ->bindParam(":idProject", $idProject);
+        $sentencia->bindParam(":idUser", $idUser);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+        }
+    }
+
+
     //obtener los proyectos asignados
     public function getAllProjects($idMateria, $idGrado){
         $model = new Conection();
