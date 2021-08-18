@@ -190,21 +190,21 @@ function ObtenerRNotas(nivel){
 
     // por el momento ya que no se usa base de datos aun solo manejamos estas notas
     switch(nivel){
-        case "Muy Malo":
-            nMin = 0;
-            nMax = 39
-        break;
-        case "Bueno":
-            nMin = 60;
-            nMax = 88;
-        break;
-        case "Malo":
+        case "Inicial receptivo":
             nMin = 40;
-            nMax = 59
+            nMax = 69;
         break;
-        case "Excelente":
+        case "Básico":
+            nMin = 70;
+            nMax = 79;
+        break;
+        case "Autónomo":
+            nMin = 80;
+            nMax = 89;
+        break;
+        case "Estratégico":
                 nMax = 100;
-                nMin = 89;
+                nMin = 90;
         break;
 
     }
@@ -222,16 +222,16 @@ function id_Number(id){
 function definirNivel(rangoGanado){
     switch(rangoGanado){
         case "promedio1":
-            nivel = "Muy Malo"
+            nivel = "Inicial receptivo"
             break;
         case "promedio2":
-            nivel = "Malo"
+            nivel = "Básico"
             break;
         case "promedio3":
-            nivel = "Bueno"
+            nivel = "Autónomo"
         break;
         case "promedio4":
-            nivel = "Excelente"
+            nivel = "Estratégico"
         break;
     }
     return nivel;

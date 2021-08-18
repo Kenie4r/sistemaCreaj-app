@@ -150,10 +150,10 @@
                         <input type='radio'  id='promedio2_{$number}' name='promedios{$number}' class='promedios absolute opacity-0' required>
                         <input type='radio'  id='promedio3_{$number}' name='promedios{$number}' class='promedios absolute opacity-0' required>
                         <input type='radio'  id='promedio4_{$number}' name='promedios{$number}' class='promedios absolute opacity-0 ' required>
-                        <label for='promedio1_{$number}'class='promediosL rounded-lg border-2 border-red-500 text-blue-500 p-1 text-md  text-center hover:bg-blue-400 hover:text-white cursor-pointer'>Muy Malo</label>
-                        <label for='promedio2_{$number}' class='promediosL rounded-lg border-2 border-yellow-500 text-blue-500 p-1 text-md  text-center hover:bg-blue-400 hover:text-white cursor-pointer'>Malo</label>
-                        <label for='promedio3_{$number}' class='promediosL rounded-lg border-2 border-blue-500 text-blue-500 p-1 text-md  text-center hover:bg-blue-400 hover:text-white cursor-pointer'>Bueno</label>
-                        <label for='promedio4_{$number}' class='promediosL rounded-lg border-2 border-green-500 text-blue-500 p-1 text-md  text-center hover:bg-blue-400 hover:text-white cursor-pointer'>Excelente </label>
+                        <label for='promedio1_{$number}'class='promediosL rounded-lg border-2 border-red-500 text-blue-500 p-1 text-md  text-center hover:bg-blue-400 hover:text-white cursor-pointer'>Incial receptivo</label>
+                        <label for='promedio2_{$number}' class='promediosL rounded-lg border-2 border-yellow-500 text-blue-500 p-1 text-md  text-center hover:bg-blue-400 hover:text-white cursor-pointer'>Básico</label>
+                        <label for='promedio3_{$number}' class='promediosL rounded-lg border-2 border-blue-500 text-blue-500 p-1 text-md  text-center hover:bg-blue-400 hover:text-white cursor-pointer'>Autonómo</label>
+                        <label for='promedio4_{$number}' class='promediosL rounded-lg border-2 border-green-500 text-blue-500 p-1 text-md  text-center hover:bg-blue-400 hover:text-white cursor-pointer'>Estratégico</label>
                     </div>
                     <div  class='p-5 transicion calificaciones' id='calificar$number'>
                     </div>

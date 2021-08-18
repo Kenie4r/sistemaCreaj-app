@@ -4,6 +4,7 @@
     $number = $_POST['idNumber'];
     $query = new Query;
     $resultado = array();
+
   $array= $query->getRange($_POST['idCriterio'], $_POST['gradeName']);
     foreach($array as $r){
         $resultado[] = $r;
