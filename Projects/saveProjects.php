@@ -6,14 +6,13 @@
 
 $consulta = new Query; //Crear una consulta
 
-//Guardar estudiante
-$id= $_POST["txtCodigo"];
+//Guardar Proyecto
+
 $name= $_POST["txtNombre"];
-$last_name= $_POST["txtApellido"];
-$Datoestudiantes= $consulta->saveStudent($id, $name, $last_name);
-$id_estudiante= $_POST["txtCodigo"];
-$proyecto= $_POST["txtProject"];
-$Datosteam= $consulta->saveTeam($id_estudiante, $proyecto)
+$descripcion= $_POST["txtDescripcion"];
+$idGrado= $_POST["txtNivel"];
+$idMateria= $_POST["txtMateria"];
+$Datoprojects= $consulta->saveProjects($name, $descripcion, $idGrado, $idMateria);
 
 ?>
 
@@ -32,12 +31,12 @@ $Datosteam= $consulta->saveTeam($id_estudiante, $proyecto)
 <body>
 <?php
 require('../Dashboard/Dashboard.php');
-if($Datoestudiantes and $Datosteam == "Registro hecho"){
+if($Datoprojects == "Registro hecho"){
 ?>
     <section class="container">
         <div class="m-4 lg:m-7 bg-green-500 border-2 border-solid border-green-800 rounded-lg">
             <div class="m-4 lg:m-7 text-center">
-                <p class="lg:text-4xl text-green-900">se ha guardado con éxito los datos del estudiante.</p>
+                <p class="lg:text-4xl text-green-900">se ha guardado con éxito los datos del proyecto.</p>
             </div>
             <div class="m-4 lg:m-7 flex justify-center">
                 <a href="index.php" class="text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-green-500 hover:bg-green-700 cursor-pointer"><span class="icon-circle-left"></span> Regresar</a>
