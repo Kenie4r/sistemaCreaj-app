@@ -153,13 +153,13 @@ CREATE TABLE IF NOT EXISTS `calificador_creaj`.`equipo` (
   CONSTRAINT `fk_equipo_estudiante`
     FOREIGN KEY (`estudiante_idestudiante`)
     REFERENCES `calificador_creaj`.`estudiante` (`idestudiante`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_equipo_proyecto1`
     FOREIGN KEY (`proyecto_idproyecto`)
     REFERENCES `calificador_creaj`.`proyecto` (`idproyecto`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE  CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_spanish2_ci;
