@@ -256,9 +256,7 @@ HEREDOC;
           $data = $query->getProjectsinfo($userID);
           foreach($data as $campo){
             $info = $query->getAllProjects($campo['materia_idmateria'], $campo['grado_idgrado']);
-            echo($campo['materia_idmateria'] . " " . $campo['grado_idgrado']);
             foreach($info as $result){
-                echo($result['idproyecto']);
 
                 $calificado = $query->isSavedProject($result['idproyecto'], $userID);
                 foreach( $calificado as $camp){
