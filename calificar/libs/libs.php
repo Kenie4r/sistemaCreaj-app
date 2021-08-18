@@ -25,7 +25,10 @@
 
         print($header);
      }
-    
+
+
+
+
     //siguiente función para leer datos
     function getTeam($idTeam){
         $query = new Query();
@@ -185,7 +188,127 @@ HEREDOC;
         print($endOfFile);
 
     }
+    function watchProjects(){
+        $header = <<<'EDO'
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Equipos a calificar</title>
+            <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <link rel="stylesheet" href="../recursos/icons/style.css">
+        </head>
+        <body >
+            <div class='container h-screen bg-white w-screen'>
+                <div class='mx-auto'>
+        EDO;
+
+        print($header);
+    }
+    function theresProjects($username ){
+        $c = false;
+        $query = new Query();
+        $html =""; $c = 0;
+        $user = $query->getUserByUsername($username);
+        $userID = $user['idUsuario'];
+        $answer = $query-> getCountProjects($userID);
+        foreach( $answer as $res =>$a){
+            foreach($a as $b){
+                $count = $b;
+            }
+        }
+        if($count==0){
+            $html =<<<'EDO'
+            <div class='flex flex-col   justify-center items-center w-full h-full'>
+            <div class='text-gray-400 text-xl'>
+                <h1 class='text-center text-6xl'>
+                    <span class='icon-wondering2'></span>
+                </h1>
+                <h1>
+                    Aún no hay ningún proyecto para calificar.
+                </h1>
+        
+        
+            </div>
+            EDO;
+        
+        }else{
+            $html.="<div class='bg-blue-900 w-11/12 p-2 text-white mx-auto rounded-sm my-2 flex flex-row justify-between items-center' >
+            <div class='text-xl'>
+                <h2>Proyectos a calificar</h2>
+            </div>
+            <div>
+                <div class='w-max'>
+                    <div class='bg-gray-300 m-2 rounded-sm'>
+                        <input type='text' name='' id='' class='text-black p-1'>
+                        <span class='icon-search p-2'></span>
+                    </div>
+                
+                </div>
+            </div>
+
+        </div>";
+          $data = $query->getProjectsinfo($userID);
+          foreach($data as $campo){
+            $info = $query->getAllProjects($campo['materia_idmateria'], $campo['grado_idgrado']);
+            
+            foreach($info as $result){
+                $calificado = $query->isSavedProject($result['idproyecto'], $userID);
+                foreach( $calificado as $camp){
+                    foreach($camp as $myre){
+                        if($myre>0){
+                                $c=true;
+                        }else{ 
+                            $c=false;
+                            $html.="<div class='bg-white w-8/12  border border-2 p-5 roundend-full m-auto shadow-md my-7'>
+                                                <div class='flex w-full flex-row items-center justify-between'>
+                                                        <div class='text-lg font-bold '>
+                                                            <h1>{$result['nombreProyecto'] }</h1>
+                                                        </div>
+                                                        <div class='text-center '>
+                                                            <p class='p-1 border border-2 border-blue-400 text-blue-400 w-40 mx-auto mt-2 hover:bg-blue-400 hover:text-white  cursor-pointer'>
+                                                                <a href='calificar.php?teamID={$result['idproyecto']}'>
+                                                                    Calificar proyecto
+                                                                </a>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        {$result['descripcion']}
+                                                    </div>   
+                                                </div>
+                                            </div>";
+                        
+                        }
+                    }
+                }
+            }
+          }
+        }
+        if($c==true){
+                $html.= " <div class='flex flex-col   justify-center items-center w-full h-7 my-24'>
+                <div class='text-gray-400 text-xl'>
+                    <h1 class='text-center text-6xl'>
+                        <span class='icon-happy2'></span>
+                    </h1>
+                    <h1>
+                        Todos los proyectos han sido calificados.
+                    </h1>
+            
+            
+                </div>";
+        }
+        print($html);
+    }
+
+
+
 }
+
+
 
 
 
