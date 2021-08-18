@@ -2,6 +2,7 @@
 
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
+require_once("soporteStudents.php")
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,6 +53,14 @@ require('../Dashboard/Dashboard.php');
                         <label for="txtID" class="p-2 bg-gray-700 text-white">Apellido</label>
                         <input class="w-1/4	 lg:w-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtApellido" id="txtNombreRubrica" value="" >
                         <label for="txtNombreRubrica" title="Editar" ><span class="icon-pencil"></span></label>
+                    </div>
+                </div>
+                <div class="mt-10">  
+                    <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
+                        <label for="txtID" class="p-2 bg-gray-700 text-white">Proyecto</label>
+                        <select name="txtProject" id="txtMateria" class="p-1 w-full rounded-r-lg outline-none">
+                            <?php writeproject(); ?>
+                        </select>
                     </div>
                 </div>
             </div>

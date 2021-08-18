@@ -138,7 +138,23 @@ class Query{
             return "Registro hecho";
         }
     }
-
+    //Guardar Proyectos
+    public function saveProjects($name, $descripcion, $idGrado, $idMateria){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "INSERT INTO proyecto(nombreProyecto, descripcion, grado_idgrado, materia_idmateria) VALUES (:name, :descripcion, :idGrado, :idMateria)";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":name", $name);
+        $sentencia->bindParam(":descripcion", $descripcion);
+        $sentencia->bindParam(":idGrado", $idGrado);
+        $sentencia->bindParam(":idMateria", $idMateria);
+        if(!$sentencia){
+            return "Error, existe un fallo";
+        }else{
+            $sentencia->execute();
+            return "Registro hecho";
+        }
+    }
     //save materia
     public function saveMateria($nombre){
         $model = new Conection();
@@ -410,6 +426,7 @@ class Query{
             return $resultado;
         }
     }
+    //Obtener el id de los estudiantes segun el ID 
 
     //Obtener el id de los niveles según el ID criterio
     public function getIdNivelByIdCriterio($idcriterio){
@@ -653,6 +670,22 @@ class Query{
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
         $sql = "SELECT * FROM nivel";
+        $sentencia = $conexion->prepare($sql);
+        if(!$sentencia){
+            return "";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
+    //Obtener proyectos
+    public function getProject(){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT * FROM proyecto";
         $sentencia = $conexion->prepare($sql);
         if(!$sentencia){
             return "";
