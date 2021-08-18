@@ -22,7 +22,7 @@ function nextNRubric($yearActual){
     $rubricas = $consulta->getEndRubric($yearActual); //Get ID rúbrica ultimo
     $nRubricas = 0;
 
-    if(isset($rubricas)){
+    if(!empty($rubricas)){
         $rubricas = $rubricas[0]["idrubrica"];
         $rubricas = explode("-",$rubricas);
         $nRubricas = intval($rubricas[1]) + 1;
