@@ -9,7 +9,6 @@
             $_SESSION['usario']=$usuario['usario'];
             $_SESSION['nombres']=$usuario['nombres'];
             $_SESSION['apellidos']=$usuario['apellidos'];
-            $_SESSION['password']=$usuario['password'];
             $_SESSION['email']=$usuario['email'];
             header('Location: http://creaj21/Dashboard/profile.php');
             return true;
