@@ -297,10 +297,11 @@ class Query{
     public function getAllProjects($idMateria, $idGrado){
         $model = new Conection();
         $connection = $model->_getConection();
-        $sql = "SELECT * FROM proyecto WHERE proyecto.grado_idgrado =:idMateria  AND proyecto.materia_idmateria =:idGrado";
+        $sql = "SELECT * FROM proyecto WHERE proyecto.grado_idgrado =:idGrado  AND proyecto.materia_idmateria =:idMateria";
         $sentencia = $connection->prepare($sql);
-        $sentencia ->bindParam(":idMateria", $idMateria);
         $sentencia->bindParam(":idGrado", $idGrado);
+        $sentencia ->bindParam(":idMateria", $idMateria);
+
         if(!$sentencia){
             return false;
         }else{

@@ -201,7 +201,7 @@ HEREDOC;
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
             <link rel="stylesheet" href="../recursos/icons/style.css">
         </head>
-        <body >
+        <body>
             <div class='container h-screen bg-white w-screen'>
                 <div class='mx-auto'>
         EDO;
@@ -214,12 +214,14 @@ HEREDOC;
         $html =""; $c = 0;
         $user = $query->getUserByUsername($username);
         $userID = $user['idUsuario'];
-        $answer = $query-> getCountProjects($userID);
+
+       $answer = $query-> getCountProjects($userID);
         foreach( $answer as $res =>$a){
             foreach($a as $b){
                 $count = $b;
             }
         }
+
         if($count==0){
             $html =<<<'EDO'
             <div class='flex flex-col   justify-center items-center w-full h-full'>
@@ -254,8 +256,10 @@ HEREDOC;
           $data = $query->getProjectsinfo($userID);
           foreach($data as $campo){
             $info = $query->getAllProjects($campo['materia_idmateria'], $campo['grado_idgrado']);
-            
+            echo($campo['materia_idmateria'] . " " . $campo['grado_idgrado']);
             foreach($info as $result){
+                echo($result['idproyecto']);
+
                 $calificado = $query->isSavedProject($result['idproyecto'], $userID);
                 foreach( $calificado as $camp){
                     foreach($camp as $myre){
