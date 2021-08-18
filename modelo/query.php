@@ -10,7 +10,7 @@ class Query{
         $connection  = $model->_getConection();
         $sql  = "INSERT INTO usuario (usario, nombres, apellidos, rol, password, email) VALUES ( :username , :name, :last_name, :rol,:password, :correo)";
         $sentencia= $connection->prepare($sql);
-        $sentencia ->bindParam(":username", $userName);
+        $sentencia->bindParam(":username", $userName);
         $sentencia->bindParam(":name", $name);
         $sentencia->bindParam(":last_name", $last_name);
         $sentencia->bindParam(":rol", $rol);
@@ -24,6 +24,25 @@ class Query{
         }
 
     }
+    
+    //Guardar asignacion jurado
+    public function saveAsignacionj($idUser, $idMatter, $idGrade){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql  = "INSERT INTO asignacionj (usuario_idUsuario, materia_idmateria, grado_idgrado) VALUES (:iduser, :idmatter, :idgrade)";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":iduser", $idUser);
+        $sentencia->bindParam(":idmatter", $idMatter);
+        $sentencia->bindParam(":idgrade", $idGrade);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            return "Hecho";
+        }
+
+    }
+
     //Guardar Rubrica
     public function saveRubrica($id_rubrica, $name, $id_materia, $id_nivel){
         $model = new Conection();
@@ -427,13 +446,67 @@ class Query{
     }
 
     //Obtener los usuarios filtrados según el nombre de usuario
-    public function searchUserByName($nameRubric){
+    public function searchUserByUsername($nameRubric){
         $nameRubric = "%".$nameRubric."%";
         $model = new Conection();
         $connection  = $model->_getConection();
         $sql = "SELECT * FROM usuario WHERE usario LIKE :userName";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":userName", $nameRubric);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
+    //Obtener los usuarios filtrados según el nombre
+    public function searchUserByName($filtro){
+        $filtro = "%".$filtro."%";
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM usuario WHERE nombres LIKE :filtro";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":filtro", $filtro);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
+    //Obtener los usuarios filtrados según el apellido
+    public function searchUserByLastName($filtro){
+        $filtro = "%".$filtro."%";
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM usuario WHERE apellidos LIKE :filtro";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":filtro", $filtro);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
+    //Obtener los usuarios filtrados según el rol
+    public function searchUserByRol($filtro){
+        $filtro = "%".$filtro."%";
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM usuario WHERE rol LIKE :filtro";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":filtro", $filtro);
         if(!$sentencia){
             return "Error";
         }else{
@@ -608,6 +681,23 @@ class Query{
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":nombre", $nombre);
         $sentencia->bindParam(":pass", $pass);
+        if(!$sentencia){
+            return "";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
+    //Obtener todos el usuario por el ID
+    public function getUserById($idUser){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT * FROM usuario WHERE idUsuario = :iduser";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":iduser", $idUser);
         if(!$sentencia){
             return "";
         }else{

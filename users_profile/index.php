@@ -8,6 +8,7 @@ require_once("../modelo/query.php");
 $consulta = new Query; //Crear una consulta
 $usuarios = $consulta->getUsers(); //Obtener usuarios
 
+//Configurar la confirmación de eliminación de usuarios
 ?>
 
 <!DOCTYPE html>
@@ -38,11 +39,19 @@ require('../Dashboard/Dashboard.php');
         </div>
 <?php
 if(!empty($usuarios)){
-    echo "<div class='flex flex-row items-center m-7'>";
-    echo "\t<div class=''>";
-    echo "\t<input type='text' name='txtBusquedaName' id='txtBusquedaName' class='p-1 border-gray-700 border-solid border-2 rounded-lg outline-none' placeholder='Buscar por nombre de usuario...'>";
-    echo "\t</div>";
-    echo "</div>";
+?>
+        <div class='flex flex-row items-center m-7'>
+            <div class='flex flex-row'>
+                <input type='text' name='txtBusquedaName' id='txtBusquedaName' class='p-1 border-gray-700 border-solid border-2 rounded-tl-lg rounded-bl-lg  outline-none' placeholder='Buscar por...'>
+                <select name="sltBusqueda" id="sltBusqueda" class="p-1 border-gray-700 border-solid border-2 rounded-tr-lg rounded-br-lg bg-gray-700 text-white outline-none">
+                    <option value="usuario">Usuario</option>
+                    <option value="nombre">Nombre</option>
+                    <option value="apellido">Apellido</option>
+                    <option value="rol">Rol</option>
+                </select>
+            </div>
+        </div>
+<?php
 }
 ?>
         <div class="box-border m-7">
@@ -52,39 +61,13 @@ if(!empty($usuarios)){
                         <td class="rounded-tl-lg p-4">Usuario</td>
                         <td class="p-4">Nombre</td>
                         <td class="p-4">Apellido</td>
-                        <td class="p-4">Rol</td>
                         <td class="p-4">Email</td>
-                        <td colspan="3" class="rounded-tr-lg p-4">Opciones</td>
+                        <td class="p-4">Rol</td>
+                        <td colspan="2" class="rounded-tr-lg p-4">Opciones</td>
                     </tr>
                 </thead>
                 <tbody id="table-body-rubrica" class="bg-gray-200">
-<?php
-
-if(!empty($usuarios)){
-    for ($i=0; $i < count($usuarios); $i++) { 
-        echo "<tr class='lol'>";
-        echo "\t<td class='p-4'>" . $usuarios[$i]["usario"] . "</td>";
-        echo "\t<td class='p-4'>" . $usuarios[$i]["nombres"] . "</td>";
-        echo "\t<td class='p-4'>" . $usuarios[$i]["apellidos"] . "</td>";
-        if($usuarios[$i]["rol"] == "a"){
-            echo "\t<td class='p-4'>Administrador</td>";
-        }else if($usuarios[$i]["rol"] == "c"){
-            echo "\t<td class='p-4'>Técnico-Científico</td>";
-        }else if($usuarios[$i]["rol"] == "j"){
-            echo "\t<td class='p-4'>Jurado</td>";
-        }
-        echo "\t<td class='p-4'>" . $usuarios[$i]["email"] . "</td>";
-        echo "\t<td class='p-4'><a href='#' class='hover:text-blue-900'><span class='icon-pencil'></span> Editar</a></td>";
-        echo "\t<td class='p-4'><a href='deleteRubric.php?idrubric=variable' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
-        echo "</tr>";
-    }
-}else{
-    echo "<tr class='lol'>";
-    echo "\t<td colspan='8' class='p-4'><span class='icon-blocked'></span> No hay usuarios en el sistema</td>";
-    echo "</tr>";
-}
-
-?>
+                    <!-- JS -->
                 </tbody>
                 <tfoot class="bg-gray-900">
                     <tr>
