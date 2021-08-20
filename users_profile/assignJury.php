@@ -24,6 +24,7 @@ $nombreCompleto = $usuario["nombres"] . " " . $usuario["apellidos"];;
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../js/script-newAssignJury.js"></script>
     <script src="../js/script-frmAsignacionValidate.js"></script>
     <script src="../Dashboard/button.js"></script>
 </head>
@@ -38,11 +39,11 @@ require('../Dashboard/Dashboard.php');
                 <h1 class="text-3xl text-gray-500"><?php echo $nombreCompleto; ?></h1>
             </div>
             <input type="hidden" name="usuario" id="usuario" value="<?php echo $idUser; ?>">
-            <div id="contenedor-asignacion" class="bg-white rounded-lg m-9">
+            <div id="contenedor-asignacion" class="bg-white rounded-lg m-7 p-2">
 <?php
 if(empty($asignacionesUsuario)){
 ?>
-                <div id="0-item-asignacion" class="grid grid-cols-1 lg:grid-cols-2 p-4 bg-gray-400 rounded-lg">
+                <div id="0-item-asignacion" class="grid grid-cols-1 lg:grid-cols-2 p-4 mb-2 bg-gray-400 rounded-lg">
                     <div>
                         <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0">
                             <label for="0-sltMateria" class="p-2">Materia:</label>
@@ -92,7 +93,7 @@ if(empty($asignacionesUsuario)){
 ?>
                 <div id="item-agregar" class="flex justify-center">
                     <div class="lg:m-2">
-                        <a href="#" id="btnAgregar" class="block text-blue-700 border-blue-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-blue-700"><span class="icon-plus"></span> Agregar asignación</a>
+                        <p id="btnAgregar" class="block text-blue-700 border-blue-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-blue-700"><span class="icon-plus"></span> Agregar asignación</p>
                     </div>
                 </div>
             </div>
