@@ -1167,6 +1167,22 @@ class Query{
         }
     }
 
+    //Eliminar los equipos por el ID
+    public function deleteequipo($idequipo){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "DELETE FROM equipo WHERE idequipo = :idequipo";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":idequipo", $idequipo);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            
+            return "Hecho";
+        }
+    }
+
     //Eliminar los niveles de aprobación según el ID
     public function deleteNivelesAById($idnivel){
         $model = new Conection();
