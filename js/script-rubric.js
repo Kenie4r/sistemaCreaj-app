@@ -2,8 +2,9 @@ $(document).ready(
     function(){
         //Objetos globales
         var txtBusqueda = $("#txtBusqueda");
-        var btnDelete = $(".btn-delete");
         var tipoBusqueda = $("#sltBusqueda");
+
+        configurarConfirmacionEliminacion();
 
         //Filtrar las rubricas segun el textbox busqueda
         txtBusqueda.on("input",
@@ -18,6 +19,7 @@ $(document).ready(
                         var contenedorFilasRubric = $("#table-body-rubrica");
                         contenedorFilasRubric.empty();
                         contenedorFilasRubric.html(respuesta);
+                        configurarConfirmacionEliminacion();
                     },
                     "html"
                 );
@@ -30,14 +32,18 @@ $(document).ready(
                 txtBusqueda.val("");
             }
         );
-
-        //Confirmar la eliminacion de una rubrica
-        btnDelete.on("click",
-            function(){
-                var estado = confirm("¿Seguro de querer eliminar esta rúbrica?");
-
-                return estado;
-            }
-        );
     }
 )
+
+//Función para confirmar la eliminación de un usuario
+function configurarConfirmacionEliminacion() {
+    var btnDelete = $(".btn-delete");
+
+    btnDelete.on("click",
+        function(){
+            var estado = confirm("¿Seguro de querer eliminar este perfil?");
+            
+            return estado;
+        }
+    );
+}

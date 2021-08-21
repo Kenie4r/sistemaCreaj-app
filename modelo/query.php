@@ -1198,6 +1198,38 @@ class Query{
             return "Hecho";
         }
     }
+
+    //Eliminar usuarios según el ID
+    public function deleteUserById($idUser){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "DELETE FROM usuario WHERE idUsuario = :usuarioID";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":usuarioID", $idUser);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            
+            return true;
+        }
+    }
+
+    //Eliminar asignaciones según el ID
+    public function deleteAssignById($idassign){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "DELETE FROM asignacionj WHERE idasignacionJ = :asignacionID";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":asignacionID", $idassign);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            
+            return true;
+        }
+    }
 }
 
 ?>
