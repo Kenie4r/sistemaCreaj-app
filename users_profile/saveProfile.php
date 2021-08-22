@@ -2,6 +2,7 @@
 
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
+require_once("../controlador/sendEmail.php");
 
 //Verificar session
 
@@ -14,8 +15,10 @@ $last_name = $_POST["txtLastNameProfile"];
 $rol = $_POST["txtRolProfile"];
 $password = $_POST["txtPassProfile"];
 $email = $_POST["txtEmailProfile"];
-$estadoUsuario = $consulta->saveUser($userName, $name, $last_name, $rol, $password, $email);
 
+//$estadoUsuario = $consulta->saveUser($userName, $name, $last_name, $rol, $password, $email);
+
+echo enviarCorreo($email, $name, $userName, "donboscoSV", "2021");
 
 ?>
 
