@@ -7,7 +7,7 @@ require '../PHPMailer/src/Exception.php';
 require '../PHPMailer/src/PHPMailer.php';
 require '../PHPMailer/src/SMTP.php';
 
-function enviarCorreo($correo, $nombre, $username, $pass, $year){
+function enviarCorreo($correo, $nombre, $username, $pass, $year, $asunto){
     $mail = new PHPMailer(true);
     try {
         //Server settings
@@ -26,7 +26,7 @@ function enviarCorreo($correo, $nombre, $username, $pass, $year){
 
         // Content
         $mail->isHTML(true);
-        $mail->Subject = 'Sistema de ayuda: TS';
+        $mail->Subject = $asunto;
         $mail->Body    = '
     <html>
     <body style="margin:0%; padding: 0%; font-family: \'Segoe UI\', Tahoma, Geneva, Verdana, sans-serif;">
@@ -38,6 +38,7 @@ function enviarCorreo($correo, $nombre, $username, $pass, $year){
                 a nuestro sistema, tus datos para iniciar sesión son:</p>
                 <p>Nombre de usuario: <span style="font-weight: bold;">' . $username . '</span></p>
                 <p>Contraseña: <span style="font-weight: bold;">' . $pass . '</span></p>
+                <p><a href="http://creaj21/" style="color: rgba(30, 58, 138, 1); ">Accede al programa web mediante este enlace</a></p>
             </article>
             <article style="grid-row-start: 3; grid-row-end: 4; background-color: silver; padding: 1em;  border-radius: 0px 0px 5px 5px; text-align: center;">- Copyright Colegio Don Bosco ' . $year . ' -</article>
         </section>
@@ -47,9 +48,9 @@ function enviarCorreo($correo, $nombre, $username, $pass, $year){
         ';
 
         $mail->send();
-        return "Correo enviado.";
+        return "Los datos se han enviado correctamente por correo al usuario.";
     } catch (Exception $e) {
-        echo "Algo salio mal. Mailer Error: {$mail->ErrorInfo}";
+        return "Algo salio mal. Mailer Error: {$mail->ErrorInfo}";
     }
 }
 ?>
