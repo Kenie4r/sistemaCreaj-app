@@ -50,6 +50,7 @@ if(!empty($Proyecto)){
                     <tr>
                         <td class="rounded-tl-lg p-4">ID</td>
                         <td class="p-4">Nombre</td>
+                        <td class="p-4">Descripción</td>
                         <td colspan="3" class="rounded-tr-lg p-4">Opciones</td>
                     </tr>
                 </thead>
@@ -63,7 +64,7 @@ if(!empty($Proyecto)){
     echo "\t<td class='p-6'>" . $Proyecto[$i]["nombreProyecto"] . "</td>";
     echo "\t<td class='p-6'>" . $Proyecto[$i]["descripcion"] . "</td>";
     echo "\t<td class='p-6'><a href='?idrubric=" . $Proyecto[$i]["idproyecto"] . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Editar</a></td>";
-    echo "\t<td class='p-6'><a href='deleteProjects.php?idrubric=" . $Proyecto[$i]["idproyecto"] . "' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
+    echo "\t<td class='p-6'><a href='deleteProjects.php?idequipo=" . $Proyecto[$i]["idproyecto"] . "' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
     echo "</tr>";
     }
 }else{

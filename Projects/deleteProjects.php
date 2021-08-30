@@ -26,15 +26,16 @@ $consulta = new Query; //Crear una consulta
 require('../Dashboard/Dashboard.php');
 
 
-//Eliminar rubrica
-$estadoprojects= $consulta->deleteRubricById($idrubric);
+//Eliminar equipos
+$idequipo = $_GET["idequipo"];
+$estadoprojects= $consulta-> deleteequipo($idequipo);
 
 if($estadoprojects == "Hecho"){
 ?>
     <section class="container">
         <div class="m-4 lg:m-7 bg-green-500 border-2 border-solid border-green-800 rounded-lg">
             <div class="m-4 lg:m-7 text-center">
-                <p class="lg:text-4xl text-green-900">La rúbrica se ha eliminado con éxito.</p>
+                <p class="lg:text-4xl text-green-900">Se ha eliminado con éxito el proyecto.</p>
             </div>
             <div class="m-4 lg:m-7 flex justify-center">
                 <a href="index.php" class="text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-green-500 hover:bg-green-700 cursor-pointer"><span class="icon-circle-left"></span> Regresar</a>
@@ -47,7 +48,7 @@ if($estadoprojects == "Hecho"){
     <section class="container">
         <div class="m-4 lg:m-7 bg-red-400 border-2 border-solid border-red-800 rounded-lg">
             <div class="m-4 lg:m-7 text-center">
-                <p class="lg:text-4xl text-red-900">Sucedio un error, la rúbrica no se ha eliminado correctamente.</p>
+                <p class="lg:text-4xl text-red-900">Sucedio un error, el proyecto no se ha eliminado correctamente.</p>
             </div>
             <div class="m-4 lg:m-7 flex justify-center">
                 <a href="index.php" class="text-red-700 border-red-700 border-2 border-solid rounded-lg p-2 hover:text-red-400 hover:bg-red-700 cursor-pointer"><span class="icon-circle-left"></span> Regresar</a>
