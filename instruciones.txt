@@ -12,4 +12,4 @@ También se va a usar JQuery, lo colocan con la siguiente linea
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 Base de datos  a usar es:
-baseDatos.sql
+CreaJbase.sql

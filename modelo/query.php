@@ -191,15 +191,14 @@ class Query{
     }
 
     //guardar puntaje
-    public function savePuntaje($proyecto,  $usuario, $puntaje, $puntos){
+    public function savePuntaje($proyecto,  $usuario, $puntaje){
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql= "INSERT INTO puntaje(proyecto_idproyecto, usuario_idUsario, puntaje, puntos_idpuntos) VALUES(:proyecto, :user, :puntaje, :puntos)";
+        $sql= "INSERT INTO puntaje(proyecto_idproyecto, usuario_idUsuario, puntaje) VALUES(:proyecto, :user, :puntaje)";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":proyecto", $proyecto);
         $sentencia->bindParam(":user", $usuario);
         $sentencia->bindParam(":puntaje", $puntaje);
-        $sentencia->bindParam(":puntos", $puntos);
         if(!$sentencia){
             return "Error, existe un fallo";
         }else{
@@ -317,7 +316,7 @@ class Query{
     public function getTeamData($idTeam){
         $model = new Conection();
         $connection = $model->_getConection();
-        $sql = "SELECT proyecto.idproyecto, proyecto.nombreProyecto, proyecto.descripcion, grado.*, materia.idmateria, materia.nombre AS nombreMateria FROM proyecto JOIN grado JOIN materia WHERE proyecto.idproyecto =:idTeam  ";
+        $sql = "SELECT proyecto.idproyecto, proyecto.nombreProyecto, proyecto.descripcion, grado.*, materia.idmateria, materia.nombre AS nombreMateria FROM proyecto JOIN grado JOIN materia WHERE proyecto.idproyecto =:idTeam AND proyecto.grado_idgrado = grado.idgrado AND proyecto.materia_idmateria = materia.idmateria";
         $sentencia = $connection->prepare($sql);
         $sentencia->bindParam(":idTeam", $idTeam);
         if(!$sentencia){

@@ -30,7 +30,7 @@
 
 
     //siguiente función para leer datos
-    function getTeam($idTeam){
+    function getTeam($idTeam, $username){
         $query = new Query();
         $teamData = array();
         $integrantes = array();
@@ -38,6 +38,8 @@
         $criterioName  = array();
         $criterioValue = array();
         $data = $query->getTeamData($idTeam);
+        $user = $query->getUserByUsername($username);
+        $userID = $user['idUsuario'];
         foreach ($data as $campo => $a) {
             foreach($a as $dato){
                 //Se retornaran 9 dato
@@ -95,7 +97,8 @@
 
         $html.= "
         <div class='bg-gray-100'>
-        <form action='' method='post' id='form'>
+        <form action='libs/saveGrade.php' method='post' id='form'>
+            <input type='hidden' name='txtuserID' value='$userID'>
             <input type='hidden' name='txtIdTeam'  value='$idTeam'>
             <div class='text-center text-2xl'>
                 <h2>Evaluación de criterios</h2>
@@ -172,7 +175,7 @@
                         <div>
                             <p class="px-2 w-3/12" id="finalGrade">0</p>
                         </div>
-                        <input type="hidden" name="grade" value="" id="inputGrade">
+                        <input type="hidden" name="finalGrade" value="" id="inputGrade">
                     </div>
                     <div class="flex flex-row items-center justify-center p-5 w-full">
                         <div class="border-2 border-blue-500 text-xl p-2 text-blue-500 hover:bg-blue-400 hover:text-white cursor-pointer" id="btnTerminar">Guardar nota</div>
@@ -211,7 +214,7 @@ HEREDOC;
     function theresProjects($username ){
         $c = false;
         $query = new Query();
-        $html =""; $c = 0;
+        $html =""; $c = 0; $withGrade="<div class='text-center text-xl'><h1>Proyectos ya calificados</h1></div>";
         $user = $query->getUserByUsername($username);
         $userID = $user['idUsuario'];
 
@@ -254,16 +257,30 @@ HEREDOC;
           $data = $query->getProjectsinfo($userID);
           foreach($data as $campo){
             $info = $query->getAllProjects($campo['materia_idmateria'], $campo['grado_idgrado']);
-        
             foreach($info as $result){
-
                 $calificado = $query->isSavedProject($result['idproyecto'], $userID);
                 foreach( $calificado as $camp){
                     foreach($camp as $myre){
                         if($myre>0){
-                                $c=true;
+                            $c+=1;
+                            $withGrade .="<div class='bg-white w-8/12  border border-2 p-5 roundend-full m-auto shadow-md my-7'>
+                            <div class='flex w-full flex-row items-center justify-between'>
+                                    <div class='text-lg font-bold '>
+                                        <h1>{$result['nombreProyecto'] }</h1>
+                                    </div>
+                                    <div class='text-center '>
+                                        <p class='p-1 border border-2 border-blue-400 text-blue-400 w-40 mx-auto mt-2 hover:bg-blue-400 hover:text-white  cursor-pointer'>
+                                           Proyecto calificado
+                                        </p>
+                                    </div>
+                                </div>
+                                <div>
+                                    {$result['descripcion']}
+                                </div>   
+                            </div>
+                        </div>";
                         }else{ 
-                            $c=false;
+                        
                             $html.="<div class='bg-white w-8/12  border border-2 p-5 roundend-full m-auto shadow-md my-7'>
                                                 <div class='flex w-full flex-row items-center justify-between'>
                                                         <div class='text-lg font-bold '>
@@ -289,18 +306,8 @@ HEREDOC;
             }
           }
         }
-        if($c==true){
-                $html.= " <div class='flex flex-col   justify-center items-center w-full h-7 my-24'>
-                <div class='text-gray-400 text-xl'>
-                    <h1 class='text-center text-6xl'>
-                        <span class='icon-happy2'></span>
-                    </h1>
-                    <h1>
-                        Todos los proyectos han sido calificados.
-                    </h1>
-            
-            
-                </div>";
+        if($c>0){
+                $html.= $withGrade;
         }
         print($html);
     }

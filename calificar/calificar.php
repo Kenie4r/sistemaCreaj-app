@@ -12,7 +12,7 @@
     $htmlCreator->headerHTML();
     //con la siguiente función buscaremos la materia y grado, además de que nos escribira 
     //los datos del equipo, como descripción y también el nombre del equipo
-   $idRubric =  $htmlCreator->getTeam($_GET['teamID']);//nos ayudara a obtener los datos de para buscar la rúbrica
+   $idRubric =  $htmlCreator->getTeam($_GET['teamID'], $_SESSION['uid']);//nos ayudara a obtener los datos de para buscar la rúbrica
     $htmlCreator->writeRubric($idRubric[0], $idRubric[1]);
     $htmlCreator->endDocument();
 ?>
