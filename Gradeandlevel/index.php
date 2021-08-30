@@ -6,11 +6,24 @@ $grado= $consulta->getGrado();
 $opc= $consulta->getLevel();
 $Ngra=count($grado);
 ?>
+<head> 
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="../recursos/icons/style.css">
+</head>
 <body>
+<?php
+  require('../Dashboard/Dashboard.html')
 
+?>
+    <div class="grid grid-cols-2 sm:grid grid-cols-none ">
     <div class="rounded-md mt-8 mx-2 border-blue-900">
-        <div class="bg-blue-500 rounded-md h-4/5">  
-            <h1 class="font-sans mt-2 mx-2 p-3 text-white text-xl">Niveles y Grados</h1>
+        <div class="bg-blue-500 rounded-md">  
+            <h1 class="font-sans mt-2 mx-2 p-3 text-white text-xl">Grados</h1>
         </div>   
         <div class="bg-green-400 w-20 mx-2 mt-2 text-white p-1">
             <span class="icon-plus"> <a href="NewGrade.php" class="font-sans">Nuevo</a></span>
@@ -42,7 +55,7 @@ $Ngra=count($grado);
                           echo "<tr>";
                           echo "\t<td class='p-4'>" . $grado[$i]["nombre"] . "</td>";
                           echo "\t<td class='p-4'>" . $grado[$i]["seccion"] . "</td>";
-                          switch ($grado[$i]["nivel_idnivel"]) {
+                          /*switch ($grado[$i]["nivel_idnivel"]) {
                             case '1':
                               echo "\t<td class='p-4'>Bachillerato</td>";
                               break;
@@ -52,7 +65,7 @@ $Ngra=count($grado);
                               break;
                           
 
-                          }
+                          }*/
                           echo"<td> <a href='DeleteGrado.php?id=".$grado[$i]["idgrado"]."'>Eliminar</a>  </td>";
                           echo"<td> <a href='UpdateGrado.php?id=".$grado[$i]["idgrado"]."'>Eliminar</a>  </td>";
                           echo "</tr>";
@@ -67,5 +80,6 @@ $Ngra=count($grado);
               </div>
             </div>
           </div>
+    </div>
 </body>
 </html>

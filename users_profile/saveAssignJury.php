@@ -5,18 +5,45 @@ require_once("../modelo/query.php");
 
 $consulta = new Query; //Consulta
 $idUser = $_POST["usuario"]; //El id del usuario
-$asignacionesUsuario = $consulta->getProjectsinfo($idUser);
+$asignacionesUsuario = $consulta->getProjectsinfo($idUser); //Todas las asignaciones previas del jurado
+$cantidadAsignacionesFormulario = $_POST["cantidadAsignaciones"]; //Cuantas asignaciones estaban en el form
 
-if(empty($asignacionesUsuario)){
-    $idMatter = $_POST["0-sltMateria"];
-    $idGrade = $_POST["0-sltGrade"];
-    $estadoAsignaciones = $consulta->saveAsignacionj($idUser, $idMatter, $idGrade);
-}else{
-    //
+//Recorremos todas las asignaciones devueltas por el formulario
+for ($i=0; $i < $cantidadAsignacionesFormulario; $i++) { 
+    //Declaramos variables que nos serviran para obtener valores del formulario
+    $etiquetaIdAsignacion = $i . "-id-item-asignacion";
+    $etiquetaMateria = $i . "-sltMateria";
+    $etiquetaGrado = $i . "-sltGrade";
+
+    //Si el id de las asignacion esta vacío es porque no existe previamente y debe crearse
+    if(empty($_POST[$etiquetaIdAsignacion])){
+        //Verificamos que no esten vacíos sus datos
+        if(!( empty($_POST[$etiquetaMateria]) &&  empty($_POST[$etiquetaGrado]))){
+            $idMatter = $_POST[$etiquetaMateria];
+            $idGrade = $_POST[$etiquetaGrado];
+            $estadoAsignaciones = $consulta->saveAsignacionj($idUser, $idMatter, $idGrade);
+        }
+    }else{
+        //Si el id de las asignaciones tiene un valor previo, debemos actualizar el dato
+        //Verificamos que no esten vacíos sus datos
+        if(!( empty($_POST[$etiquetaMateria]) &&  empty($_POST[$etiquetaGrado]))){
+            $idAsignacion = $_POST[$etiquetaIdAsignacion];
+            $idMatter = $_POST[$etiquetaMateria];
+            $idGrade = $_POST[$etiquetaGrado];
+            $estadoAsignaciones = $consulta->updateAsignacion($idAsignacion, $idUser, $idMatter, $idGrade);
+        }
+    }
 }
 
-//$estadoAsignaciones = $consulta->saveUser($userName, $name, $last_name, $rol, $password, $email);
+//Por ultimo recorremos el array de asignaciones previas, si hay una asignacion que no estaba en el form
+//es porque la eliminaron del form, por lo tanto la eliminamos de la base
+for ($i=0; $i < count($asignacionesUsuario); $i++) { 
+    $etiquetaIdAsignacion = $i . "-id-item-asignacion";
 
+    if(!isset($_POST[$etiquetaIdAsignacion])){
+        $estadoEliminaciones = $consulta->deleteAssignById($asignacionesUsuario[$i]["idasignacionJ"]);
+    }
+}
 
 ?>
 

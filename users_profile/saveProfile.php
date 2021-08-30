@@ -2,20 +2,24 @@
 
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
-
-//Verificar session
+require_once("../controlador/sendEmail.php");
 
 $consulta = new Query; //Crear una consulta
 
 //Guardar perfil
-$userName = $_POST["txtUserProfile"];
+$username = $_POST["txtUserProfile"];
 $name = $_POST["txtNameProfile"];
 $last_name = $_POST["txtLastNameProfile"];
 $rol = $_POST["txtRolProfile"];
 $password = $_POST["txtPassProfile"];
 $email = $_POST["txtEmailProfile"];
-$estadoUsuario = $consulta->saveUser($userName, $name, $last_name, $rol, $password, $email);
 
+$estadoUsuario = $consulta->saveUser($username, $name, $last_name, $rol, $password, $email);
+
+$year = date("Y"); //Año actual
+$pass = "donboscoSV";
+
+$estadoCorreo = enviarCorreo($email, $name, $username, $pass, $year, "Nueva cuenta CDB");
 
 ?>
 
@@ -40,6 +44,7 @@ if($estadoUsuario == "Hecho"){
         <div class="m-4 lg:m-7 bg-green-500 border-2 border-solid border-green-800 rounded-lg">
             <div class="m-4 lg:m-7 text-center">
                 <p class="lg:text-4xl text-green-900">El usuario se ha guardado con éxito.</p>
+                <p class="lg:text-2xl text-green-900"><?php echo $estadoCorreo; ?></p>
             </div>
             <div class="m-4 lg:m-7 flex justify-center">
                 <a href="index.php" class="text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-green-500 hover:bg-green-700 cursor-pointer"><span class="icon-circle-left"></span> Regresar</a>
@@ -53,6 +58,7 @@ if($estadoUsuario == "Hecho"){
         <div class="m-4 lg:m-7 bg-red-400 border-2 border-solid border-red-800 rounded-lg">
             <div class="m-4 lg:m-7 text-center">
                 <p class="lg:text-4xl text-red-900">Sucedio un error, el usuario no se ha guardado correctamente.</p>
+                <p class="lg:text-2xl text-red-900"><?php echo $estadoCorreo; ?></p>
             </div>
             <div class="m-4 lg:m-7 flex justify-center">
                 <a href="index.php" class="text-red-700 border-red-700 border-2 border-solid rounded-lg p-2 hover:text-red-400 hover:bg-red-700 cursor-pointer"><span class="icon-circle-left"></span> Regresar</a>

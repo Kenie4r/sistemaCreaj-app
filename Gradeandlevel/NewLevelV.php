@@ -3,7 +3,7 @@ require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
 $consulta = new Query; 
 $opc= $consulta->getLevel();
-$Nopc=count($opc);
+//$Nopc=count($opc);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,13 +15,26 @@ $Nopc=count($opc);
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="../recursos/icons/style.css">
+    <script>
+     /* $(document).ready(function(){
+        $("input").keyup(function(){
+          var nombre=$("input").val();
+          $.post("test.php",{
+            niveles:nombre
+          },function (datos,status) {
+            $("#test").html(datos);
+          });
+        });
+      });*/
+    </script>
 </head>
 <body>
           <div class="mt-5 md:mt-0 md:col-span-2">
-            <form action="SaveLevel.php" method="POST">
-              <div class="shadow overflow-hidden sm:rounded-md">
+            <form action="test.php" method="POST">
+              <div class="shadow overflow -hidden sm:rounded-md">
                 <div class="px-4 py-5 bg-white sm:p-6">
                   <div class="grid grid-cols-6 gap-6">
+                    <p id="test"></p>
                     <div class="col-span-6 sm:col-span-3">
                     <div class="col-span-6 sm:col-span-3">
                         <label for="nivel" class="block text-sm font-medium text-gray-700">Nivel</label>

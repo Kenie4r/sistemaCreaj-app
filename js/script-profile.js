@@ -1,21 +1,22 @@
 $(document).ready(
     function(){
-        //Objetos globales
-        var txtBusqueda = $("#txtBusquedaName");
 
         //Llenar la tabla de usuarios por primera vez
         llenarTabla();
-        configurarConfirmacionEliminacion()
 
         //Filtrar los perfiles segun el textbox busqueda
-        txtBusqueda.on("input",
+        $("#txtBusquedaName").on("input",
             function(){
                 llenarTabla();
-                configurarConfirmacionEliminacion()
             }
         );
 
-        //Confirmar la eliminacion de un perfil
+        //Vaciar la busqueda cuando se cambie de tipo de busqueda
+        $("#txtBusquedaName").on("change",
+            function(){
+                llenarTabla();
+            }
+        );
         
     }
 )
@@ -35,6 +36,7 @@ function llenarTabla() {
             var contenedorFilasRubric = $("#table-body-rubrica");
             contenedorFilasRubric.empty();
             contenedorFilasRubric.html(respuesta);
+            configurarConfirmacionEliminacion();
         },
         "html"
     );

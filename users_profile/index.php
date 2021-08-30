@@ -3,12 +3,9 @@
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
 
-//Verificar session
-
 $consulta = new Query; //Crear una consulta
 $usuarios = $consulta->getUsers(); //Obtener usuarios
 
-//Configurar la confirmación de eliminación de usuarios
 ?>
 
 <!DOCTYPE html>

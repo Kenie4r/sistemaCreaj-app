@@ -17,7 +17,12 @@ $Nopc=count($opc);
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="../recursos/icons/style.css">
 </head>
+
 <body>
+<?php
+  require('../Dashboard/Dashboard.html')
+
+?>
           <div class="mt-5 md:mt-0 md:col-span-2">
             <form action="SaveGrade.php" method="POST">
               <div class="shadow overflow-hidden sm:rounded-md">

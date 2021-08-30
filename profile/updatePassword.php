@@ -2,15 +2,19 @@
 
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
-
-//Verificar session
+require_once("../controlador/sendEmail.php");
 
 $consulta = new Query; //Crear una consulta
 
 //Guardar perfil
+
 $username = $_POST["actualName"];
 $contra = $_POST["txtNewPassProfile"];
 $estadoPassword = $consulta->updateUserPassword($username, $contra);
+
+$year = date("Y"); //Año actual
+
+
 
 ?>
 
@@ -29,12 +33,16 @@ $estadoPassword = $consulta->updateUserPassword($username, $contra);
 <body>
 <?php
 require('../Dashboard/Dashboard.php');
+$email = $_SESSION["email"];
+$name = $_SESSION["nombres"];
+$estadoCorreo = enviarCorreo($email, $name, $username, $contra, $year, "Actualización de Contraseña");
 if($estadoPassword == "Hecho"){
 ?>
     <section class="container">
         <div class="m-4 lg:m-7 bg-green-500 border-2 border-solid border-green-800 rounded-lg">
             <div class="m-4 lg:m-7 text-center">
                 <p class="lg:text-4xl text-green-900">La contraseña se ha actualizada con éxito.</p>
+                <p class="lg:text-2xl text-green-900"><?php echo $estadoCorreo; ?></p>
             </div>
             <div class="m-4 lg:m-7 flex justify-center">
                 <a href="../Dashboard/profile.php" class="text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-green-500 hover:bg-green-700 cursor-pointer"><span class="icon-circle-left"></span> Regresar</a>
@@ -48,6 +56,7 @@ if($estadoPassword == "Hecho"){
         <div class="m-4 lg:m-7 bg-red-400 border-2 border-solid border-red-800 rounded-lg">
             <div class="m-4 lg:m-7 text-center">
                 <p class="lg:text-4xl text-red-900">Sucedio un error, la contraseña no se ha actualizada correctamente.</p>
+                <p class="lg:text-2xl text-red-900"><?php echo $estadoCorreo; ?></p>
             </div>
             <div class="m-4 lg:m-7 flex justify-center">
                 <a href="../Dashboard/profile.php" class="text-red-700 border-red-700 border-2 border-solid rounded-lg p-2 hover:text-red-400 hover:bg-red-700 cursor-pointer"><span class="icon-circle-left"></span> Regresar</a>

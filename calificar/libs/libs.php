@@ -232,8 +232,6 @@ HEREDOC;
                 <h1>
                     Aún no hay ningún proyecto para calificar.
                 </h1>
-        
-        
             </div>
             EDO;
         
