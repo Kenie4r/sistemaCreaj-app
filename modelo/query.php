@@ -775,7 +775,23 @@ class Query{
             return $resultado;
         }
     }
-
+        //Obtener los equipos según el ID de equipo
+        public function getEquipos($idequipo){
+            $model = new Conection();
+            $connection  = $model->_getConection();
+            $sql = "SELECT * FROM equipo WHERE  = :idequipo";
+            $sentencia= $connection->prepare($sql);
+            $sentencia->bindParam(":idequipo", $idequipo);
+            if(!$sentencia){
+                return "Error";
+            }else{
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+                
+                return $resultado;
+            }
+        }
+    
     //Obtener todos las rúbricas DESC
     public function getRubricsDESC(){
         
@@ -912,7 +928,6 @@ class Query{
             return true;
         }
     }
-
     //Niveles de aprobación
     public function updateNAprobacion($idNAprobacion, $descripcion){
         $modelo = new Conection;
@@ -1086,7 +1101,6 @@ class Query{
             return true;
         }
     }
-
     //Criterio
     public function updateCriterio($idCriterio, $titulo, $puntaje){
         $modelo = new Conection;

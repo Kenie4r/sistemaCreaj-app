@@ -64,7 +64,26 @@ require('../Dashboard/Dashboard.php');
                     </div>
                 </div>
             </div>
+       </div>
+       <div class="grid grid-cols-1 lg:grid-cols-2">
+           <div class="flex lg:m-9">
+               <div class="lg:m-2">
+                    <a href="subirexcel.php" id="btnSubmit" class="block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700"><span class="icon-file-text"></span> Subir datos por Excel</a>
+                </div>
+           </div>
+       </div>
+      
         <div>
+            <?php
+                if(isset($_POST['btn'])){
+                   
+                   
+                }
+          
+            ?>
+
+
+        </div>
     </form>
 </body>
 </html>   

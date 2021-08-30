@@ -64,7 +64,7 @@ if(!empty($estudiante)){
     echo "\t<td class='p-6'>" . $estudiante[$i]["idestudiante"] . "</td>";
     echo "\t<td class='p-6'>" . $estudiante[$i]["nombre"] . "</td>";
     echo "\t<td class='p-6'>" . $estudiante[$i]["apellidos"] . "</td>";
-    echo "\t<td class='p-6'><a href='editRubric.php?idrubric=" . $estudiante[$i]["idestudiante"] . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Editar</a></td>";
+    echo "\t<td class='p-6'><a href='editStudents.php?idrubric=" . $estudiante[$i]["idestudiante"] . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Editar</a></td>";
     echo "</tr>";
     }
 }else{
