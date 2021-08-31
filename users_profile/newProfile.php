@@ -8,7 +8,7 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../js/script-editProfile.js"></script>
+    <script src="../js/script-newProfile.js"></script>
     <script src="../js/script-frmUserValidate.js"></script>
     <script src="../Dashboard/button.js"></script>
 </head>
@@ -46,7 +46,11 @@ require('../Dashboard/Dashboard.php');
                 <div>
                     <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0">
                         <label for="txtEmailProfile" class="p-2 text-white">EMAIL:</label>
-                        <input type="email" name="txtEmailProfile" id="txtEmailProfile" class="p-1 w-full bg-gray-800 border-b-2 border-solid border-gray-900 focus:border-gray-500 outline-none" required>
+                        <div>
+                            <input type="email" name="txtEmailProfile" id="txtEmailProfile" class="p-1 w-4/5 bg-gray-800 border-b-2 border-solid border-gray-900 focus:border-red-500 outline-none" required>
+                            <input type="checkbox" name="ckEmail" id="ckEmail" class="hidden" disabled>
+                            <label for="ckEmail"><span id="lbEmail" class="icon-cross text-red-500"></span></label>
+                        </div>
                     </div>
                 </div>
                 <div>

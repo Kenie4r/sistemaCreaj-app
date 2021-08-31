@@ -18,8 +18,10 @@ $estadoUsuario = $consulta->saveUser($username, $name, $last_name, $rol, $passwo
 
 $year = date("Y"); //Año actual
 $pass = "donboscoSV";
+$asunto = "Sistema de Calificacion Crea J: Nueva usuario";
+$saludo = "Bienvenido/a a nuestro sistema";
 
-$estadoCorreo = enviarCorreo($email, $name, $username, $pass, $year, "Nueva cuenta CDB");
+$estadoCorreo = enviarCorreo($email, $name, $username, $year, $asunto, $saludo, $pass);
 
 ?>
 
