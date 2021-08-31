@@ -8,7 +8,7 @@ class Query{
         $pass = md5($password);
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql  = "INSERT INTO usuario (usario, nombres, apellidos, rol, password, email) VALUES ( :username , :name, :last_name, :rol,:password, :correo)";
+        $sql  = "INSERT INTO usuario (usuario, nombres, apellidos, rol, password, email) VALUES ( :username , :name, :last_name, :rol,:password, :correo)";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":username", $userName);
         $sentencia->bindParam(":name", $name);
