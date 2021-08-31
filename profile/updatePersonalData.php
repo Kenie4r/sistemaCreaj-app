@@ -7,22 +7,18 @@ require_once("../controlador/sendEmail.php");
 $consulta = new Query; //Crear una consulta
 
 //Guardar perfil
-$username = $_POST["txtUserProfile"];
+$username = $_POST["username"];
 $name = $_POST["txtNameProfile"];
 $last_name = $_POST["txtLastNameProfile"];
-$rol = $_POST["txtRolProfile"];
-$password = $_POST["txtPassProfile"];
 $email = $_POST["txtEmailProfile"];
 
-$estadoUsuario = $consulta->saveUser($username, $name, $last_name, $rol, $password, $email);
+$estadoUsuario = $consulta->updatePersonalData($username, $name, $last_name, $email);
 
 $year = date("Y"); //Año actual
-$pass = "donboscoSV";
-$asunto = "Sistema de Calificacion Crea J: Nueva usuario";
-$saludo = "Bienvenido/a a nuestro sistema";
+$asunto = "Sistema de Calificacion Crea J: Datos actualizados";
+$saludo = "Tus datos personales han sido actualizados correctamente, puedes ingresar con tu usuario creado previamente";
 
-$estadoCorreo = enviarCorreo($email, $name, $username, $year, $asunto, $saludo, $pass);
-
+$estadoCorreo = enviarCorreo($email, $name, $username, $year, $asunto, $saludo);
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +45,7 @@ if($estadoUsuario == "Hecho"){
                 <p class="lg:text-2xl text-green-900"><?php echo $estadoCorreo; ?></p>
             </div>
             <div class="m-4 lg:m-7 flex justify-center">
-                <a href="index.php" class="text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-green-500 hover:bg-green-700 cursor-pointer"><span class="icon-circle-left"></span> Regresar</a>
+                <a href="../Dashboard/profile.php" class="text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-green-500 hover:bg-green-700 cursor-pointer"><span class="icon-circle-left"></span> Regresar</a>
             </div>
         </div>
     </section>
@@ -63,7 +59,7 @@ if($estadoUsuario == "Hecho"){
                 <p class="lg:text-2xl text-red-900"><?php echo $estadoCorreo; ?></p>
             </div>
             <div class="m-4 lg:m-7 flex justify-center">
-                <a href="index.php" class="text-red-700 border-red-700 border-2 border-solid rounded-lg p-2 hover:text-red-400 hover:bg-red-700 cursor-pointer"><span class="icon-circle-left"></span> Regresar</a>
+                <a href="../Dashboard/profile.php" class="text-red-700 border-red-700 border-2 border-solid rounded-lg p-2 hover:text-red-400 hover:bg-red-700 cursor-pointer"><span class="icon-circle-left"></span> Regresar</a>
             </div>
         </div>
     </section>

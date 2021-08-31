@@ -36,7 +36,7 @@ if(!empty($usuarios)){
     for ($i=0; $i < count($usuarios); $i++) { 
         //Variables
         $id = $usuarios[$i]["idUsuario"];
-        $username = $usuarios[$i]["usario"];
+        $username = $usuarios[$i]["usuario"];
         $nombres = $usuarios[$i]["nombres"];
         $apellidos = $usuarios[$i]["apellidos"];
         $email = $usuarios[$i]["email"];

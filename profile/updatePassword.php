@@ -35,7 +35,10 @@ $year = date("Y"); //Año actual
 require('../Dashboard/Dashboard.php');
 $email = $_SESSION["email"];
 $name = $_SESSION["nombres"];
-$estadoCorreo = enviarCorreo($email, $name, $username, $contra, $year, "Actualización de Contraseña");
+$asunto = "Sistema de Calificacion Crea J: Contrasena actualizada";
+$saludo = "Se ha cambiado tu contraseña";
+
+$estadoCorreo = enviarCorreo($email, $name, $username, $year, $asunto, $saludo, $contra);
 if($estadoPassword == "Hecho"){
 ?>
     <section class="container">
