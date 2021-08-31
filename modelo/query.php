@@ -891,6 +891,7 @@ class Query{
             $sentencia->execute();
             return true;
         }
+     
     }
 
     //Usuario password

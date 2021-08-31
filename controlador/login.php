@@ -6,7 +6,7 @@
             session_start();
             $_SESSION['uid'] = $user;
             $_SESSION['rol'] = $usuario['rol'];
-            $_SESSION['usario']=$usuario['usario'];
+            $_SESSION['usario']=$usuario['usuario'];
             $_SESSION['nombres']=$usuario['nombres'];
             $_SESSION['apellidos']=$usuario['apellidos'];
             $_SESSION['email']=$usuario['email'];
