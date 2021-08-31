@@ -205,7 +205,10 @@ HEREDOC;
             <link rel="stylesheet" href="../recursos/icons/style.css">
         </head>
         <body>
-            <div class='container h-screen bg-white w-screen'>
+            <div class= h-screen bg-white w-screen '>
+            <a class="fixed h-14 w-14 border border-black bottom-20 right-0 p-4 text-2xl flex justify-center items center rounded-lg cursor-pointer" href="ranking.php">
+            <span class="icon-trophy"></span>
+            </a>
                 <div class='mx-auto'>
         EDO;
 
@@ -239,7 +242,7 @@ HEREDOC;
             EDO;
         
         }else{
-            $html.="<div class='bg-blue-900 w-11/12 p-2 text-white mx-auto rounded-sm my-2 flex flex-row justify-between items-center' >
+            $html.="<div class='bg-black w-11/12 p-2 text-white mx-auto rounded-sm my-2 flex flex-row justify-between items-center' >
             <div class='text-xl'>
                 <h2>Proyectos a calificar</h2>
             </div>
