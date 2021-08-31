@@ -450,7 +450,7 @@ class Query{
         $nameRubric = "%".$nameRubric."%";
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql = "SELECT * FROM usuario WHERE usario LIKE :userName";
+        $sql = "SELECT * FROM usuario WHERE usuario LIKE :userName";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":userName", $nameRubric);
         if(!$sentencia){
@@ -677,7 +677,7 @@ class Query{
         $pass = md5($pass);
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "SELECT * FROM usuario WHERE usario = :nombre AND password = :pass";
+        $sql = "SELECT * FROM usuario WHERE usuario = :nombre AND password = :pass";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":nombre", $nombre);
         $sentencia->bindParam(":pass", $pass);
@@ -712,7 +712,7 @@ class Query{
     public function getUserByUsername($username){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "SELECT * FROM usuario WHERE usario = :nombre";
+        $sql = "SELECT * FROM usuario WHERE usuario = :nombre";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":nombre", $username);
         if(!$sentencia){
@@ -729,7 +729,7 @@ class Query{
     public function getUsersByUsername($nameuser){
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql = "SELECT * FROM usuario WHERE usario = :nameuser";
+        $sql = "SELECT * FROM usuario WHERE usuario = :nameuser";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":nameuser", $nameuser);
         if(!$sentencia){
@@ -878,7 +878,7 @@ class Query{
     public function updateUser($idUser, $nameUser, $name, $last_name, $rol){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "UPDATE usuario SET usario = :usuario, nombres = :nombre, apellidos = :apellido, rol = :rol WHERE usuario.idUsuario = :idUsuario";
+        $sql = "UPDATE usuario SET usuario = :usuario, nombres = :nombre, apellidos = :apellido, rol = :rol WHERE usuario.idUsuario = :idUsuario";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":usuario", $nameUser);
         $sentencia->bindParam(":nombre", $name);
@@ -898,7 +898,7 @@ class Query{
         $contra = md5($contra);
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "UPDATE usuario SET 	password = :contra WHERE usario = :username";
+        $sql = "UPDATE usuario SET 	password = :contra WHERE usuario = :username";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":contra", $contra);
         $sentencia->bindParam(":username", $nameUser);
