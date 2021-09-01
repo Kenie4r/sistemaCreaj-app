@@ -98,8 +98,8 @@
         $html.= "
         <div class='bg-gray-100'>
         <form action='libs/saveGrade.php' method='post' id='form'>
-            <input type='hidden' name='txtuserID' value='$userID'>
-            <input type='hidden' name='txtIdTeam'  value='$idTeam'>
+            <input type='hidden' name='txtuserID' id=='txtuserID' value='$userID'>
+            <input type='hidden' name='txtIdTeam'  id='txtIdTeam'  value='$idTeam'>
             <div class='text-center text-2xl'>
                 <h2>Evaluación de criterios</h2>
             </div>
@@ -203,6 +203,7 @@ HEREDOC;
             <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
             <link rel="stylesheet" href="../recursos/icons/style.css">
+            <script src="../js/script-search-project.js"></script>
         </head>
         <body>
             <div class= h-screen bg-white w-screen '>
@@ -246,17 +247,10 @@ HEREDOC;
             <div class='text-xl'>
                 <h2>Proyectos a calificar</h2>
             </div>
-            <div>
-                <div class='w-max'>
-                    <div class='bg-gray-300 m-2 rounded-sm'>
-                        <input type='text' name='' id='' class='text-black p-1'>
-                        <span class='icon-search p-2'></span>
-                    </div>
-                
-                </div>
-            </div>
+          
 
-        </div>";
+        </div>
+        <div id='teamsBox'>";
           $data = $query->getProjectsinfo($userID);
           foreach($data as $campo){
             $info = $query->getAllProjects($campo['materia_idmateria'], $campo['grado_idgrado']);
@@ -266,14 +260,18 @@ HEREDOC;
                     foreach($camp as $myre){
                         if($myre>0){
                             $c+=1;
+                            $graded = $query->getPoints($userID,$result['idproyecto'] );
+                            foreach($graded as $mycamp){
+                                $grade = $mycamp['points'];
+                            }
                             $withGrade .="<div class='bg-white w-8/12  border border-2 p-5 roundend-full m-auto shadow-md my-7'>
                             <div class='flex w-full flex-row items-center justify-between'>
                                     <div class='text-lg font-bold '>
                                         <h1>{$result['nombreProyecto'] }</h1>
                                     </div>
                                     <div class='text-center '>
-                                        <p class='p-1 border border-2 border-blue-400 text-blue-400 w-40 mx-auto mt-2 hover:bg-blue-400 hover:text-white  cursor-pointer'>
-                                           Proyecto calificado
+                                        <p class='p-1 border border-2 border-blue-400 text-blue-400 w-40 mx-auto mt-2r'>
+                                           Obtuvo: {$grade}
                                         </p>
                                     </div>
                                 </div>
@@ -281,7 +279,7 @@ HEREDOC;
                                     {$result['descripcion']}
                                 </div>   
                             </div>
-                        </div>";
+                        ";
                         }else{ 
                         
                             $html.="<div class='bg-white w-8/12  border border-2 p-5 roundend-full m-auto shadow-md my-7'>
@@ -301,7 +299,7 @@ HEREDOC;
                                                         {$result['descripcion']}
                                                     </div>   
                                                 </div>
-                                            </div>";
+                                    ";
                         
                         }
                     }
@@ -312,6 +310,7 @@ HEREDOC;
         if($c>0){
                 $html.= $withGrade;
         }
+        $html .="</div><input type='hidden' value='{$userID}' id='hdUserID'>";
         print($html);
     }
 
