@@ -2,12 +2,12 @@
 require_once('../modelo/conection.php');
 require_once('../modelo/query.php');
 require('../FPDF/fpdf.php');
+
 //Consulta
-//$consulta01 = new Consulta();
-if(true){
-    //Extraer colaboradores
-    //$colaboradores = $consulta01->mostrarTodoColabEvento($_GET['id']);
-    //Crear nueva clase
+$consulta = new Query; //Crear una consulta
+$jurados = $consulta->getJurys(); //Obtener jurados
+
+
     class PDF extends FPDF{
         // Cabecera de página
         function Header(){
@@ -38,7 +38,7 @@ if(true){
             $this->Cell(50,10,utf8_decode("Nombre"), 1, 0, 'C');
             $this->Cell(50,10,utf8_decode("Apellido"), 1, 0, 'C');
             $this->Cell(42,10,utf8_decode("Contraseña"), 1, 0, 'C');
-            $this->Cell(80,10,utf8_decode("Email"), 1, 0, 'C');
+            $this->Cell(80,10,utf8_decode("Email"), 1, 1, 'C');
         }
     
         // Pie de página
@@ -68,23 +68,20 @@ if(true){
     $pdf->AddPage();
     //Llenar tabla
     $a = 1;
-    /*for($i = 0; $i < count($colaboradores); $i++){
+    for($i = 0; $i < count($jurados); $i++){
         $pdf->SetFont('Arial','',15);
-        $pdf->Cell(14,10, $a, 1, 0, 'C');
-        $pdf->Cell(110,10,utf8_decode($colaboradores[$i]['Nombre_Encargado']), 1, 0, 'L');
-        $pdf->Cell(33,10,utf8_decode($colaboradores[$i]['Grado']), 1, 0, 'C');
-        $pdf->Cell(30,10,utf8_decode($colaboradores[$i]['Seccion']), 1, 0, 'C');
-        $pdf->Cell(30,10,utf8_decode($colaboradores[$i]['Turno']), 1, 0, 'C');
-        $pdf->Cell(60,10,"", 1, 1, 'C');
-        $a++;
-    }*/
+        $pdf->Cell(55,10,utf8_decode($jurados[$i]['usuario']), 1, 0, 'C');
+        $pdf->Cell(50,10,utf8_decode($jurados[$i]['nombres']), 1, 0, 'C');
+        $pdf->Cell(50,10,utf8_decode($jurados[$i]['apellidos']), 1, 0, 'C');
+        if($jurados[$i]['password'] == "6e8bf488a257263be3f2913f43dc7ddf"){
+            $pdf->Cell(42,10,utf8_decode("donboscoSV"), 1, 0, 'C');
+        }else{
+            $pdf->Cell(42,10,utf8_decode("********"), 1, 0, 'C');
+        }
+        $pdf->Cell(80,10,utf8_decode($jurados[$i]['email']), 1, 1, 'C');
+    }
     //Obtener nombre del evento para el pdf
     $nombre = "Listado_Jurados.pdf";
     //Escribir información
     $pdf->Output("I", $nombre, true);
-}else{
-    //Se niega el acceso para quienes no deben estar aqui
-    $url = BASE_URL . "../inicio.php";
-    header("Location: $url");
-}
 ?>
