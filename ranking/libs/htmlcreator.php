@@ -38,18 +38,47 @@
             print($html);
         }
         public function generateGrades(){
+            $blockhtml = "";
             $query = new Query();
             $grados = $query->getGrado();
             foreach($grados as $campo){
-                foreach($campo as $data){
-                    echo($data);
-
-                }
-
+               //vamos a escribir cada uno de los grados dentro del box
+               $blockhtml .= "<div class='bg-white w-full shadow-xl p-2 flex flex-row justify-between my-2'>
+               <!--Primero irá el nombre del grado-->
+               <div class='text-center'>
+                   <h1 class='text-2xl'>{$campo['nombre']}  {$campo['seccion']}</h1>
+               </div>
+               <!--Un botón para seleccionar al grado-->
+               <div>
+                   <div class='button p-2 border border-2 bg-blue-300 text-white cursor-pointer btnGrade' id='btn-{$campo['idgrado']}'>
+                       <p>Ver proyectos</p>
+                   </div>
+               </div>
+                </div>";
             }
-
+            $blockhtml.="</div>
+            </div>";
+            print($blockhtml);
 
         }
+        public function creatematerias(){
+            $html = <<<EDO
+            <div class='materias bg-white w-full h-full h-3/6 p-5 flex flex-col items-center md:h-full '>
+            <div class='text-xl my-2'>
+                <h1>Seleccione una materia para descargar su PDF</h1>
+            </div>
+            <div class='w-10/12 overflow-auto  md:h-full' id='boxSubjects'>
+                <p class="text-gray-400 text-2xl text-center">Aún no has seleccionado ningún grado, por favor seleccione uno <span class="icon-cross"></span></p>
+          
+            </div>
+        </div>
+        </div>
+        </div>
+            EDO;
+
+            print($html);
+        }
+
 
     }
 
