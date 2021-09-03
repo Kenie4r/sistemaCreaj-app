@@ -30,8 +30,9 @@ require('../Dashboard/Dashboard.php');
             <div class="mb-7 lg:m-0">
                 <h1 class="text-5xl text-gray-500">Usuarios</h1>
             </div>
-            <div class="flex lg:justify-end">
+            <div class="flex lg:justify-end lg:gap-2">
                 <a href="newProfile.php" class="text-blue-600 border-blue-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-blue-600"><span class="icon-plus"></span> Nuevo Usuario</a>
+                <a href="listJury.php" target="_blank" class="text-yellow-700 border-yellow-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-yellow-700"><span class="icon-file-pdf"></span> Listado: Jurados</a>
             </div>
         </div>
 <?php
