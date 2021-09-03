@@ -313,18 +313,18 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 INSERT INTO usuario (usuario, nombres, apellidos, rol, password, email)
- VALUES ( 'Admin' , 'Administrador', 'CDB','a','827ccb0eea8a706c4c34a16891f84e7b', 'trabajosocialhelp@gmail.com')
+ VALUES ( 'Admin' , 'Administrador', 'CDB','a','827ccb0eea8a706c4c34a16891f84e7b', 'trabajosocialhelp@gmail.com');
 
 
-INSERT INTO nivel VALUES (1, 'UNDEFINED')
+INSERT INTO nivel VALUES (1, 'UNDEFINED');
 
-INSERT INTO grado VALUES (1, 'UNDEFINED', NULL, 1)
+INSERT INTO grado VALUES (1, 'UNDEFINED', NULL, 1);
 
-INSERT INTO materia VALUES (1, 'UNDEFINED')
+INSERT INTO materia VALUES (1, 'UNDEFINED');
 
 
 INSERT INTO parametros VALUES (1, 'Ingreso de estudiantes', 2021-01-01, 2021-12-31),
 (2, 'Ingreso de proyectos', 2021-01-01, 2021-12-31), 
 (3, 'Ingreso de rubricas', 2021-01-01, 2021-12-31),
 (4, 'Limite de calificacion',2021-01-01, 2021-12-31),
-(5, 'Ingreso de nuevos usuarios', 2021-01-01,2021-12-31)
+(5, 'Ingreso de nuevos usuarios', 2021-01-01,2021-12-31);

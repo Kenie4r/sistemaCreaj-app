@@ -11,6 +11,9 @@
     $result = $query->savePuntaje($idTeam, $userID, $notaFinal);
     if($result =="Registro hecho"){
         header('Location: http://creaj21/calificar/index.php');
+
+
+        $ranked= $query->saveRank($idTeam, $materia, $grado,$puntaje);
     }else{
 
     }

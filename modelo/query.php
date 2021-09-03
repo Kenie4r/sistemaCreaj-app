@@ -226,7 +226,7 @@ class Query{
     public function saveRank($proyecto, $materia, $grado,$puntaje){
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql="INSERT INTO ranking(proyecto_idproyecto, proyecto_grado_idgrado, proyecto_materia_idmateria, puntaje_idpuntaje) VALUES (
+        $sql="INSERT INTO ranking(proyecto_idproyecto, proyecto_grado_idgrado, proyecto_materia_idmateria, puntaje) VALUES (
         :poyecto, :grado, :materia, :puntaje)";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":proyecto", $proyecto);
