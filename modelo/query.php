@@ -227,7 +227,7 @@ class Query{
         $model = new Conection();
         $connection  = $model->_getConection();
         $sql="INSERT INTO ranking(proyecto_idproyecto, proyecto_grado_idgrado, proyecto_materia_idmateria, notafinal) VALUES (
-        :poyecto, :grado, :materia, :puntaje)";
+        :proyecto, :grado, :materia, :puntaje)";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":proyecto", $proyecto);
         $sentencia->bindParam(":grado", $grado);
@@ -243,7 +243,35 @@ class Query{
 
     //SELECT
     //obtener la cantidad de proyectos asignados  a un usuario 
-    
+    public function getCountRatedProject($idProject){
+        $model = new Conection();
+        $conexion = $model->_getConection();
+        $sql = "SELECT COUNT(*) FROM `puntaje` WHERE puntaje.proyecto_idproyecto = :id";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":id", $idProject);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetch();
+            return $result;
+        }
+    }
+    public function getRatedsProject($idProject){
+        $model = new Conection();
+        $conexion = $model->_getConection();
+        $sql = "SELECT puntaje.puntaje FROM `puntaje` WHERE puntaje.proyecto_idproyecto = :id";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":id", $idProject);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
+    }
     public function getCountProjects($userID){
         $model = new Conection();
         $connection = $model->_getConection();
@@ -1001,16 +1029,13 @@ class Query{
     }
 
     //Ranking
-    public function updateRanking($idRanking, $proyecto, $grado, $materia, $puntaje){
+    public function updateRanking($proyecto, $puntaje){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "UPDATE ranking SET proyecto_idproyecto = :proyecto, proyecto_grado_idgrado = :grado, proyecto_materia_idmateria = :materia, puntaje_idpuntaje = :puntaje WHERE ranking.idRanking = :idRanking";
+        $sql = "UPDATE ranking SET   notafinal = :puntaje WHERE proyecto_idproyecto = :proyecto";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":proyecto", $proyecto);
-        $sentencia->bindParam(":grado", $grado);
-        $sentencia->bindParam(":materia", $materia);
         $sentencia->bindParam(":puntaje", $puntaje);
-        $sentencia->bindParam(":idRanking", $idUser);
         if(!$sentencia){
             return false;
         }else{

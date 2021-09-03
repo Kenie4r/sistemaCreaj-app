@@ -137,7 +137,8 @@
             }
 
         }
-        $html = "";
+        $html = "<input type='hidden' name='subjecttxt' value='{$idMateria}'> ";
+        $html .= "<input type='hidden' name='levelttxt' value='{$idNivel}'> ";
         for($index = 0; $index<count($myCID); $index++){
             $number = $index+1;
             $html.=" <div class='tab'class='criterio p-5'>
