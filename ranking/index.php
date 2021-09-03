@@ -10,6 +10,6 @@
     $create->header();
     $create->body();
     $create->generateGrades();
-
+    $create->creatematerias();
 
 ?>

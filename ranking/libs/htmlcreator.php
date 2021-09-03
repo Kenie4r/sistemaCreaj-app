@@ -71,9 +71,11 @@
                 <p class="text-gray-400 text-2xl text-center">Aún no has seleccionado ningún grado, por favor seleccione uno <span class="icon-cross"></span></p>
           
             </div>
-        </div>
-        </div>
-        </div>
+            </div>
+            </div>
+            </div>
+            </body>
+            </html>
             EDO;
 
             print($html);
