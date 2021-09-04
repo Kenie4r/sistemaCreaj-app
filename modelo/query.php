@@ -876,7 +876,7 @@ class Query{
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
         $sql = "SELECT idparametros FROM parametros WHERE nombre = :nombre";
-        $sentencia= $connection->prepare($sql);
+        $sentencia= $conexion->prepare($sql);
         $sentencia->bindParam(":nombre", $nombre);
         if(!$sentencia){
             return "Error";
