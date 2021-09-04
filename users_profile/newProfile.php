@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/script-newProfile.js"></script>
+    <script src="../js/script-validateEmail.js"></script>
     <script src="../js/script-frmUserValidate.js"></script>
     <script src="../Dashboard/button.js"></script>
 </head>

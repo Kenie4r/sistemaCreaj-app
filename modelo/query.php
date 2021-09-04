@@ -1098,6 +1098,24 @@ class Query{
         }
     }
 
+    //Usuario
+    public function updatePersonalData($nameUser, $name, $last_name, $email){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "UPDATE usuario SET nombres = :nombre, apellidos = :apellido, email = :correo WHERE usuario = :username";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":nombre", $name);
+        $sentencia->bindParam(":apellido", $last_name);
+        $sentencia->bindParam(":correo", $email);
+        $sentencia->bindParam(":username", $nameUser);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            return true;
+        }
+    }
+
     //Usuario password
     public function updateUserPassword($nameUser, $contra){
         $contra = md5($contra);

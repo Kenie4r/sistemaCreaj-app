@@ -6,16 +6,15 @@ require_once("../controlador/sendEmail.php");
 
 $consulta = new Query; //Crear una consulta
 
-//Guardar perfil
-
+//Obtenemos los datos para actualizar la contraseña
 $username = $_POST["actualName"];
 $contra = $_POST["txtNewPassProfile"];
+
+//Actualizamos los datos
 $estadoPassword = $consulta->updateUserPassword($username, $contra);
 
+//Configuramos las variables del email
 $year = date("Y"); //Año actual
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -33,12 +32,16 @@ $year = date("Y"); //Año actual
 <body>
 <?php
 require('../Dashboard/Dashboard.php');
+
+//Configuramos las variables del email
 $email = $_SESSION["email"];
 $name = $_SESSION["nombres"];
 $asunto = "Sistema de Calificacion Crea J: Contrasena actualizada";
 $saludo = "Se ha cambiado tu contraseña";
 
+//Enviamos el correo con la nueva contraseña
 $estadoCorreo = enviarCorreo($email, $name, $username, $year, $asunto, $saludo, $contra);
+
 if($estadoPassword == "Hecho"){
 ?>
     <section class="container">
