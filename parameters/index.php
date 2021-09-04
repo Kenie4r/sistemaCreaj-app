@@ -4,7 +4,7 @@ require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
 
 $consulta = new Query; //Crear una consulta
-$Proyecto = $consulta->getProject(); //Get Estudiantes
+$parametros = $consulta->getParametros(); //Get Estudiantes
 
 ?>
 <!DOCTYPE html>
@@ -35,7 +35,7 @@ $Proyecto = $consulta->getProject(); //Get Estudiantes
             </div>
         </div>
         <?php
-if(!empty($Proyecto)){
+if(!empty($parametros)){
     echo "<div class='flex flex-row items-center m-7'>";
     echo "\t<div class=''>";
     echo "\t<input type='text' name='txtBusquedaId' id='txtBusquedaId' class='p-1 border-gray-700 border-solid border-2 rounded-lg outline-none' placeholder='Buscar por ID...'>";
@@ -50,21 +50,22 @@ if(!empty($Proyecto)){
                     <tr>
                         <td class="rounded-tl-lg p-4">ID</td>
                         <td class="p-4">Nombre</td>
-                        <td class="p-4">Descripción</td>
+                        <td class="p-4">Fecha de inicio</td>
+                        <td class="p-4">Fecha de cierre</td>
                         <td colspan="3" class="rounded-tr-lg p-4">Opciones</td>
                     </tr>
                 </thead>
                 <tbody id="table-body-rubrica" class="bg-gray-200">
                 <?php
 
-if(!empty($Proyecto)){
-    for ($i=0; $i < count($Proyecto); $i++) { 
+if(!empty($parametros)){
+    for ($i=0; $i < count($parametros); $i++) { 
         echo "<tr class='lol'>";
-    echo "\t<td class='p-6'>" . $Proyecto[$i]["idproyecto"] . "</td>";
-    echo "\t<td class='p-6'>" . $Proyecto[$i]["nombreProyecto"] . "</td>";
-    echo "\t<td class='p-6'>" . $Proyecto[$i]["descripcion"] . "</td>";
-    echo "\t<td class='p-6'><a href='?idrubric=" . $Proyecto[$i]["idproyecto"] . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Editar</a></td>";
-    echo "\t<td class='p-6'><a href='deleteProjects.php?idequipo=" . $Proyecto[$i]["idproyecto"] . "' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
+    echo "\t<td class='p-6'>" . $parametros[$i]["idparametros"] . "</td>";
+    echo "\t<td class='p-6'>" . $parametros[$i]["nombre"] . "</td>";
+    echo "\t<td class='p-6'>" . $parametros[$i]["paramFecha"] . "</td>";
+    echo "\t<td class='p-6'>" . $parametros[$i]["paramFechaF"] . "</td>";
+    echo "\t<td class='p-6'><a href='?idrubric=" . $parametros[$i]["idparametros"] . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Editar</a></td>";
     echo "</tr>";
     }
 }else{

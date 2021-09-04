@@ -20,6 +20,8 @@ require_once("soporteStudents.php")
 <body class="bg-">
 <?php
 require('../Dashboard/Dashboard.php');
+require_once("../parameters/soporteParametros.php");
+comparacionFecha("Estudiantes");
 ?>
     <form id="frmNewRubric" class="container box-content" method="POST" action="saveStudents.php">
         <h1 class="text-center w-3/4 lg:w-full lg:text-5xl outline-none focus:border-gray-500 border-b-2 focus:border-solid mt-8">Agregar estudiante</h1>

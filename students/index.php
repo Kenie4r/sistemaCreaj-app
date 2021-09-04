@@ -69,7 +69,7 @@ if(!empty($estudiante)){
     }
 }else{
     echo "<tr class='lol'>";
-    echo "\t<td colspan='5' class='p-4'><span class='icon-blocked'></span> No hay rubricas en el sistema<td>";
+    echo "\t<td colspan='5' class='p-4'><span class='icon-blocked'></span> No hay estudiantes en el sistema<td>";
     echo "</tr>";
 }
 
