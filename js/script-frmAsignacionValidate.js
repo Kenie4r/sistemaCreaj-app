@@ -20,8 +20,8 @@ function validateFormUser() {
     var errores = 0;
 
     //Lamamos a las funciones que nos devuelven la cantidad de select sin datos que hay
-    errores += cuantosVaciosSelectMateria();
-    errores += cuantosVaciosSelectGrado();
+    errores += cuantosVaciosSelectMateria(); //MAETIRAS
+    errores += cuantosVaciosSelectGrado(); //GRADOS
 
     //Dependiendo de los errores imprimimos una alert, o procesamos la solicitud
     if(errores > 0){

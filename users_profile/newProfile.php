@@ -21,30 +21,30 @@ require('../Dashboard/Dashboard.php');
             <div class="flex justify-center lg:m-9">
                 <h1 class="text-5xl text-gray-500">Nuevo Perfil</h1>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-3 m-9">
+            <div class="grid grid-cols-1 lg:grid-cols-3 m-9 text-gray-300">
                 <div>
                     <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0">
-                        <label for="txtNameProfile" class="p-2 text-white">Nombre:</label>
+                        <label for="txtNameProfile" class="p-2">Nombre:</label>
                         <input type="text" name="txtNameProfile" id="txtNameProfile" maxlength="50" class="p-1 w-full bg-gray-800 border-b-2 border-solid border-gray-900 focus:border-gray-500 outline-none" autofocus required>
                     </div>
                 </div>
                 <div>
                     <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0">
-                        <label for="txtLastNameProfile" class="p-2 text-white">Apellido:</label>
+                        <label for="txtLastNameProfile" class="p-2">Apellido:</label>
                         <input type="text" name="txtLastNameProfile" id="txtLastNameProfile" maxlength="50" class="p-1 w-full bg-gray-800 border-b-2 border-solid border-gray-900 focus:border-gray-500 outline-none" required>
                     </div>
                 </div>
                 <div>
                     <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0">
-                        <label for="txtUserProfile" class="p-2 text-white">Usuario:</label>
+                        <label for="txtUserProfile" class="p-2">Usuario:</label>
                         <input type="text" name="txtUserProfile" id="txtUserProfile" value="" class="p-1 w-full bg-gray-800 border-b-2 border-solid border-gray-900 focus:border-gray-500 outline-none" readonly>
                     </div>
                 </div>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-3 m-9">
+            <div class="grid grid-cols-1 lg:grid-cols-3 m-9 text-gray-300">
                 <div>
                     <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0">
-                        <label for="txtEmailProfile" class="p-2 text-white">EMAIL:</label>
+                        <label for="txtEmailProfile" class="p-2">EMAIL:</label>
                         <div>
                             <input type="email" name="txtEmailProfile" id="txtEmailProfile" class="p-1 w-4/5 bg-gray-800 border-b-2 border-solid border-gray-900 focus:border-red-500 outline-none" required>
                             <input type="checkbox" name="ckEmail" id="ckEmail" class="hidden" disabled>
@@ -54,13 +54,13 @@ require('../Dashboard/Dashboard.php');
                 </div>
                 <div>
                     <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0">
-                        <label for="txtPassProfile" class="p-2 text-white">Password:</label>
+                        <label for="txtPassProfile" class="p-2">Password:</label>
                         <input type="password" name="txtPassProfile" id="txtPassProfile" value="donboscoSV" class="p-1 w-full bg-gray-800 border-b-2 border-solid border-gray-900 focus:border-gray-500 outline-none" title="donboscoSV" readonly>
                     </div>
                 </div>
                 <div>
                     <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0">
-                        <label for="txtRolProfile" class="p-2 text-white">Rol:</label>
+                        <label for="txtRolProfile" class="p-2">Rol:</label>
                         <select name="txtRolProfile" id="txtRolProfile" class="p-1 w-full bg-gray-800 border-b-2 border-solid border-gray-900 focus:border-gray-500 outline-none" required>
                             <option value="">Escogue un rol...</option>
     <?php
