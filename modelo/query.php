@@ -243,7 +243,7 @@ class Query{
     public function saveRank($proyecto, $materia, $grado,$puntaje){
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql="INSERT INTO ranking(proyecto_idproyecto, proyecto_grado_idgrado, proyecto_materia_idmateria, puntaje_idpuntaje) VALUES (
+        $sql="INSERT INTO ranking(proyecto_idproyecto, proyecto_grado_idgrado, proyecto_materia_idmateria, notafinal) VALUES (
         :poyecto, :grado, :materia, :puntaje)";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":proyecto", $proyecto);
@@ -688,6 +688,20 @@ class Query{
         }
     }
 
+    public function getLevelbyGradeID($idgrado){
+        $modelo = new Conection();
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT grado.nivel_idnivel AS idnivel FROM grado WHERE idgrado = :idGrado";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindColumn(":idGrado", $idgrado);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetch();
+            return $resultado;
+        }
+    }
     //Obtener el nivel según el ID
     public function getLevelById($idnivel){
         $model = new Conection();
@@ -989,7 +1003,7 @@ class Query{
     public function getSubjectByGradeP($idGrade){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "SELECT proyecto.materia_idmateria FROM proyecto WHERE proyecto.grado_idgrado = :idGrado";
+        $sql = "SELECT proyecto.materia_idmateria AS idmateria FROM proyecto WHERE proyecto.grado_idgrado = :idGrado";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":idGrado", $idGrado);
         if(!$sentencia){
@@ -1005,9 +1019,10 @@ class Query{
     public function getCountRatedPbyIDs($idGrado, $idSubject){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "SELECT COUNT(*) FROM proyecto WHERE proyecto.grado_idgrado = :idGrado";
+        $sql = "SELECT COUNT(*) FROM proyecto WHERE proyecto.grado_idgrado = :idGrado AND  proyecto.materia_idmateria = :idMateria";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":idGrado", $idGrado);
+        $sentencia->bindParam(":idMateria", $idSubject);
         if(!$sentencia){
             return false;
         }else{

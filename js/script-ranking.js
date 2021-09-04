@@ -16,18 +16,12 @@ function getID(myID){
 }
 
 function getSubjectsbyGrade(){
-    var block = "      <div class='bg-white w-full shadow-xl p-2 flex flex-row justify-between my-2'>"+
-    "<!--Primero  va el normbre de  la materia-->"+
-    "<div class='text-center'>"+
-        "<h1 class='text-2xl'>Religión</h1>"+
-    "</div>"+
-"<!--Un botón para descargar el PDF-->"+
-    "<div>"+
-        "<div class='button p-2 border border-2 bg-blue-300 text-white cursor-pointer btnSubject' id='btnM-1'>"+
-            "<p>Descargar PDF</p>"+
-        "</div>"+
-    "</div>"+
-"</div>";
-    $(boxSubjects).empty();
-    $(boxSubjects).append(block);
+        $.post('../controlador/getSubjectsbyGradeP.php',{
+            'idGrado':grade
+        }, function(block){
+            alert(grade);
+            $(boxSubjects).empty();
+            $(boxSubjects).append(block);
+        }, "html")
+  
 }

@@ -12,8 +12,9 @@
     
         //vamos a crear el nav
 
-    require('../Dashboard/Dashboard.php');
+   
     $htmlCreator->headerHTML();
+    require('../Dashboard/Dashboard.php');
     $idTeam = $_GET['teamID'];
     $user = $query->getUserByUsername($_SESSION['uid']);
     $userID = $user['idUsuario'];
