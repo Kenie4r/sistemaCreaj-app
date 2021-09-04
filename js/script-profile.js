@@ -12,7 +12,7 @@ $(document).ready(
         );
 
         //Vaciar la busqueda cuando se cambie de tipo de busqueda
-        $("#txtBusquedaName").on("change",
+        $("#sltBusqueda").on("change",
             function(){
                 llenarTabla();
             }
@@ -26,11 +26,13 @@ $(document).ready(
 function llenarTabla() {
     var txtBusqueda = $("#txtBusquedaName");
     var tipoBusqueda = $("#sltBusqueda").val();
+    var tipoRol = $("#rolActivo").val();
 
     $.post("../controlador/searchUser.php", 
         {
             "filtro": txtBusqueda.val(),
-            "tipoBusqueda": tipoBusqueda
+            "tipoBusqueda": tipoBusqueda,
+            "rolActivo": tipoRol
         },
         function(respuesta){
             var contenedorFilasRubric = $("#table-body-rubrica");

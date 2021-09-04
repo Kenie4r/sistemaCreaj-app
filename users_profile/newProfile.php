@@ -14,7 +14,6 @@
 </head>
 <body>
 <?php
-//Validar correos
 require('../Dashboard/Dashboard.php');
 ?>
     <section class="p-8">

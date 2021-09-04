@@ -3,9 +3,6 @@
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
 
-$consulta = new Query; //Crear una consulta
-$usuarios = $consulta->getUsers(); //Obtener usuarios
-
 ?>
 
 <!DOCTYPE html>
@@ -35,9 +32,9 @@ require('../Dashboard/Dashboard.php');
                 <a href="listJury.php" target="_blank" class="text-yellow-700 border-yellow-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-yellow-700"><span class="icon-file-pdf"></span> Listado: Jurados</a>
             </div>
         </div>
-<?php
-if(!empty($usuarios)){
-?>
+        <div>
+            <input type="hidden" name="rolActivo" id="rolActivo" value="<?php echo $_SESSION["rol"]; ?>">
+        </div>
         <div class='flex flex-row items-center m-7'>
             <div class='flex flex-row'>
                 <input type='text' name='txtBusquedaName' id='txtBusquedaName' class='p-1 border-gray-700 border-solid border-2 rounded-tl-lg rounded-bl-lg  outline-none' placeholder='Buscar por...'>
@@ -49,9 +46,6 @@ if(!empty($usuarios)){
                 </select>
             </div>
         </div>
-<?php
-}
-?>
         <div class="box-border m-7">
             <table class="w-full border-collapse text-center">
                 <thead class="bg-gray-900 text-white">
