@@ -871,6 +871,22 @@ class Query{
             return $resultado;
         }
     }
+    //Obtener el iD de los parametros
+    public function getIDparametros($nombre){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT idparametros FROM parametros WHERE nombre = :nombre";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":nombre", $nombre);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
         //Obtener los equipos según el ID de equipo
         public function getEquipos($idequipo){
             $model = new Conection();

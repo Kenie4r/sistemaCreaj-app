@@ -33,26 +33,18 @@ require('../Dashboard/Dashboard.php');
             </div>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-3 m-9 ml-36">
-                <div class=" "> 
-                <?php
-                for ($i=0; $i < count($parametros); $i++) { 
-                    $inicio = $consulta->getParametrosById($parametros[$i]["idparametros"]);
-
-                ?>
+        <div class=" "> 
                     <div class="flex flex-row items-center w-full lg:w-4/5 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
-                        <label for='<?php echo $i; ?>-txtinicio' class="w-60 p-2 bg-gray-700 text-white">Fecha de inicio</label>
-                        <input class="p-1 w-full rounded-r-lg outline-none" type="date" name='<?php echo $i; ?>-txtFechaInicio' value="" >
+                        <label for="0-txtinicio" class="w-60 p-2 bg-gray-700 text-white">Fecha de inicio</label>
+                        <input class="p-1 w-full rounded-r-lg outline-none" type="date" name="0-txtFechaInicio" value="" >
                     </div>
                </div>
                 <div class="mt-10"> 
                     <div class="flex flex-row items-center w-full lg:w-4/5 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
-                        <label for='<?php echo $i; ?>-txtfin' class="w-60 p-2 bg-gray-700 text-white">Fecha de cierre</label>
-                        <input class="p-1 w-full rounded-r-lg outline-none" type="date" name='<?php echo $i; ?>-txtFechaFin' value="" >
+                        <label for="0-txtfin" class="w-60 p-2 bg-gray-700 text-white">Fecha de cierre</label>
+                        <input class="p-1 w-full rounded-r-lg outline-none" type="date" name="0-txtFechaFin" value="" >
                    </div>
                </div>
-               <?php
-                }
-                ?>
         </div>
     </form>
 </body>
