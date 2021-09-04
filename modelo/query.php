@@ -727,7 +727,7 @@ class Query{
         $pass = md5($pass);
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "SELECT * FROM usuario WHERE usario = :nombre AND password = :pass";
+        $sql = "SELECT * FROM usuario WHERE usuario = :nombre AND password = :pass";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":nombre", $nombre);
         $sentencia->bindParam(":pass", $pass);
