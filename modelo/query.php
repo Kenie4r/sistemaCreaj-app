@@ -1100,17 +1100,14 @@ class Query{
         }
     }
 
-    //Ranking
-    public function updateRanking($idRanking, $proyecto, $grado, $materia, $puntaje){
+    //Ranking  
+    public function updateRanking($proyecto, $puntaje){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "UPDATE ranking SET proyecto_idproyecto = :proyecto, proyecto_grado_idgrado = :grado, proyecto_materia_idmateria = :materia, puntaje_idpuntaje = :puntaje WHERE ranking.idRanking = :idRanking";
+        $sql = "UPDATE ranking SET   notafinal = :puntaje WHERE proyecto_idproyecto = :proyecto";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":proyecto", $proyecto);
-        $sentencia->bindParam(":grado", $grado);
-        $sentencia->bindParam(":materia", $materia);
         $sentencia->bindParam(":puntaje", $puntaje);
-        $sentencia->bindParam(":idRanking", $idUser);
         if(!$sentencia){
             return false;
         }else{
