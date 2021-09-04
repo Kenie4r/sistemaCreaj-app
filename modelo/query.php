@@ -157,6 +157,23 @@ class Query{
             return "Registro hecho";
         }
     }
+    //Guardar parámetros 
+    public function saveParametros($idparametros, $nombre, $paramFecha, $paramFechaF ){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "INSERT INTO parametros VALUES ( :idparametros, :nombre, :paramFecha, :paramFechaF)";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":idparametros", $idparametros);
+        $sentencia->bindParam(":nombre", $nombre);
+        $sentencia->bindParam(":paramFecha", $paramFecha);
+        $sentencia->bindParam(":paramFechaF", $paramFechaF);
+        if(!$sentencia){
+            return "Error, existe un fallo";
+        }else{
+            $sentencia->execute();
+            return "Registro hecho";
+        }
+    }
     //Guardar Proyectos
     public function saveProjects($name, $descripcion, $idGrado, $idMateria){
         $model = new Conection();
@@ -568,6 +585,23 @@ class Query{
             return $resultado;
         }
     }
+    //Obtener la fecha de inicio y la fecha de cierre de la tabla Parametros
+    public function getFechas($nombre){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+            $sql = "SELECT paramFecha, paramFechaF FROM parametros WHERE nombre = :nombre";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":nombre", $nombre);
+
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado[0];
+        }
+    }
     //Obtener el id de los estudiantes segun el ID 
 
     //Obtener el id de los niveles según el ID criterio
@@ -764,6 +798,21 @@ class Query{
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
         $sql = "SELECT * FROM estudiante";
+        $sentencia = $conexion->prepare($sql);
+        if(!$sentencia){
+            return "";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+    //Obtener los parámetros ya registrados
+    Public function getParametros(){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+         $sql = "SELECT * FROM parametros";
         $sentencia = $conexion->prepare($sql);
         if(!$sentencia){
             return "";
