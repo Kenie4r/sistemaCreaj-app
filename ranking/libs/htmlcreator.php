@@ -16,7 +16,7 @@
                 <link rel='stylesheet' href='../recursos/icons/style.css'>
                 <script src='../js/script-ranking.js'></script>
             </head>
-            <body>
+            <body class='overflow-x-hidden'>
             EDO;
 
             print($html);
@@ -25,9 +25,9 @@
         public function body(){
 
             $html = <<<EDO
-            <div class='h-screen w-screen flex flex-col p-5 items-center justify-center rounded-2xl shadow bg-gray-100 overflow-x-hidden md:p-1'>
-            <div class='container h-screen w-screen border shadow-lg bg-white flex flex-col md:flex-row '>
-                    <div class='grados bg-blue-900 w-full h-3/6 rounded-md flex flex-col items-center md:h-full'>
+            <div class=' h-screen w-screen flex flex-col  items-center justify-center rounded-2xl shadow  md:p-1'>
+            <div class=' h-full  w-10/12 border shadow-lg bg-white flex flex-col md:flex-row overflow-x-hidden  '>
+                    <div class='grados bg-indigo-700 w-full h-3/6 rounded-md flex flex-col items-center md:h-full'>
                         <div class='text-white my-2 text-justify p-5'>
                             <h1 class='text-center text-xl'>Selección de grados para ver el Ranking</h1>
                             <p>Seleccione un grado, luego en el apartado de materias seleccione la materia
@@ -53,7 +53,7 @@
                 </div>
                 <!--Un botón para seleccionar al grado-->
                 <div>
-                    <div class='button p-2 border border-2 bg-blue-300 text-white cursor-pointer btnGrade' id='btn-{$campo['idgrado']}'>
+                    <div class='button p-2 border border-2 bg-blue-500 text-white cursor-pointer btnGrade' id='btn-{$campo['idgrado']}'>
                         <p>Ver materias</p>
                     </div>
                 </div>

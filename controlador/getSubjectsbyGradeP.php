@@ -15,14 +15,16 @@
             if($ngraded['COUNT(*)']>0){
                 $materia = $query->getMatterById($a);
                 $html .= "
-                <div class='bg-white w-full shadow-xl p-2 flex flex-row justify-between my-2'>
+                <div class='bg-white w-full shadow-xl p-2 flex flex-row justify-between my-3'>
                 <div class='text-center'>
                     <h1 class='text-2xl'>{$materia['nombre']}</h1>
                 </div>
                 <!--Un botón para seleccionar al grado-->
                 <div>
-                    <div class='button p-2 border border-2 bg-blue-300 text-white cursor-pointer btnGrade' id='btn-1'>
-                        <p><a target='_blank' href='rank.php?idSubject={$a}&grade={$grado}'>Ver ranking</a></p>
+                    <div >
+                        <a target='_blank' href='rank.php?idSubject={$a}&grade={$grado}' class='button p-2 border border-2 bg-indigo-600 text-white cursor-pointer btnGrade' id='btn-{$a}'>
+                         Ver ranking
+                        </a>
                     </div>
                 </div>
                 </div>
