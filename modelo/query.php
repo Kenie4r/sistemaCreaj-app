@@ -692,9 +692,9 @@ class Query{
     public function getLevelbyGradeID($idgrado){
         $modelo = new Conection();
         $conexion = $modelo->_getConection();
-        $sql = "SELECT grado.nivel_idnivel AS idnivel FROM grado WHERE idgrado = :idGrado";
+        $sql = "SELECT grado.nivel_idnivel AS idnivel FROM grado WHERE  grado.idgrado = :idGrado";
         $sentencia = $conexion->prepare($sql);
-        $sentencia->bindColumn(":idGrado", $idgrado);
+        $sentencia->bindParam(":idGrado", $idgrado);
         if(!$sentencia){
             return false;
         }else{

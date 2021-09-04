@@ -113,10 +113,11 @@
         return array($teamData[6], $teamData[7]);
     }
 
-    public function writeRubric($idNivel, $idMateria){
+    public function writeRubric($idGrado, $idMateria){
         $query = new Query();
         $myCID = array();
-        $myRubric = $query->getNewRubric($idMateria, $idNivel);
+        $idNivel = $query->getLevelbyGradeID($idGrado);
+        $myRubric = $query->getNewRubric($idMateria, $idNivel['idnivel']);
        foreach($myRubric as $a=> $b){
           foreach($b as $c){
               $idRubric = $c;
@@ -143,7 +144,7 @@
 
         }
         $html = "<input type='hidden' name='subjecttxt' value='{$idMateria}'> ";
-        $html .= "<input type='hidden' name='levelttxt' value='{$idNivel}'> ";
+        $html .= "<input type='hidden' name='levelttxt' value='{$idGrado}'> ";
         for($index = 0; $index<count($myCID); $index++){
             $number = $index+1;
             $html.=" <div class='tab'class='criterio p-5'>
