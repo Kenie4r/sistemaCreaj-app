@@ -6,18 +6,21 @@ require_once("../controlador/sendEmail.php");
 
 $consulta = new Query; //Crear una consulta
 
-//Guardar perfil
+//Obtenemos las datos del usuario
 $username = $_POST["username"];
 $name = $_POST["txtNameProfile"];
 $last_name = $_POST["txtLastNameProfile"];
 $email = $_POST["txtEmailProfile"];
 
+//Actualizamos el perfil con los datos obtenidos
 $estadoUsuario = $consulta->updatePersonalData($username, $name, $last_name, $email);
 
+//Se configuran las opciones del correo
 $year = date("Y"); //Año actual
 $asunto = "Sistema de Calificacion Crea J: Datos actualizados";
 $saludo = "Tus datos personales han sido actualizados correctamente, puedes ingresar con tu usuario creado previamente";
 
+//Se envia un correo con los datos actualizados
 $estadoCorreo = enviarCorreo($email, $name, $username, $year, $asunto, $saludo);
 ?>
 

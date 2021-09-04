@@ -8,6 +8,7 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../js/script-validateActualPassword.js"></script>
     <script src="../js/script-editPasswordUser.js"></script>
     <script src="../Dashboard/button.js"></script>
 </head>
@@ -21,14 +22,14 @@ require('../Dashboard/Dashboard.php');
                 <h1 class="text-5xl"><?php echo $_SESSION["usario"]; ?></h1>
                 <h2 class="text-2xl">Cambiar contraseña</h2>
             </div>
-            <input type="hidden" name="actualName" id="actualName" value="<?php echo $_SESSION["usario"]; ?>">
-            <div class="grid grid-cols-1 lg:grid-cols-2">
+            <input type="hidden" name="username" id="username" value="<?php echo $_SESSION["usario"]; ?>">
+            <div class="grid grid-cols-1 lg:grid-cols-2 text-gray-300">
                 <div class="flex flex-col items-center m-8 rounded-lg">
-                    <label for="txtNewPassProfile" class="text-white">Nueva Password:</label>
+                    <label for="txtNewPassProfile">Nueva Password:</label>
                     <input type="password" name="txtNewPassProfile" id="txtNewPassProfile" class="p-1 w-4/5 bg-gray-800 border-b-2 border-solid border-gray-900 focus:border-gray-600 outline-none" size="10" maxlength="10" autofocus>
                 </div>
                 <div class="flex flex-col items-center w-full m-8 rounded-lg">
-                    <label for="txtConfirmPassProfile" class="text-white">Confirmar nueva password:</label>
+                    <label for="txtConfirmPassProfile">Confirmar nueva password:</label>
                     <div>
                         <input type="password" name="txtConfirmPassProfile" id="txtConfirmPassProfile" class="p-1 bg-gray-800 border-b-2 border-solid border-gray-900 focus:border-red-500 outline-none" maxlength="10">
                         <input type="checkbox" name="ckConfirmPass" id="ckConfirmPass" class="hidden" disabled>
@@ -37,8 +38,8 @@ require('../Dashboard/Dashboard.php');
                 </div>
             </div>
             <div class="flex items-center justify-center">
-                <div class="flex flex-col items-center w-full m-8">
-                    <label for="txtActualPassProfile" class="text-white">Antigua Password:</label>
+                <div class="flex flex-col items-center w-full m-8 text-gray-300">
+                    <label for="txtActualPassProfile">Antigua Password:</label>
                     <div>
                         <input type="password" name="txtActualPassProfile" id="txtActualPassProfile" class="p-1 w-4/5 bg-gray-800 border-b-2 border-solid border-gray-900 focus:border-red-500 outline-none" title="donboscoSV">
                         <input type="checkbox" name="ckActualPass" id="ckActualPass" class="hidden" disabled>

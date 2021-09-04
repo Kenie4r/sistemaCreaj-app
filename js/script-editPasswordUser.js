@@ -1,55 +1,25 @@
+//-----     Validación del Formulario de Actualizar Contraseña     -----
+//Objetos que se validan
+//NEW PASSWORD: que no este vacío
+//CONFIRM NEW PASSWORD: que coincida con la NEW PASSWORD y que no este vacío
+//ACTUAL PASSWORD: que coincida con la contraseña actual del usuario, usando un script externo
+
 $(document).ready(
     function(){
-        var txtNewPassword = $("#txtNewPassProfile");
-        var txtConfirmPassword = $("#txtConfirmPassProfile");
-        var txtActualPassword = $("#txtActualPassProfile");
-        var btnSubmit = $("#btnSubmit");
-
-        txtNewPassword.on("input",
+        //Configuramos la validación de NEW PASSWORD
+        $("#txtNewPassProfile").on("input",
             function(){
                 validateNewPassword();
             }
         );
-
-        txtConfirmPassword.on("input",
+        //Configuramos la validación de CONFIRM NEW PASSWORD
+        $("#txtConfirmPassProfile").on("input",
             function(){
                 validateNewPassword();
             }
         );
-
-        txtActualPassword.on("input",
-            function() {
-                var ckActualPassword = $("#ckActualPass");
-                var lbActualPassword = $("#lbActualPass");
-                var username = $("#actualName").val();
-
-                $.post("../controlador/searchPasswordByUsername.php", 
-                    {
-                        "username": username,
-                        "contra": txtActualPassword.val()
-                    },
-                    function(respuesta){
-                        respuesta = parseInt(respuesta);
-
-                        if(respuesta == 1){
-                            txtActualPassword.removeClass('focus:border-red-500');
-                            txtActualPassword.addClass('focus:border-green-500');
-                            ckActualPassword.prop('checked',true);
-                            lbActualPassword.removeClass('icon-cross text-red-500');
-                            lbActualPassword.addClass('icon-checkmark text-green-500');
-                        }else{
-                            txtActualPassword.removeClass('focus:border-green-500');
-                            txtActualPassword.addClass('focus:border-red-500');
-                            ckActualPassword.prop('checked',false);
-                            lbActualPassword.removeClass('icon-checkmark text-green-500');
-                            lbActualPassword.addClass('icon-cross text-red-500');
-                        }
-                    }
-                );
-            }
-        );
-
-        btnSubmit.on("click",
+        //Cuando se envie el formulario se verificarán los objetos
+        $("#btnSubmit").on("click",
             function(){
                 validateFrmPass();
             }
@@ -57,20 +27,24 @@ $(document).ready(
     }
 );
 
+//Función para validar el formulario
 function validateFrmPass() {
+    //Variables
     var frmPassword = $("#frmPassword");
     var ckConfirmPassword = $("#ckConfirmPass"); 
     var ckActualPassword = $("#ckActualPass");
     var errores = 0;
     
+    //CONFIRM PASSWORD
     if( !(ckConfirmPassword.is(':checked')) ){
         errores++;
     }
-
+    //ACTUAL PASSWORD
     if( !(ckActualPassword.is(':checked')) ){
         errores++;
     }
 
+    //Si hay errores se mestra un alert, sino se procede con la solicitud
     if(errores > 0){
         alert("Error: Llene los campos correctamente.")
     }else{
@@ -78,12 +52,15 @@ function validateFrmPass() {
     }
 }
 
+//Función para validar que coincidan NEW PASSWORD y CONFIRM NEW PASSWORD
 function validateNewPassword() {
+    //Variables
     var txtConfirmPassword = $("#txtConfirmPassProfile");
     var txtNewPassword = $("#txtNewPassProfile");
     var ckConfirmPassword = $("#ckConfirmPass");
     var lbConfirmPassword = $("#lbConfirmPass");
 
+    //Commparación
     if(txtNewPassword.val() == txtConfirmPassword.val() && txtNewPassword.val() != "" ){
         ckConfirmPassword.prop('checked',true);
         txtConfirmPassword.removeClass('focus:border-red-500');
