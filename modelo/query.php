@@ -243,8 +243,8 @@ class Query{
     public function saveRank($proyecto, $materia, $grado,$puntaje){
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql="INSERT INTO ranking(proyecto_idproyecto, proyecto_grado_idgrado, proyecto_materia_idmateria, puntaje_idpuntaje) VALUES (
-        :poyecto, :grado, :materia, :puntaje)";
+        $sql="INSERT INTO ranking(proyecto_idproyecto, proyecto_grado_idgrado, proyecto_materia_idmateria, notafinal) VALUES (
+        :proyecto, :grado, :materia, :puntaje)";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":proyecto", $proyecto);
         $sentencia->bindParam(":grado", $grado);
@@ -260,7 +260,35 @@ class Query{
 
     //SELECT
     //obtener la cantidad de proyectos asignados  a un usuario 
-    
+    public function getCountRatedProject($idProject){
+        $model = new Conection();
+        $conexion = $model->_getConection();
+        $sql = "SELECT COUNT(*) FROM `puntaje` WHERE puntaje.proyecto_idproyecto = :id";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":id", $idProject);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetch();
+            return $result;
+        }
+    }
+    public function getRatedsProject($idProject){
+        $model = new Conection();
+        $conexion = $model->_getConection();
+        $sql = "SELECT puntaje.puntaje FROM `puntaje` WHERE puntaje.proyecto_idproyecto = :id";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":id", $idProject);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
+    }
     public function getCountProjects($userID){
         $model = new Conection();
         $connection = $model->_getConection();
@@ -344,6 +372,23 @@ class Query{
             return $result;
         }
     }
+    public function getTeamsSearched($text, $ids){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT * FROM proyecto WHERE proyecto.nombreProyecto LIKE :text OR proyecto.descripcion LIKE :text OR proyecto.grado_idgrado =:ids OR proyecto.materia_idmateria =:ids";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":text", $text);
+        $sentencia->bindParam(":ids", $ids);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+    }
+
+
 
     public function obtainTeamMates($idTeam){
         $model = new Conection();
@@ -552,6 +597,8 @@ class Query{
         }
     }
 
+
+
     //Obtener la rubrica según el ID
     public function getRubricById($idrubrica){
         $model = new Conection();
@@ -706,6 +753,23 @@ class Query{
         }
     }
 
+    //Obtener todos los jurados
+    public function getJurys(){
+        
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT * FROM usuario WHERE rol = 'j'";
+        $sentencia = $conexion->prepare($sql);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
     //Obtener todos el usuario activo
     public function getUserActivo($nombre, $pass){
         $pass = md5($pass);
@@ -792,6 +856,25 @@ class Query{
             return $resultado;
         }
     }
+    //Obtener la calificación
+    public function getPoints($userID, $teamID){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT puntaje.puntaje as points FROM puntaje WHERE puntaje.proyecto_idproyecto=:teamID AND puntaje.usuario_idUsuario=:userID";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":teamID", $teamID);
+        $sentencia->bindParam(":userID", $userID);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
+
     //obtener todos los estudiantes
 
     public function getEstudiantes(){
@@ -1012,16 +1095,13 @@ class Query{
     }
 
     //Ranking
-    public function updateRanking($idRanking, $proyecto, $grado, $materia, $puntaje){
+    public function updateRanking($proyecto, $puntaje){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "UPDATE ranking SET proyecto_idproyecto = :proyecto, proyecto_grado_idgrado = :grado, proyecto_materia_idmateria = :materia, puntaje_idpuntaje = :puntaje WHERE ranking.idRanking = :idRanking";
+        $sql = "UPDATE ranking SET   notafinal = :puntaje WHERE proyecto_idproyecto = :proyecto";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":proyecto", $proyecto);
-        $sentencia->bindParam(":grado", $grado);
-        $sentencia->bindParam(":materia", $materia);
         $sentencia->bindParam(":puntaje", $puntaje);
-        $sentencia->bindParam(":idRanking", $idUser);
         if(!$sentencia){
             return false;
         }else{

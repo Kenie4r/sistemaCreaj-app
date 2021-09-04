@@ -1,6 +1,8 @@
 
 //funciones luego de que nuestro archivo cargue
 $(document).ready(function(){
+
+
     var fullGrade = 0;
     $('.calificaciones').fadeOut('fast');
    mainActivity();
@@ -44,21 +46,21 @@ function funcionamiento(){
         $('#calificar'+idBox).empty();    
      })
   $('#btnTerminar').click(function(){
-         var nota = $('#inputGrade').val();
+        var nota = $('#inputGrade').val();
+        var faltan = false;
+        var inputs = document.getElementsByClassName('final');
+        for(var index = 0; index<inputs.length; index++){
+            if(inputs[index].value ==0){
+                faltan = true;
+            }
+        }
         if( nota==""){
             crearNotificacion(1, "Aún no has terminado de calificar", null , "Ok");
         }else{
-            var contador = 0;
-            var notasCriterios = document.getElementsByClassName('final');
-            for (let index =1; index <   notasCriterios.lenght; index++) {
-                if(notasCriterios[index].value==""){
-                    contador++;
-                }
-            }
-            if (contador==0 ){
-                crearNotificacion(1, "¿Quiéres guardar la nota?","Guardar", "Cancelar")
-            }else{
+            if (faltan==true ){
                 crearNotificacion(1, "Aún no has terminado de calificar", null , "Ok");
+            }else{
+                crearNotificacion(1, "¿Quiéres guardar la nota?","Guardar", "Cancelar");
             }
         }
 
@@ -100,7 +102,6 @@ function mainActivity(){
 function sencondActivity(){
     $('.backbutton').click(function(){
              var IDbtn = id_Number( $(this).attr("id"));
-             alert(IDbtn);
              var boxNumber = IDbtn
              var box = "#div"+boxNumber;
              var thisBox = "#calificar"+boxNumber;

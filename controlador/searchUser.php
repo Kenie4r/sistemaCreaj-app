@@ -53,7 +53,7 @@ if(!empty($usuarios)){
         switch ($rol) {
             case 'a':
                 echo "\t<td class='p-4'>Administrador</td>";
-                if($username == "admin"){
+                if($username == "Admin"){
                     echo "\t<td class='p-4' colspan='2'>No se puede modificar</td>";
                 }else{
                     echo "\t<td class='p-4' colspan='2'><a href='deleteUser.php?iduser=" . $id . "' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
