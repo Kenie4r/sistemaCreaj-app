@@ -4,6 +4,16 @@
     require('libs/libs.php');
     //definimos variables que se usaran en todo el documento
     $query = new Query();
+    $idRubric  = array();
+    //Crea la primera parte del header, antes de leer los datos
+        $htmlCreator= new html();
+
+    //Con esta función creo el header y titulo del sitio web, no tiene ninguna interacción con la base de datos
+    
+        //vamos a crear el nav
+
+    require('../Dashboard/Dashboard.php');
+    $htmlCreator->headerHTML();
     $idTeam = $_GET['teamID'];
     $user = $query->getUserByUsername($_SESSION['uid']);
     $userID = $user['idUsuario'];
@@ -13,14 +23,8 @@
             $graded = $c;
         }
     }
-        $idRubric  = array();
-    //Crea la primera parte del header, antes de leer los datos
-        $htmlCreator= new html();
-
-    //Con esta función creo el header y titulo del sitio web, no tiene ninguna interacción con la base de datos
-        $htmlCreator->headerHTML();
-        //vamos a crear el nav
-        require('../Dashboard/Dashboard.php');
+        
+       
 
     //con la siguiente función buscaremos la materia y grado, además de que nos escribira 
     //los datos del equipo, como descripción y también el nombre del equipo
