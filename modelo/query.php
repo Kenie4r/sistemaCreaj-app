@@ -1,5 +1,7 @@
 <?php
 
+use function PHPSTORM_META\sql_injection_subst;
+
 class Query{
 
     //funciones para guardar 
@@ -242,13 +244,12 @@ class Query{
     //guardar rango
     public function saveRank($proyecto, $materia, $grado,$puntaje){
         $model = new Conection();
-        $connection  = $model->_getConection();
-        $sql="INSERT INTO ranking(proyecto_idproyecto, proyecto_grado_idgrado, proyecto_materia_idmateria, notafinal) VALUES (
-        :poyecto, :grado, :materia, :puntaje)";
-        $sentencia= $connection->prepare($sql);
-        $sentencia->bindParam(":proyecto", $proyecto);
-        $sentencia->bindParam(":grado", $grado);
-        $sentencia->bindParam(":materia", $materia);
+        $conexion  = $model->_getConection();
+        $sql =  "INSERT INTO ranking VALUES(NULL, :idProyecto, :idGrado, :idMateria, :puntaje)";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":idProyecto",$proyecto );
+        $sentencia->bindParam(":idMateria", $materia);
+        $sentencia->bindParam(":idGrado", $grado);
         $sentencia->bindParam(":puntaje", $puntaje);
         if(!$sentencia){
             return "Error, existe un fallo";

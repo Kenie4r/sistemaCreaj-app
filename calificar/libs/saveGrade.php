@@ -22,7 +22,7 @@
            $ranked = $query-> updateRanking($idTeam, $grade);
        }else{
             $grade =$notaFinal;
-            $ranked= $query->saveRank($idTeam, $materia, $grado,$grade);
+            $ranked= $query-> saveRank($idTeam, $materia, $grado,$grade);
        }
        print($ranked);
         //header('Location: http://creaj21/calificar/index.php');
