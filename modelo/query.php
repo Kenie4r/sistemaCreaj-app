@@ -999,7 +999,36 @@ class Query{
             return $resultado;
         }
     }
+    public function getCountRatedProject($idProject){
+        $model = new Conection();
+        $conexion = $model->_getConection();
+        $sql = "SELECT COUNT(*) FROM `puntaje` WHERE puntaje.proyecto_idproyecto = :id";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":id", $idProject);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetch();
+            return $result;
+        }
+    }
+    public function getRatedsProject($idProject){
+        $model = new Conection();
+        $conexion = $model->_getConection();
+        $sql = "SELECT puntaje.puntaje FROM `puntaje` WHERE puntaje.proyecto_idproyecto = :id";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":id", $idProject);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
 
+    }
+    
     //UPDATE
 
     //Usuario
