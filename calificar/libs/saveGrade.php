@@ -24,8 +24,8 @@
             $grade =$notaFinal;
             $ranked= $query->saveRank($idTeam, $materia, $grado,$grade);
        }
-
-        header('Location: http://creaj21/calificar/index.php');
+       print($ranked);
+        //header('Location: http://creaj21/calificar/index.php');
 
     }else{
 
