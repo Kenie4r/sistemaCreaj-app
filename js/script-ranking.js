@@ -16,12 +16,14 @@ function getID(myID){
 }
 
 function getSubjectsbyGrade(){
-        $.post('../controlador/getSubjectsbyGradeP.php',{
-            'idGrado':grade
-        }, function(block){
-            alert(grade);
-            $(boxSubjects).empty();
-            $(boxSubjects).append(block);
-        }, "html")
+        $.post("../controlador/getSubjectsbyGradeP.php",
+            {
+                "idGrado":grade
+            },
+            function(block){
+                $(boxSubjects).empty();
+                $(boxSubjects).append(block);
+            },
+            "html");
   
 }

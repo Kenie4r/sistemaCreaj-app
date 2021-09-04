@@ -1020,9 +1020,9 @@ class Query{
     public function getSubjectByGradeP($idGrade){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "SELECT proyecto.materia_idmateria AS idmateria FROM proyecto WHERE proyecto.grado_idgrado = :idGrado";
+        $sql = "SELECT proyecto.materia_idmateria FROM proyecto WHERE proyecto.grado_idgrado = :idGrado GROUP BY proyecto.materia_idmateria";
         $sentencia = $conexion->prepare($sql);
-        $sentencia->bindParam(":idGrado", $idGrado);
+        $sentencia->bindParam(":idGrado", $idGrade);
         if(!$sentencia){
             return false;
         }else{
