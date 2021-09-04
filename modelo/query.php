@@ -736,6 +736,23 @@ class Query{
         }
     }
 
+    //Obtener todos los jurados
+    public function getJurys(){
+        
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT * FROM usuario WHERE rol = 'j'";
+        $sentencia = $conexion->prepare($sql);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
     //Obtener todos el usuario activo
     public function getUserActivo($nombre, $pass){
         $pass = md5($pass);
