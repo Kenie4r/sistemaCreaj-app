@@ -53,14 +53,14 @@ require('../Dashboard/Dashboard.php');
             </div>
                 <div class=" "> 
                     <div class="flex flex-row items-center w-full lg:w-4/5 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
-                        <label for="txtID" class="w-60 p-2 bg-gray-700 text-white">Fecha de inicio</label>
-                        <input class="p-1 w-full rounded-r-lg outline-none" type="date" name="txtFechaInicio" value="" >
+                        <label for="0-txtinicio" class="w-60 p-2 bg-gray-700 text-white">Fecha de inicio</label>
+                        <input class="p-1 w-full rounded-r-lg outline-none" type="date" name="0-txtFechaInicio" value="" >
                     </div>
                </div>
                 <div class="mt-10"> 
                     <div class="flex flex-row items-center w-full lg:w-4/5 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
-                        <label for="txtID" class="w-60 p-2 bg-gray-700 text-white">Fecha de cierre</label>
-                        <input class="p-1 w-full rounded-r-lg outline-none" type="date" name="txtFechaFin" value="" >
+                        <label for="0-txtfin" class="w-60 p-2 bg-gray-700 text-white">Fecha de cierre</label>
+                        <input class="p-1 w-full rounded-r-lg outline-none" type="date" name="0-txtFechaFin" value="" >
                    </div>
                </div>
         </div>
