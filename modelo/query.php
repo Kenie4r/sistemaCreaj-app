@@ -856,7 +856,22 @@ class Query{
                 return $resultado;
             }
         }
-    
+        public function getPoints($userID, $teamID){
+            $modelo = new Conection;
+            $conexion = $modelo->_getConection();
+            $sql = "SELECT puntaje.puntaje as points FROM puntaje WHERE puntaje.proyecto_idproyecto=:teamID AND puntaje.usuario_idUsuario=:userID";
+            $sentencia = $conexion->prepare($sql);
+            $sentencia->bindParam(":teamID", $teamID);
+            $sentencia->bindParam(":userID", $userID);
+            if(!$sentencia){
+                return false;
+            }else{
+                $sentencia->execute();
+                $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+                
+                return $resultado;
+            }
+        }
     //Obtener todos las rúbricas DESC
     public function getRubricsDESC(){
         
