@@ -5,7 +5,7 @@ require_once("../modelo/query.php");
 require_once("../controlador/soporteAsignacionProyectosJurados.php");
 
 $consulta = new Query; //Consulta
-$idUser = $_GET["iduser"]; //El id del usuario
+$idUser = $_GET["iduser"]; //Obtenemos el id del usuario seleccionado, que es un jurado
 
 $asignacionesUsuario = $consulta->getProjectsinfo($idUser); //Obtenemos las asignaciones de este jurado
 

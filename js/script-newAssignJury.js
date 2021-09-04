@@ -17,7 +17,7 @@ function addItemAsignaciones() {
     var contenedorAsignaciones = $("#contenedor-asignacion"); //Aqui agregaremos el ítem
     //Obtenemos el dato de cuantos contenedores hay creados actualmente
     var cantidadAsignaciones = $("#cantidadAsignaciones");
-    var cantidadAInt = parseInt(cantidadAsignaciones.val());
+    var cantidadAInt = parseInt(cantidadAsignaciones.val()); //ID del nuevo contenedor
     //Establecemos la estructura html del nuevo ítem
     var newHtml = itemAsignacion(cantidadAInt);
 

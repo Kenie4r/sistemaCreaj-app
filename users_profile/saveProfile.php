@@ -6,7 +6,7 @@ require_once("../controlador/sendEmail.php");
 
 $consulta = new Query; //Crear una consulta
 
-//Guardar perfil
+//Guardamos las variables de nuevo perfil
 $username = $_POST["txtUserProfile"];
 $name = $_POST["txtNameProfile"];
 $last_name = $_POST["txtLastNameProfile"];
@@ -14,13 +14,16 @@ $rol = $_POST["txtRolProfile"];
 $password = $_POST["txtPassProfile"];
 $email = $_POST["txtEmailProfile"];
 
+//GUARDAR
 $estadoUsuario = $consulta->saveUser($username, $name, $last_name, $rol, $password, $email);
 
+//Enviamos un correo notificando al usuario sobre sus datos de inicio de sesión
+//Configuramos unos datos de la función
 $year = date("Y"); //Año actual
 $pass = "donboscoSV";
 $asunto = "Sistema de Calificacion Crea J: Nueva usuario";
 $saludo = "Bienvenido/a a nuestro sistema";
-
+//Envío
 $estadoCorreo = enviarCorreo($email, $name, $username, $year, $asunto, $saludo, $pass);
 
 ?>
