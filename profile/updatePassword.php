@@ -7,7 +7,7 @@ require_once("../controlador/sendEmail.php");
 $consulta = new Query; //Crear una consulta
 
 //Obtenemos los datos para actualizar la contraseña
-$username = $_POST["actualName"];
+$username = $_POST["username"];
 $contra = $_POST["txtNewPassProfile"];
 
 //Actualizamos los datos
