@@ -3,21 +3,21 @@ require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
 $consulta = new Query; 
 $grado= $consulta->getGrado();
-$opc= $consulta->getLevel();
+$niveles= $consulta->getLevel();
 $Ngra=count($grado);
 ?>
 <head> 
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Grado</title>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="../recursos/icons/style.css">
 </head>
 <body>
 <?php
-  require('../Dashboard/Dashboard.html')
+  require('../Dashboard/Dashboard.php')
 
 ?>
     <div class="grid grid-cols-2 sm:grid grid-cols-none ">
@@ -51,26 +51,27 @@ $Ngra=count($grado);
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                       <?php
-                        for ($i=0; $i <$Ngra ; $i++) { 
-                          echo "<tr>";
-                          echo "\t<td class='p-4'>" . $grado[$i]["nombre"] . "</td>";
-                          echo "\t<td class='p-4'>" . $grado[$i]["seccion"] . "</td>";
-                          /*switch ($grado[$i]["nivel_idnivel"]) {
-                            case '1':
-                              echo "\t<td class='p-4'>Bachillerato</td>";
-                              break;
-                            
-                            default:
-                            echo "\t<td class='p-4'>Tristeza</td>";
-                              break;
+                        
+                        foreach ($grado as $name) {
+                          $nombre=$name['nombre'];
+                          $seccion=$name['seccion'];
+                          $idNiGra=$name['nivel_idnivel'];
                           
-
-                          }*/
-                          echo"<td> <a href='DeleteGrado.php?id=".$grado[$i]["idgrado"]."'>Eliminar</a>  </td>";
-                          echo"<td> <a href='UpdateGrado.php?id=".$grado[$i]["idgrado"]."'>Eliminar</a>  </td>";
-                          echo "</tr>";
-                        }
-                      
+                          echo "<tr>";
+                          echo "\t<td class='p-4'>" . $nombre . "</td>";
+                          echo "\t<td class='p-4'>" .$seccion. "</td>";
+                         
+                          foreach($niveles as $nivel){
+                              if ($idNiGra==$nivel['idnivel']) {
+                                  $level=$nivel['nombre'];
+                                  echo "\t<td class='p-4'>" . $level . "</td>";
+                              }
+                            
+                          }
+                          echo"<td> <a href='DeleteGrado.php?id=".$name["idgrado"]."'>Eliminar</a>  </td>";
+                          echo"<td> <a href='UpdateGrado.php?id=".$name["idgrado"]."'>Editar</a>  </td>";
+                          
+                      }
                       ?>
           
                       <!-- More people... -->

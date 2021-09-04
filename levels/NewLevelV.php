@@ -16,21 +16,25 @@ $opc= $consulta->getLevel();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script>
-     /* $(document).ready(function(){
-        $("input").keyup(function(){
-          var nombre=$("input").val();
+       $(document).ready(function() {
+        $("input").keyup(function() {
+          var name=$("input").val();
           $.post("test.php",{
-            niveles:nombre
-          },function (datos,status) {
-            $("#test").html(datos);
-          });
-        });
-      });*/
+            nombre:name
+          },function (datos,estado) {
+            $("#test").html(datos)
+          })
+        })
+      });
     </script>
 </head>
 <body>
+<?php
+  require('../Dashboard/Dashboard.php')
+
+?>
           <div class="mt-5 md:mt-0 md:col-span-2">
-            <form action="test.php" method="POST">
+            <form action="SaveLevel.php" method="POST">
               <div class="shadow overflow -hidden sm:rounded-md">
                 <div class="px-4 py-5 bg-white sm:p-6">
                   <div class="grid grid-cols-6 gap-6">
@@ -38,13 +42,14 @@ $opc= $consulta->getLevel();
                     <div class="col-span-6 sm:col-span-3">
                     <div class="col-span-6 sm:col-span-3">
                         <label for="nivel" class="block text-sm font-medium text-gray-700">Nivel</label>
-                        <input type="text" name="nivel" id="nivel" autocomplete="mat" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        <input type="text" name="nivel" id="nivel" pattern="[^()/><\][\\\x22,;.|]+" title="No carácteres especiales" autocomplete="mat" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                       </div>
                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                  <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  <button type="submit" name="guardar" id="guardar" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Guardar
                   </button>
                 </div>
+                <p id="test"></p>
               </div>
             </form>
           </div>

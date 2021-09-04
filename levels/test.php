@@ -6,7 +6,7 @@ $consulta=new Query;
     if (isset($_POST['nombre'])) {
         $nombre=strtolower($_POST['nombre']);
         $NoDis=0;
-        $verMat=$consulta->getMatter();
+        $verMat=$consulta->getLevel();
         $nMat=count($verMat);
         #lee los Nombres
         for ($i=0; $i <$nMat ; $i++) { 
