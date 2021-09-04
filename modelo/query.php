@@ -8,7 +8,7 @@ class Query{
         $pass = md5($password);
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql  = "INSERT INTO usuario (usuario, nombres, apellidos, rol, password, email) VALUES ( :username , :name, :last_name, :rol,:password, :correo)";
+        $sql  = "INSERT INTO usuario (usario, nombres, apellidos, rol, password, email) VALUES ( :username , :name, :last_name, :rol,:password, :correo)";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":username", $userName);
         $sentencia->bindParam(":name", $name);
@@ -157,23 +157,6 @@ class Query{
             return "Registro hecho";
         }
     }
-    //Guardar parámetros 
-    public function saveParametros($idparametros, $nombre, $paramFecha, $paramFechaF ){
-        $model = new Conection();
-        $connection  = $model->_getConection();
-        $sql = "INSERT INTO parametros VALUES ( :idparametros, :nombre, :paramFecha, :paramFechaF)";
-        $sentencia= $connection->prepare($sql);
-        $sentencia->bindParam(":idparametros", $idparametros);
-        $sentencia->bindParam(":nombre", $nombre);
-        $sentencia->bindParam(":paramFecha", $paramFecha);
-        $sentencia->bindParam(":paramFechaF", $paramFechaF);
-        if(!$sentencia){
-            return "Error, existe un fallo";
-        }else{
-            $sentencia->execute();
-            return "Registro hecho";
-        }
-    }
     //Guardar Proyectos
     public function saveProjects($name, $descripcion, $idGrado, $idMateria){
         $model = new Conection();
@@ -239,12 +222,29 @@ class Query{
             return "Registro hecho";
         }
     }
+        //Guardar parámetros 
+        public function saveParametros($idparametros, $nombre, $paramFecha, $paramFechaF ){
+            $model = new Conection();
+            $connection  = $model->_getConection();
+            $sql = "INSERT INTO parametros VALUES ( :idparametros, :nombre, :paramFecha, :paramFechaF)";
+            $sentencia= $connection->prepare($sql);
+            $sentencia->bindParam(":idparametros", $idparametros);
+            $sentencia->bindParam(":nombre", $nombre);
+            $sentencia->bindParam(":paramFecha", $paramFecha);
+            $sentencia->bindParam(":paramFechaF", $paramFechaF);
+            if(!$sentencia){
+                return "Error, existe un fallo";
+            }else{
+                $sentencia->execute();
+                return "Registro hecho";
+            }
+        }
     //guardar rango
     public function saveRank($proyecto, $materia, $grado,$puntaje){
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql="INSERT INTO ranking(proyecto_idproyecto, proyecto_grado_idgrado, proyecto_materia_idmateria, notafinal) VALUES (
-        :proyecto, :grado, :materia, :puntaje)";
+        $sql="INSERT INTO ranking(proyecto_idproyecto, proyecto_grado_idgrado, proyecto_materia_idmateria, puntaje_idpuntaje) VALUES (
+        :poyecto, :grado, :materia, :puntaje)";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":proyecto", $proyecto);
         $sentencia->bindParam(":grado", $grado);
@@ -260,35 +260,7 @@ class Query{
 
     //SELECT
     //obtener la cantidad de proyectos asignados  a un usuario 
-    public function getCountRatedProject($idProject){
-        $model = new Conection();
-        $conexion = $model->_getConection();
-        $sql = "SELECT COUNT(*) FROM `puntaje` WHERE puntaje.proyecto_idproyecto = :id";
-        $sentencia = $conexion->prepare($sql);
-        $sentencia->bindParam(":id", $idProject);
-        if(!$sentencia){
-            return false;
-        }else{
-            $sentencia->execute();
-            $result = $sentencia->fetch();
-            return $result;
-        }
-    }
-    public function getRatedsProject($idProject){
-        $model = new Conection();
-        $conexion = $model->_getConection();
-        $sql = "SELECT puntaje.puntaje FROM `puntaje` WHERE puntaje.proyecto_idproyecto = :id";
-        $sentencia = $conexion->prepare($sql);
-        $sentencia->bindParam(":id", $idProject);
-        if(!$sentencia){
-            return false;
-        }else{
-            $sentencia->execute();
-            $result = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-            return $result;
-        }
-
-    }
+    
     public function getCountProjects($userID){
         $model = new Conection();
         $connection = $model->_getConection();
@@ -372,23 +344,6 @@ class Query{
             return $result;
         }
     }
-    public function getTeamsSearched($text, $ids){
-        $modelo = new Conection;
-        $conexion = $modelo->_getConection();
-        $sql = "SELECT * FROM proyecto WHERE proyecto.nombreProyecto LIKE :text OR proyecto.descripcion LIKE :text OR proyecto.grado_idgrado =:ids OR proyecto.materia_idmateria =:ids";
-        $sentencia = $conexion->prepare($sql);
-        $sentencia->bindParam(":text", $text);
-        $sentencia->bindParam(":ids", $ids);
-        if(!$sentencia){
-            return false;
-        }else{
-            $sentencia->execute();
-            $result = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-            return $result;
-        }
-    }
-
-
 
     public function obtainTeamMates($idTeam){
         $model = new Conection();
@@ -434,6 +389,24 @@ class Query{
             $sentencia->execute();
             $result = $sentencia->fetch(PDO::FETCH_ASSOC);
             return $result;
+        }
+    }
+    
+       //Obtener la fecha de inicio y la fecha de cierre de la tabla Parametros
+       public function getFechas($nombre){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+            $sql = "SELECT paramFecha, paramFechaF FROM parametros WHERE nombre = :nombre";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":nombre", $nombre);
+
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado[0];
         }
     }
     //Get ID Criterio
@@ -512,7 +485,7 @@ class Query{
         $nameRubric = "%".$nameRubric."%";
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql = "SELECT * FROM usuario WHERE usuario LIKE :userName";
+        $sql = "SELECT * FROM usuario WHERE usario LIKE :userName";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":userName", $nameRubric);
         if(!$sentencia){
@@ -597,8 +570,6 @@ class Query{
         }
     }
 
-
-
     //Obtener la rubrica según el ID
     public function getRubricById($idrubrica){
         $model = new Conection();
@@ -630,23 +601,6 @@ class Query{
             $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             
             return $resultado;
-        }
-    }
-    //Obtener la fecha de inicio y la fecha de cierre de la tabla Parametros
-    public function getFechas($nombre){
-        $model = new Conection();
-        $connection  = $model->_getConection();
-            $sql = "SELECT paramFecha, paramFechaF FROM parametros WHERE nombre = :nombre";
-        $sentencia= $connection->prepare($sql);
-        $sentencia->bindParam(":nombre", $nombre);
-
-        if(!$sentencia){
-            return "Error";
-        }else{
-            $sentencia->execute();
-            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-            
-            return $resultado[0];
         }
     }
     //Obtener el id de los estudiantes segun el ID 
@@ -684,7 +638,22 @@ class Query{
             return $resultado;
         }
     }
-
+    //Obtener los parametros segun el de ID parametros
+    public function getParametrosById($idparametros){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM parametros WHERE idparametros = :idparametros";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":idparametros", $idparametros);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
     //Obtenerlos niveles según el ID criterio
     public function getLevelsByIdCriterio($idcriterio){
         $model = new Conection();
@@ -753,29 +722,12 @@ class Query{
         }
     }
 
-    //Obtener todos los jurados
-    public function getJurys(){
-        
-        $modelo = new Conection;
-        $conexion = $modelo->_getConection();
-        $sql = "SELECT * FROM usuario WHERE rol = 'j'";
-        $sentencia = $conexion->prepare($sql);
-        if(!$sentencia){
-            return false;
-        }else{
-            $sentencia->execute();
-            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-            
-            return $resultado;
-        }
-    }
-
     //Obtener todos el usuario activo
     public function getUserActivo($nombre, $pass){
         $pass = md5($pass);
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "SELECT * FROM usuario WHERE usuario = :nombre AND password = :pass";
+        $sql = "SELECT * FROM usuario WHERE usario = :nombre AND password = :pass";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":nombre", $nombre);
         $sentencia->bindParam(":pass", $pass);
@@ -810,7 +762,7 @@ class Query{
     public function getUserByUsername($username){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "SELECT * FROM usuario WHERE usuario = :nombre";
+        $sql = "SELECT * FROM usuario WHERE usario = :nombre";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":nombre", $username);
         if(!$sentencia){
@@ -827,7 +779,7 @@ class Query{
     public function getUsersByUsername($nameuser){
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql = "SELECT * FROM usuario WHERE usuario = :nameuser";
+        $sql = "SELECT * FROM usuario WHERE usario = :nameuser";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":nameuser", $nameuser);
         if(!$sentencia){
@@ -856,25 +808,6 @@ class Query{
             return $resultado;
         }
     }
-    //Obtener la calificación
-    public function getPoints($userID, $teamID){
-        $modelo = new Conection;
-        $conexion = $modelo->_getConection();
-        $sql = "SELECT puntaje.puntaje as points FROM puntaje WHERE puntaje.proyecto_idproyecto=:teamID AND puntaje.usuario_idUsuario=:userID";
-        $sentencia = $conexion->prepare($sql);
-        $sentencia->bindParam(":teamID", $teamID);
-        $sentencia->bindParam(":userID", $userID);
-        if(!$sentencia){
-            return false;
-        }else{
-            $sentencia->execute();
-            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-            
-            return $resultado;
-        }
-    }
-
-
     //obtener todos los estudiantes
 
     public function getEstudiantes(){
@@ -891,11 +824,12 @@ class Query{
             return $resultado;
         }
     }
-    //Obtener los parámetros ya registrados
-    Public function getParametros(){
+    //Obtener todos los parametros
+
+    public function getParametros(){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-         $sql = "SELECT * FROM parametros";
+        $sql = "SELECT * FROM parametros";
         $sentencia = $conexion->prepare($sql);
         if(!$sentencia){
             return "";
@@ -1057,32 +991,13 @@ class Query{
     public function updateUser($idUser, $nameUser, $name, $last_name, $rol){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "UPDATE usuario SET usuario = :usuario, nombres = :nombre, apellidos = :apellido, rol = :rol WHERE usuario.idUsuario = :idUsuario";
+        $sql = "UPDATE usuario SET usario = :usuario, nombres = :nombre, apellidos = :apellido, rol = :rol WHERE usuario.idUsuario = :idUsuario";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":usuario", $nameUser);
         $sentencia->bindParam(":nombre", $name);
         $sentencia->bindParam(":apellido", $last_name);
         $sentencia->bindParam(":rol", $rol);
         $sentencia->bindParam(":idUsuario", $idUser);
-        if(!$sentencia){
-            return false;
-        }else{
-            $sentencia->execute();
-            return true;
-        }
-     
-    }
-
-    //Usuario
-    public function updatePersonalData($nameUser, $name, $last_name, $email){
-        $modelo = new Conection;
-        $conexion = $modelo->_getConection();
-        $sql = "UPDATE usuario SET nombres = :nombre, apellidos = :apellido, email = :correo WHERE usuario = :username";
-        $sentencia = $conexion->prepare($sql);
-        $sentencia->bindParam(":nombre", $name);
-        $sentencia->bindParam(":apellido", $last_name);
-        $sentencia->bindParam(":correo", $email);
-        $sentencia->bindParam(":username", $nameUser);
         if(!$sentencia){
             return false;
         }else{
@@ -1096,7 +1011,7 @@ class Query{
         $contra = md5($contra);
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "UPDATE usuario SET 	password = :contra WHERE usuario = :username";
+        $sql = "UPDATE usuario SET 	password = :contra WHERE usario = :username";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":contra", $contra);
         $sentencia->bindParam(":username", $nameUser);
@@ -1142,13 +1057,16 @@ class Query{
     }
 
     //Ranking
-    public function updateRanking($proyecto, $puntaje){
+    public function updateRanking($idRanking, $proyecto, $grado, $materia, $puntaje){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "UPDATE ranking SET   notafinal = :puntaje WHERE proyecto_idproyecto = :proyecto";
+        $sql = "UPDATE ranking SET proyecto_idproyecto = :proyecto, proyecto_grado_idgrado = :grado, proyecto_materia_idmateria = :materia, puntaje_idpuntaje = :puntaje WHERE ranking.idRanking = :idRanking";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":proyecto", $proyecto);
+        $sentencia->bindParam(":grado", $grado);
+        $sentencia->bindParam(":materia", $materia);
         $sentencia->bindParam(":puntaje", $puntaje);
+        $sentencia->bindParam(":idRanking", $idUser);
         if(!$sentencia){
             return false;
         }else{
@@ -1295,6 +1213,22 @@ class Query{
             return true;
         }
     }
+    // Equipo sin ID
+    public function updataEquipos($estudiante, $proyecto){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "UPDATE equipo SET estudiante_idestudiante = :estudiante, proyecto_idproyecto = :proyecto WHERE equipo.idequipo = :idEquipo";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":estudiante", $estudiante);
+        $sentencia->bindParam(":proyecto", $estudiante);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            return true;
+        }
+    }
+
     //Criterio
     public function updateCriterio($idCriterio, $titulo, $puntaje){
         $modelo = new Conection;

@@ -13,7 +13,7 @@ $last_name= $_POST["txtApellido"];
 $Datoestudiantes= $consulta->saveStudent($id, $name, $last_name);
 $id_estudiante= $_POST["txtCodigo"];
 $proyecto= $_POST["txtProject"];
-$Datosteam= $consulta->saveTeam($id_estudiante, $proyecto)
+$Datosteam= $consulta->saveTeam($id_estudiante, $proyecto);
 
 ?>
 

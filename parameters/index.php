@@ -65,7 +65,7 @@ if(!empty($parametros)){
     echo "\t<td class='p-6'>" . $parametros[$i]["nombre"] . "</td>";
     echo "\t<td class='p-6'>" . $parametros[$i]["paramFecha"] . "</td>";
     echo "\t<td class='p-6'>" . $parametros[$i]["paramFechaF"] . "</td>";
-    echo "\t<td class='p-6'><a href='?idrubric=" . $parametros[$i]["idparametros"] . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Editar</a></td>";
+    echo "\t<td class='p-6'><a href=editParameters.php'?idparametros=" . $parametros[$i]["idparametros"] . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Editar</a></td>";
     echo "</tr>";
     }
 }else{
