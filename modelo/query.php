@@ -1494,6 +1494,24 @@ class Query{
             return true;
         }
     }
+    public function selectGradobyID($idGrado){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT nombre,seccion,nivel_idnivel FROM grado WHERE idgrado=:id";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":id", $idGrado);
+        /*$sentencia->bindParam(":seccion", $name);
+        $sentencia->bindParam(":nivel", $seccion);
+        $sentencia->bindParam(":idGrado", $nivel);*/
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+        }
+    }
+
 }
 
 ?>
