@@ -1228,7 +1228,21 @@ class Query{
             return true;
         }
     }
-
+    public function updataParametros($idparametros, $paramFecha, $paramFechaF){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "UPDATE parametros SET paramFecha = :paramFecha, paramFechaF = :paramFechaF WHERE idparametros = :idparametros";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":paramFecha", $paramFecha);
+        $sentencia->bindParam(":paramFechaF", $paramFechaF);
+        $sentencia->bindParam(":idparametros", $idparametros);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            return true;
+        }
+    }
     //Criterio
     public function updateCriterio($idCriterio, $titulo, $puntaje){
         $modelo = new Conection;

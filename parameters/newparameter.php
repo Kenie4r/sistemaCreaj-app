@@ -33,24 +33,6 @@ require('../Dashboard/Dashboard.php');
             </div>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-3 m-9 ml-36">
-           <div class="flex flex-row items-center lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
-                <label for="txtID" class="p-2 bg-gray-700 text-white">ID</label>
-                <input type="number" class="w-1/4  lg:w-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtID"  value="" >
-                <label for="txtNombreRubrica" title="Editar" ><span class="icon-pencil"></span></label>
-            </div>
-            <div>
-                <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
-                    <label for="txtMateria" class="p-2 bg-gray-700 text-white">Parámetro</label>
-                    <select name="txtParametros" id="txtMateria" class="p-1 w-full rounded-r-lg outline-none">
-                        <option value="value1"selected>Elige un parámetro</option>
-                        <option value="Estudiantes">Estudiantes</option>
-                        <option value="Proyectos">Proyectos</option>
-                        <option value="Rúbricas">Rúbricas</option>
-                        <option value="Calificar">Calificar</option>
-                        <option value="Usuarios">Usuarios</option>
-                    </select>
-                </div>
-            </div>
                 <div class=" "> 
                     <div class="flex flex-row items-center w-full lg:w-4/5 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
                         <label for="0-txtinicio" class="w-60 p-2 bg-gray-700 text-white">Fecha de inicio</label>

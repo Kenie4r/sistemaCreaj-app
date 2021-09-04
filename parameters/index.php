@@ -34,17 +34,8 @@ $parametros = $consulta->getParametros(); //Get Estudiantes
                 <a href="newparameter.php" class="text-blue-600 border-blue-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-blue-600"><span class="icon-plus"></span> Organizar parametros</a>
             </div>
         </div>
-        <?php
-if(!empty($parametros)){
-    echo "<div class='flex flex-row items-center m-7'>";
-    echo "\t<div class=''>";
-    echo "\t<input type='text' name='txtBusquedaId' id='txtBusquedaId' class='p-1 border-gray-700 border-solid border-2 rounded-lg outline-none' placeholder='Buscar por ID...'>";
-    echo "\t</div>";
-    echo "</div>";
-}
-?>
 
-        <div class="box-border m-7">
+        <div class="box-border m-7 mt-20">
             <table class="w-full border-collapse text-center">
                 <thead class="bg-gray-900 text-white">
                     <tr>

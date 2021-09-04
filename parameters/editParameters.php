@@ -20,8 +20,8 @@ $parametros = $consulta->getParametrosById($idparametros);
 <?php
 require('../Dashboard/Dashboard.php');
 ?>
- <form id="frmRubric" class="container box-content" method="POST" action="saveparameter.php">
-    <h1 class="text-center w-3/4 lg:w-full lg:text-5xl outline-none focus:border-gray-500 border-b-2 focus:border-solid mt-8">Agregar parámetro</h1>
+ <form id="frmRubric" class="container box-content" method="POST" action="updateParameters.php">
+    <h1 class="text-center w-3/4 lg:w-full lg:text-5xl outline-none focus:border-gray-500 border-b-2 focus:border-solid mt-8">Modificar parámetro</h1>
         <div class="grid grid-cols-1 lg:grid-cols-2 ml-24">
             <div class="flex lg:m-9">
                 <div class="lg:m-2">
@@ -33,25 +33,6 @@ require('../Dashboard/Dashboard.php');
             </div>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-3 m-9 ml-36">
-           <div class="flex flex-row items-center lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
-                <label for="txtID" class="p-2 bg-gray-700 text-white">ID</label>
-                <input type="number" class="w-1/4  lg:w-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtID"  value="" >
-                <label for="txtNombreRubrica" title="Editar" ><span class="icon-pencil"></span></label>
-            </div>
-            <div>
-                <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
-                    <label for="txtMateria" class="p-2 bg-gray-700 text-white">Parámetro</label>
-                    <select name="txtParametros" id="txtMateria" class="p-1 w-full rounded-r-lg outline-none">
-
-                        <option value="value1"selected>Elige un parámetro</option>
-                        <option value="Estudiantes">Estudiantes</option>
-                        <option value="Proyectos">Proyectos</option>
-                        <option value="Rúbricas">Rúbricas</option>
-                        <option value="Calificar">Calificar</option>
-                        <option value="Usuarios">Usuarios</option>
-                    </select>
-                </div>
-            </div>
                 <div class=" "> 
                 <?php
                 for ($i=0; $i < count($parametros); $i++) { 
@@ -69,6 +50,9 @@ require('../Dashboard/Dashboard.php');
                         <input class="p-1 w-full rounded-r-lg outline-none" type="date" name='<?php echo $i; ?>-txtFechaFin' value="" >
                    </div>
                </div>
+               <?php
+                }
+                ?>
         </div>
     </form>
 </body>
