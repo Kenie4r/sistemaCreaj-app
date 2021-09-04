@@ -1004,6 +1004,53 @@ class Query{
         }
     }
 
+    //obtener cuantos proyecto hay con una grado 
+    public function getCountPojectsByGrade($idGrado){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT COUNT(*) FROM proyecto WHERE proyecto.grado_idgrado = :idGrado";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":idGrado", $idGrado);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetch();
+            return $resultado;
+        }
+    }
+    //obtener ids de materias que tienen los proyectos por grado
+    public function getSubjectByGradeP($idGrade){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT proyecto.materia_idmateria FROM proyecto WHERE proyecto.grado_idgrado = :idGrado";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":idGrado", $idGrado);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+        }
+    }
+
+    //ver si hay proyectos ya calificados por grado y materia
+    public function getCountRatedPbyIDs($idGrado, $idSubject){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT COUNT(*) FROM proyecto WHERE proyecto.grado_idgrado = :idGrado";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":idGrado", $idGrado);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetch();
+            return $resultado;
+        }
+    }
+
     //UPDATE
 
     //Usuario
