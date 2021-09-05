@@ -5,7 +5,7 @@ $consulta=new Query;
     #si existe el Keyup
     if (isset($_POST['nombre'])) {
         $nombre=strtolower($_POST['nombre']);
-        $NoDis=0;
+        $NoDis = "";
         $verMat=$consulta->getMatter();
         $nMat=count($verMat);
         #lee los Nombres
@@ -13,7 +13,7 @@ $consulta=new Query;
             $verMat[$i]['nombre'];
            $NomMat=strtolower($verMat[$i]['nombre']);
            if ($nombre!=$NomMat) {
-               
+            
            }else {
             $NoDis=$NomMat;
             #guarda el nombre Igual
