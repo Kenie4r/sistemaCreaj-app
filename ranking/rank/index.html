@@ -11,17 +11,17 @@
     <script src='../js/script-ranking.js'></script>
 </head>
 <body>
-    <div class='h-screen w-screen flex flex-col p-5 items-center rounded-2xl shadow bg-gray-100'>
-        <div  class="w-full">
-            <div class="w-1/12 mx-auto">
-                <img src="img/trophy.png" alt="trofeo" class="block mx-auto">
+    <div class='h-full w-full flex flex-col p-5 items-center rounded-2xl shadow bg-gray-100'>
+        <div  class='w-full'>
+            <div class='w-1/12 mx-auto'>
+                <img src='img/trophy.png' alt='trofeo' class='block mx-auto'>
             </div>
-            <div class=" m-3">
-                <div class="text-center text-2xl">
+            <div class=' m-3'>
+                <div class='text-center text-2xl'>
                     <h1>RANKING DE {MATERIA} Y SUS PROYECTOS </h1>
                 </div>
                 <div>
-                    <p class="px-12 text-justify">
+                    <p class='px-12 text-justify'>
                         En este sitio se muestran todos los proyectos de la materia seleccionada 
                         anteriormente, se obtienen todos los proyectos de el grado {$grado} 
                         y son mostrados de orde descendente siendo el primero el que mayor 
@@ -29,11 +29,93 @@
                         , es posible obtener un PDF de este apartado dandole en \"descargar PDF\"
                     </p>
                 </div>
-                <div class="flex justify-center">
-                    <a href="" class="p-3 bg-red-500 text-white text-lg rounded-md">
-                        <span class="icon-file-pdf"></span>
+                <div class='flex justify-center'>
+                    <a href=' class='p-3 bg-red-500 text-white text-lg rounded-md'>
+                        <span class='icon-file-pdf'></span>
                         Descargar PDF
                     </a>
+                </div>
+            </div>
+
+            <div class='w-full flex flex-col items-center'>
+
+                <!--Equipos ganadores-->
+                <div class='grid grid-cols-1 w-7/12 sm:grid-cols-3 gap-2' id='box-ganadores'>
+                    <div class='flex flex-col items-center border shadow-xl p-4  bg-white h-48 rounded-md'>
+                        <div class='w-6/12'>
+                            <img src='img/silver-medal.png ' alt='>
+                        </div>
+                        <div class='text-center text-2xl'>
+                            <h1>EQUIPO NUMERO 2</h1>
+                        </div>
+                        <div class='text-center text-gray-400 text-xl'>
+                            <h2>95 PUNTOS</h2>
+                        </div>
+                    </div>
+                    <div  class='flex flex-col items-center border shadow-xl p-4 bg-white h-52 rounded-md'>
+                        <div class='w-7/12'>
+                            <img src='img/gold-medal.png' alt='>
+                        </div>
+                        <div class='text-center text-2xl'>
+                            <h1>EQUIPO NUMERO 1</h1>
+                        </div>
+                        <div class='text-center text-gray-400 text-xl'>
+                            <h2>98 PUNTOS</h2>
+                        </div>
+                    </div>
+                    <div class='flex flex-col items-center  border shadow-xl p-4 bg-white h-44 rounded-md'>
+                        <div class='w-5/12'>
+                            <img src='img/bronze-medal.png' alt='>
+                        </div>
+                        <div class='text-center text-2xl'>
+                            <h1>EQUIPO NUMERO 3</h1>
+                        </div>
+                        <div class='text-center text-gray-400 text-xl'>
+                            <h2>90 PUNTOS</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class='text-center text-4xl m-3'> <h1>Demás concursantes </h1></div>
+
+                <!--Demas equipos-->
+                <div class='flex flex-col overflow-y-auto h-60  w-10/12 justify-center items-center m-6'>
+
+                    <!--Otro equipo-->
+                    <div class='bg-white w-10/12 shadow-md h-20 border rounded-md flex flex-row justify-between items-center my-1'>
+                        <div class='p-5 text-2xl'>
+                            <h1>4.<!--Numero en el que aparecio-->
+                            EQUIPO NUMERO 5</h1>
+                        </div>
+
+                        <div class='text-center text-gray-400 text-xl p-5'>
+                            <h2>80 PUNTOS</h2>
+                        </div>
+                    </div>
+
+
+
+                    <div class='bg-white w-10/12 shadow-md h-20 border rounded-md flex flex-row justify-between items-center my-1'>
+                        <div class='p-5 text-2xl'>
+                            <h1>45.<!--Numero en el que aparecio-->
+                            EQUIPO NUMERO 5</h1>
+                        </div>
+
+                        <div class='text-center text-gray-400 text-xl p-5'>
+                            <h2>80 PUNTOS</h2>
+                        </div>
+                    </div>
+
+
+                    <div class='bg-white w-10/12 shadow-md h-20 border rounded-md flex flex-row justify-between items-center my-1'>
+                        <div class='p-5 text-2xl'>
+                            <h1>6.<!--Numero en el que aparecio-->
+                            EQUIPO NUMERO 5</h1>
+                        </div>
+
+                        <div class='text-center text-gray-400 text-xl p-5'>
+                            <h2>80 PUNTOS</h2>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

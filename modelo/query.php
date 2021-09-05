@@ -329,7 +329,20 @@ class Query{
     }
 
 
-
+    public function getTeambyID($idTeam){
+        $model = new Conection();
+        $connection = $model->_getConection();
+        $sql = "SELECT *  FROM proyecto  WHERE proyecto.idproyecto =:idTeam";
+        $sentencia = $connection->prepare($sql);
+        $sentencia->bindParam(":idTeam", $idTeam);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetch();
+            return $result;
+        }
+    }
     //obtener datos de equipo
     public function getTeamData($idTeam){
         $model = new Conection();
@@ -1000,7 +1013,40 @@ class Query{
             return $resultado;
         }
     }
+    //ranking desc
+    public function getRankingDESC($idGrado, $idMateria){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT * FROM ranking WHERE ranking.proyecto_grado_idgrado = :idGrado AND ranking.proyecto_materia_idmateria = :idMateria ORDER BY ranking.notafinal DESC";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":idGrado", $idGrado);
+        $sentencia->bindParam(":idMateria", $idMateria);
+        if(!$sentencia){
+            return "";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
 
+    }
+    //obtener grado por id
+    public function getGradobyID($idGrado){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT * FROM grado WHERE grado.idgrado = :idGrado";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":idGrado", $idGrado);
+        if(!$sentencia){
+            return "";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetch();
+            
+            return $resultado;
+        }
+    }
     //obtener cuantos proyecto hay con una grado 
     public function getCountPojectsByGrade($idGrado){
         $modelo = new Conection;

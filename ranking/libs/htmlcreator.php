@@ -1,5 +1,24 @@
 <?php
     class ranking{
+        public function header2(){
+            $html = <<<EDO
+            <!DOCTYPE html>
+            <html lang='en'>
+            <head>
+                <meta charset='UTF-8'>
+                <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+                <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+                <title>Ranking</title>
+                <link href='https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css' rel='stylesheet'>
+                <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+                <link rel='stylesheet' href='../../recursos/icons/style.css'>
+                <script src='../js/script-ranking.js'></script>
+            </head>
+            <body>
+            EDO;
+
+            print($html);
+        }
         public function header(){
             $html = <<<EDO
             <!DOCTYPE html>
@@ -85,8 +104,122 @@
 
             print($html);
         }
+        public function infoData($idMateria, $idGrado){
+        
+            $query = new Query();
+            $materiaInfo = $query->getMatterById($idMateria);
+            $gradoinfo = $query-> getGradobyID($idGrado);
+            $blockhtml = "
+            <div class='h-full w-full flex flex-col p-5 items-center rounded-2xl shadow bg-gray-100'>
+            <div  class='w-full'>
+                <div class='w-1/12 mx-auto'>
+                    <img src='img/trophy.png' alt='trofeo' class='block mx-auto'>
+                </div>
+                <div class=' m-3'>
+                    <div class='text-center text-2xl'>
+                        <h1>RANKING DE {$materiaInfo['nombre']} Y SUS PROYECTOS </h1>
+                    </div>
+                    <div>
+                        <p class='px-12 text-justify'>
+                            En este sitio se muestran todos los proyectos de la materia seleccionada 
+                            anteriormente, se obtienen todos los proyectos de el grado {$gradoinfo['nombre']} 
+                            y son mostrados de orde descendente siendo el primero el que mayor 
+                            puntos en promedio ha conseguido gracias a las calificaciones de los jurados
+                            , es posible obtener un PDF de este apartado dandole en \"descargar PDF\"
+                        </p>
+                    </div>
+                    <div class='flex justify-center'>
+                        <a href='' class='p-3 bg-red-500 text-white text-lg rounded-md'>
+                            <span class='icon-file-pdf'></span>
+                            Descargar PDF
+                        </a>
+                    </div>
+                </div>
+    
+            
+            
+            ";
+            $proyectos = $query->getRankingDESC($idGrado, $idMateria);
+            if(empty($proyectos)){
 
+            }else{
+                $blockhtml .= " <div class='w-full flex flex-col items-center'>
+
+                <!--Equipos ganadores-->
+                <div class='grid grid-cols-1 w-7/12 sm:grid-cols-3 gap-2' id='box-ganadores'>";
+                $c = 0;
+                foreach($proyectos as $camps){
+                    $proyectoInfo =$query->getTeambyID($camps['proyecto_idproyecto']);
+           
+                    $c++;
+                    if($c==2){
+                        $blockhtml .= "
+                        <div class='flex flex-col items-center border shadow-xl p-4  bg-white h-48 rounded-md'>
+                        <div class='w-6/12'>
+                            <img src='img/silver-medal.png ' alt='>
+                        </div>
+                        <div class='text-center text-2xl'>
+                            <h1>{$proyectoInfo['nombreProyecto']}</h1>
+                        </div>
+                        <div class='text-center text-gray-400 text-xl'>
+                            <h2>{$camps['notafinal']} PUNTOS</h2>
+                        </div>
+                    </div>";
+                    }else if($c==1){
+                      $html = "
+                      <div  class='flex flex-col items-center border shadow-xl p-4 bg-white h-52 rounded-md'>
+                      <div class='w-7/12'>
+                          <img src='img/gold-medal.png' alt='>
+                      </div>
+                      <div class='text-center text-2xl'>
+                          <h1>{$proyectoInfo['nombreProyecto']}</h1>
+                      </div>
+                      <div class='text-center text-gray-400 text-xl'>
+                          <h2>{$camps['notafinal']} PUNTOS</h2>
+                      </div>
+                  </div>
+                      ";
+
+                    }else if($c==3){
+                        $html.="
+                        <div class='flex flex-col items-center  border shadow-xl p-4 bg-white h-44 rounded-md'>
+                        <div class='w-5/12'>
+                            <img src='img/bronze-medal.png' alt='>
+                        </div>
+                        <div class='text-center text-2xl'>
+                            <h1>{$proyectoInfo['nombreProyecto']}</h1>
+                        </div>
+                        <div class='text-center text-gray-400 text-xl'>
+                            <h2>{$camps['notafinal']} PUNTOS</h2>
+                        </div>
+                    </div>
+                    </div>
+                    <div class='text-center text-4xl m-3'> <h1>Demás concursantes </h1></div>
+    
+                    <!--Demas equipos-->
+                    <div class='flex flex-col overflow-y-auto h-60  w-10/12 justify-center items-center m-6'>    
+
+                        ";
+                    }else{
+                        $html .= "<div class='bg-white w-10/12 shadow-md h-20 border rounded-md flex flex-row justify-between items-center my-1'>
+                        <div class='p-5 text-2xl'>
+                            <h1>4.<!--Numero en el que aparecio-->
+                            {$proyectoInfo['nombreProyecto']}</h1>
+                        </div>
+
+                        <div class='text-center text-gray-400 text-xl p-5'>
+                            <h2>{$camps['notafinal']}  PUNTOS</h2>
+                        </div>
+                    </div>";
+
+                    }
+                }
+                $blockhtml.=$html;
+            }
+         
+
+            print($blockhtml);
+        }
 
     }
-
 ?>

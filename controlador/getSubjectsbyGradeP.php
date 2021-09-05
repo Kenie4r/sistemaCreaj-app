@@ -22,7 +22,7 @@
                 <!--Un botón para seleccionar al grado-->
                 <div>
                     <div >
-                        <a target='_blank' href='rank.php?idSubject={$a}&grade={$grado}' class='button p-2 border border-2 bg-indigo-600 text-white cursor-pointer btnGrade' id='btn-{$a}'>
+                        <a target='_blank' href='rank/rank.php?idSubject={$a}&idGrade={$grado}' class='button p-2 border border-2 bg-indigo-600 text-white cursor-pointer btnGrade' id='btn-{$a}'>
                          Ver ranking
                         </a>
                     </div>
