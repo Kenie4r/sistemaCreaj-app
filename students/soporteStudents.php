@@ -15,4 +15,17 @@ function writeproject(){
     }
 }
 
+function writeLevelForNewRubric(){
+    $consulta = new Query; //Crear una consulta
+    $grados = $consulta->getGrado(); //Get niveles
+
+    if(empty($grados)){
+        echo "<option value=''>No hay niveles para elegir</option>\n";
+    }else{
+        echo "<option value=''>Elige un nivel para asignar...</option>\n";
+        foreach ($grados as $key => $nivel) {
+            echo "<option value='" . $nivel["idgrado"] . "'>" . $nivel["nombre"] . "</option>\n";
+        }
+    }
+}
 ?>

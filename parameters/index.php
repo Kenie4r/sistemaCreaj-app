@@ -30,9 +30,6 @@ $parametros = $consulta->getParametros(); //Get Estudiantes
             <div class="mb-7 lg:m-0">
                 <h1 class="text-5xl text-gray-500">Parametros</h1>
             </div>
-            <div class="flex lg:justify-end">
-                <a href="newparameter.php" class="text-blue-600 border-blue-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-blue-600"><span class="icon-plus"></span> Organizar parametros</a>
-            </div>
         </div>
 
         <div class="box-border m-7 mt-20">
@@ -56,7 +53,7 @@ if(!empty($parametros)){
     echo "\t<td class='p-6'>" . $parametros[$i]["nombre"] . "</td>";
     echo "\t<td class='p-6'>" . $parametros[$i]["paramFecha"] . "</td>";
     echo "\t<td class='p-6'>" . $parametros[$i]["paramFechaF"] . "</td>";
-    echo "\t<td class='p-6'><a href=editParameters.php'?idparametros=" . $parametros[$i]["idparametros"] . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Editar</a></td>";
+    echo "\t<td class='p-4'><a href='editParameters.php?idparam=" . $parametros[$i]["idparametros"] . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Editar</a></td>";
     echo "</tr>";
     }
 }else{

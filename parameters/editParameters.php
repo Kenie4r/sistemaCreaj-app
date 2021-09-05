@@ -1,7 +1,12 @@
 <?php
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
+$idparametros = $_GET["idparam"];
+$consulta = new Query; //Crear una consulta
 $parametros = $consulta->getParametrosById($idparametros);
+$FechaInico =$consulta->getFechaInicio($idparametros);
+$FechaFin =$consulta->getFechaFin($idparametros);
+//print_r("\t<td class='p-6'>" . $FechaInico. "</td>");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +25,7 @@ $parametros = $consulta->getParametrosById($idparametros);
 <?php
 require('../Dashboard/Dashboard.php');
 ?>
- <form id="frmRubric" class="container box-content" method="POST" action="updateParameters.php">
+ <form id="frmRubric" class="container box-content" method="POST" action="updateParameters.php?idparam= <?php echo $idparametros; ?>">
     <h1 class="text-center w-3/4 lg:w-full lg:text-5xl outline-none focus:border-gray-500 border-b-2 focus:border-solid mt-8">Modificar parámetro</h1>
         <div class="grid grid-cols-1 lg:grid-cols-2 ml-24">
             <div class="flex lg:m-9">
@@ -35,14 +40,14 @@ require('../Dashboard/Dashboard.php');
         <div class="grid grid-cols-1 lg:grid-cols-3 m-9 ml-36">
         <div class=" "> 
                     <div class="flex flex-row items-center w-full lg:w-4/5 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
-                        <label for="0-txtinicio" class="w-60 p-2 bg-gray-700 text-white">Fecha de inicio</label>
-                        <input class="p-1 w-full rounded-r-lg outline-none" type="date" name="0-txtFechaInicio" value="" >
+                        <label for="txtinicio" class="w-60 p-2 bg-gray-700 text-white">Fecha de inicio</label>
+                        <input class="p-1 w-full rounded-r-lg outline-none" type="date" name="txtFechaInicio" value="<?php echo $FechaInico;?>" >
                     </div>
                </div>
                 <div class="mt-10"> 
                     <div class="flex flex-row items-center w-full lg:w-4/5 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
-                        <label for="0-txtfin" class="w-60 p-2 bg-gray-700 text-white">Fecha de cierre</label>
-                        <input class="p-1 w-full rounded-r-lg outline-none" type="date" name="0-txtFechaFin" value="" >
+                        <label for="txtfin" class="w-60 p-2 bg-gray-700 text-white">Fecha de cierre</label>
+                        <input class="p-1 w-full rounded-r-lg outline-none" type="date" name="txtFechaFin" value="<?php echo $FechaFin;?>" >
                    </div>
                </div>
         </div>

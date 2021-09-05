@@ -10,10 +10,11 @@ $consulta = new Query; //Crear una consulta
 $id= $_POST["txtCodigo"];
 $name= $_POST["txtNombre"];
 $last_name= $_POST["txtApellido"];
-$Datoestudiantes= $consulta->saveStudent($id, $name, $last_name);
-$id_estudiante= $_POST["txtCodigo"];
+$grado_idgrado= $_POST["txtGrado"];
+$Datoestudiantes= $consulta->saveStudent($id, $name, $last_name, $grado_idgrado);
+/*$id_estudiante= $_POST["txtCodigo"];
 $proyecto= $_POST["txtProject"];
-$Datosteam= $consulta->saveTeam($id_estudiante, $proyecto);
+$Datosteam= $consulta->saveTeam($id_estudiante, $proyecto);*/
 
 ?>
 
@@ -32,7 +33,7 @@ $Datosteam= $consulta->saveTeam($id_estudiante, $proyecto);
 <body>
 <?php
 require('../Dashboard/Dashboard.php');
-if($Datoestudiantes and $Datosteam == "Registro hecho"){
+if($Datoestudiantes  == "Registro hecho"){
 ?>
     <section class="container">
         <div class="m-4 lg:m-7 bg-green-500 border-2 border-solid border-green-800 rounded-lg">

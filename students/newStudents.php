@@ -2,7 +2,7 @@
 
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
-require_once("soporteStudents.php")
+require_once("soporteStudents.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +21,7 @@ require_once("soporteStudents.php")
 <?php
 require('../Dashboard/Dashboard.php');
 require_once("../parameters/soporteParametros.php");
-comparacionFecha("Estudiantes");
+comparacionFecha("Ingreso de estudiantes");
 ?>
     <form id="frmNewRubric" class="container box-content" method="POST" action="saveStudents.php">
         <h1 class="text-center w-3/4 lg:w-full lg:text-5xl outline-none focus:border-gray-500 border-b-2 focus:border-solid mt-8">Agregar estudiante</h1>
@@ -59,9 +59,9 @@ comparacionFecha("Estudiantes");
                 </div>
                 <div class="mt-10">  
                     <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
-                        <label for="txtID" class="p-2 bg-gray-700 text-white">Proyecto</label>
-                        <select name="txtProject" id="txtMateria" class="p-1 w-full rounded-r-lg outline-none">
-                            <?php writeproject(); ?>
+                        <label for="txtID" class="p-2 bg-gray-700 text-white">Grado:</label>
+                        <select name="txtGrado" id="txtGrado" class="p-1 w-full rounded-r-lg outline-none">
+                            <?php writeLevelForNewRubric(); ?>
                         </select>
                     </div>
                 </div>

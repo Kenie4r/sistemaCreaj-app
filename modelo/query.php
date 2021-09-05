@@ -144,14 +144,15 @@ class Query{
     }
     
     //guardar estudiante
-    public function saveStudent($id, $name, $last_name){
+    public function saveStudent($id, $name, $last_name, $grado_idgrado){
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql = "INSERT INTO estudiante VALUES ( :id, :name, :last_name)";
+        $sql = "INSERT INTO estudiante VALUES ( :id, :name, :last_name, :grado_idgrado)";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":id", $id);
         $sentencia->bindParam(":name", $name);
         $sentencia->bindParam(":last_name", $last_name);
+        $sentencia->bindParam(":grado_idgrado", $grado_idgrado);
         if(!$sentencia){
             return "Error, existe un fallo";
         }else{
@@ -406,8 +407,42 @@ class Query{
         }
     }
     
-       //Obtener la fecha de inicio y la fecha de cierre de la tabla Parametros
-       public function getFechas($nombre){
+       //Obtener la fecha de inicio de la tabla Parametros
+       public function getFechaInicio($idparametros){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+            $sql = "SELECT paramFecha FROM parametros WHERE idparametros = :idparametros";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":idparametros", $idparametros);
+
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchColumn();
+            
+            return $resultado;
+        }
+    }
+    //Obtener la fecha e cierre de la tabla Parametros
+    public function getFechaFin($idparametros){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+            $sql = "SELECT paramFechaF FROM parametros WHERE idparametros = :idparametros";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":idparametros", $idparametros);
+
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchColumn();
+            
+            return $resultado;
+        }
+    }
+     //Obtener la fecha e cierre de la tabla Parametros
+     public function getFechas($nombre){
         $model = new Conection();
         $connection  = $model->_getConection();
             $sql = "SELECT paramFecha, paramFechaF FROM parametros WHERE nombre = :nombre";
@@ -668,6 +703,7 @@ class Query{
             return $resultado;
         }
     }
+
     //Obtenerlos niveles según el ID criterio
     public function getLevelsByIdCriterio($idcriterio){
         $model = new Conection();
