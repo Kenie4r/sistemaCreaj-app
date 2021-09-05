@@ -24,20 +24,20 @@ require('../Dashboard/Dashboard.php');
     <article class="container">
         <div class="m-9">
             <div class="mb-7 lg:m-0">
-                <h1 class="text-5xl text-blue-900 text-center">Acádemico</h1>
+                <h1 class="text-5xl text-blue-800 text-center">Acádemico</h1>
             </div>
         </div>
         <div class="box-border grid lg:grid-cols-3 gap-2 text-center m-7">
-            <a href="../Matter/index.php" class="bg-blue-500 text-white rounded-lg p-6">
-                <p class="text-5xl"><span class="icon-books"></span></p>
+            <a href="../Matter/index.php" class="bg-blue-500 hover:bg-blue-700 text-white rounded-lg p-6">
+                <p class="text-5xl mb-2"><span class="icon-books"></span></p>
                 <p class="text-2xl">Materias</p>
             </a>
-            <a href="../levels/index.php" class="bg-blue-500 text-white rounded-lg p-6">
-                <p class="text-5xl"><span class="icon-book"></span></p>
+            <a href="../levels/index.php" class="bg-blue-500 hover:bg-blue-700 text-white rounded-lg p-6">
+                <p class="text-5xl mb-2"><span class="icon-book"></span></p>
                 <p class="text-2xl">Niveles</p>
             </a>
-            <a href="../grades/index.php" class="bg-blue-500 text-white rounded-lg p-6">
-                <p class="text-5xl"><span class="icon-book"></span></p>
+            <a href="../grades/index.php" class="bg-blue-500 hover:bg-blue-700 text-white rounded-lg p-6">
+                <p class="text-5xl mb-2"><span class="icon-file-text"></span></p>
                 <p class="text-2xl">Grados</p>
             </a>
         </div>
