@@ -5,7 +5,7 @@ $consulta=new Query;
     #si existe el Keyup
     if (isset($_POST['nombre'])) {
         $nombre=strtolower($_POST['nombre']);
-        $NoDis=0;
+        $NoDis="";
         $verMat=$consulta->getLevel();
         $nMat=count($verMat);
         #lee los Nombres
