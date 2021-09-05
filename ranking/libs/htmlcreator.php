@@ -116,7 +116,7 @@
                     <img src='img/trophy.png' alt='trofeo' class='block mx-auto'>
                 </div>
                 <div class=' m-3'>
-                    <div class='text-center text-2xl'>
+                    <div class='text-center text-2xl uppercase'>
                         <h1>RANKING DE {$materiaInfo['nombre']} Y SUS PROYECTOS </h1>
                     </div>
                     <div>
@@ -128,22 +128,32 @@
                             , es posible obtener un PDF de este apartado dandole en \"descargar PDF\"
                         </p>
                     </div>
-                    <div class='flex justify-center'>
-                        <a href='' class='p-3 bg-red-500 text-white text-lg rounded-md'>
-                            <span class='icon-file-pdf'></span>
-                            Descargar PDF
-                        </a>
-                    </div>
-                </div>
+                   
     
             
             
             ";
             $proyectos = $query->getRankingDESC($idGrado, $idMateria);
             if(empty($proyectos)){
-
+                $blockhtml .= "       <div class='flex flex-col   justify-center items-center h-80'>
+                <div class='text-gray-400 text-xl'>
+                    <h1 class='text-center text-6xl'>
+                        <span class='icon-wondering2'></span>
+                    </h1>
+                    <h1>
+                        Aún no hay ningún proyecto ganador vuelve más tarde.
+                    </h1>
+                </div>";
             }else{
-                $blockhtml .= " <div class='w-full flex flex-col items-center'>
+                $blockhtml .= " 
+                <div class='flex justify-center'>
+                <a href='' class='p-3 bg-red-500 text-white text-lg rounded-md'>
+                    <span class='icon-file-pdf'></span>
+                    Descargar PDF
+                </a>
+            </div>
+        </div>
+                <div class='w-full flex flex-col items-center'>
 
                 <!--Equipos ganadores-->
                 <div class='grid grid-cols-1 w-7/12 sm:grid-cols-3 gap-2' id='box-ganadores'>";
