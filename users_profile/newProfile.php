@@ -16,6 +16,8 @@
 <body>
 <?php
 require('../Dashboard/Dashboard.php');
+require_once("../parameters/soporteParametros.php");
+comparacionFecha("Ingreso de nuevos usuarios");
 ?>
     <section class="p-8">
         <form action="saveProfile.php" method="POST" class="w-full bg-gray-800 p-4 rounded-lg shadow-lg" name="frmProfile" id="frmProfile">
