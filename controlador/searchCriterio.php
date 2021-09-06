@@ -11,10 +11,10 @@
         $resultado[] = $r;
     }
 
-    $html ="<div class= 'p-5 flex flex-col content-center items-center '> 
-    <div  class='bg-gray- 200 borderb-2 border-black flex flex-row justify-start items-center w-full cursor-pointer'>
+    $html ="<div class=' w-full p-5 flex flex-col content-center items-center '> 
+    <div  class='bg-gray- 200 border-t border-black flex flex-row justify-start items-center w-full cursor-pointer'>
             <div  class='bg-gray-300 p-3 font-bold text-xl backbutton' id='btnBack_$number'><</div> 
-            <div class='mx-2 font-bold text-xl'><h1>Nivel de rango escogido <span id= max_number>".$resultado[2] ."</span></h1></div>
+            <div class='mx-2 font-bold text-xl'><h1>Nivel obtenido<span id= max_number>".$resultado[2] ."</span></h1></div>
     </div>
    <div class='w-full text-center'>
         <h1> Descripción del rango obtenido</h1>

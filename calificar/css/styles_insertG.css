@@ -83,6 +83,7 @@ input[type="range"] {
 
 .contenido {
     max-height: 0;
+    height: 100%;
     -webkit-transition: max-height .35s;
     -o-transition: max-height .35s;
     transition: max-height  .35;
@@ -92,7 +93,7 @@ input[type="range"] {
     background-color: Dar;
 }
 
-.tab input:checked + label{
+.tab input:checked + .tab>label{
     font-size: 1.25rem;
     padding: 1.25rem;
     border-left-width: 2px;
@@ -100,7 +101,7 @@ input[type="range"] {
     color: #6574cd;
 }
 /* Icon */
-.tab label::after {
+.tab>label::after {
     float:right;
     right: 0;
     top: 0;
@@ -115,7 +116,7 @@ input[type="range"] {
     transition: all .35s;
 }
 
-.tab input[type=checkbox] + label::after {
+.tab input[type=radio] + .tab>label::after {
     content: "\25BE";
     font-weight:bold; 
     border-width: 1px;
@@ -123,7 +124,7 @@ input[type="range"] {
     border-color: #b8c2cc; 
 }
 
-.tab input[type=checkbox]:checked + label::after {
+.tab input[type=checkbox]:checked + .tab>label::after {
     transform: rotate(180deg);
     background-color: #9da3c4; 
     color: #f8fafc; 

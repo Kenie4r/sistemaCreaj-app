@@ -1,37 +1,52 @@
-
+//definición de las vartiables globales
+var notafinal = 0;
 //funciones luego de que nuestro archivo cargue
 $(document).ready(function(){
+    //usos del botón terminar, para revisar 
+    terminarCalificar();
+    //calificar 
+    mainActivity();
+});
+function bloquearInputs(input){
+       var criteriosdiv = document.getElementsByClassName('criterio');
+       for(let count = 0; count<criteriosdiv.length; count++){
+           if( $(input).attr('id')==criteriosdiv[count].id  ){
 
+           }else{
+              $("#" +  criteriosdiv[count].id ).fadeOut('fast');
+           }
+       }
+}
+function inputsGet(){
+      var criteriosdiv = document.getElementsByClassName('criterio');
+       for(let count = 0; count<criteriosdiv.length; count++){
+              $("#" +  criteriosdiv[count].id ).fadeIn('fast');
+       }
+}
 
-    var fullGrade = 0;
-    $('.calificaciones').fadeOut('fast');
-   mainActivity();
+//función para poder guardar la notas, pero antes verificando los inputs
+function terminarCalificar(){
 
-    $('#btnTerminar').click(function(){
-        var nota = $('#inputGrade').val();
-        if( nota==""){
-            crearNotificacion(1, "Aún no has terminado de calificar", null , "Ok");
+    document.getElementById('btnTerminar').addEventListener("click", function(e){
+        if($('#inputGrade').val() == "" || $('#inputGrade')==NaN){
+            crearNotificacion(1, "Aún no has calificado", null, "Terminar");
         }else{
-            var contador = 0;
-            var notasCriterios = document.getElementsByClassName('final');
-            for (let index =1; index <   notasCriterios.lenght; index++) {
-                if(notasCriterios[index].value==""){
-                    contador++;
+            var inputsCalificados = 0;
+            var inputsCriterios = document.getElementsByClassName('final');
+            for(let i = 0; i<inputsCriterios.lenght; i++){
+                if( inputsCriterios[i].value=="" ||  inputsCriterios[i].value==NaN ){
+                    inputsCalificados++
                 }
             }
-            if (contador==0 ){
-                crearNotificacion(1, "¿Quiéres guardar la nota?","Guardar", "Cancelar")
+            if(inputsCalificados == 0){
+                crearNotificacion(1,"¿Quieres guardar?", "Sí", "Aún no");
             }else{
                 crearNotificacion(1, "Aún no has terminado de calificar", null , "Ok");
             }
- 
         }
-
     })
-});
-
-
-function funcionamiento(){
+}
+function editarNota(){
     //funcionamiento de editar
     $('.btnEdit').click(function(){
         idBox= id_Number($(this).attr('id'));
@@ -69,38 +84,27 @@ function funcionamiento(){
     sencondActivity()
     
 }
-
+//funcionamiento de los botones de nivle y demás
 function mainActivity(){
     $('.promedios').click(function(){
-        var nivel = "basico";
-        var divNumber = '1';
-        var contenedor = "#div"; var divCalificar = "#calificar";
-        var notaDiv = "#nota"; var descripDiv   = "#descr";
-        var id= $(this).attr("id");
-       if(id.includes("_")){
-            var splitTextID = id.split('_');
-            divNumber = splitTextID[1];
-            contenedor+= divNumber;
-            var rangoGanado = splitTextID[0];
-        }else{
-            rangoGanado  = id;
-            contenedor+=divNumber;
-         }
-        divCalificar+=divNumber;
-        descripDiv+=divNumber;
-        notaDiv+=divNumber;
-        nivel = definirNivel(rangoGanado);
-        $(contenedor).fadeOut('fast');
-        $(descripDiv).fadeOut('fast');
-        //función de escribir el input
-        inputCreation(divNumber, divCalificar , nivel)
-        $(divCalificar).fadeIn('slow');
-        //Funcionanmiento del botón de volver atras y demás
-            sencondActivity()
-        } )
+   
+        var div = "#div", divCalificar = "#calificar", notaDiv = "#nota", descripDiv = "#descrp";
+        var idPromedio = $(this).attr('id').split('_');
+        var numeroDiv = idPromedio[1];
+        var nombreRango = definirNivel(idPromedio[0]);
+        bloquearInputs( "#criterio"+numeroDiv);
+        //hacer desaparecer los contenedores
+        $(div + numeroDiv).fadeOut('fast');
+        $(descripDiv + numeroDiv).fadeOut('fast');
+        //crear el input de calificar
+        inputCreation(numeroDiv, divCalificar+numeroDiv, nombreRango);
+        $(divCalificar+numeroDiv).fadeIn('slow');
+        sencondActivity();
+    })
 };
 function sencondActivity(){
     $('.backbutton').click(function(){
+        
              var IDbtn = id_Number( $(this).attr("id"));
              var boxNumber = IDbtn
              var box = "#div"+boxNumber;
@@ -111,6 +115,7 @@ function sencondActivity(){
              $(descripDiv).fadeIn('slow')
              $(thisBox).fadeOut('slow')//esta hace aparecer
              $(thisBox).empty()
+              inputsGet()
          })
          //función para obtener, verificar el valor de la barra range que nos da  la nota
         $('.gradeinput').change( function(){      
@@ -128,6 +133,7 @@ function sencondActivity(){
             $(input).val(max)
          })
          $('.btnGuardar').click(function(){
+              inputsGet()
              var idBox  = id_Number(  $(this).attr('id'));
              var input = "#Grade_"+ idBox;
              var grade = $(input).val();
@@ -158,6 +164,7 @@ function sencondActivity(){
                  $(box).fadeIn('slow')//esta hace que aparezca
                  $('#calificar'+idBox).empty();
                  $('#Final' + idBox).val("")
+
              })
         })
 }

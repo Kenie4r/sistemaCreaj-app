@@ -90,7 +90,7 @@
   </div>";
 
         $html.="
-        <div class='tab w-full overflow-hidden border-t'>
+        <div class='tab w-full overflow-hidden border-t '>
                 <input class='absolute opacity-0' type='checkbox' id='btn-integrantes2' class='' name='btns'>
                 <label for='btn-integrantes2' class='block p-5 leading-normal cursor-pointer'>Descripción</label>
                 <div class='contenido overflow-hidden border-1-2 bg-gray-100 border-indigo-500 leading-normal'>
@@ -150,28 +150,30 @@
             $html .= "<input type='hidden' name='levelttxt' value='{$idGrado}'> ";
             for($index = 0; $index<count($myCID); $index++){
                 $number = $index+1;
-                $html.=" <div class='tab'class='criterio p-5'>
-                <input type='hidden' name='' value='{$criterioValue[$index]}' id='valor{$number}'>
-                <input type='hidden' name='idCriterio' value='$myCID[$index]' id='idC{$number}' >
-                <input type='checkbox' class='absolute opacity-0' id='btnCriterio{$number}'>
-                <input type='hidden' id='Final{$number}' value='' class='final'>
-                <label for='btnCriterio{$number}' class='block p-5 leading-normal cursor-pointer'>{$criterioName[$index]} </label>
-                <div class='w-auto contenido overflow-hidden  border-1-2 bg-gray-100 border-indigo-500 leading-norma '>
-                    <div class='grid grid-cols-2  gap-1 p-5' id='div{$number}'>
-                        <div class='col-span-2 text-xl text-center transicion '><h3>¿Cómo fue su rendimiento?</h3></div>
-                        <input type='radio'  id='promedio1_{$number}' class='promedios absolute opacity-0' name='promedios$index ' required>
-                        <input type='radio'  id='promedio2_{$number}' name='promedios{$number}' class='promedios absolute opacity-0' required>
-                        <input type='radio'  id='promedio3_{$number}' name='promedios{$number}' class='promedios absolute opacity-0' required>
-                        <input type='radio'  id='promedio4_{$number}' name='promedios{$number}' class='promedios absolute opacity-0 ' required>
-                        <label for='promedio1_{$number}'class='promediosL rounded-lg border-2 border-red-500 text-blue-500 p-1 text-md  text-center hover:bg-blue-400 hover:text-white cursor-pointer'>Incial receptivo</label>
-                        <label for='promedio2_{$number}' class='promediosL rounded-lg border-2 border-yellow-500 text-blue-500 p-1 text-md  text-center hover:bg-blue-400 hover:text-white cursor-pointer'>Básico</label>
-                        <label for='promedio3_{$number}' class='promediosL rounded-lg border-2 border-blue-500 text-blue-500 p-1 text-md  text-center hover:bg-blue-400 hover:text-white cursor-pointer'>Autonómo</label>
-                        <label for='promedio4_{$number}' class='promediosL rounded-lg border-2 border-green-500 text-blue-500 p-1 text-md  text-center hover:bg-blue-400 hover:text-white cursor-pointer'>Estratégico</label>
+                $html.=" 
+                <div class='tab w-full overflow-hidden border-t criterio p-5 h-full' id='criterio{$number}'>
+                    <input type='hidden' name='' value='{$criterioValue[$index]}' id='valor{$number}'>
+                    <input type='hidden' name='idCriterio' value='$myCID[$index]' id='idC{$number}' >
+                    <input type='radio' name='rdbCriterio' class='absolute opacity-0 rdbCriterio'  id='btnCriterio_{$number}'>
+                    <input type='hidden' id='Final{$number}' value='' class='final'>
+                    <label for='btnCriterio_{$number}' class='block p-5 leading-normal cursor-pointer flex justify-between'><span class='text-2xl'>{$criterioName[$index]}</span> <span>{$criterioValue[$index]} PUNTOS</span></label>
+                    <div class='contenido w-auto p-5  border-1-2 bg-gray-100 border-indigo-500 leading-normal  overflow-hidden' id='content${number}'>
+                         <div  class='p-5 transicion calificaciones' id='calificar$number'>
+                        </div>
+                        <div class='grid grid-cols-2  gap-1 h-full overflow-hidden' id='div{$number}'>
+                            <div class='col-span-2 text-xl text-center transicion '><h3>¿Cómo fue su rendimiento?</h3></div>
+                            <input type='radio'  id='promedio1_{$number}' class='promedios absolute opacity-0' name='promedios$index ' required>
+                            <input type='radio'  id='promedio2_{$number}' name='promedios{$number}' class='promedios absolute opacity-0' required>
+                            <input type='radio'  id='promedio3_{$number}' name='promedios{$number}' class='promedios absolute opacity-0' required>
+                            <input type='radio'  id='promedio4_{$number}' name='promedios{$number}' class='promedios absolute opacity-0 ' required>
+                            <label for='promedio1_{$number}'class='promediosL  rounded-lg border-2 border-red-500 text-red-500 p-1 text-md  text-center hover:bg-red-400 hover:text-white cursor-pointer'>Incial receptivo</label>
+                            <label for='promedio2_{$number}' class='promediosL rounded-lg border-2 border-yellow-500 text-yellow-500 p-1 text-md  text-center hover:bg-yellow-400 hover:text-white cursor-pointer'>Básico</label>
+                            <label for='promedio3_{$number}' class='promediosL rounded-lg border-2 border-blue-500 text-blue-500 p-1 text-md  text-center hover:bg-blue-400 hover:text-white cursor-pointer '>Autonómo</label>
+                            <label for='promedio4_{$number}' class='promediosL rounded-lg border-2 border-green-500 text-green-500 p-1 text-md  text-center hover:bg-green-400 hover:text-white cursor-pointer'>Estratégico</label>
+                        </div>
+              
                     </div>
-                    <div  class='p-5 transicion calificaciones' id='calificar$number'>
-                    </div>
-                </div>
-            </div>";
+                </div>";
             }
         }
         print($html);
@@ -219,9 +221,7 @@ HEREDOC;
         </head>
         <body>
             <div class= h-screen bg-white w-screen '>
-            <a class="fixed h-14 w-14 border border-black bottom-20 right-0 p-4 text-2xl flex justify-center items center rounded-lg cursor-pointer" href="ranking.php">
-            <span class="icon-trophy"></span>
-            </a>
+
                 <div class='mx-auto'>
         EDO;
 
