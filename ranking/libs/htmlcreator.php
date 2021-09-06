@@ -171,7 +171,7 @@
                             <h1>{$proyectoInfo['nombreProyecto']}</h1>
                         </div>
                         <div class='text-center text-gray-400 text-xl'>
-                            <h2>{$camps['notafinal']} PUNTOS</h2>
+                            <h2>" . round($camps['notafinal'], 2) ." PUNTOS</h2>
                         </div>
                     </div>";
                     }else if($c==1){
@@ -184,7 +184,7 @@
                           <h1>{$proyectoInfo['nombreProyecto']}</h1>
                       </div>
                       <div class='text-center text-gray-400 text-xl'>
-                          <h2>{$camps['notafinal']} PUNTOS</h2>
+                          <h2>" . round($camps['notafinal'], 2) ." PUNTOS</h2>
                       </div>
                   </div>
                       ";
@@ -199,28 +199,40 @@
                             <h1>{$proyectoInfo['nombreProyecto']}</h1>
                         </div>
                         <div class='text-center text-gray-400 text-xl'>
-                            <h2>{$camps['notafinal']} PUNTOS</h2>
+                            <h2>" . round($camps['notafinal'], 2) ." PUNTOS</h2>
                         </div>
                     </div>
                     </div>
-                    <div class='text-center text-4xl m-3'> <h1>Demás concursantes </h1></div>
-    
-                    <!--Demas equipos-->
-                    <div class='flex flex-col overflow-y-auto h-60  w-10/12 justify-center items-center m-6'>    
+                     
 
                         ";
-                    }else{
-                        $html .= "<div class='bg-white w-10/12 shadow-md h-20 border rounded-md flex flex-row justify-between items-center my-1'>
+                    }else if($c==4){
+                        $html .= "<div class='text-center text-4xl m-3'> <h1>Demás concursantes </h1></div>
+    
+                        <!--Demas equipos-->
+                        <div class='flex flex-col overflow-y-auto h-60  w-10/12 justify-center items-center m-6'>   
+                        
+                        <div class='bg-white w-10/12 shadow-md h-20 border rounded-md flex flex-row justify-between items-center my-1'>
                         <div class='p-5 text-2xl'>
-                            <h1>4.<!--Numero en el que aparecio-->
+                            <h1>$c.<!--Numero en el que aparecio-->
                             {$proyectoInfo['nombreProyecto']}</h1>
                         </div>
 
                         <div class='text-center text-gray-400 text-xl p-5'>
-                            <h2>{$camps['notafinal']}  PUNTOS</h2>
+                            <h2>" . round($camps['notafinal'], 2) ."  PUNTOS</h2>
                         </div>
-                    </div>";
+                        </div>";
+                    }else{
+                        $html .= "<div class='bg-white w-10/12 shadow-md h-20 border rounded-md flex flex-row justify-between items-center my-1'>
+                        <div class='p-5 text-2xl'>
+                            <h1>$c.<!--Numero en el que aparecio-->
+                            {$proyectoInfo['nombreProyecto']}</h1>
+                        </div>
 
+                        <div class='text-center text-gray-400 text-xl p-5'>
+                            <h2>" . round($camps['notafinal'], 2) ."  PUNTOS</h2>
+                        </div>
+                        </div>";
                     }
                 }
                 $blockhtml.=$html;

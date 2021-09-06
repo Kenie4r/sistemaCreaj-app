@@ -170,7 +170,9 @@ function inputCreation(number, contenedor, nivel){
     $.post("../controlador/searchCriterio.php", {
         "idCriterio": $('#idC'+number).val(),
         "gradeName": nivel,
-        "idNumber": number
+        "idNumber": number,
+        "MinNota":notas[1],
+        "MaxNota":notas[0]
     },function(result){
         $(contenedor).append(result);  
         sencondActivity();
