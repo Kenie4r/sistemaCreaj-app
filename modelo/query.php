@@ -1053,7 +1053,7 @@ class Query{
     public function getRankingDESC($idGrado, $idMateria){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "SELECT * FROM ranking WHERE ranking.proyecto_grado_idgrado = :idGrado AND ranking.proyecto_materia_idmateria = :idMateria ORDER BY ranking.notafinal DESC";
+        $sql = "SELECT * FROM ranking WHERE ranking.grado_idgrado = :idGrado AND ranking.materia_idmateria = :idMateria ORDER BY ranking.notafinal DESC";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":idGrado", $idGrado);
         $sentencia->bindParam(":idMateria", $idMateria);

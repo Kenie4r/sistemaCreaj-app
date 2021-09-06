@@ -7,8 +7,8 @@
     $notaFinal = $_POST['finalGrade']?$_POST['finalGrade']:"";
     $idTeam = $_POST['txtIdTeam']?$_POST['txtIdTeam']:"";
     $userID = $_POST['txtuserID']?$_POST['txtuserID']:"";
-    $materia =$_POST['subjecttxt']?$_POST['txtuserID']:"";
-    $grado = $_POST['levelttxt']?$_POST['txtuserID']:"";
+    $materia =$_POST['subjecttxt']?$_POST['subjecttxt']:"";
+    $grado = $_POST['levelttxt']?$_POST['levelttxt']:"";
     $result = $query->savePuntaje($idTeam, $userID, $notaFinal);
     if($result =="Registro hecho"){
        $counted = $query->getCountRatedProject($idTeam);
