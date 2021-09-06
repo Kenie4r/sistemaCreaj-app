@@ -70,16 +70,19 @@ require('../Dashboard/Dashboard.php');
                     <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
                         <label for="txtID" class="p-2 bg-gray-700 text-white">Grado:</label>
                         <select name="txtGrado" id="txtMateria" class="p-1 w-full rounded-r-lg outline-none">
-                        <?php
-
-echo "<option value='" . $grado["idgrado"] . "'>" . $grado["nombre"] . "</option>\n";
-foreach ($Grado as $key => $Grado) {
-    if($grados["idgrado"] != $grado["idgrado"]){
-        echo "<option value='" . $grados["idgrado"] . "'>" . $grados["nombre"] . "</option>\n";
-    }
-}
-
-?>
+                     <?php
+                         if(empty($Grado)){
+                            echo "<option value=''>No hay Grados para elegir</option>\n";
+                        }else{
+                            echo "<option value='" . $estudiantes[$i]['grado_idgrado'] . "'>" . $Grado["nombre"] . "</option>\n";
+                            foreach ($Grado as $key => $gradoNombre) {
+                                if($Grado["idgrado"] = $estudiantes[$i]['grado_idgrado']){
+                                    echo "<option value='" . $gradoNombre["idgrado"] . "'>" . $gradoNombre["nombre"] . "</option>\n";
+                                }
+                                
+                            }
+                        }
+                    ?>
                         </select>
                     </div>
                 </div>

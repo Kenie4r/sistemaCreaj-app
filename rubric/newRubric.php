@@ -24,6 +24,8 @@ require_once("../controlador/soporteRubricasNuevas.php");
 <body>
 <?php
 require('../Dashboard/Dashboard.php');
+require_once("../parameters/soporteParametros.php");
+comparacionFecha("Ingreso de rubricas");
 ?>
     <form id="frmRubric" class="container box-content" method="POST" action="saveRubric.php">
         <div class="grid grid-cols-1 lg:grid-cols-2">

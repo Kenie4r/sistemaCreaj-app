@@ -20,6 +20,8 @@ require_once("soporteProject.php");
 <body>
 <?php
 require('../Dashboard/Dashboard.php');
+require_once("../parameters/soporteParametros.php");
+comparacionFecha("Ingreso de proyectos");
 ?>
  <form id="frmRubric" class="container box-content" method="POST" action="saveProjects.php">
         <div class="grid grid-cols-1 lg:grid-cols-2">
