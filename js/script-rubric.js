@@ -41,7 +41,7 @@ function configurarConfirmacionEliminacion() {
 
     btnDelete.on("click",
         function(){
-            var estado = confirm("¿Seguro de querer eliminar este perfil?");
+            var estado = confirm("¿Seguro de querer eliminar esta rubrica?");
             
             return estado;
         }
