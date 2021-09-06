@@ -257,7 +257,7 @@ function crearNotificacion(tipo, mensaje, opcion1, opcion2){
     var classIcon, color, opciones, end;
     if(tipo==0){
         classIcon = "icon-cross";
-        color = "bg-redd-500"
+        color = "bg-red-500"
     }else if( tipo == 1){
         color = "bg-yellow-500"
         classIcon = "icon-notification";
@@ -296,7 +296,11 @@ function crearNotificacion(tipo, mensaje, opcion1, opcion2){
 
 
     $('#option-1').click(function(){
-        $('#form').submit();
+        if(opcion1=="Volver atras"){
+            window.location = "index.php";
+        }else{
+            $('#form').submit();
+        }
     })
     $('#option-2').click(function(){
         $('#notification').remove();

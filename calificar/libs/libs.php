@@ -14,6 +14,7 @@
                 <script src="../Dashboard/button.js"></script>
                 <link rel="stylesheet" href="../recursos/icons/style.css">
                 <link rel="stylesheet" href="css/styles_insertG.css">
+                <script src="../js/script_insertGrades.js"></script>
             </head>
             
         EDO;
@@ -118,42 +119,44 @@
         $myCID = array();
         $idNivel = $query->getLevelbyGradeID($idGrado);
         $myRubric = $query->getNewRubric($idMateria, $idNivel['idnivel']);
-       foreach($myRubric as $a=> $b){
-          foreach($b as $c){
-              $idRubric = $c;
-          }
-       }
-        $critics= $query->getIdCriterioByIdRubric($idRubric);
-        foreach($critics as $field =>$array){
-            foreach($array as $a => $b){
-                $myCID[]=$b;
-            }
-        }
-        $defCriterios = $query->getCriteriosByIdRubric($idRubric);
-
-        foreach($defCriterios as $a){
-            $j = 0;
-            foreach( $a as  $b){
-                if($j==1){
-                    $criterioName[] = $b;
-                }else if($j==2){
-                    $criterioValue[]  =$b;
+        if(empty($myRubric)){
+            $html="<script>crearNotificacion(0, 'Aún no puedes calificar', 'Volver atras', null)</script>";
+        }else{
+            foreach($myRubric as $a=> $b){
+                foreach($b as $c){
+                $idRubric = $c;
                 }
-                $j++;
             }
+            $critics= $query->getIdCriterioByIdRubric($idRubric);
+            foreach($critics as $field =>$array){
+                foreach($array as $a => $b){
+                    $myCID[]=$b;
+                }
+            }
+            $defCriterios = $query->getCriteriosByIdRubric($idRubric);
+            foreach($defCriterios as $a){
+                $j = 0;
+                foreach( $a as  $b){
+                    if($j==1){
+                        $criterioName[] = $b;
+                    }else if($j==2){
+                        $criterioValue[]  =$b;
+                    }
+                    $j++;
+                }
 
-        }
-        $html = "<input type='hidden' name='subjecttxt' value='{$idMateria}'> ";
-        $html .= "<input type='hidden' name='levelttxt' value='{$idGrado}'> ";
-        for($index = 0; $index<count($myCID); $index++){
-            $number = $index+1;
-            $html.=" <div class='tab'class='criterio p-5'>
-            <input type='hidden' name='' value='{$criterioValue[$index]}' id='valor{$number}'>
-            <input type='hidden' name='idCriterio' value='$myCID[$index]' id='idC{$number}' >
-            <input type='checkbox' class='absolute opacity-0' id='btnCriterio{$number}'>
-            <input type='hidden' id='Final{$number}' value='' class='final'>
-            <label for='btnCriterio{$number}' class='block p-5 leading-normal cursor-pointer'>{$criterioName[$index]} </label>
-            <div class='w-auto contenido overflow-hidden  border-1-2 bg-gray-100 border-indigo-500 leading-norma '>
+            }
+            $html = "<input type='hidden' name='subjecttxt' value='{$idMateria}'> ";
+            $html .= "<input type='hidden' name='levelttxt' value='{$idGrado}'> ";
+            for($index = 0; $index<count($myCID); $index++){
+                $number = $index+1;
+                $html.=" <div class='tab'class='criterio p-5'>
+                <input type='hidden' name='' value='{$criterioValue[$index]}' id='valor{$number}'>
+                <input type='hidden' name='idCriterio' value='$myCID[$index]' id='idC{$number}' >
+                <input type='checkbox' class='absolute opacity-0' id='btnCriterio{$number}'>
+                <input type='hidden' id='Final{$number}' value='' class='final'>
+                <label for='btnCriterio{$number}' class='block p-5 leading-normal cursor-pointer'>{$criterioName[$index]} </label>
+                <div class='w-auto contenido overflow-hidden  border-1-2 bg-gray-100 border-indigo-500 leading-norma '>
                     <div class='grid grid-cols-2  gap-1 p-5' id='div{$number}'>
                         <div class='col-span-2 text-xl text-center transicion '><h3>¿Cómo fue su rendimiento?</h3></div>
                         <input type='radio'  id='promedio1_{$number}' class='promedios absolute opacity-0' name='promedios$index ' required>
@@ -167,8 +170,9 @@
                     </div>
                     <div  class='p-5 transicion calificaciones' id='calificar$number'>
                     </div>
-            </div>
-        </div>";
+                </div>
+            </div>";
+            }
         }
         print($html);
     }
@@ -190,7 +194,7 @@
                 </form>
             </div>
         </div>
-        <script src="../js/script_insertGrades.js"></script>
+     
     </body>
 </html>
 HEREDOC;
