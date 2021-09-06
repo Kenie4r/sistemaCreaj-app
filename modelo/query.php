@@ -737,7 +737,22 @@ class Query{
             return $resultado[0];
         }
     }
-
+    //Obtener el grado por medio del ID
+    public function getGradeById($idgrado){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM grado WHERE idgrado = :gradoID";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":gradoID", $idgrado['grado_idgrado']);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
     public function getLevelbyGradeID($idgrado){
         $modelo = new Conection();
         $conexion = $modelo->_getConection();
@@ -896,6 +911,22 @@ class Query{
         $conexion = $modelo->_getConection();
         $sql = "SELECT * FROM estudiante";
         $sentencia = $conexion->prepare($sql);
+        if(!$sentencia){
+            return "";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+    //Obtener el estudiante por medio del ID
+    public function getEstudiantesById($idestudiante){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT * FROM estudiante WHERE idestudiante= :idestudiante";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":idestudiante", $idestudiante);
         if(!$sentencia){
             return "";
         }else{
@@ -1371,14 +1402,16 @@ class Query{
     }
 
     //Estudiante
-    public function updateEstudiante($idEstudiante, $name, $last_name){
+    public function updateEstudiante($idestudiante, $name, $last_name, $grado_idgrado){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "UPDATE estudiante SET nombre = :nombre, apellidos = :apellido, password = :contra WHERE estudiante.idestudiante = :idEstudiante";
+        $sql = "UPDATE estudiante SET nombre = :nombre, apellidos = :apellidos, grado_idgrado = :grado_idgrado WHERE idestudiante = :idestudiante";
+        
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":nombre", $name);
-        $sentencia->bindParam(":apellido", $last_name);
-        $sentencia->bindParam(":idEstudiante", $idEstudiante);
+        $sentencia->bindParam(":apellidos", $last_name);
+        $sentencia->bindParam(":grado_idgrado", $grado_idgrado);
+        $sentencia->bindParam(":idestudiante", $idestudiante);
         if(!$sentencia){
             return false;
         }else{
@@ -1552,6 +1585,21 @@ class Query{
         $sql = "DELETE FROM usuario WHERE idUsuario = :usuarioID";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":usuarioID", $idUser);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            
+            return true;
+        }
+    }
+    //Eliminar estudiante segun el ID
+    public function deleteStudents($idestudiante){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "DELETE FROM estudiante WHERE idestudiante = :idestudiante";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":idestudiante", $idestudiante);
         if(!$sentencia){
             return false;
         }else{

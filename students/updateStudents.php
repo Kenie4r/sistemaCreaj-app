@@ -3,15 +3,16 @@ require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
 
 $consulta = new Query; //Crear una consulta
-$idEstudiante= $_POST["txtCodigo"];
+$idestudiante= $_POST["txtCodigo"];
 $name= $_POST["txtNombre"];
 $last_name= $_POST["txtApellido"];
-$Datoestudiantes= $consulta->updateEstudiante($idEstudiante, $name, $last_name);
+$grado_idgrado=$_POST["txtGrado"];
+$Datoestudiantes= $consulta->updateEstudiante($idestudiante, $name, $last_name, $grado_idgrado);
 
 
 ?>
 
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -26,7 +27,7 @@ $Datoestudiantes= $consulta->updateEstudiante($idEstudiante, $name, $last_name);
 <body>
 <?php
 require('../Dashboard/Dashboard.php');
-if($Datoestudiantes and $Datosteam == "Registro hecho"){
+if($Datoestudiantes == "Registro hecho"){
 ?>
     <section class="container">
         <div class="m-4 lg:m-7 bg-green-500 border-2 border-solid border-green-800 rounded-lg">

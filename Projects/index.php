@@ -51,6 +51,7 @@ if(!empty($Proyecto)){
                         <td class="rounded-tl-lg p-4">ID</td>
                         <td class="p-4">Nombre</td>
                         <td class="p-4">Descripción</td>
+                        <td class="p-4">Alumnos</td>
                         <td colspan="3" class="rounded-tr-lg p-4">Opciones</td>
                     </tr>
                 </thead>

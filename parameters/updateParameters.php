@@ -11,8 +11,8 @@ $consulta = new Query; //Crear una consulta
 $IDparametros = $consulta->getIDparametros($nombre);*/
 
 //Obtener los nombres de las fechas y modificarlos
-echo  $_GET["idparam"];
-echo $_POST["txtFechaInicio"];
+/*echo  $_GET["idparam"];
+echo $_POST["txtFechaInicio"];*/
 $idparametros = $_GET["idparam"];
 $paramFecha = $_POST["txtFechaInicio"];
 $paramFechaF = $_POST["txtFechaFin"];

@@ -2,7 +2,15 @@
 
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
-require_once("soporteStudents.php")
+require_once("soporteStudents.php");
+
+$consulta = new Query; //Crear una consulta
+
+$idestudiante =$_GET["student"];
+$estudiantes = $consulta->getEstudiantesById($idestudiante);
+
+$Grado = $consulta->getGrado();
+$grado = $consulta->getGradeById($estudiantes);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,35 +43,50 @@ require('../Dashboard/Dashboard.php');
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-3 m-8">
             <div>
+            <?php
+            for ($i=0; $i < count($estudiantes); $i++) { 
+                ?>
                 <div class=" flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
                     <label for="txtID" class="p-2 bg-gray-700 text-white">Código</label>
-                    <input class="w-1/4	 p-1.5   lg:w-full  outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtCodigo" id="txtNombreRubrica" value="" >
+                    <input class="w-1/4	 p-1.5   lg:w-full  outline-none focus:border-gray-500 border-b-2 focus:border-solid" readonly type="text" name="txtCodigo" id="txtNombreRubrica" value="<?php echo $estudiantes[$i]['idestudiante'] ?>" >
                     <label for="txtNombreRubrica" title="Editar" ><span class="icon-pencil"></span></label>
                 </div>
             </div>
                 <div> 
                     <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
                         <label for="txtID" class="p-2 bg-gray-700 text-white">Nombre</label>
-                        <input class="w-1/4	  p-1.5  lg:w-full  outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtNombre" id="txtNombreRubrica" value="" >
+                        <input class="w-1/4	  p-1.5  lg:w-full  outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtNombre" id="txtNombreRubrica" value="<?php echo $estudiantes[$i]['nombre'] ?>" >
                         <label for="txtNombreRubrica" title="Editar" ><span class="icon-pencil"></span></label>
                     </div>
                 </div>
                 <div> 
                     <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
                         <label for="txtID" class="p-2 bg-gray-700 text-white">Apellido</label>
-                        <input class="w-1/4	 lg:w-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtApellido" id="txtNombreRubrica" value="" >
+                        <input class="w-1/4	 lg:w-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtApellido" id="txtNombreRubrica" value="<?php echo $estudiantes[$i]['apellidos'] ?>" >
                         <label for="txtNombreRubrica" title="Editar" ><span class="icon-pencil"></span></label>
                     </div>
                 </div>
                 <div class="mt-10">  
                     <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
-                        <label for="txtID" class="p-2 bg-gray-700 text-white">Proyecto</label>
-                        <select name="txtProject" id="txtMateria" class="p-1 w-full rounded-r-lg outline-none">
-                            <?php writeproject(); ?>
+                        <label for="txtID" class="p-2 bg-gray-700 text-white">Grado:</label>
+                        <select name="txtGrado" id="txtMateria" class="p-1 w-full rounded-r-lg outline-none">
+                        <?php
+
+echo "<option value='" . $grado["idgrado"] . "'>" . $grado["nombre"] . "</option>\n";
+foreach ($Grado as $key => $Grado) {
+    if($grados["idgrado"] != $grado["idgrado"]){
+        echo "<option value='" . $grados["idgrado"] . "'>" . $grados["nombre"] . "</option>\n";
+    }
+}
+
+?>
                         </select>
                     </div>
                 </div>
             </div>
+            <?php
+            }
+            ?>
        </div>
 
     </form>
