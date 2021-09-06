@@ -1513,6 +1513,32 @@ class Query{
             return true;
         }
     }
+    public function deleteLevel($IdLevel){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql="DELETE FROM nivel WHERE idnivel=:idnivel";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":idnivel", $IdLevel);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            return true;
+        }
+    }
+    public function deleteMatter($idmateria){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql="DELETE FROM materia WHERE idmateria=:idnivel";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":idnivel", $idmateria);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            return true;
+        }
+    }
 
     //Eliminar la rubrica según el ID
     public function deleteRubricById($idrubrica){
