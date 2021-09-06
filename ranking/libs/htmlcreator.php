@@ -93,7 +93,6 @@
             </div>
             <div class='w-10/12 overflow-auto  md:h-full' id='boxSubjects'>
                 <p class="text-gray-400 text-2xl text-center"><span class="icon-cross"></span><br>Aún no has seleccionado ningún grado, por favor seleccione uno </p>
-          
             </div>
             </div>
             </div>
