@@ -7,10 +7,12 @@ $(document).ready(function(){
     });
 })
 function recargarlista(){
-    $.post("soporteProjectStudens.php", {
-        "grados": $('#txrGrado').val()
-    },function(result){
-          $('#txtAlumnos').empty()
-        $('#txtAlumnos').append(result);
-    }, "html");
+    $.ajax({
+        type:"POST",
+        url:"soportePorjectStudens.php",
+        data:"grados=" + $('#txtGrado').val(),
+        success:function(r){
+            $('#txtAlumnos').html(r);
+        }
+    })
 }

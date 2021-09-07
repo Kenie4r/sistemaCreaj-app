@@ -462,7 +462,7 @@ class Query{
     public function getAlumnosByGrados($grado_idgrado){
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql = "SELECT nombre, apellidos FROM estudiante WHERE grado_idgrado = :grado_idgrado ORDER BY estudiantes ASC";
+        $sql = "SELECT idestudiante, nombre, apellidos FROM estudiante WHERE estudiante.grado_idgrado = :grado_idgrado ORDER BY apellidos ASC";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":grado_idgrado", $grado_idgrado);
 

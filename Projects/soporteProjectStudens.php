@@ -4,9 +4,9 @@
     $grado_idgrado=$_POST['grados'];
     $alumnos= $consulta->getAlumnosByGrados($grado_idgrado); //Get alumnos
     if(empty($alumnos)){
-        $html=  "<option value=''>No hay alumnos para elegir</option>\n";
+        $cadena=  "<option value=''>No hay alumnos para elegir</option>\n";
     }else{
-         $html ="<option value=''>Elige los alumnos para asignar...</option>\n";
+         $cadena ="<option value=''>Elige los alumnos para asignar...</option>\n";
         while ($ver=mysqli_fetch_row($alumnos)) {
             
             $cadena= "<option value='".$ver['idestudiante']."'>" .$ver['nombre'].  $ver['apellidos']. "</option>";
