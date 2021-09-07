@@ -8,6 +8,8 @@ $grado=$consulta->selectGradobyID($id);
 //agarra los niveles
 $niveles=$consulta->getLevel();
 //valores de grado
+$Proyec=$consulta-> getGradeIdInProjects($id);
+$asign=$consulta->getGradeIdInAssing($id);
 foreach ($grado as $name) {
     $nombre=$name['nombre'];
     $seccion=$name['seccion'];
@@ -20,19 +22,6 @@ foreach ($grado as $name) {
     }
     
 }
-//echo $nombre.",".$seccion.",".$level;
-#Guardar lo editado
-/*if (isset($_POST['update'])) {
-    
-    $id=$_GET['id'];
-    $inName=$_POST['grado'];
-    $inSeccion=$_POST['seccion'];
-    $inLevel=$_POST['nivel'];
-    //$update=$consulta->updateGrado($id, $inName, $inSeccion, $inLevel);
-    $guardarGrado=$consulta->updateGrado($id, $inName, $inSeccion, $inLevel);
-    echo "se actualiza";
-    
-}*/
 
 ?>
 <!DOCTYPE html>
@@ -52,7 +41,9 @@ foreach ($grado as $name) {
   require('../Dashboard/Dashboard.php')
 
 ?>
-          <div class="mt-5 md:mt-0 md:col-span-2">
+      <?php
+        if (isset($_GET['id'])&&$Proyec<1&&$asign<1) {
+          ?><div class="mt-5 md:mt-0 md:col-span-2">
             <!---<form action="UpdateGrado.php?id=<?php# echo $id?>" method="POST">--->
             <form action="SaveUpdateGrade.php?id=<?php echo $id?>" method="POST">
               <div class="shadow overflow-hidden sm:rounded-md">
@@ -91,7 +82,25 @@ foreach ($grado as $name) {
           </div>
         </div>
       </div>
-
+      <?php
+        }else {
+          ?>
+          <section class="container">
+  <div class="m-4 lg:m-7 bg-red-400 border-2 border-solid border-red-800 rounded-lg">
+      <div class="m-4 lg:m-7 text-center">
+          <p class="lg:text-4xl text-red-900">Sucedio un error, El grado No se puede actualizar.</p>
+      </div>
+      <div class="m-4 lg:m-7 flex justify-center">
+      <p>No se puede actualizae porque esta relacionado con otro dato. </p> <br>
+       <p>Lo contiene: <b><?php echo $Proyec." proyectos , y ".$asign." Asignaciones Relacionadas."?></b> </p>
+       <a href='Index.php' class='flex border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700'><span class='icon-circle-left'></span> Regresar</a>
+      </div>
+  </div>
+          <?php 
+        }
+      
+      ?>
+          
 </body>
 </html>
 <script src="js/GradesComparison.js"></script>

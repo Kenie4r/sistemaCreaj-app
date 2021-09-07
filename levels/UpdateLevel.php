@@ -5,6 +5,13 @@ $consulta = new Query;
 //$grado= $consulta->getGrado();
 $id=$_GET['id'];
 $niveles=$consulta->getLevelById($id);
+//consulta de grados
+
+$Grados=$consulta-> getLevelIdInGrades($id);
+//consulta de rubricas
+$rubricas=$consulta-> getLevelIdInRubrics($id);
+
+
 $nombre=$niveles['nombre'];
 if (isset($_POST['guardar'])) {
     
@@ -55,7 +62,15 @@ if (isset($_POST['guardar'])) {
   require('../Dashboard/Dashboard.php')
 
 ?>
-<div class="mt-5 md:mt-0 md:col-span-2">
+<?php
+
+
+?>
+<?php
+//si los contadores de la foranea son 0 se puede actualizar el dato
+    if (isset($_GET['id'])&&$Grados<1&&$rubricas<1) {
+      ?>
+      <div class="mt-5 md:mt-0 md:col-span-2">
             <form action="UpdateLevel.php?id=<?php echo $id?>" method="POST">
               <div class="shadow overflow -hidden sm:rounded-md">
                 <div class="px-4 py-5 bg-white sm:p-6">
@@ -77,7 +92,24 @@ if (isset($_POST['guardar'])) {
         </div>
       </div>
 </body>
-</html>
+</html>    
+      <?php
+    }else {
+      //sino lanza la alerta del que esta linkeada 
+      ?>
+         <div role="alert">
+           <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+             Error
+           </div>
+           <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+             <p>No se puede actualizar porque esta relacionado con otro dato</p> 
+             <p>Lo contiene: <b><?php echo $Grados." Grados y ".$rubricas." Rubricas relacionadas."?></b> </p>
+             <a href='Index.php' class='flex border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700'><span class='icon-circle-left'></span> Regresar</a>
+           </div>
+         </div><?php
+    }
+?>
+
 <script>
   $(document).ready(function() {
         $("input").keyup(function() {

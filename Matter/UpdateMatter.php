@@ -5,6 +5,10 @@
     $id=$_GET['id'];
     $materias=$consulta->getMatterById($id);
     $nombre=$materias['nombre'];
+    $Proyec=$consulta->getMatterIdInProyectos($id);
+    $Rubri=$consulta->getMatterIdInRubrics($id);
+    
+    $asign=$consulta->getMatterIdInAssign($id);
     #Guardar lo editado
 if (isset($_POST['guardar'])) {
     
@@ -69,14 +73,18 @@ if (isset($_POST['guardar'])) {
   require('../Dashboard/Dashboard.php')
 
 ?>
-    <form action="UpdateMatter.php?id=<?php echo $id?>" method="post">
+
+<?php 
+if (isset($_GET['id'])&&$Proyec<1&&$Rubri<1&&$asign<1) { 
+  ?>
+  <form action="UpdateMatter.php?id=<?php echo $id?>" method="post">
         <div class="shadow overflow-hidden sm:rounded-md">
                 <div class="px-4 py-5 bg-white sm:p-6">
                   <div class="grid grid-cols-6 gap-6">
                     <div class="col-span-6 sm:col-span-3">
                     <div class="col-span-6">
                       <label for="materia" class="block text-sm font-medium text-gray-700">Actualizar materia</label>
-                      <input type="text" value="<?php echo $nombre?>" pattern="[a-zA-Z\s]+"title="Solamente se permiten letras" name="materia" id="materia" autocomplete="mat" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                      <input type="text" value="<?php echo $nombre?>" name="materia" id="materia" autocomplete="mat" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                     </div>
                       </div>
                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
@@ -89,6 +97,24 @@ if (isset($_POST['guardar'])) {
             <p id="test"></p>
             <p id="te"></p>
             </div>
-    </form>
+    </form> <?php
+}else {
+  ?>
+             <div role="alert">
+               <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+                 Error
+               </div>
+               <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+               <p>No se puede Actualizar porque esta relacionado con otro dato</p> 
+             <p>Lo contiene: <b><?php echo $Proyec." proyectos , ".$Rubri." Rubricas,y ".$asign." Asignaciones Relacionadas."?></b> </p>
+                 <div class='m-4 lg:m-7 flex justify-center'>
+                <a href='Index.php' class='border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700'><span class='icon-circle-left'></span> Regresar</a>
+            </div>
+               </div>
+             </div><?php
+}
+
+?>
+    
 </body>
 </html>

@@ -20,12 +20,16 @@ $consulta = new Query;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualizar grado</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="../recursos/icons/style.css">
 </head>
 <body>
 <?php
   require('../Dashboard/Dashboard.php')
 
 ?>
+
     <?php
         if (isset($_POST['guardar'])) {
     

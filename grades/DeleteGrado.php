@@ -2,13 +2,9 @@
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
 $consulta = new Query; 
-    /*if (isset($_GET['id'])) {
-       $id=$_GET['id'];
-       $guardarNom=$consulta->deleteGrado($id);
-       echo "se pudo borrar";
-    }else {
-        echo "no se pudo borrar";
-    }*/
+$id=$_GET['id'];
+$Proyec=$consulta-> getGradeIdInProjects($id);
+$asign=$consulta->getGradeIdInAssing($id);
 ?>
  <!DOCTYPE html>
    <html lang="es">
@@ -24,13 +20,10 @@ $consulta = new Query;
        <title>Borrar grado</title>
    </head>
    <body> 
-   <?php
-  require('../Dashboard/Dashboard.php')
 
-?>
        <?php
-            if (isset($_GET['id'])) {
-                $id=$_GET['id'];
+            if (isset($_GET['id'])&&$Proyec<1&&$asign<1) {
+                
                 $guardarNom=$consulta->deleteGrado($id);
                 ?>
     <section class="container">
@@ -49,10 +42,12 @@ $consulta = new Query;
                 <section class="container">
         <div class="m-4 lg:m-7 bg-red-400 border-2 border-solid border-red-800 rounded-lg">
             <div class="m-4 lg:m-7 text-center">
-                <p class="lg:text-4xl text-red-900">Sucedio un error, El grado no se borró con exito.</p>
+                <p class="lg:text-4xl text-red-900">Sucedio un error, El grado no se puede Borrar.</p>
             </div>
             <div class="m-4 lg:m-7 flex justify-center">
-                <a href="Index.php" class="text-red-700 border-red-700 border-2 border-solid rounded-lg p-2 hover:text-red-400 hover:bg-red-700 cursor-pointer"><span class="icon-circle-left"></span> Regresar</a>
+            <p>No se puede Borrar porque esta relacionado con otro dato</p> 
+             <p>Lo contiene: <b><?php echo $Proyec." proyectos , y ".$asign." Asignaciones Relacionadas."?></b> </p>
+             <a href='Index.php' class='flex border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700'><span class='icon-circle-left'></span> Regresar</a>
             </div>
         </div>
                 <?php 
