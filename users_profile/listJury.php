@@ -23,12 +23,12 @@ for($i = 0; $i < count($jurados); $i++){
     $pdf->Cell(55,10,utf8_decode($jurados[$i]['usuario']), 1, 0, 'C');
     $pdf->Cell(50,10,utf8_decode($jurados[$i]['nombres']), 1, 0, 'C');
     $pdf->Cell(50,10,utf8_decode($jurados[$i]['apellidos']), 1, 0, 'C');
+    $pdf->Cell(80,10,utf8_decode($jurados[$i]['email']), 1, 0, 'C');
     if($jurados[$i]['password'] == "6e8bf488a257263be3f2913f43dc7ddf"){
-        $pdf->Cell(42,10,utf8_decode("donboscoSV"), 1, 0, 'C');
+        $pdf->Cell(42,10,utf8_decode("Inactivo"), 1, 1, 'C');
     }else{
-        $pdf->Cell(42,10,utf8_decode("********"), 1, 0, 'C');
+        $pdf->Cell(42,10,utf8_decode("Activo"), 1, 1, 'C');
     }
-    $pdf->Cell(80,10,utf8_decode($jurados[$i]['email']), 1, 1, 'C');
 }
 //Obtener nombre del evento para el pdf
 $nombre = "Listado_Jurados.pdf";

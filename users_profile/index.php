@@ -29,7 +29,13 @@ require('../Dashboard/Dashboard.php');
             </div>
             <div class="flex lg:justify-end lg:gap-2">
                 <a href="newProfile.php" class="text-blue-600 border-blue-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-blue-600"><span class="icon-plus"></span> Nuevo Usuario</a>
+<?php
+if($_SESSION["rol"] == "a"){
+?>
                 <a href="listJury.php" target="_blank" class="text-yellow-700 border-yellow-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-yellow-700"><span class="icon-file-pdf"></span> Listado: Jurados</a>
+<?php
+}
+?>
             </div>
         </div>
         <div>
