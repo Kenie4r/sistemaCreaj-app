@@ -30,8 +30,8 @@ class PDFLJ extends FPDF{
         $this->Cell(55,10,utf8_decode("Usuario"), 1, 0, 'C');
         $this->Cell(50,10,utf8_decode("Nombre"), 1, 0, 'C');
         $this->Cell(50,10,utf8_decode("Apellido"), 1, 0, 'C');
-        $this->Cell(42,10,utf8_decode("Contraseña"), 1, 0, 'C');
-        $this->Cell(80,10,utf8_decode("Email"), 1, 1, 'C');
+        $this->Cell(80,10,utf8_decode("Email"), 1, 0, 'C');
+        $this->Cell(42,10,utf8_decode("Estado"), 1, 1, 'C');
     }
 
     // Pie de página

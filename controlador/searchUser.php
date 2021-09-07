@@ -2,11 +2,14 @@
 
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
+require_once("../controlador/login.php");
+entrar();
 
 $consulta = new Query; //Consulta
 $tipoFiltro = $_POST["tipoBusqueda"]; //Tipo de filtro
 $fitro = $_POST["filtro"]; //Filtro
 $rolActivo = $_POST["rolActivo"]; //Rol del usuario
+$usernameActivo = $_SESSION["usario"];
 
 //Se hace la consulta según el filtro que estamos aplicando
 switch ($tipoFiltro) {
@@ -57,6 +60,8 @@ if(!empty($usuarios)){
                     echo "\t<td class='p-4'>Administrador</td>";
                     if($username == "Admin"){
                         echo "\t<td class='p-4' colspan='2'>No se puede modificar</td>";
+                    }else if($username == $usernameActivo){
+                        echo "\t<td class='p-4' colspan='2'>No puedes eliminar tu propio perfil.</td>";
                     }else{
                         echo "\t<td class='p-4' colspan='2'><a href='deleteUser.php?iduser=" . $id . "' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
                     }

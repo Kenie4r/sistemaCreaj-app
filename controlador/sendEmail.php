@@ -48,6 +48,10 @@ function enviarCorreo($correo, $nombre, $username, $year, $asunto, $saludo, $pas
 
         }else{
 
+            if($pass != "donboscoSV"){
+                $pass = "********";
+            }
+
             $mail->Body    = '
     <html>
     <body style="margin:0%; padding: 0%; font-family: \'Segoe UI\', Tahoma, Geneva, Verdana, sans-serif;">
