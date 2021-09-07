@@ -1,14 +1,17 @@
 <?php
 //Declarar la funcion para escribir los alumnos en los proyectos
-function writeAlumnosForNewProjects(){
     $consulta = new Query; //Crear una consulta
-    $alumnos= $consulta->getAlumnosByGrados(); //Get alumnos
+    $grado_idgrado=$_POST['grados'];
+    $alumnos= $consulta->getAlumnosByGrados($grado_idgrado); //Get alumnos
     if(empty($alumnos)){
-        while ($a = $alumnos->fetch_assoc) {
-            echo "<option value=''>Elige los alumnos para asignar...</option>\n";
-            echo "<option value='".$a['idestudiante']."'>" .$a['nombre'].  $a['apellidos']. "</option>";
+        $html=  "<option value=''>No hay alumnos para elegir</option>\n";
+    }else{
+         $html ="<option value=''>Elige los alumnos para asignar...</option>\n";
+        while ($ver=mysqli_fetch_row($alumnos)) {
+            
+            $cadena= "<option value='".$ver['idestudiante']."'>" .$ver['nombre'].  $ver['apellidos']. "</option>";
         }
+        echo $cadena;
     }
 
-}
 ?>

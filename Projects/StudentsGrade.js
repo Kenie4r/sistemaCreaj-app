@@ -1,13 +1,18 @@
+$(document).ready(function(){
 
-    $(document).ready(function(){
-        $("#txtGrado").change(function(){
+    recargarlista();
 
-            $("#txtGrado opcion:selected").each(function(){
-                id= $(this).val();
-                $.post("includes/soporteProjectStudens.php",{ id:id
-                }, function(data){
-                    $("#txtAlumnos").html(data);
-                });
-            });
-        });
+    $('#txtGrado').change(function(){
+        recargarlista();
     });
+})
+function recargarlista(){
+    $.ajax({
+        type:"POST",
+        url:"soportePorjectStudens.php",
+        data:"grados=" + $('txtGrado').val(),
+        success:function(r){
+            $('#txtAlumnos').html(r);
+        }
+    })
+}

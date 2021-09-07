@@ -16,6 +16,7 @@ require_once("soporteProject.php");
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/script-newRubric.js"></script>
     <script src="../Dashboard/button.js"></script>
+    <script src="StudentsGrade.js"></script>
 </head>
 <body>
 <?php
@@ -83,12 +84,12 @@ comparacionFecha("Ingreso de proyectos");
             <div>
                 <div class="my-10 flex flex-row items-center w-full lg:w-4/5 border-gray-700 border-solid border-2 rounded-lg">
                     <label for="txtNivel" class="p-2 bg-gray-700 text-white">Alumnos</label>
-                    <select name="Alumnos[]" id="txtAlumnos" class="p-1 w-full rounded-r-lg outline-none" multiple>
-<?php ?>
+                    <select name="Alumnos[]" id="txtAlumnos" class="p-1 w-full rounded-r-lg outline-none " multiple>
                     </select>
                 </div>
             </div>
         </div>
+
     </form>
     
 </body>
