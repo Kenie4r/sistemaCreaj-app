@@ -8,7 +8,7 @@ $(document).ready(function(){
 })
 function recargarlista(){
     $.post("soporteProjectStudens.php", {
-        "grados": $('#txrGrado').val()
+        "grados": $('#txtGrado').val()
     },function(result){
           $('#txtAlumnos').empty()
         $('#txtAlumnos').append(result);

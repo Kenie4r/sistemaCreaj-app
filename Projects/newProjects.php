@@ -85,6 +85,7 @@ comparacionFecha("Ingreso de proyectos");
                 <div class="my-10 flex flex-row items-center w-full lg:w-4/5 border-gray-700 border-solid border-2 rounded-lg">
                     <label for="txtNivel" class="p-2 bg-gray-700 text-white">Alumnos</label>
                     <select name="Alumnos[]" id="txtAlumnos" class="p-1 w-full rounded-r-lg outline-none " multiple>
+                    <option value=''>Elige los alumnos para asignar...</option>
                     </select>
                 </div>
             </div>

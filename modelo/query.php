@@ -472,7 +472,7 @@ class Query{
             $sentencia->execute();
             $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             
-            return $resultado[0];
+            return $resultado;
         }
     }
     //Get ID Criterio
