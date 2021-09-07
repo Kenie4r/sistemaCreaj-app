@@ -20,11 +20,11 @@ function writeLevelForNewRubric(){
     $grados = $consulta->getGrado(); //Get niveles
 
     if(empty($grados)){
-        echo "<option value=''>No hay niveles para elegir</option>\n";
+        echo "<option value=''>No hay Grados para elegir</option>\n";
     }else{
-        echo "<option value=''>Elige un nivel para asignar...</option>\n";
-        foreach ($grados as $key => $nivel) {
-            echo "<option value='" . $nivel["idgrado"] . "'>" . $nivel["nombre"] . "</option>\n";
+        echo "<option value=''>Elige un Grado para asignar...</option>\n";
+        foreach ($grados as $key => $grado) {
+            echo "<option value='" . $grado["idgrado"] . "'>" . $grado["nombre"] . "</option>\n";
         }
     }
 }

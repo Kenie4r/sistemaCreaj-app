@@ -445,9 +445,26 @@ class Query{
      public function getFechas($nombre){
         $model = new Conection();
         $connection  = $model->_getConection();
-            $sql = "SELECT paramFecha, paramFechaF FROM parametros WHERE nombre = :nombre";
+        $sql = "SELECT paramFecha, paramFechaF FROM parametros WHERE nombre = :nombre";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":nombre", $nombre);
+
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado[0];
+        }
+    }
+    //obtener los estudiantes segun el grado
+    public function getAlumnosByGrados($grado_idgrado){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT nombre, apellidos FROM estudiante WHERE grado_idgrado = :grado_idgrado ORDER BY estudiantes ASC";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":grado_idgrado", $grado_idgrado);
 
         if(!$sentencia){
             return "Error";

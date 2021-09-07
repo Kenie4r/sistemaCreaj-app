@@ -51,7 +51,7 @@ require('../Dashboard/Dashboard.php');
                 if($row[0] !=''){
                     $modelo = new Conection;
                     $conexion = $modelo->_getConection();
-                    $consulta = "INSERT INTO estudiante(idestudiante, nombre, apellidos) VALUES ('".$row[0]."','".$row[1]."','".$row[2]."')";
+                    $consulta = "INSERT INTO estudiante(idestudiante, nombre, apellidos, grado_idgrado) VALUES ('".$row[0]."','".$row[1]."','".$row[2]."','".$row[3]."')";
                     $sentencia = $conexion->prepare($consulta);
                     $sentencia->execute();
                     ?>
