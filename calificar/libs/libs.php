@@ -221,7 +221,6 @@ HEREDOC;
         </head>
         <body>
             <div class= h-screen bg-white w-screen '>
-
                 <div class='mx-auto'>
         EDO;
 

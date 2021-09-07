@@ -10,9 +10,11 @@
     <script src="button.js"></script>
 </head>
 <body >
-    <?php
-         require('Dashboard.php');
-    ?>
+<?php
+        require('Dashboard.php');
+        require_once("../controlador/firstTime.php");
+        primeraVez();
+?>
     <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="px-52 mt-20 bg-white shadow overflow-hidden sm:rounded-lg">
   <div class="px-4 py-5 sm:px-6">

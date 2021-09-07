@@ -6,6 +6,21 @@
 
 $(document).ready(
     function(){
+        $("a").on("click",
+            function() {
+                var btnCancelar = $("#btnCancelar");
+                var estado = true;
+
+                if(btnCancelar.length > 0){
+                    estado = true;
+                }else{
+                    estado = false;
+                    alert("ERROR: Debe cambiar la contraseña para asegurar su cuenta, no puede ser la misma que por defecto.");
+                }
+
+                return estado;
+            }
+        );
         //Configuramos la validación de NEW PASSWORD
         $("#txtNewPassProfile").on("input",
             function(){
@@ -61,7 +76,7 @@ function validateNewPassword() {
     var lbConfirmPassword = $("#lbConfirmPass");
 
     //Commparación
-    if(txtNewPassword.val() == txtConfirmPassword.val() && txtNewPassword.val() != "" ){
+    if(txtNewPassword.val() == txtConfirmPassword.val() && txtNewPassword.val() != "" &&  txtNewPassword.val() != "donboscoSV"){
         ckConfirmPassword.prop('checked',true);
         txtConfirmPassword.removeClass('focus:border-red-500');
         lbConfirmPassword.removeClass('text-red-500 icon-cross');

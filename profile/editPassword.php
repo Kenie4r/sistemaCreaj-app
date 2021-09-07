@@ -49,11 +49,17 @@ require('../Dashboard/Dashboard.php');
             </div>
             <div class="flex justify-center items-center">
                 <div class="lg:m-2">
-                    <a href="#" id="btnSubmit" class="block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700"><span class="icon-checkmark"></span> Guardar</a>
+                    <p id="btnSubmit" class="block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700 cursor-pointer"><span class="icon-checkmark"></span> Guardar</p>
                 </div>
+<?php
+if(!isset($_GET["primeraVez"])){
+?>
                 <div class="mb-2 lg:m-2">
-                    <a href="../Dashboard/profile.php" class="block text-red-600 border-red-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-red-600"><span class='icon-cross'></span> Cancelar</a>
+                    <a href="../Dashboard/profile.php" id="btnCancelar" class="block text-red-600 border-red-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-red-600"><span class='icon-cross'></span> Cancelar</a>
                 </div>
+<?php
+}
+?>
             </div>
         </form>
     </section>

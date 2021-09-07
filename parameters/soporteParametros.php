@@ -51,7 +51,7 @@ function comparacionFecha($nombre){
 						</h3>
 						<div class="mt-2">
 						<p class="text-sm text-gray-500">
-							Aun no puede guradar  nuevos datos o ya paso la fecha para ingresar datos.
+							Aun no puede guardar nuevos datos o ya paso la fecha para ingresar datos.
 						</p>
 						</div>
 					</div>
