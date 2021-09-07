@@ -10,9 +10,22 @@ $consulta = new Query; //Crear una consulta
 
 $name= $_POST["txtNombre"];
 $descripcion= $_POST["txtDescripcion"];
-$idGrado= $_POST["txtNivel"];
+$idGrado= $_POST["txtGrado"];
 $idMateria= $_POST["txtMateria"];
 $Datoprojects= $consulta->saveProjects($name, $descripcion, $idGrado, $idMateria);
+$idProyecto=$consulta->getIdprojectsByNombre($name);
+$id_estudiante= $_POST["txtAlumnos"];
+$i=0;
+$e=0;
+foreach($id_estudiante as $valor){
+    $id_estudiante =$valor;
+    $i++;
+}
+do {
+    $proyecto= $idProyecto;
+    $Datosteam= $consulta->saveTeam($id_estudiante, $proyecto);
+    $e++;
+} while ($e < $i);
 
 ?>
 

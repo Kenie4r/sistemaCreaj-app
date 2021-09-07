@@ -48,7 +48,13 @@ comparacionFecha("Ingreso de proyectos");
             </div>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-3 m-9">
-          
+        <div class=" "> 
+                    <div class="mt-10  flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
+                        <label for="txtID" class="p-2 bg-gray-700 text-white">Descripcion</label>
+                        <input class="w-1/4	 lg:w-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtDescripcion" value="" >
+                        <label for="txtNombreRubrica" title="Editar" ><span class="hidden lg:block icon-pencil"></span></label>
+                    </div>
+            </div>
             <div>
                 <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
                     <label for="txtMateria" class="p-2 bg-gray-700 text-white">Materia</label>
@@ -60,32 +66,17 @@ comparacionFecha("Ingreso de proyectos");
             <div>
                 <div class="flex flex-row items-center w-full lg:w-4/5 border-gray-700 border-solid border-2 rounded-lg">
                     <label for="txtNivel" class="p-2 bg-gray-700 text-white">Grado</label>
-                    <select name="txtNivel" id="txtNivel" class="p-1 w-full rounded-r-lg outline-none">
+                    <select name="txtGrado" id="txtGrado" class="p-1 w-full rounded-r-lg outline-none" >
 <?php writeLevelForNewRubric(); ?>
                     </select>
                 </div>
             </div>
-
-            <div class=" "> 
-                    <div class="mt-10  flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
-                        <label for="txtID" class="p-2 bg-gray-700 text-white">Descripcion</label>
-                        <input class="w-1/4	 lg:w-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtDescripcion" value="" >
-                        <label for="txtNombreRubrica" title="Editar" ><span class="hidden lg:block icon-pencil"></span></label>
-                    </div>
-            </div>
-            <div>
-                <div class="my-10 flex flex-row items-center w-full lg:w-4/5 border-gray-700 border-solid border-2 rounded-lg">
-                    <label for="txtNivel" class="p-2 bg-gray-700 text-white">Grado</label>
-                    <select name="Alumnos[]" id="txtGrado" class="p-1 w-full rounded-r-lg outline-none" >
-<?php writeLevelForNewRubric(); ?>
-                    </select>
-                </div>
-            </div>
+       
             <div>
                 <div class="my-10 flex flex-row items-center w-full lg:w-4/5 border-gray-700 border-solid border-2 rounded-lg">
                     <label for="txtNivel" class="p-2 bg-gray-700 text-white">Alumnos</label>
-                    <select name="Alumnos[]" id="txtAlumnos" class="p-1 w-full rounded-r-lg outline-none " multiple>
-                    <option value=''>Elige los alumnos para asignar...</option>
+                    <select name="txtAlumnos[]" id="txtAlumnos" class="p-1 w-full rounded-r-lg outline-none " multiple>
+                        
                     </select>
                 </div>
             </div>
