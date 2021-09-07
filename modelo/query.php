@@ -113,22 +113,6 @@ class Query{
             return "Registro hecho";
         }
     }
-    public function getAlumnosByGrados($grado_idgrado){
-        $model = new Conection();
-        $connection  = $model->_getConection();
-        $sql = "SELECT idestudiante, nombre, apellidos FROM estudiante WHERE estudiante.grado_idgrado = :grado_idgrado ORDER BY apellidos ASC";
-        $sentencia= $connection->prepare($sql);
-        $sentencia->bindParam(":grado_idgrado", $grado_idgrado);
-
-        if(!$sentencia){
-            return "Error";
-        }else{
-            $sentencia->execute();
-            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-            return $resultado;
-            
-        }
-    }
     //guardar nivel
     public function saveNivel($name){
         $model = new Conection();
@@ -461,7 +445,7 @@ class Query{
      public function getFechas($nombre){
         $model = new Conection();
         $connection  = $model->_getConection();
-            $sql = "SELECT paramFecha, paramFechaF FROM parametros WHERE nombre = :nombre";
+        $sql = "SELECT paramFecha, paramFechaF FROM parametros WHERE nombre = :nombre";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":nombre", $nombre);
 
@@ -474,8 +458,6 @@ class Query{
             return $resultado[0];
         }
     }
-<<<<<<< Updated upstream
-=======
     //obtener los estudiantes segun el grado
     public function getAlumnosByGrados($grado_idgrado){
         $model = new Conection();
@@ -507,10 +489,25 @@ class Query{
             $sentencia->execute();
             $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             
-            return $resultado;
+            return $resultado[0];
         }
     }
->>>>>>> Stashed changes
+    public function getAlumnosByGrados($grado_idgrado){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT idestudiante, nombre, apellidos FROM estudiante WHERE estudiante.grado_idgrado = :grado_idgrado ORDER BY apellidos ASC";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":grado_idgrado", $grado_idgrado);
+
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+            
+        }
+    }
     //Get ID Criterio
     public function getIDCriterio($titulo, $rubricaID){
         $model = new Conection();
@@ -957,22 +954,6 @@ class Query{
             return $resultado;
         }
     }
-    //obtener asignacion
-    public function getAsignacion(){
-        
-        $modelo = new Conection;
-        $conexion = $modelo->_getConection();
-        $sql = "SELECT * FROM asignacionj";
-        $sentencia = $conexion->prepare($sql);
-        if(!$sentencia){
-            return "";
-        }else{
-            $sentencia->execute();
-            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-            
-            return $resultado;
-        }
-    }
     //obtener todos los estudiantes
 
     public function getEstudiantes(){
@@ -1102,181 +1083,11 @@ class Query{
             return $resultado;
         }
     }
-    //obtener los estudiantes segun el grado
-    public function getAlumnosByGrados($grado_idgrado){
-        $model = new Conection();
-        $connection  = $model->_getConection();
-        $sql = "SELECT idestudiante, nombre, apellidos FROM estudiante WHERE estudiante.grado_idgrado = :grado_idgrado ORDER BY apellidos ASC";
-        $sentencia= $connection->prepare($sql);
-        $sentencia->bindParam(":grado_idgrado", $grado_idgrado);
-
-        if(!$sentencia){
-            return "Error";
-        }else{
-            $sentencia->execute();
-            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-            return $resultado;
-            
-        }
-    }
-    public function getMatterIdInproyects($idMateria){
-        
-        $modelo = new Conection;
-        $conexion = $modelo->_getConection();
-        $sql = "SELECT idmateria FROM materia WHERE idmateria IN(SELECT materia_idmateria FROM proyecto)AND idmateria=:idmateria";
-        $sentencia = $conexion->prepare($sql);
-        $sentencia->bindParam(":idmateria", $idMateria);
-        
-        if(!$sentencia){
-            return "";
-        }else{
-            $sentencia->execute();
-            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-            
-            return $resultado;
-        }
-    }
-    #ver cuantas foraneas de niveles en grados
-    public function getLevelIdInGrades($idnivel){
-        
-        $modelo = new Conection;
-        $conexion = $modelo->_getConection();
-        $sql = "SELECT COUNT(*) FROM nivel JOIN grado WHERE nivel.idnivel=grado.nivel_idnivel AND nivel.idnivel=:idnivel";
-        $sentencia = $conexion->prepare($sql);
-        $sentencia->bindParam(":idnivel", $idnivel);
-        
-        if(!$sentencia){
-            return "";
-        }else{
-            $sentencia->execute();
-            $resultado = $sentencia->fetchColumn();
-            
-            return $resultado;
-        }
-    }
-    #ver cuantas foraneas de niveles en grados
-    public function getLevelIdInRubrics($idnivel){
-        
-        $modelo = new Conection;
-        $conexion = $modelo->_getConection();
-        $sql = "SELECT COUNT(*) FROM nivel JOIN rubrica WHERE nivel.idnivel=rubrica.nivel_idnivel AND nivel.idnivel=:idnivel";
-        $sentencia = $conexion->prepare($sql);
-        $sentencia->bindParam(":idnivel", $idnivel);
-        
-        if(!$sentencia){
-            return "";
-        }else{
-            $sentencia->execute();
-            $resultado = $sentencia->fetchColumn();
-            
-            return $resultado;
-        }
-    }
-    #ver cuantas foraneas de materia en rubrica
-    public function getMatterIdInRubrics($idmateria){
-        
-        $modelo = new Conection;
-        $conexion = $modelo->_getConection();
-        $sql = "SELECT COUNT(*) FROM materia JOIN rubrica WHERE materia.idmateria=rubrica.materia_idmateria AND materia.idmateria=:idmateria";
-        $sentencia = $conexion->prepare($sql);
-        $sentencia->bindParam(":idmateria", $idmateria);
-        
-        if(!$sentencia){
-            return "";
-        }else{
-            $sentencia->execute();
-            $resultado = $sentencia->fetchColumn();
-            
-            return $resultado;
-        }
-    }
-    public function getMatterIdInProyectos($idmateria){
-        
-        $modelo = new Conection;
-        $conexion = $modelo->_getConection();
-        $sql = "SELECT COUNT(*) FROM materia JOIN proyecto WHERE materia.idmateria=proyecto.materia_idmateria AND materia.idmateria=:idmateria";
-        $sentencia = $conexion->prepare($sql);
-        $sentencia->bindParam(":idmateria", $idmateria);
-        
-        if(!$sentencia){
-            return "";
-        }else{
-            $sentencia->execute();
-            $resultado = $sentencia->fetchColumn();
-            
-            return $resultado;
-        }
-    }
-    public function getMatterIdInAssign($idmateria){
-        
-        $modelo = new Conection;
-        $conexion = $modelo->_getConection();
-        $sql = "SELECT COUNT(*) FROM materia JOIN asignacionj WHERE materia.idmateria=asignacionj.materia_idmateria AND materia.idmateria=:idmateria";
-        $sentencia = $conexion->prepare($sql);
-        $sentencia->bindParam(":idmateria", $idmateria);
-        
-        if(!$sentencia){
-            return "";
-        }else{
-            $sentencia->execute();
-            $resultado = $sentencia->fetchColumn();
-            
-            return $resultado;
-        }
-    }
-    public function getGradeIdInProjects($idgrado){
-        
-        $modelo = new Conection;
-        $conexion = $modelo->_getConection();
-        $sql = "SELECT COUNT(*) FROM grado JOIN proyecto WHERE grado.idgrado=proyecto.grado_idgrado AND grado.idgrado=:idgrado";
-        $sentencia = $conexion->prepare($sql);
-        $sentencia->bindParam(":idgrado", $idgrado);
-        
-        if(!$sentencia){
-            return "";
-        }else{
-            $sentencia->execute();
-            $resultado = $sentencia->fetchColumn();
-            
-            return $resultado;
-        }
-    }
-    public function getGradeIdInAssing($idgrado){
-        
-        $modelo = new Conection;
-        $conexion = $modelo->_getConection();
-        $sql = "SELECT COUNT(*) FROM grado JOIN asignacionj WHERE grado.idgrado=asignacionj.grado_idgrado AND grado.idgrado=:idgrado";
-        $sentencia = $conexion->prepare($sql);
-        $sentencia->bindParam(":idgrado", $idgrado);
-        
-        if(!$sentencia){
-            return "";
-        }else{
-            $sentencia->execute();
-            $resultado = $sentencia->fetchColumn();
-            
-            return $resultado;
-        }
-    }
     //Obtener todos los grados
     public function getGrado(){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
         $sql = "SELECT * FROM grado";
-        $sentencia = $conexion->prepare($sql);
-        if(!$sentencia){
-            return "";
-        }else{
-            $sentencia->execute();
-            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-            
-            return $resultado;
-        }
-    }
-    public function getIdLevelByGrado(){
-        $modelo = new Conection;
-        $conexion = $modelo->_getConection();
-        $sql = "SELECT nivel_idnivel FROM grado";
         $sentencia = $conexion->prepare($sql);
         if(!$sentencia){
             return "";
