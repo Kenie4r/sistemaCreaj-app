@@ -167,7 +167,7 @@
                         <div class='w-6/12'>
                             <img src='img/silver-medal.png ' alt='>
                         </div>
-                        <div class='text-center text-2xl'>
+                        <div class='text-center text-2xl w-full'>
                             <h1>{$proyectoInfo['nombreProyecto']}</h1>
                         </div>
                         <div class='text-center text-gray-400 text-xl'>
@@ -180,8 +180,8 @@
                       <div class='w-7/12'>
                           <img src='img/gold-medal.png' alt='>
                       </div>
-                      <div class='text-center text-2xl'>
-                          <h1>{$proyectoInfo['nombreProyecto']}</h1>
+                      <div class='text-center text-2xl w-full'>
+                          <h1 class='text-center'>{$proyectoInfo['nombreProyecto']}</h1>
                       </div>
                       <div class='text-center text-gray-400 text-xl'>
                           <h2>" . round($camps['notafinal'], 2) ." PUNTOS</h2>
@@ -195,7 +195,7 @@
                         <div class='w-5/12'>
                             <img src='img/bronze-medal.png' alt='>
                         </div>
-                        <div class='text-center text-2xl'>
+                        <div class='text-center text-2xl w-full'>
                             <h1>{$proyectoInfo['nombreProyecto']}</h1>
                         </div>
                         <div class='text-center text-gray-400 text-xl'>
@@ -213,7 +213,7 @@
                         <div class='flex flex-col overflow-y-auto h-60  w-10/12 justify-center items-center m-6'>   
                         
                         <div class='bg-white w-10/12 shadow-md h-20 border rounded-md flex flex-row justify-between items-center my-1'>
-                        <div class='p-5 text-2xl'>
+                        <div class='p-5 text-2xl w-full'>
                             <h1>$c.<!--Numero en el que aparecio-->
                             {$proyectoInfo['nombreProyecto']}</h1>
                         </div>
