@@ -471,8 +471,8 @@ class Query{
         }else{
             $sentencia->execute();
             $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-            
             return $resultado;
+            
         }
     }
     //Get ID Criterio
