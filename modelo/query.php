@@ -544,7 +544,74 @@ class Query{
             return $resultado;
         }
     }
-
+    //Obtener los estudiantes filtrados segun el ID
+    public function searchEstudiantesByName($nombre){
+        $nombre = "%".$nombre."%";
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM estudiante WHERE nombre LIKE :nombre";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":nombre", $nombre);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+    //Obtener los proyectos filtrados segun el nombre
+    public function searchProyectsByName($nombreProyecto){
+        $nombreProyecto = "%".$nombreProyecto."%";
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM proyecto WHERE nombreProyecto LIKE :nombreProyecto";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":nombreProyecto", $nombreProyecto);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+    //Obtener los proyectos filtrados segun el ID
+    public function searchProyectById($idproyecto){
+        $idproyecto = "%".$idproyecto."%";
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM proyecto WHERE idproyecto LIKE :idproyecto";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":idproyecto", $idproyecto);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+    //Obtener los estudiantes filtrados segun el ID
+    public function searchAlumnosById($idestudiante){
+        $idestudiante = "%".$idestudiante."%";
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM estudiante WHERE idestudiante LIKE :idestudiante";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":idestudiante", $idestudiante);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
     //Obtener las rubricas filtradas según el ID
     public function searchRubricsByIdAndName($namerubrica){
         $model = new Conection();
@@ -976,6 +1043,22 @@ class Query{
         $sql = "SELECT * FROM estudiante WHERE idestudiante= :idestudiante";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":idestudiante", $idestudiante);
+        if(!$sentencia){
+            return "";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+    //Obtener el proyecto por medio del ID
+    public function getProjectById($idproyecto){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT * FROM proyecto WHERE idproyecto= :idproyecto";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":idproyecto", $idproyecto);
         if(!$sentencia){
             return "";
         }else{
@@ -1621,7 +1704,23 @@ class Query{
             return true;
         }
     }
-
+    //Proyectos
+    public function updateProjects($idproyecto, $nombreProyecto, $descripcion){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "UPDATE proyecto SET nombreProyecto = :nombreProyecto,  descripcion = :descripcion WHERE idproyecto = :idproyecto";
+        
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":nombreProyecto", $nombreProyecto);
+        $sentencia->bindParam(":descripcion", $descripcion);
+        $sentencia->bindParam(":idproyecto", $idproyecto);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            return true;
+        }
+    }
     //Equipo
     public function updateEquipo($idEquipo, $estudiante, $proyecto){
         $modelo = new Conection;
