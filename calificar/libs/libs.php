@@ -47,7 +47,7 @@
         }
 
         //escribiremos todo el HTML con los datos obtenidos
-        $html="<body  class='bg-teal-900 w-screen h-screen rounded-lg overflow-x-hidden'>
+        $html="<body  class='bg-teal-900 w-screen h-screen rounded-lg overflow-auto'>
         <div class='container bg-white w-9/12 max-w-xl  m-auto max-w-xl  rounded-2xl mt-2'>
                 <div class='bg-gray-100 p-2'>
                     <div class='text-2xl font-bold uppercase'>
