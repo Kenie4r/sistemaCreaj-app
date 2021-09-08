@@ -16,6 +16,7 @@ $Proyecto = $consulta->getProject(); //Get Estudiantes
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!--<script src="js/dashboard.js"></script> -->
     <link rel="stylesheet" href="../recursos/icons/style.css">
+    <script src="../js/script-Projects.js"></script>
     <script src="../Dashboard/button.js"></script>
 </head>
 <body >
@@ -36,11 +37,17 @@ $Proyecto = $consulta->getProject(); //Get Estudiantes
         </div>
         <?php
 if(!empty($Proyecto)){
-    echo "<div class='flex flex-row items-center m-7'>";
-    echo "\t<div class=''>";
-    echo "\t<input type='text' name='txtBusquedaId' id='txtBusquedaId' class='p-1 border-gray-700 border-solid border-2 rounded-lg outline-none' placeholder='Buscar por ID...'>";
-    echo "\t</div>";
-    echo "</div>";
+    ?>
+      <div class='flex flex-row items-center m-7'>
+            <div class='flex flex-row'>
+                <input type='text' name='txtBusqueda' id='txtBusqueda' class='p-1 border-gray-700 border-solid border-2 rounded-tl-lg rounded-bl-lg  outline-none' placeholder='Buscar por...'>
+                <select name="sltBusqueda" id="sltBusqueda" class="p-1 border-gray-700 border-solid border-2 rounded-tr-lg rounded-br-lg bg-gray-700 text-white outline-none">
+                    <option value="id">ID</option>
+                    <option value="nombre">Nombre</option>
+                </select>
+            </div>
+        </div>
+ <?php
 }
 ?>
 
@@ -64,7 +71,7 @@ if(!empty($Proyecto)){
     echo "\t<td class='p-6'>" . $Proyecto[$i]["idproyecto"] . "</td>";
     echo "\t<td class='p-6'>" . $Proyecto[$i]["nombreProyecto"] . "</td>";
     echo "\t<td class='p-6'>" . $Proyecto[$i]["descripcion"] . "</td>";
-    echo "\t<td class='p-6'><a href='?idrubric=" . $Proyecto[$i]["idproyecto"] . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Editar</a></td>";
+    echo "\t<td class='p-6'><a href='editProjects.php?idproject=" . $Proyecto[$i]["idproyecto"] . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Editar</a></td>";
     echo "\t<td class='p-6'><a href='deleteProjects.php?idequipo=" . $Proyecto[$i]["idproyecto"] . "' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
     echo "</tr>";
     }

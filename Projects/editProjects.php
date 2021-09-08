@@ -3,6 +3,10 @@
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
 require_once("soporteProject.php");
+
+$consulta = new Query; //Crear una consulta
+$idproyecto = $_GET["idproject"];
+$projects = $consulta->getProjectById($idproyecto);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,12 +28,15 @@ require('../Dashboard/Dashboard.php');
 require_once("../parameters/soporteParametros.php");
 comparacionFecha("Ingreso de proyectos");
 ?>
- <form id="frmRubric" class="container box-content" method="POST" action="saveProjects.php">
+ <form id="frmRubric" class="container box-content" method="POST" action="updateProjects.php">
         <div class="grid grid-cols-1 lg:grid-cols-2">
+             <?php
+            for ($i=0; $i < count($projects); $i++) { 
+            ?>
             <div class="flex flex-col m-9">
                 <div class="flex flex-row items-center text-gray-500 text-3xl">
                     <div id="ctNR" class="flex flex-row items-center content-center border-b-2 border-solid border-green-700">
-                        <input class="w-3/4 lg:w-full lg:text-5xl outline-none" type="text" name="txtNombre"  value="Nuevo proyecto" maxlength="45" required>
+                        <input class="w-3/4 lg:w-full lg:text-5xl outline-none" type="text" name="txtNombre"  value="<?php echo $projects[$i]['nombreProyecto'] ?>" maxlength="45" required>
                     </div>
                     <label for="txtNombreRubrica" title="Editar" ><span class="icon-pencil"></span></label>
                     <input type="checkbox" name="ckbNameValidate" id="ckbNameValidate" class="hidden" disabled>
@@ -51,37 +58,14 @@ comparacionFecha("Ingreso de proyectos");
         <div class=" "> 
                     <div class="mt-10  flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
                         <label for="txtID" class="p-2 bg-gray-700 text-white">Descripcion</label>
-                        <input class="w-1/4	 lg:w-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtDescripcion" value="" >
+                        <input class="w-1/4	 lg:w-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtDescripcion" value="<?php echo $projects[$i]['descripcion'] ?>" >
                         <label for="txtNombreRubrica" title="Editar" ><span class="hidden lg:block icon-pencil"></span></label>
                     </div>
             </div>
-            <div>
-                <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
-                    <label for="txtMateria" class="p-2 bg-gray-700 text-white">Materia</label>
-                    <select name="txtMateria" id="txtMateria" class="p-1 w-full rounded-r-lg outline-none">
-<?php writeMatterForNewRubric(); ?>
-                    </select>
-                </div>
-            </div>
-            <div>
-                <div class="flex flex-row items-center w-full lg:w-4/5 border-gray-700 border-solid border-2 rounded-lg">
-                    <label for="txtNivel" class="p-2 bg-gray-700 text-white">Grado</label>
-                    <select name="txtGrado" id="txtGrado" class="p-1 w-full rounded-r-lg outline-none" >
-<?php writeLevelForNewRubric(); ?>
-                    </select>
-                </div>
-            </div>
-       
-            <div>
-                <div class="my-10 flex flex-row items-center lg:w-full lg:h-3/5 md:h-full sm:h-full border-gray-700 border-solid border-2 rounded-lg">
-                    <label for="txtNivel" class="p-10 items-center p-2 bg-gray-700 text-white lg:h-full md:h-full sm:h-full">Alumnos</label>
-                    <select name="txtAlumnos[]" id="txtAlumnos" class="p-1 w-full rounded-r-lg outline-none " multiple>
-                        
-                    </select>
-                </div>
-            </div>
         </div>
-
+        <?php
+            }
+        ?>
     </form>
     
 </body>
