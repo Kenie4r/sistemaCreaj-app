@@ -1559,6 +1559,22 @@ class Query{
 
     }
     
+    //obtener equipop por el proyecto y estudiante
+    public function equipoExiste($codigo ,$idproyecto){
+        $model = new Conection();
+        $conexion = $model->_getConection();
+        $sql = "SELECT COUNT(*) FROM equipo  WHERE  equipo.estudiante_idestudiante =:estudiante AND equipo.proyecto_idproyecto = :idProyecto LIMIT 1";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":estudiante", $codigo);
+        $sentencia->bindParam(":idProyecto", $idproyecto);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetch();
+            return $result;
+        }
+    }
     //UPDATE
 
     //Usuario
