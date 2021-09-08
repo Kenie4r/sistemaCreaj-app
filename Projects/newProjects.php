@@ -73,8 +73,8 @@ comparacionFecha("Ingreso de proyectos");
             </div>
        
             <div>
-                <div class="my-10 flex flex-row items-center w-full lg:w-4/5 border-gray-700 border-solid border-2 rounded-lg">
-                    <label for="txtNivel" class="p-2 bg-gray-700 text-white">Alumnos</label>
+                <div class="my-10 flex flex-row items-center lg:w-full lg:h-3/5 md:h-full sm:h-full border-gray-700 border-solid border-2 rounded-lg">
+                    <label for="txtNivel" class="p-10 items-center p-2 bg-gray-700 text-white lg:h-full md:h-full sm:h-full">Alumnos</label>
                     <select name="txtAlumnos[]" id="txtAlumnos" class="p-1 w-full rounded-r-lg outline-none " multiple>
                         
                     </select>

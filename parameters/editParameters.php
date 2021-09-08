@@ -30,23 +30,23 @@ require('../Dashboard/Dashboard.php');
         <div class="grid grid-cols-1 lg:grid-cols-2 ml-24">
             <div class="flex lg:m-9">
                 <div class="lg:m-2">
-                <a href="" id="btnSubmit" class=" lg:m-5 md:m-3 sm:m-3 block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700"><span class="icon-checkmark"></span><input type="submit" value="Guardar"> </a>
+                <a href="" id="btnSubmit" class=" lg:m-5 md:m-5 sm:m-5 block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700"><span class="icon-checkmark"></span><input type="submit" value="Guardar"> </a>
                 </div>
                 <div class="mx-2 lg:m-2">
-                    <a href="index.php" class="lg:m-5 md:m-3 sm:m-3 block text-red-600 border-red-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-red-600"><span class='icon-cross'></span> Cancelar</a>
+                    <a href="index.php" class="lg:m-5 md:m-5 sm:m-5 block text-red-600 border-red-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-red-600"><span class='icon-cross'></span> Cancelar</a>
                 </div>
             </div>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-3 m-9 content-center lg:justify-center ">
-                <div class=""> 
-                    <div class="flex flex-row items-center w-full lg:w-4/5 h-full lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
-                        <label for="txtinicio" class="p-2 bg-gray-700 text-white">Fecha de inicio</label>
+        <div class="grid grid-cols-1 lg:grid-cols-3 m-9 content-center lg:justify-center ml-24 lg:mt-0 md:mt-8">
+                <div class="lg:m-0 md:m-5 sm:m-5 content-center lg:justify-center"> 
+                    <div class="flex flex-row items-center w-full lg:w-4/5 h-full  border-gray-700 border-solid border-2 rounded-lg ">
+                        <label for="txtinicio" class="w-full lg:w-4/5 p-2 bg-gray-700 text-white">Fecha de inicio</label>
                         <input class="p-1.5 w-full  rounded-r-lg outline-none" type="date" name="txtFechaInicio" value="<?php echo $FechaInico;?>" >
                     </div>
                </div>
-                <div class=""> 
+                <div class="lg:m-0 md:m-5 sm:m-5 content-center lg:justify-center"> 
                     <div class="flex flex-row items-center w-full lg:w-4/5 h-full lg:m-0 border-gray-700 border-solid border-2 rounded-lg ">
-                        <label for="txtfin" class="p-2 bg-gray-700 text-white">Fecha de cierre</label>
+                        <label for="txtfin" class="w-full lg:w-4/5 p-2 bg-gray-700 text-white">Fecha de cierre</label>
                         <input class="p-1.5 w-full rounded-r-lg outline-none" type="date" name="txtFechaFin" value="<?php echo $FechaFin;?>" >
                    </div>
                </div>
