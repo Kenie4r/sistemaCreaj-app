@@ -144,13 +144,13 @@ class Query{
         }
     }
     //guardar equipo
-    public function saveTeam($id_estudiante, $proyecto){
+    public function saveTeam($id_alumno, $idProyecto){
         $model = new Conection();
         $connection  = $model->_getConection();
         $sql = "INSERT INTO equipo(estudiante_idestudiante, proyecto_idproyecto) VALUES(:student, :proyecto)";
         $sentencia= $connection->prepare($sql);
-        $sentencia->bindParam(":student", $id_estudiante);
-        $sentencia->bindParam(":proyecto", $proyecto);
+        $sentencia->bindParam(":student", $id_alumno);
+        $sentencia->bindParam(":proyecto", $idProyecto);
         if(!$sentencia){
             return "Error, existe un fallo";
         }else{
@@ -476,18 +476,16 @@ class Query{
     }
 
     //Obtener el ID del proyecto segun el nombre
-    public function getIdprojectsByNombre($name){
+    public function getIdprojectsByNombre(){
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql = "SELECT idproyecto FROM proyecto WHERE nombre= :nombre";
+        $sql = "SELECT idproyecto FROM proyecto ORDER BY idproyecto DESC limit 1";
         $sentencia= $connection->prepare($sql);
-        $sentencia->bindParam(":nombre", $name);
-
         if(!$sentencia){
             return "Error";
         }else{
             $sentencia->execute();
-            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            $resultado = $sentencia->fetchColumn();
             
             return $resultado;
         }
@@ -1777,12 +1775,12 @@ class Query{
     }
 
     //Eliminar los equipos por el ID
-    public function deleteequipo($idequipo){
+    public function deleteequipo($proyecto_idproyecto){
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql = "DELETE FROM equipo WHERE idequipo = :idequipo";
+        $sql = "DELETE FROM equipo WHERE proyecto_idproyecto = :proyecto_idproyecto";
         $sentencia= $connection->prepare($sql);
-        $sentencia->bindParam(":idequipo", $idequipo);
+        $sentencia->bindParam(":proyecto_idproyecto", $proyecto_idproyecto);
         if(!$sentencia){
             return "Error";
         }else{
@@ -1838,7 +1836,6 @@ class Query{
             return true;
         }
     }
-
     //Eliminar asignaciones según el ID
     public function deleteAssignById($idassign){
         $model = new Conection();
