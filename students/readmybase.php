@@ -125,6 +125,7 @@
          
         }
     }
+    header('Location: http://creaj21/students/index.php');
     
 
 ?>
