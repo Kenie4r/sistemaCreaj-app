@@ -114,7 +114,7 @@
                             if($estudiantes['COUNT(*)']==0){
                                 $query-> saveStudent($codigo, $nombres, $apellidos, $idGrado);
                             }
-                            $equipocreado = $query->equipoExiste($codigo $idproyecto);
+   //                         $equipocreado = $query->equipoExiste($codigo $idproyecto);
                             $query-> saveTeam($codigo, $idproyecto);
                         }
                   }
