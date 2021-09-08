@@ -377,6 +377,21 @@ class Query{
             return $result;
         }
     }
+    //Obtener todos los Id de los estudiantes que pertenezcan a un proyecto
+    public function getIDestudiantes($proyecto_idproyecto){
+        $model = new Conection();
+        $connection = $model->_getConection();
+        $sql ="SELECT `idestudiante` FROM `estudiante` e inner join equipo eq on e.idestudiante = eq.estudiante_idestudiante inner join proyecto p on eq.proyecto_idproyecto = p.idproyecto where p.idproyecto= :idproyecto";
+        $sentencia = $connection->prepare($sql);
+        $sentencia->bindParam(":idproyecto", $proyecto_idproyecto);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetch();
+            return $result;
+        }
+    }
     //obtener datos de equipo
     public function getTeamData($idTeam){
         $model = new Conection();
@@ -2052,12 +2067,12 @@ class Query{
         }
     }
     //Eliminar estudiante segun el ID
-    public function deleteStudents($idestudiante){
+    public function deleteStudents($id_estudiantes){
         $model = new Conection();
         $connection  = $model->_getConection();
         $sql = "DELETE FROM estudiante WHERE idestudiante = :idestudiante";
         $sentencia= $connection->prepare($sql);
-        $sentencia->bindParam(":idestudiante", $idestudiante);
+        $sentencia->bindParam(":idestudiante", $id_estudiantes);
         if(!$sentencia){
             return false;
         }else{

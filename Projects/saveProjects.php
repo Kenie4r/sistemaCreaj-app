@@ -15,17 +15,12 @@ $idMateria= $_POST["txtMateria"];
 $Datoprojects= $consulta->saveProjects($name, $descripcion, $idGrado, $idMateria);
 $idProyecto=$consulta->getIdprojectsByNombre();
 $id_estudiante= $_POST["txtAlumnos"];
-$id_alumno = "";
-$i=0;
-$e=0;
 
 foreach($id_estudiante as $valor){
-    $id_alumno =$valor;
-    echo "<script>alert('$id_alumno $idProyecto');</script>";
-    $Datosteam= $consulta->saveTeam($id_alumno, $idProyecto);
-    $i++;
+    $id_estudiante =$valor;
+    $proyecto= $idProyecto;
+    $Datosteam= $consulta->saveTeam($id_estudiante, $proyecto);
 }
-
 ?>
 
 <!DOCTYPE html>

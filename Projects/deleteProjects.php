@@ -29,16 +29,12 @@ require('../Dashboard/Dashboard.php');
 //Eliminar equipos
 $proyecto_idproyecto = $_GET["idequipo"];
 $idestudiante= $consulta-> getIdestudianteByIdproyecto($proyecto_idproyecto);
-$i=0;
-$e=0;
-foreach($idestudiante as $valor){
-    $id_estudiante =$valor;
-    $i++;
+$idestudiantes=$consulta->getIDestudiantes($proyecto_idproyecto);
+foreach($idestudiantes as $valor){
+    $id_estudiantes = $valor;
+    $deleteEstudiantes= $consulta-> deleteStudents($id_estudiantes);
 }
-do {
-    $deleteEstudiantes= $consulta-> deleteStudents($idestudiante);
-    $e++;
-} while ($e < $i);
+
 $deleteEquipo= $consulta-> deleteequipo($proyecto_idproyecto);
 $deleteProyecto= $consulta-> deleteprojects($proyecto_idproyecto);
 
