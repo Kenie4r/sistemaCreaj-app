@@ -111,47 +111,50 @@
             </div>
         ";
         print($html);
-        return array($teamData[6], $teamData[7]);
+        return array($teamData[3], $teamData[7]);
     }
 
     public function writeRubric($idGrado, $idMateria){
         $query = new Query();
         $myCID = array();
         $idNivel = $query->getLevelbyGradeID($idGrado);
-        $myRubric = $query->getNewRubric($idMateria, $idNivel['idnivel']);
-        if(empty($myRubric)){
+        if($idNivel == false){
             $html="<script>crearNotificacion(0, 'Aún no puedes calificar', 'Volver atras', null)</script>";
+            print($html);
         }else{
-            foreach($myRubric as $a=> $b){
-                foreach($b as $c){
-                $idRubric = $c;
-                }
-            }
-            $critics= $query->getIdCriterioByIdRubric($idRubric);
-            foreach($critics as $field =>$array){
-                foreach($array as $a => $b){
-                    $myCID[]=$b;
-                }
-            }
-            $defCriterios = $query->getCriteriosByIdRubric($idRubric);
-            foreach($defCriterios as $a){
-                $j = 0;
-                foreach( $a as  $b){
-                    if($j==1){
-                        $criterioName[] = $b;
-                    }else if($j==2){
-                        $criterioValue[]  =$b;
+        $myRubric = $query->getNewRubric($idMateria, $idNivel['idnivel']);
+            if(empty($myRubric)){
+                $html="<script>crearNotificacion(0, 'Aún no puedes calificar', 'Volver atras', null)</script>";
+            }else{
+                foreach($myRubric as $a=> $b){
+                    foreach($b as $c){
+                    $idRubric = $c;
                     }
-                    $j++;
                 }
-
-            }
-            $html = "<input type='hidden' name='subjecttxt' value='{$idMateria}'> ";
-            $html .= "<input type='hidden' name='levelttxt' value='{$idGrado}'> ";
-            for($index = 0; $index<count($myCID); $index++){
-                $number = $index+1;
-                $html.=" 
-                <div class='tab w-full overflow-hidden border-t criterio p-5 h-full' id='criterio{$number}'>
+                $critics= $query->getIdCriterioByIdRubric($idRubric);
+                foreach($critics as $field =>$array){
+                    foreach($array as $a => $b){
+                        $myCID[]=$b;
+                    }
+                }
+                $defCriterios = $query->getCriteriosByIdRubric($idRubric);
+                foreach($defCriterios as $a){
+                    $j = 0;
+                    foreach( $a as  $b){
+                        if($j==1){
+                            $criterioName[] = $b;
+                        }else if($j==2){
+                            $criterioValue[]  =$b;
+                        }
+                        $j++;
+                    }
+                }   
+                $html = "<input type='hidden' name='subjecttxt' value='{$idMateria}'> ";
+                $html .= "<input type='hidden' name='levelttxt' value='{$idGrado}'> ";
+                for($index = 0; $index<count($myCID); $index++){
+                    $number = $index+1;
+                    $html.=" 
+                    <div class='tab w-full overflow-hidden border-t criterio p-5 h-full' id='criterio{$number}'>
                     <input type='hidden' name='' value='{$criterioValue[$index]}' id='valor{$number}'>
                     <input type='hidden' name='idCriterio' value='$myCID[$index]' id='idC{$number}' >
                     <input type='radio' name='rdbCriterio' class='absolute opacity-0 rdbCriterio'  id='btnCriterio_{$number}'>
@@ -174,9 +177,10 @@
               
                     </div>
                 </div>";
+                }
             }
+            print($html);
         }
-        print($html);
     }
     public function endDocument(){
         $endOfFile = <<<'HEREDOC'
