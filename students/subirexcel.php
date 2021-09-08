@@ -30,14 +30,14 @@ require('../Dashboard/Dashboard.php');
              este es funcional desde Excel 2007, además es necesario usar un molde especifico para poder usar este tipo de guardado.</p>
         </div>
             <div class=" text-center	">
-                <a href="base.xlsx">
+                <a href="base _practica.xlsx">
                     <div class="mx-60 mr-96 mt-10">
                         <p class="mr-60 ml-96 block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700"><span class=" icon-download"></span>  DESCARGAR BASE</p>
                     </div>
                 </a>
             </div>
            
-        <form action="leerexcel.php" method="POST" enctype="multipart/form-data" accept="xlsx/*">
+        <form action="leerexcel_practica.php" method="POST" enctype="multipart/form-data" accept="xlsx/*">
             <div  class="drop-zone">
             <span class="drop-zone__prompt">Subir un archivo aquí</span>
                 <input class="drop-zone__input" type="file" name="txt_archivo"  >
