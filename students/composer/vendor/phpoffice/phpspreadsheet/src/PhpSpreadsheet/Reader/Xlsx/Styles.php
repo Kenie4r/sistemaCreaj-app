@@ -130,11 +130,11 @@ class Styles extends BaseParserClass
 
     private static function readAlignmentStyle(Alignment $alignment, \SimpleXMLElement $alignmentXml)
     {
-        $alignment->setHorizontal((string) $alignmentXml->alignment['horizontal']);
-        $alignment->setVertical((string) $alignmentXml->alignment['vertical']);
+        //$alignment->setHorizontal((string) $alignmentXml->alignment['horizontal']);
+        //$alignment->setVertical((string) $alignmentXml->alignment['vertical']);
 
         $textRotation = 0;
-        if ((int) $alignmentXml->alignment['textRotation'] <= 90) {
+        /*if ((int) $alignmentXml->alignment['textRotation'] <= 90) {
             $textRotation = (int) $alignmentXml->alignment['textRotation'];
         } elseif ((int) $alignmentXml->alignment['textRotation'] > 90) {
             $textRotation = 90 - (int) $alignmentXml->alignment['textRotation'];
@@ -145,7 +145,7 @@ class Styles extends BaseParserClass
         $alignment->setShrinkToFit(self::boolean((string) $alignmentXml->alignment['shrinkToFit']));
         $alignment->setIndent((int) ((string) $alignmentXml->alignment['indent']) > 0 ? (int) ((string) $alignmentXml->alignment['indent']) : 0);
         $alignment->setReadOrder((int) ((string) $alignmentXml->alignment['readingOrder']) > 0 ? (int) ((string) $alignmentXml->alignment['readingOrder']) : 0);
-    }
+    */ }
 
     private function readStyle(Style $docStyle, $style)
     {

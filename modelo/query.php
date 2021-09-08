@@ -867,6 +867,38 @@ class Query{
             return $resultado;
         }
     }
+    //get Level by name
+    public function isALevelCreated($Nivel){
+        $modelo = new Conection();
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT nivel.idnivel FROM `nivel` WHERE nivel.nombre LIKE :Nivel LIMIT 1";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":Nivel", $Nivel);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetch();
+            return $resultado;
+        }
+    }
+    //ver si existe el grado por el nombre 
+    public function isAGradeCreated($idNivel, $nameGrado, $seccion){
+        $modelo = new Conection();
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT grado.idgrado FROM `grado` WHERE grado.nombre LIKE :grado AND grado.seccion LIKE :seccion AND grado.nivel_idnivel = :idNivel LIMIT 1";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":idNivel", $idNivel);
+        $sentencia->bindParam(":grado", $nameGrado);
+        $sentencia->bindParam(":seccion", $seccion);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetch();
+            return $resultado;
+        }
+    }
     //Obtener el nivel según el ID
     public function getLevelById($idnivel){
         $model = new Conection();
@@ -1218,6 +1250,40 @@ class Query{
             return $resultado;
         }
     }
+
+    //Buscar el poryecto por nombre , grado y materia
+    public function findPorjectbyNGM($nombre, $idGrado, $idMateria){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT proyecto.idproyecto FROM `proyecto` WHERE proyecto.nombreProyecto LIKE :nombre AND proyecto.grado_idgrado =:idGrado AND proyecto.materia_idmateria =:idMateria LIMIT 1";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":nombre", $nombre);
+        $sentencia->bindParam(":idGrado", $idGrado);
+        $sentencia->bindParam(":idMateria", $idMateria);
+        if(!($sentencia)){
+            return false;
+
+        }else{
+            $sentencia->execute();
+            $result= $sentencia->fetch();
+            return $result;
+        }
+    }
+    public function findStudent($idStudent){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT COUNT(*) FROM estudiante WHERE estudiante.idestudiante = :idStudent LIMIT 1";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":idStudent", $idStudent);
+        if(!($sentencia)){
+            return false;
+
+        }else{
+            $sentencia->execute();
+            $result= $sentencia->fetch();
+            return $result;
+        }
+    }
     #ver cuantas foraneas de materia en rubrica
     public function getMatterIdInRubrics($idmateria){
         
@@ -1471,6 +1537,23 @@ class Query{
         }else{
             $sentencia->execute();
             $result = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
+    }
+
+    //obtener la  materia por nombre 
+    public function isASubjectSaved($nombre){
+        $model = new Conection();
+        $conexion = $model->_getConection();
+        $sql = "SELECT materia.idmateria FROM materia WHERE  materia.nombre LIKE :materia LIMIT 1";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":materia", $nombre);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetch();
             return $result;
         }
 
