@@ -474,25 +474,7 @@ class Query{
             return $resultado[0];
         }
     }
-<<<<<<< Updated upstream
-=======
-    //obtener los estudiantes segun el grado
-    public function getAlumnosByGrados($grado_idgrado){
-        $model = new Conection();
-        $connection  = $model->_getConection();
-        $sql = "SELECT idestudiante, nombre, apellidos FROM estudiante WHERE estudiante.grado_idgrado = :grado_idgrado ORDER BY apellidos ASC";
-        $sentencia= $connection->prepare($sql);
-        $sentencia->bindParam(":grado_idgrado", $grado_idgrado);
 
-        if(!$sentencia){
-            return "Error";
-        }else{
-            $sentencia->execute();
-            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-            
-            return $resultado;
-        }
-    }
     //Obtener el ID del proyecto segun el nombre
     public function getIdprojectsByNombre($name){
         $model = new Conection();
@@ -510,7 +492,7 @@ class Query{
             return $resultado;
         }
     }
->>>>>>> Stashed changes
+
     //Get ID Criterio
     public function getIDCriterio($titulo, $rubricaID){
         $model = new Conection();
@@ -1100,23 +1082,6 @@ class Query{
             $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             
             return $resultado;
-        }
-    }
-    //obtener los estudiantes segun el grado
-    public function getAlumnosByGrados($grado_idgrado){
-        $model = new Conection();
-        $connection  = $model->_getConection();
-        $sql = "SELECT idestudiante, nombre, apellidos FROM estudiante WHERE estudiante.grado_idgrado = :grado_idgrado ORDER BY apellidos ASC";
-        $sentencia= $connection->prepare($sql);
-        $sentencia->bindParam(":grado_idgrado", $grado_idgrado);
-
-        if(!$sentencia){
-            return "Error";
-        }else{
-            $sentencia->execute();
-            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-            return $resultado;
-            
         }
     }
     public function getMatterIdInproyects($idMateria){
