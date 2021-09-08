@@ -37,7 +37,7 @@ require('../Dashboard/Dashboard.php');
                 </a>
             </div>
            
-        <form action="leerexcel_practica.php" method="POST" enctype="multipart/form-data" accept="xlsx/*">
+        <form action="readmybase.php" method="POST" enctype="multipart/form-data" accept="xlsx/*">
             <div  class="drop-zone">
             <span class="drop-zone__prompt">Subir un archivo aquí</span>
                 <input class="drop-zone__input" type="file" name="txt_archivo"  >

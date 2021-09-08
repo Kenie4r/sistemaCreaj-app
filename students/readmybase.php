@@ -112,7 +112,7 @@
                             $nombres =  $row[2];
                             $estudiantes = $query->findStudent($codigo);
                             if($estudiantes['COUNT(*)']==0){
-                                $query-> saveStudent($codigo, utf8_decode($nombres), utf8_decode($apellidos), $idGrado);
+                                $query-> saveStudent($codigo, $nombres, $apellidos, $idGrado);
                             }
                             $equipocreado = $query->equipoExiste($codigo, $idproyecto);
                             if($equipocreado['COUNT(*)']==0){
@@ -125,5 +125,6 @@
          
         }
     }
+    
 
 ?>
