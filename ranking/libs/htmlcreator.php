@@ -155,7 +155,7 @@
                 <div class='w-full flex flex-col items-center'>
 
                 <!--Equipos ganadores-->
-                <div class='grid grid-cols-1 w-7/12 sm:grid-cols-3 gap-2' id='box-ganadores'>";
+                <div class='grid grid-cols-1 w-7/12 md:grid-cols-3 gap-2' id='box-ganadores'>";
                 $c = 0;
                 foreach($proyectos as $camps){
                     $proyectoInfo =$query->getTeambyID($camps['proyecto_idproyecto']);
@@ -163,12 +163,12 @@
                     $c++;
                     if($c==2){
                         $blockhtml .= "
-                        <div class='flex flex-col items-center border shadow-xl p-4  bg-white h-48 rounded-md'>
+                        <div class='flex flex-col items-center border shadow-xl p-4  bg-white md:h-52 rounded-md'>
                         <div class='w-6/12'>
                             <img src='img/silver-medal.png ' alt='>
                         </div>
-                        <div class='text-center text-2xl w-full'>
-                            <h1>{$proyectoInfo['nombreProyecto']}</h1>
+                        <div class='text-center text-xl w-full'>
+                            <h1 class='w-full'>{$proyectoInfo['nombreProyecto']}</h1>
                         </div>
                         <div class='text-center text-gray-400 text-xl'>
                             <h2>" . round($camps['notafinal'], 2) ." PUNTOS</h2>
@@ -176,7 +176,7 @@
                     </div>";
                     }else if($c==1){
                       $html = "
-                      <div  class='flex flex-col items-center border shadow-xl p-4 bg-white h-52 rounded-md'>
+                      <div  class='flex flex-col items-center border shadow-xl p-4 bg-white md:h-64 rounded-md'>
                       <div class='w-7/12'>
                           <img src='img/gold-medal.png' alt='>
                       </div>
@@ -191,11 +191,11 @@
 
                     }else if($c==3){
                         $html.="
-                        <div class='flex flex-col items-center  border shadow-xl p-4 bg-white h-44 rounded-md'>
+                        <div class='flex flex-col items-center  border shadow-xl p-4 bg-white md:h-48 rounded-md'>
                         <div class='w-5/12'>
                             <img src='img/bronze-medal.png' alt='>
                         </div>
-                        <div class='text-center text-2xl w-full'>
+                        <div class='text-center text-md w-full'>
                             <h1>{$proyectoInfo['nombreProyecto']}</h1>
                         </div>
                         <div class='text-center text-gray-400 text-xl'>
@@ -210,10 +210,10 @@
                         $html .= "<div class='text-center text-4xl m-3'> <h1>Demás concursantes </h1></div>
     
                         <!--Demas equipos-->
-                        <div class='flex flex-col overflow-y-auto h-60  w-10/12 justify-center items-center m-6'>   
+                        <div class='flex flex-col overflow-y-auto h-60  w-full md:w-10/12  justify-center items-center m-6'>   
                         
-                        <div class='bg-white w-10/12 shadow-md h-20 border rounded-md flex flex-row justify-between items-center my-1'>
-                        <div class='p-5 text-2xl w-full'>
+                        <div class='bg-white w-11/12 shadow-md h-20 border rounded-md flex flex-row justify-between items-center my-1'>
+                        <div class='p-5 text-xl w-full md:text-2xl'>
                             <h1>$c.<!--Numero en el que aparecio-->
                             {$proyectoInfo['nombreProyecto']}</h1>
                         </div>
@@ -223,8 +223,8 @@
                         </div>
                         </div>";
                     }else{
-                        $html .= "<div class='bg-white w-10/12 shadow-md h-20 border rounded-md flex flex-row justify-between items-center my-1'>
-                        <div class='p-5 text-2xl'>
+                        $html .= "<div class='bg-white w-11/12 shadow-md h-20 border rounded-md flex flex-row justify-between items-center my-1'>
+                        <div class='p-5 text-xl md:text-2xl'>
                             <h1>$c.<!--Numero en el que aparecio-->
                             {$proyectoInfo['nombreProyecto']}</h1>
                         </div>
