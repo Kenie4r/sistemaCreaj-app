@@ -36,6 +36,7 @@
                     $nivel = $row[1];
                     //vamos a buscar el nivel primero para poder ingresar los demás datos
                     $creado = $query->isALevelCreated($nivel);
+                    $nivel = ucfirst($nivel);
                     //vemos si tenemos un nivel con ese nombre y sino es así lo guardamo
                     if(empty($creado)){
                         $query->saveNivel($nivel);
@@ -50,6 +51,82 @@
                     //vamos a insertar el grado de todos los proyectos
                      $grado = $row[1];
                     $seccion = $row[3];
+                    switch($grado){
+                        case "III":
+                        case "III año":
+                        case "IIIaño":
+                        case "3° año":
+                        case "3°año":
+                        case "3año":
+                        case "3 año":
+                            $grado = "Tercer año";
+                        break;
+                        case "II":
+                        case "IIaño":
+                        case"II año":
+                        case  "2° año":
+                        case  "2°año":
+                        case "2año":
+                        case "2 año":
+                            $grado = "Segundo año";
+                        break;
+                        case "I":
+                        case "Iaño":
+                        case "I año" :
+                        case "1° año":
+                        case "1°año": 
+                        case "1año":
+                        case "1 año":
+                            $grado = "Primer  año";
+                        break;
+                        case "1°":
+                        case "primero":
+                        case "Primero":
+                            $grado = "Primer grado";
+                            break;
+                        case "2° ":
+                        case  "Segundo":
+                        case "segundo":
+                            $grado = "Sergundo grado";
+                            break;
+                        case "3°":
+                        case "Tercero":
+                        case  "tercero":
+                            $grado = "Tercer grado";
+                            break;
+                        case "4°" :
+                        case "cuarto":
+                        case "Cuarto":
+                            $grado = "Cuarto grado";
+                            break;
+                        case "5°":
+                        case "Quinto":
+                        case "quinto":
+                            $grado  ="Quinto grado";
+                            break;
+                        case "6°":
+                        case "sexto":
+                        case "Sexto":
+                            $grado = "Sexto grado";
+                            break;
+                        case "7°":
+                        case "Septimo":
+                        case "septimo0":
+                            $grado = "Septimo grado";
+                            break;
+                        case "8°":
+                        case "octavo":
+                        case "Octavo":
+                            $grado = "Octavo grado";
+                            break;
+                        case "9°":
+                        case "Noveno":
+                        case "noveno":
+                            $grado = "Noveno grado";
+                            break;
+                    }
+                    $grado = ucfirst($grado);
+
                      //luego debemos verificar si existe un grado con este nombre  si no pues debemos insertarlo
                     $gradocreado = $query->isAGradeCreated($idNivel, $grado, $seccion);
                     if(empty($gradocreado)){
@@ -67,6 +144,15 @@
                     $materia = $row[1];
                     //verificar los datos a igual que el anterior
                     $materias = $query->isASubjectSaved($materia);
+                    switch($materia){
+                        case "Matematicas":
+                        case "Matemáticas":
+                        case "matematicas":
+                        case "matemáticas":
+                            $materia = "Matemáticas";
+                        break;
+                    }
+                    $materia = ucfirst($materia);
                     if(empty($materias)){
                         $query->saveMateria($materia);
                         $materias = $query->isASubjectSaved($materia);
