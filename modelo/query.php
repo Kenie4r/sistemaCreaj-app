@@ -474,7 +474,23 @@ class Query{
             return $resultado[0];
         }
     }
+    //Obtenr el ID del proyecto segun el ID del quipo
+    public function getIdestudianteByIdproyecto($proyecto_idproyecto){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+            $sql = "SELECT estudiante_idestudiante FROM equipo WHERE proyecto_idproyecto = :proyecto_idproyecto";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":proyecto_idproyecto", $proyecto_idproyecto);
 
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
     //Obtener el ID del proyecto segun el nombre
     public function getIdprojectsByNombre(){
         $model = new Conection();
@@ -1987,7 +2003,21 @@ class Query{
             return "Hecho";
         }
     }
-
+    //Eliminar el proyecto por el ID
+    public function deleteprojects($proyecto_idproyecto){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "DELETE FROM proyecto WHERE idproyecto = :idproyecto";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":idproyecto", $proyecto_idproyecto);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            
+            return "Hecho";
+        }
+    }
     //Eliminar los niveles de aprobación según el ID
     public function deleteNivelesAById($idnivel){
         $model = new Conection();
