@@ -1,5 +1,5 @@
 <?php
-    $inputfile = "base _practica.xlsx";
+    $inputfile = $_FILES['txt_archivo']['tmp_name'];
     require 'composer/vendor/autoload.php';
     require_once("../modelo/conection.php");
     require_once("../modelo/query.php");
@@ -112,9 +112,9 @@
                             $nombres =  $row[2];
                             $estudiantes = $query->findStudent($codigo);
                             if($estudiantes['COUNT(*)']==0){
-                                $query-> saveStudent($codigo, $nombres, $apellidos, $idGrado);
+                                $query-> saveStudent($codigo, utf8_decode($nombres), utf8_decode($apellidos), $idGrado);
                             }
-                            $equipocreado = $query->equipoExiste($codigo $idproyecto);
+                            $equipocreado = $query->equipoExiste($codigo, $idproyecto);
                             if($equipocreado['COUNT(*)']==0){
                                 $query-> saveTeam($codigo, $idproyecto);
                             }
