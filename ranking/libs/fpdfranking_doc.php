@@ -6,6 +6,10 @@
 
     //creación del pdf de el ranking de un grado y materia
 
+//id ge materia 
+$idGrado = $_GET['idGrado'];
+$idMateria = $_GET['idMateria'];
+
     //instancia de FPDF
     $fpdf = new FPDF();
     //definicion de nombre

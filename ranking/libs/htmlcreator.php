@@ -146,7 +146,7 @@
             }else{
                 $blockhtml .= " 
                 <div class='flex justify-center'>
-                <a href='../libs/fpdfranking_doc.php?id' class='p-3 bg-red-500 text-white text-lg rounded-md'>
+                <a href='../libs/fpdfranking_doc.php?idGrado={$idGrado}&idMateria={$idMateria}' class='p-3 bg-red-500 text-white text-lg rounded-md'>
                     <span class='icon-file-pdf'></span>
                     Descargar PDF
                 </a>
