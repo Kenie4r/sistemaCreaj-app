@@ -10,11 +10,11 @@ require_once("soporteProject.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crea J | Nueva rúbrica</title>
+    <title>Crea J | Nuevp Proyecto</title>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../js/script-newRubric.js"></script>
+    <script src="../js/script-newProjects.js"></script>
     <script src="../Dashboard/button.js"></script>
     <script src="StudentsGrade.js"></script>
 </head>
@@ -24,7 +24,7 @@ require('../Dashboard/Dashboard.php');
 require_once("../parameters/soporteParametros.php");
 comparacionFecha("Ingreso de proyectos");
 ?>
- <form id="frmRubric" class="container box-content" method="POST" action="saveProjects.php">
+ <form id="frmProject" class="container box-content" method="POST" action="saveProjects.php">
         <div class="grid grid-cols-1 lg:grid-cols-2">
             <div class="flex flex-col m-9">
                 <div class="flex flex-row items-center text-gray-500 text-3xl">
@@ -39,8 +39,8 @@ comparacionFecha("Ingreso de proyectos");
                 </div>
             </div>
             <div class="flex lg:justify-end ml-9 lg:m-9">
-                <div class="lg:m-2">
-                <a href="" id="btnSubmit" class=" block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700"><span class="icon-checkmark"></span><input type="submit" value="Guardar"> </a>
+                <div class="mx-2 lg:m-2">
+                <p id="btnSubmit" class="mt-10 lg:m-5 md:m-3 sm:m-3 block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700 cursor-pointer"><span class="icon-checkmark"></span> Guardar</p>
                 </div>
                 <div class="mx-2 lg:m-2">
                     <a href="index.php" class="block text-red-600 border-red-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-red-600"><span class='icon-cross'></span> Cancelar</a>

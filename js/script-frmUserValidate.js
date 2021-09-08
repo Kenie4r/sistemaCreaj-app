@@ -26,7 +26,6 @@ function validateFormUser() {
     var apellido = $("#txtLastNameProfile").val();
     var rol = $("#txtRolProfile").val();
     var username = $("#txtUserProfile").val();
-    var ckEmail = $("#ckEmail");
     var errores = 0;
 
     //NOMBRE
@@ -50,7 +49,7 @@ function validateFormUser() {
     }
 
     //EMAIL
-    if( !(ckEmail.is(':checked')) ){
+    if( !($("#ckEmail").is(':checked')) ){
         errores++;
     }
 

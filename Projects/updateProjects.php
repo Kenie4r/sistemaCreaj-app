@@ -7,7 +7,7 @@ $idestudiante= $_POST["txtCodigo"];
 $name= $_POST["txtNombre"];
 $last_name= $_POST["txtApellido"];
 $grado_idgrado=$_POST["txtGrado"];
-$Datoestudiantes= $consulta->updateProjects($idproyecto, $nombreProyecto, $descripcion);
+$DatosProyectos= $consulta->updateProjects($idproyecto, $nombreProyecto, $descripcion);
 
 
 ?>

@@ -326,6 +326,23 @@ class Query{
         }
     }
 
+    //Obtenr el ID del proyecto segun el ID del quipo
+    public function getIdestudianteByIdproyecto($proyecto_idproyecto){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+            $sql = "SELECT estudiante_idestudiante FROM equipo WHERE proyecto_idproyecto = :proyecto_idproyecto";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":proyecto_idproyecto", $proyecto_idproyecto);
+
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
 
     //obtener los proyectos asignados
     public function getAllProjects($idMateria, $idGrado){
@@ -352,6 +369,21 @@ class Query{
         $sql = "SELECT *  FROM proyecto  WHERE proyecto.idproyecto =:idTeam";
         $sentencia = $connection->prepare($sql);
         $sentencia->bindParam(":idTeam", $idTeam);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetch();
+            return $result;
+        }
+    }
+    //Obtener todos los Id de los estudiantes que pertenezcan a un proyecto
+    public function getIDestudiantes($proyecto_idproyecto){
+        $model = new Conection();
+        $connection = $model->_getConection();
+        $sql ="SELECT `idestudiante` FROM `estudiante` e inner join equipo eq on e.idestudiante = eq.estudiante_idestudiante inner join proyecto p on eq.proyecto_idproyecto = p.idproyecto where p.idproyecto= :idproyecto";
+        $sentencia = $connection->prepare($sql);
+        $sentencia->bindParam(":idproyecto", $proyecto_idproyecto);
         if(!$sentencia){
             return false;
         }else{
@@ -1913,6 +1945,21 @@ class Query{
             return true;
         }
     }
+    //Eliminar el proyecto por el ID
+    public function deleteprojects($proyecto_idproyecto){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "DELETE FROM proyecto WHERE idproyecto = :idproyecto";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":idproyecto", $proyecto_idproyecto);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            
+            return "Hecho";
+        }
+    }
     public function deleteLevel($IdLevel){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
@@ -2020,12 +2067,12 @@ class Query{
         }
     }
     //Eliminar estudiante segun el ID
-    public function deleteStudents($idestudiante){
+    public function deleteStudents($id_estudiantes){
         $model = new Conection();
         $connection  = $model->_getConection();
         $sql = "DELETE FROM estudiante WHERE idestudiante = :idestudiante";
         $sentencia= $connection->prepare($sql);
-        $sentencia->bindParam(":idestudiante", $idestudiante);
+        $sentencia->bindParam(":idestudiante", $id_estudiantes);
         if(!$sentencia){
             return false;
         }else{

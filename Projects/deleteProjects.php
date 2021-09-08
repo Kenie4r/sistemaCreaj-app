@@ -27,10 +27,18 @@ require('../Dashboard/Dashboard.php');
 
 
 //Eliminar equipos
-$idequipo = $_GET["idequipo"];
-$estadoprojects= $consulta-> deleteequipo($idequipo);
+$proyecto_idproyecto = $_GET["idequipo"];
+$idestudiante= $consulta-> getIdestudianteByIdproyecto($proyecto_idproyecto);
+$idestudiantes=$consulta->getIDestudiantes($proyecto_idproyecto);
+foreach($idestudiantes as $valor){
+    $id_estudiantes = $valor;
+    $deleteEstudiantes= $consulta-> deleteStudents($id_estudiantes);
+}
 
-if($estadoprojects == "Hecho"){
+$deleteEquipo= $consulta-> deleteequipo($proyecto_idproyecto);
+$deleteProyecto= $consulta-> deleteprojects($proyecto_idproyecto);
+
+if($deleteEquipo == "Hecho" && $deleteProyecto == "Hecho" &&  $deleteEstudiantes ==  "Hecho"){
 ?>
     <section class="container">
         <div class="m-4 lg:m-7 bg-green-500 border-2 border-solid border-green-800 rounded-lg">
