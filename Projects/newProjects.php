@@ -14,7 +14,7 @@ require_once("soporteProject.php");
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../js/script-newStudents.js"></script>
+    <script src="../js/script-newProjects.js"></script>
     <script src="../Dashboard/button.js"></script>
     <script src="StudentsGrade.js"></script>
 </head>
@@ -24,7 +24,7 @@ require('../Dashboard/Dashboard.php');
 require_once("../parameters/soporteParametros.php");
 comparacionFecha("Ingreso de proyectos");
 ?>
- <form id="frmRubric" class="container box-content" method="POST" action="saveProjects.php">
+ <form id="frmProject" class="container box-content" method="POST" action="saveProjects.php">
         <div class="grid grid-cols-1 lg:grid-cols-2">
             <div class="flex flex-col m-9">
                 <div class="flex flex-row items-center text-gray-500 text-3xl">

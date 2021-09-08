@@ -25,7 +25,7 @@ $FechaFin =$consulta->getFechaFin($idparametros);
 <?php
 require('../Dashboard/Dashboard.php');
 ?>
- <form id="frmRubric" class="container box-content" method="POST" action="updateParameters.php?idparam= <?php echo $idparametros; ?>">
+ <form id="frmParametros" class="container box-content" method="POST" action="updateParameters.php?idparam= <?php echo $idparametros; ?>">
     <h1 class="lg:justify-center text-center lg:w-3/4 lg:w-full lg:text-5xl md:text-2xl sm:text-2xl outline-none focus:border-gray-500 border-b-2 focus:border-solid mt-8">Modificar parámetro</h1>
         <div class="grid grid-cols-1 lg:grid-cols-2 ml-24">
             <div class="flex lg:m-9">
