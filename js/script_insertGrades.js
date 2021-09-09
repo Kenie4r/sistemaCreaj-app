@@ -313,7 +313,7 @@ function crearNotificacion(tipo, mensaje, opcion1, opcion2){
     })
     $('#option-2').click(function(){
         $('#notification').remove();
-        funcionamiento();
+      editarNota();
     })
 
 

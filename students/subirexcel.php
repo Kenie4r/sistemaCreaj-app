@@ -29,17 +29,10 @@ require('../Dashboard/Dashboard.php');
             <p class="block text-red-600 border-red-600 border-2 border-solid rounded-lg p-2 "><b>Aviso:</b> Acontinuación se muestra un modo de subir datos mucho más fácil, para ello es necesario un documento excel,
              este es funcional desde Excel 2007, además es necesario usar un molde especifico para poder usar este tipo de guardado.</p>
         </div>
-<<<<<<< Updated upstream
-            <div class=" text-center	">
-                <a href="base _practica.xlsx">
-                    <div class="mx-60 mr-96 mt-10">
-                        <p class="mr-60 ml-96 block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700"><span class=" icon-download"></span>  DESCARGAR BASE</p>
-=======
             <div class="flex lg:justify-end ml-9 lg:m-9 text-center content-center lg:justify-center md:justify-center sm:justify-center">
                 <a href="base.xlsx">
                     <div class="lg:w-full md:w-full sm:w-full lg:mt-5 md:mt-5 sm:mt-5">
                         <p class="content-center lg:justify-center block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700"><span class=" icon-download"></span>  DESCARGAR BASE</p>
->>>>>>> Stashed changes
                     </div>
                 </a>
             </div>
@@ -47,7 +40,7 @@ require('../Dashboard/Dashboard.php');
         <form action="readmybase.php" method="POST" enctype="multipart/form-data" accept="xlsx/*">
             <div  class="drop-zone">
             <span class="drop-zone__prompt">Subir un archivo aquí</span>
-                <input class="drop-zone__input" type="file" name="txt_archivo"  >
+                <input class="drop-zone__input" type="file" name="txt_archivo" required >
             </div>
             <br>
             <div class="flex lg:justify-end ml-9 lg:m-9 md:m-9 sm:m-9 text-center content-center lg:justify-center md:justify-center sm:justify-center">
