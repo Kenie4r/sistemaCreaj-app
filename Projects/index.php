@@ -5,6 +5,7 @@ require_once("../modelo/query.php");
 
 $consulta = new Query; //Crear una consulta
 $Proyecto = $consulta->getProject(); //Get Estudiantes
+$idProyecto=$consulta->getIdprojectsByNombre();
 
 ?>
 <!DOCTYPE html>
@@ -55,10 +56,11 @@ if(!empty($Proyecto)){
             <table class="w-full border-collapse text-center">
                 <thead class="bg-gray-900 text-white">
                     <tr>
-                        <td class="rounded-tl-lg p-4">ID</td>
+                        <td class="rounded-tl-lg p-5">ID</td>
                         <td class="p-4">Nombre</td>
                         <td class="p-4">Descripción</td>
-                        <td colspan="3" class="rounded-tr-lg p-4">Opciones</td>
+                        <td class="p-4">Integrantes</td>
+                        <td colspan="4" class="rounded-tr-lg p-4">Opciones</td>
                     </tr>
                 </thead>
                 <tbody id="table-body-rubrica" class="bg-gray-200">
@@ -67,11 +69,19 @@ if(!empty($Proyecto)){
 if(!empty($Proyecto)){
     for ($i=0; $i < count($Proyecto); $i++) { 
         echo "<tr class='lol'>";
-    echo "\t<td class='p-6'>" . $Proyecto[$i]["idproyecto"] . "</td>";
-    echo "\t<td class='p-6'>" . $Proyecto[$i]["nombreProyecto"] . "</td>";
-    echo "\t<td class='p-6'>" . $Proyecto[$i]["descripcion"] . "</td>";
-    echo "\t<td class='p-6'><a href='editProjects.php?idproject=" . $Proyecto[$i]["idproyecto"] . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Ver</a></td>";
-    echo "\t<td class='p-6'><a href='deleteProjects.php?idequipo=" . $Proyecto[$i]["idproyecto"] . "' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
+    echo "\t<td class='p-4'>" . $Proyecto[$i]["idproyecto"] . "</td>";
+    echo "\t<td class='p-4'>" . $Proyecto[$i]["nombreProyecto"] . "</td>";
+    echo "\t<td class='p-4'>" . $Proyecto[$i]["descripcion"] . "</td>";
+    $estudiante = $consulta->getNameApellidos($Proyecto[$i]["idproyecto"]); 
+    echo "<td colspan='3' class='p-4' >";
+    for($j=0; $j < count($estudiante); $j++){
+        
+        echo  $estudiante[$j]["nombre"] ." ". $estudiante[$j]["apellidos"]."<br>";
+        
+    }
+    echo "</td>";
+    echo "\t<td class='p-4'><a href='editProjects.php?idproject=" . $Proyecto[$i]["idproyecto"] . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Ver</a></td>";
+    echo "\t<td class='p-4'><a href='deleteProjects.php?idequipo=" . $Proyecto[$i]["idproyecto"] . "' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
     echo "</tr>";
     }
 }else{
@@ -84,7 +94,7 @@ if(!empty($Proyecto)){
   </tbody>
                 <tfoot class="bg-gray-900">
                     <tr>
-                        <td colspan="6" class="rounded-b-lg p-2"> </td>
+                        <td colspan="8" class="rounded-b-lg p-2"> </td>
                     </tr>
                 </tfoot>
                 </table>
