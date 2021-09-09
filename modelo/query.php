@@ -1634,6 +1634,20 @@ class Query{
 
     }
 
+    public function  getProjectsRateData($idProject){
+        $model = new Conection();
+        $conexion = $model->_getConection();
+        $sql = "SELECT puntaje.puntaje, puntaje.usuario_idUsuario FROM `puntaje` WHERE puntaje.proyecto_idproyecto = :id";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":id", $idProject);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+    }
     //obtener la  materia por nombre 
     public function isASubjectSaved($nombre){
         $model = new Conection();
