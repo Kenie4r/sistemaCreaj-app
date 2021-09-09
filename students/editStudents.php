@@ -30,7 +30,7 @@ $grado = $consulta->getGradeById($estudiantes);
 require('../Dashboard/Dashboard.php');
 ?>
     <form id="frmNewRubric" class="container box-content" method="POST" action="updateStudents.php">
-        <h1 class="text-center w-3/4 lg:w-full lg:text-5xl outline-none focus:border-gray-500 border-b-2 focus:border-solid mt-8">Editar datos del estudiante</h1>
+        <h1 class="lg:justify-center text-center lg:w-3/4 lg:w-full lg:text-5xl md:text-4xl sm:text-2xl outline-none focus:border-gray-500 border-b-2 focus:border-solid mt-8">Editar datos del estudiante</h1>
         <div class="grid grid-cols-1 lg:grid-cols-2">
             <div class="flex lg:m-9">
             <div class="lg:m-2">
@@ -49,21 +49,21 @@ require('../Dashboard/Dashboard.php');
                 <div class=" flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
                     <label for="txtID" class="p-2 bg-gray-700 text-white">Código</label>
                     <input class="w-1/4	 p-1.5   lg:w-full  outline-none focus:border-gray-500 border-b-2 focus:border-solid" readonly type="text" name="txtCodigo" id="txtNombreRubrica" value="<?php echo $estudiantes[$i]['idestudiante'] ?>" >
-                    <label for="txtNombreRubrica" title="Editar" ><span class="icon-pencil"></span></label>
+                    <label for="txtNombreRubrica" title="Editar" ><span class="hidden lg:block icon-pencil"></span></label>
                 </div>
             </div>
                 <div> 
                     <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
                         <label for="txtID" class="p-2 bg-gray-700 text-white">Nombre</label>
                         <input class="w-1/4	  p-1.5  lg:w-full  outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtNombre" id="txtNombreRubrica" value="<?php echo $estudiantes[$i]['nombre'] ?>" >
-                        <label for="txtNombreRubrica" title="Editar" ><span class="icon-pencil"></span></label>
+                        <label for="txtNombreRubrica" title="Editar" ><span class="hidden lg:block  icon-pencil"></span></label>
                     </div>
                 </div>
                 <div> 
                     <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
                         <label for="txtID" class="p-2 bg-gray-700 text-white">Apellido</label>
                         <input class="w-1/4	 lg:w-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtApellido" id="txtNombreRubrica" value="<?php echo $estudiantes[$i]['apellidos'] ?>" >
-                        <label for="txtNombreRubrica" title="Editar" ><span class="icon-pencil"></span></label>
+                        <label for="txtNombreRubrica" title="Editar" ><span class="hidden lg:block icon-pencil"></span></label>
                     </div>
                 </div>
                 <div class="mt-10">  

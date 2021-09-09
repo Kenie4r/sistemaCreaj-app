@@ -18,19 +18,19 @@ $FechaFin =$consulta->getFechaFin($idparametros);
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../js/script-editparametros.js"></script>
+    <script src="../js/script-newRubric.js"></script>
     <script src="../Dashboard/button.js"></script>
 </head>
 <body>
 <?php
 require('../Dashboard/Dashboard.php');
 ?>
- <form id="frmParametros" class="container box-content" method="POST" action="updateParameters.php?idparam= <?php echo $idparametros; ?>">
-    <h1 class="lg:justify-center text-center lg:w-3/4 lg:w-full lg:text-5xl md:text-2xl sm:text-2xl outline-none focus:border-gray-500 border-b-2 focus:border-solid mt-8">Modificar parámetro</h1>
+ <form id="frmRubric" class="container box-content" method="POST" action="updateParameters.php?idparam= <?php echo $idparametros; ?>">
+    <h1 class="lg:justify-center text-center lg:w-3/4 lg:w-full lg:text-5xl md:text-4xl sm:text-2xl outline-none focus:border-gray-500 border-b-2 focus:border-solid mt-8">Modificar parámetro</h1>
         <div class="grid grid-cols-1 lg:grid-cols-2 ml-24">
             <div class="flex lg:m-9">
                 <div class="lg:m-2">
-                <p id="btnSubmit" class="mt-10 lg:m-5 md:m-3 sm:m-3 block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700 cursor-pointer"><span class="icon-checkmark"></span> Guardar</p>
+                <a href="" id="btnSubmit" class=" lg:m-5 md:m-5 sm:m-5 block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700"><span class="icon-checkmark"></span><input type="submit" value="Guardar"> </a>
                 </div>
                 <div class="mx-2 lg:m-2">
                     <a href="index.php" class="lg:m-5 md:m-5 sm:m-5 block text-red-600 border-red-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-red-600"><span class='icon-cross'></span> Cancelar</a>
@@ -39,9 +39,9 @@ require('../Dashboard/Dashboard.php');
         </div>
         <div class="flex grid grid-cols-1 lg:grid-cols-3 m-9 content-center lg:justify-center ml-24 lg:mt-0 md:mt-8">
                 <div class="lg:m-0 md:m-5 sm:m-5 content-center lg:justify-center md:justify-center sm:justify-center"> 
-                    <div class="flex flex-row items-center w-full lg:w-4/5 h-full  border-gray-700 border-solid border-2 rounded-lg ">
+                    <div class="flex flex-row items-center w-full lg:w-4/5 md:w-full h-full  border-gray-700 border-solid border-2 rounded-lg ">
                         <label for="txtinicio" class="w-full lg:w-4/5 p-2 bg-gray-700 text-white">Fecha de inicio</label>
-                        <input class="lg:w-full md:w-full sm:w-full p-1.5 w-full  rounded-r-lg outline-none" type="date" name="txtFechaInicio" value="<?php echo $FechaInico;?>" >
+                        <input class="lg:w-full md:w-full sm:w-full p-1.5 rounded-r-lg outline-none" type="date" name="txtFechaInicio" value="<?php echo $FechaInico;?>" >
                     </div>
                </div>
                 <div class="flex lg:m-0 md:m-5 sm:m-5 content-center lg:justify-center"> 
