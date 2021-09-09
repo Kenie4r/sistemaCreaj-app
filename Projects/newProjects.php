@@ -39,23 +39,23 @@ comparacionFecha("Ingreso de proyectos");
                 </div>
             </div>
             <div class="flex lg:justify-end ml-9 lg:m-9">
-                <div class="mx-2 lg:m-2">
-                <p id="btnSubmit" class="mt-10 lg:m-5 md:m-3 sm:m-3 block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700 cursor-pointer"><span class="icon-checkmark"></span> Guardar</p>
+                <div class="mx-2 lg:m-2 sm:-mt-3">
+                <p id="btnSubmit" class="mt-10 lg:m-5 md:m-2 sm:m-2 block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700 cursor-pointer"><span class="icon-checkmark"></span> Guardar</p>
                 </div>
-                <div class="mx-2 lg:m-2">
+                <div class="mx-2 lg:m-2 lg:mt-7">
                     <a href="index.php" class="block text-red-600 border-red-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-red-600"><span class='icon-cross'></span> Cancelar</a>
                 </div>
             </div>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-3 m-9">
-        <div class=" "> 
+        <div class="sm:-mt-9 "> 
                     <div class="mt-10  flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
                         <label for="txtID" class="p-2 bg-gray-700 text-white">Descripcion</label>
                         <input class="w-1/4	 lg:w-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtDescripcion" value="" >
                         <label for="txtNombreRubrica" title="Editar" ><span class="hidden lg:block icon-pencil"></span></label>
                     </div>
             </div>
-            <div>
+            <div class="lg:-mt-9">
                 <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
                     <label for="txtMateria" class="p-2 bg-gray-700 text-white">Materia</label>
                     <select name="txtMateria" id="txtMateria" class="p-1 w-full rounded-r-lg outline-none">
@@ -63,7 +63,7 @@ comparacionFecha("Ingreso de proyectos");
                     </select>
                 </div>
             </div>
-            <div>
+            <div class="lg:-mt-9">
                 <div class="flex flex-row items-center w-full lg:w-4/5 border-gray-700 border-solid border-2 rounded-lg">
                     <label for="txtNivel" class="p-2 bg-gray-700 text-white">Grado</label>
                     <select name="txtGrado" id="txtGrado" class="p-1 w-full rounded-r-lg outline-none" >

@@ -27,7 +27,7 @@ comparacionFecha("Ingreso de estudiantes");
         <h1 class="lg:justify-center text-center lg:w-3/4 lg:w-full lg:text-5xl md:text-2xl sm:text-2xl outline-none focus:border-gray-500 border-b-2 focus:border-solid mt-8">Agregar estudiante</h1>
         <div class="grid grid-cols-1 lg:grid-cols-2">
             <div class="flex lg:m-9">
-                <div class="lg:m-2">
+                <div class="lg:m-2 sm:ml-7">
                     <p id="btnSubmit" class="lg:m-5 md:m-3 sm:m-3 block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700 cursor-pointer"><span class="icon-checkmark"></span> Guardar</p>
                 </div>
                 <div class="mx-2 lg:m-2">
@@ -68,7 +68,7 @@ comparacionFecha("Ingreso de estudiantes");
             </div>
        </div>
        <div class="grid grid-cols-1 lg:grid-cols-2">
-           <div class="flex lg:m-9">
+           <div class="flex lg:m-9 sm:ml-72">
                <div class="lg:m-2">
                     <a href="subirexcel.php" id="btnSubmit" class="block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700"><span class="icon-file-text"></span> Subir datos por Excel</a>
                 </div>

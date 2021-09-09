@@ -36,7 +36,7 @@ require('../Dashboard/Dashboard.php');
             <div class="lg:m-2">
                     <p id="btnSubmit" class="lg:m-5 md:m-3 sm:m-3 block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700 cursor-pointer"><span class="icon-checkmark"></span> Guardar</p>
                 </div>
-                <div class="lg:mt-7 md:mt-3 mx-2 lg:m-2">
+                <div class="lg:mt-7 md:mt-3 sm:mt-3 mx-2 lg:m-2">
                     <a href="index.php" class="block text-red-600 border-red-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-red-600"><span class='icon-cross'></span> Cancelar</a>
                 </div>
             </div>
