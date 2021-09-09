@@ -96,7 +96,7 @@
               </div>
             </div>
             <div class="hidden lg:hidden" id="mobile-menu">
-                 <div class="bg-gray-800 mt-20  -ml-10 pt-4 pb-3 lg:hidden md:hidden">
+                 <div class="bg-gray-800 mt-20  -ml-5 pt-4 pb-3 lg:hidden md:hidden">
                             <?php
                           switch($_SESSION['rol']){
                             case 'a':
