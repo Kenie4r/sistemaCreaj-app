@@ -72,16 +72,16 @@ $(document).ready(
 
 //Aquí se guarda el contenido html de un criterio
 function criterio(numero) {
-    var texto = "<div id='" + numero + "-criterio' class='bg-gray-500 rounded-lg shadow-lg container'>";
+    var texto = "<div id='" + numero + "-criterio' class='bg-white rounded-lg shadow-lg container'>";
     texto += "<input type='hidden' id='" + numero + "-idcriterio' name='" + numero + "-idcriterio' value='inexistente'>";
     texto += "<div class='grid grid-cols-3 m-4'>";
     texto += "<div class='w-full'>";
-    texto += "<input type='text' name='" + numero + "-txtNombreCriterio' id='" + numero + "-txtNombreCriterio' value='Criterio " + numero + "' maxlength='45' class='w-4/5 bg-gray-500 outline-none focus:border-gray-800 border-b-2 focus:border-solid'>";
+    texto += "<input type='text' name='" + numero + "-txtNombreCriterio' id='" + numero + "-txtNombreCriterio' value='Criterio " + numero + "' maxlength='45' class='w-4/5 outline-none focus:border-gray-800 border-b-2 focus:border-solid'>";
     texto += "<label for='" + numero + "-txtNombreCriterio' title='Editar' class='w-1/5'><span class='icon-pencil'></span></label>";
     texto += "</div>";
     texto += "<div class='w-full'>";
     texto +="<label for='" + numero + "-nbPuntaje' class='w-2/5'>Porcentaje:</label>";
-    texto += "<input type='number' name='" + numero + "-nbPuntaje' id='" + numero + "-nbPuntaje' min='0' max='100' value='1' class='w-2/5 bg-gray-500 outline-none focus:border-gray-800 border-b-2 focus:border-solid'>";
+    texto += "<input type='number' name='" + numero + "-nbPuntaje' id='" + numero + "-nbPuntaje' min='0' max='100' value='1' class='w-2/5 outline-none focus:border-gray-800 border-b-2 focus:border-solid'>";
     texto += "<label for='" + numero + "-nbPuntaje' title='Editar' class='w-1/5'><span class='icon-pencil'></span></label>";
     texto += "</div>";
     texto += "<div class='flex justify-end'>";

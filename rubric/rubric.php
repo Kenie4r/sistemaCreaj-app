@@ -97,14 +97,14 @@ for ($i=0; $i < count($criterios); $i++) {
     $niveles_criterios = $consulta->getLevelsByIdCriterio($criterios[$i]["idcriterios"]);
 
 ?>
-                    <div id='<?php echo $i; ?>-criterio' class='bg-gray-500 rounded-lg shadow-lg container'>
+                    <div id='<?php echo $i; ?>-criterio' class='bg-white rounded-lg shadow-lg container'>
                         <!-- D A T O S -->
                         <div class='grid grid-cols-2 m-4'>
                             <div class='w-full'>
-                                <p class='w-4/5 bg-gray-500 font-bold text-xl'><?php echo $criterios[$i]["titulo"]; ?></p>
+                                <p class='w-4/5 font-bold text-xl'><?php echo $criterios[$i]["titulo"]; ?></p>
                             </div>
                             <div class='w-full flex justify-end'>
-                                <p class='bg-gray-500'><?php echo $criterios[$i]["puntaje"]; ?> Puntos</p>
+                                <p class=''><?php echo $criterios[$i]["puntaje"]; ?> Puntos</p>
                             </div>
                         </div>
                         <!-- N I V E L E S -->

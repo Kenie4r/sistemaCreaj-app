@@ -132,17 +132,17 @@ for ($i=0; $i < count($criterios); $i++) {
     $niveles_criterios = $consulta->getLevelsByIdCriterio($criterios[$i]["idcriterios"]);
 
 ?>
-                    <div id='<?php echo $i; ?>-criterio' class='bg-gray-500 rounded-lg shadow-lg container'>
+                    <div id='<?php echo $i; ?>-criterio' class='bg-white rounded-lg shadow-lg container'>
                         <!-- D A T O S -->
                         <input type='hidden' id='<?php echo $i; ?>-idcriterio' name='<?php echo $i; ?>-idcriterio' value='<?php echo $criterios[$i]["idcriterios"]; ?>'>
                         <div class='grid grid-cols-3 m-4'>
                             <div class='w-full'>
-                                <input type='text' name='<?php echo $i; ?>-txtNombreCriterio' id='<?php echo $i; ?>-txtNombreCriterio' value='<?php echo $criterios[$i]["titulo"]; ?>' maxlength='45' class='w-4/5 bg-gray-500 outline-none focus:border-gray-800 border-b-2 focus:border-solid'>
+                                <input type='text' name='<?php echo $i; ?>-txtNombreCriterio' id='<?php echo $i; ?>-txtNombreCriterio' value='<?php echo $criterios[$i]["titulo"]; ?>' maxlength='45' class='w-4/5 outline-none focus:border-gray-800 border-b-2 focus:border-solid'>
                                 <label for='<?php echo $i; ?>-txtNombreCriterio' title='Editar' class="w-1/5"><span class="icon-pencil"></span></label>
                             </div>
                             <div class='w-full'>
                                 <label for='<?php echo $i; ?>-nbPuntaje' class='w-2/5'>Porcentaje:</label>
-                                <input type='number' name='<?php echo $i; ?>-nbPuntaje' id='<?php echo $i; ?>-nbPuntaje' min='0' max='100' value='<?php echo $criterios[$i]["puntaje"]; ?>' class='w-2/5 bg-gray-500 outline-none focus:border-gray-800 border-b-2 focus:border-solid'>
+                                <input type='number' name='<?php echo $i; ?>-nbPuntaje' id='<?php echo $i; ?>-nbPuntaje' min='0' max='100' value='<?php echo $criterios[$i]["puntaje"]; ?>' class='w-2/5 outline-none focus:border-gray-800 border-b-2 focus:border-solid'>
                                 <label for='<?php echo $i; ?>-nbPuntaje' title='Editar' class='w-1/5'><span class="icon-pencil"></span></label>
                             </div>
                             <div class='flex justify-end'>
