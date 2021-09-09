@@ -92,16 +92,16 @@ comparacionFecha("Ingreso de rubricas");
                 <!-- C R I T E R I O S -->
                 <div id="contenedor-criterios" class="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4">
                     <!-- C R I T E R I O   1 -->
-                    <div id='0-criterio' class='bg-gray-500 rounded-lg shadow-lg container'>
+                    <div id='0-criterio' class='bg-white rounded-lg shadow-lg container'>
                         <!-- D A T O S -->
                         <div class='grid grid-cols-3 m-4'>
                             <div class='w-full'>
-                                <input type='text' name='0-txtNombreCriterio' id='0-txtNombreCriterio' value='Criterio 0' maxlength='45' class='w-4/5 bg-gray-500 outline-none focus:border-gray-800 border-b-2 focus:border-solid'>
+                                <input type='text' name='0-txtNombreCriterio' id='0-txtNombreCriterio' value='Criterio 0' maxlength='45' class='w-4/5  outline-none focus:border-gray-800 border-b-2 focus:border-solid'>
                                 <label for='0-txtNombreCriterio' title='Editar' class="w-1/5"><span class="icon-pencil"></span></label>
                             </div>
                             <div class='w-full'>
                                 <label for='0-nbPuntaje' class='w-2/5'>Porcentaje:</label>
-                                <input type='number' name='0-nbPuntaje' id='0-nbPuntaje' min='0' max='100' value='1' class='w-2/5 bg-gray-500 outline-none focus:border-gray-800 border-b-2 focus:border-solid'>
+                                <input type='number' name='0-nbPuntaje' id='0-nbPuntaje' min='0' max='100' value='1' class='w-2/5  outline-none focus:border-gray-800 border-b-2 focus:border-solid'>
                                 <label for='0-nbPuntaje' title='Editar' class='w-1/5'><span class="icon-pencil"></span></label>
                             </div>
                             <div class='flex justify-end'>
