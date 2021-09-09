@@ -6,11 +6,3 @@ function mostrarpremio(){
         document.getElementById('premio').style.display='block';
     }
 }
-function mostrar(){
-    var menu = document.getElementById('mobile-menu');
-    if(menu.class== 'hidden'){
-        menu.class = 'block';
-    }else{
-        menu.class= 'hidden';
-    }
-}
