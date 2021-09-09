@@ -23,16 +23,23 @@ require_once("soporteStudents.php")
 require('../Dashboard/Dashboard.php');  
 ?>
     <section>
-    <h1 class="text-center w-3/4 lg:w-full lg:text-5xl outline-none focus:border-gray-500 border-b-2 focus:border-solid mt-8">Agregar estudiante por excel</h1>
+    <h1 class="lg:justify-center text-center lg:w-3/4 lg:w-full lg:text-5xl md:text-4xl sm:text-3xl outline-none focus:border-gray-500 border-b-2 focus:border-solid mt-8">Agregar estudiante por excel</h1>
         
-        <div class="mx-60 mt-10 ">
+        <div class="mx-60 mt-10 flex lg:justify-end ml-9 lg:m-9 md:m-9 sm:m-9 lg:justify-center md:justify-center sm:justify-center">
             <p class="block text-red-600 border-red-600 border-2 border-solid rounded-lg p-2 "><b>Aviso:</b> Acontinuación se muestra un modo de subir datos mucho más fácil, para ello es necesario un documento excel,
              este es funcional desde Excel 2007, además es necesario usar un molde especifico para poder usar este tipo de guardado.</p>
         </div>
+<<<<<<< Updated upstream
             <div class=" text-center	">
                 <a href="base _practica.xlsx">
                     <div class="mx-60 mr-96 mt-10">
                         <p class="mr-60 ml-96 block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700"><span class=" icon-download"></span>  DESCARGAR BASE</p>
+=======
+            <div class="flex lg:justify-end ml-9 lg:m-9 text-center content-center lg:justify-center md:justify-center sm:justify-center">
+                <a href="base.xlsx">
+                    <div class="lg:w-full md:w-full sm:w-full lg:mt-5 md:mt-5 sm:mt-5">
+                        <p class="content-center lg:justify-center block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700"><span class=" icon-download"></span>  DESCARGAR BASE</p>
+>>>>>>> Stashed changes
                     </div>
                 </a>
             </div>
@@ -43,8 +50,8 @@ require('../Dashboard/Dashboard.php');
                 <input class="drop-zone__input" type="file" name="txt_archivo"  >
             </div>
             <br>
-            <div class="ml-96 ">
-            <input class=" ml-96 block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700" type="submit" value="Guardar" name="btnGuardar" onclick="inicio()" class="btn">
+            <div class="flex lg:justify-end ml-9 lg:m-9 md:m-9 sm:m-9 text-center content-center lg:justify-center md:justify-center sm:justify-center">
+            <input class="content-center lg:justify-center block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700" type="submit" value="Guardar" name="btnGuardar" onclick="inicio()" class="btn ">
             </div>
         </form>
     </section>
