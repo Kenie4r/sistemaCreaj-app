@@ -74,7 +74,7 @@ require('../Dashboard/Dashboard.php');
                          if(empty($Grado)){
                             echo "<option value=''>No hay Grados para elegir</option>\n";
                         }else{
-                            echo "<option value='" . $estudiantes[$i]['grado_idgrado'] . "'>" . $Grado["nombre"] . "</option>\n";
+                            echo "<option value='" . $estudiantes[$i]['grado_idgrado'] . "'>" . $consulta->getNameGradoEstudiantes($estudiantes[$i]['grado_idgrado'])  . "</option>\n";
                             foreach ($Grado as $key => $gradoNombre) {
                                 if($Grado["idgrado"] = $estudiantes[$i]['grado_idgrado']){
                                     echo "<option value='" . $gradoNombre["idgrado"] . "'>" . $gradoNombre["nombre"] . "</option>\n";

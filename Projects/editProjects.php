@@ -61,12 +61,13 @@ comparacionFecha("Ingreso de proyectos");
             <div>
                 <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
                     <label for="txtMateria" class="p-2 bg-gray-700 text-white">Materia</label>
-                    <p class="w-1/4	 lg:w-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtDescripcion" value="" ></p>
+                    <p class="w-1/4	 lg:w-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtDescripcion" value="" ><?php echo $consulta->getNameMateria($projects[$i]['materia_idmateria']); ?> </p>
                 </div>
             </div>
             <div>
                 <div class="flex flex-row items-center w-full lg:w-4/5 border-gray-700 border-solid border-2 rounded-lg">
                     <label for="txtNivel" class="p-2 bg-gray-700 text-white">Grado</label>
+                    <p class="w-1/4	 lg:w-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtDescripcion" value="" ><?php echo $consulta->getNameGrado($projects[$i]['grado_idgrado']); ?> </p>
                 </div>
             </div>
        

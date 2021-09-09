@@ -407,18 +407,48 @@ class Query{
             return $result;
         }
     }
-    //Obtener el nombre del grado de un proyecto
+    //Obtener el nombre de la materia de un proyecto
     public function getNameMateria($grado_idgrado){
         $model = new Conection();
         $connection = $model->_getConection();
-        $sql ="SELECT m.nombre FROM `materia` m inner join proyecto p on m.idmateria = p.materia_idmateria where p.materia_idmateria= :idmateria";
+        $sql ="SELECT m.nombre FROM `materia` m inner join proyecto p on m.idmateria = p.materia_idmateria where p.materia_idmateria=:idmateria";
         $sentencia = $connection->prepare($sql);
         $sentencia->bindParam(":idmateria", $grado_idgrado);
         if(!$sentencia){
             return false;
         }else{
             $sentencia->execute();
-            $result = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            $result = $sentencia->fetchColumn();
+            return $result;
+        }
+    }
+    //Obtener el nombre del grado de un proyecto
+    public function getNameGrado($grado_idgrado){
+        $model = new Conection();
+        $connection = $model->_getConection();
+        $sql ="SELECT g.nombre FROM `grado` g inner join proyecto p on g.idgrado = p.grado_idgrado where p.grado_idgrado=:idgrado";
+        $sentencia = $connection->prepare($sql);
+        $sentencia->bindParam(":idgrado", $grado_idgrado);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetchColumn();
+            return $result;
+        }
+    }
+    //obtener el nombre del grado de un estudiante
+    public function getNameGradoEstudiantes($grado_idgrado){
+        $model = new Conection();
+        $connection = $model->_getConection();
+        $sql ="SELECT g.nombre FROM `grado` g inner join estudiante e on g.idgrado = e.grado_idgrado where e.grado_idgrado=:idgrado";
+        $sentencia = $connection->prepare($sql);
+        $sentencia->bindParam(":idgrado", $grado_idgrado);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetchColumn();
             return $result;
         }
     }
