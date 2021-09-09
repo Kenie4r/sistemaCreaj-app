@@ -392,6 +392,36 @@ class Query{
             return $result;
         }
     }
+    //Obtener el nombre y apellidos de los estudiantes de un proyecto
+    public function getNameApellidos($proyecto_idproyecto){
+        $model = new Conection();
+        $connection = $model->_getConection();
+        $sql ="SELECT e.nombre, e.apellidos FROM `estudiante` e inner join equipo eq on e.idestudiante = eq.estudiante_idestudiante inner join proyecto p on eq.proyecto_idproyecto = p.idproyecto where p.idproyecto= :idproyecto";
+        $sentencia = $connection->prepare($sql);
+        $sentencia->bindParam(":idproyecto", $proyecto_idproyecto);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+    }
+    //Obtener el nombre del grado de un proyecto
+    public function getNameMateria($grado_idgrado){
+        $model = new Conection();
+        $connection = $model->_getConection();
+        $sql ="SELECT m.nombre FROM `materia` m inner join proyecto p on m.idmateria = p.materia_idmateria where p.materia_idmateria= :idmateria";
+        $sentencia = $connection->prepare($sql);
+        $sentencia->bindParam(":idmateria", $grado_idgrado);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+    }
     //obtener datos de equipo
     public function getTeamData($idTeam){
         $model = new Conection();

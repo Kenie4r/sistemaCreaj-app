@@ -46,11 +46,8 @@ comparacionFecha("Ingreso de proyectos");
                 </div>
             </div>
             <div class="flex lg:justify-end ml-9 lg:m-9">
-                <div class="lg:m-2">
-                <p id="btnSubmit" class=" block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700 cursor-pointer"><span class="icon-checkmark"></span> Guardar</a>
-                </div>
                 <div class="mx-2 lg:m-2">
-                    <a href="index.php" class="block text-red-600 border-red-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-red-600"><span class='icon-cross'></span> Cancelar</a>
+                    <a href="index.php" class="block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700 cursor-pointer"><span class='icon-checkmark'></span> Regresar</a>
                 </div>
             </div>
         </div>
@@ -58,9 +55,35 @@ comparacionFecha("Ingreso de proyectos");
         <div class=" "> 
                     <div class="mt-10  flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
                         <label for="txtID" class="p-2 bg-gray-700 text-white">Descripcion</label>
-                        <input class="w-1/4	 lg:w-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtDescripcion" value="<?php echo $projects[$i]['descripcion'] ?>" >
-                        <label for="txtNombreRubrica" title="Editar" ><span class="hidden lg:block icon-pencil"></span></label>
+                        <p class="w-1/4	 lg:w-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtDescripcion" value="" ><?php echo $projects[$i]['descripcion'] ?></p>
                     </div>
+            </div>
+            <div>
+                <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
+                    <label for="txtMateria" class="p-2 bg-gray-700 text-white">Materia</label>
+                    <p class="w-1/4	 lg:w-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtDescripcion" value="" ></p>
+                </div>
+            </div>
+            <div>
+                <div class="flex flex-row items-center w-full lg:w-4/5 border-gray-700 border-solid border-2 rounded-lg">
+                    <label for="txtNivel" class="p-2 bg-gray-700 text-white">Grado</label>
+                </div>
+            </div>
+       
+            <div>
+                <div class="my-10 flex flex-row items-center lg:w-full lg:h-3/5 md:h-full sm:h-full border-gray-700 border-solid border-2 rounded-lg">
+                    <label for="txtNivel" class="p-10 items-center p-2 bg-gray-700 text-white lg:h-full md:h-full sm:h-full">Alumnos</label>
+                    <?php 
+                      $proyecto_idproyecto= $_GET['idproject'];
+                      $estudiante = $consulta->getNameApellidos($proyecto_idproyecto); 
+                      echo "<td colspan='3' class='p-4' >";
+                      for($j=0; $j < count($estudiante); $j++){
+                          
+                          echo  $estudiante[$j]["nombre"] ." ". $estudiante[$j]["apellidos"]."<br>";
+                          
+                      }
+                    ?>
+                </div>
             </div>
         </div>
         <?php
