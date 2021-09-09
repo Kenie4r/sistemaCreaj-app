@@ -24,14 +24,7 @@
     $getDescription  =false;
     foreach($array as $row){
         //el funcionamiento de este es bajando de fila en fila por ello es necesario poner un contador para crear los diferente grupos
-        if($contadora ==12 && $nVeces==0){
-            $contadora=0;
-            $nVeces=1;
-        }else if($contadora==9 && $nVeces!=0){
-            $contadora=0;
-        }else{
-            $contadora++;
-            switch($row[0]){
+         switch($row[0]){
                 case "NIVEL":
                     $nivel = $row[1];
                     //vamos a buscar el nivel primero para poder ingresar los demás datos
@@ -82,46 +75,55 @@
                         case "1°":
                         case "primero":
                         case "Primero":
+                        case "1":
                             $grado = "Primer grado";
                             break;
                         case "2° ":
                         case  "Segundo":
                         case "segundo":
+                        case "2":
                             $grado = "Sergundo grado";
                             break;
                         case "3°":
                         case "Tercero":
                         case  "tercero":
+                        case "3":
                             $grado = "Tercer grado";
                             break;
                         case "4°" :
                         case "cuarto":
                         case "Cuarto":
+                        case "4":
                             $grado = "Cuarto grado";
                             break;
                         case "5°":
                         case "Quinto":
                         case "quinto":
+                        case "5":
                             $grado  ="Quinto grado";
                             break;
                         case "6°":
                         case "sexto":
                         case "Sexto":
+                        case "6":
                             $grado = "Sexto grado";
                             break;
                         case "7°":
                         case "Septimo":
-                        case "septimo0":
+                        case "septimo":
+                        case "7":
                             $grado = "Septimo grado";
                             break;
                         case "8°":
                         case "octavo":
                         case "Octavo":
+                        case "8":
                             $grado = "Octavo grado";
                             break;
                         case "9°":
                         case "Noveno":
                         case "noveno":
+                        case "9":
                             $grado = "Noveno grado";
                             break;
                     }
@@ -162,9 +164,8 @@
                     }
                 break;
                 case "NOMBRE DEL PROYECTO:":
-                    $proyecto = $row[1];
-                    if($proyecto != "ingrese el nombre aquí"){
-                        echo($proyecto . "<br>");
+                    if($row[1]!= "ingrese el nombre aquí"){
+                        $proyecto = $row[1];
                     }
                    $getDescription= true;
                 
@@ -194,15 +195,17 @@
                         }else{
                         //aquí podemos guardar estudiantes de manera sencilla 0 = codigo , 1= apellidos, 2= Nombres
                             $codigo = $row[0];
-                            $apellidos =  $row[1];
-                            $nombres =  $row[2];
-                            $estudiantes = $query->findStudent($codigo);
-                            if($estudiantes['COUNT(*)']==0){
-                                $query-> saveStudent($codigo, $nombres, $apellidos, $idGrado);
-                            }
-                            $equipocreado = $query->equipoExiste($codigo, $idproyecto);
-                            if($equipocreado['COUNT(*)']==0){
-                                $query-> saveTeam($codigo, $idproyecto);
+                            if(is_numeric($codigo)){
+                                $apellidos =  $row[1];
+                                $nombres =  $row[2];
+                                $estudiantes = $query->findStudent($codigo);
+                                if($estudiantes['COUNT(*)']==0){
+                                    $query-> saveStudent($codigo, $nombres, $apellidos, $idGrado);
+                                }
+                                $equipocreado = $query->equipoExiste($codigo, $idproyecto);
+                                if($equipocreado['COUNT(*)']==0){
+                                    $query-> saveTeam($codigo, $idproyecto);
+                                }
                             }
                         }
                   }
@@ -210,7 +213,6 @@
             }
          
         }
-    }
     header('Location: http://creaj21/students/index.php');
     
 
