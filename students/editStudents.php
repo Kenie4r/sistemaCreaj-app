@@ -22,7 +22,7 @@ $grado = $consulta->getGradeById($estudiantes);
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../js/script-newRubric.js"></script>
+    <script src="../js/script-newStudents.js"></script>
     <script src="../Dashboard/button.js"></script>
 </head>
 <body class="bg-">
@@ -33,10 +33,10 @@ require('../Dashboard/Dashboard.php');
         <h1 class="text-center w-3/4 lg:w-full lg:text-5xl outline-none focus:border-gray-500 border-b-2 focus:border-solid mt-8">Editar datos del estudiante</h1>
         <div class="grid grid-cols-1 lg:grid-cols-2">
             <div class="flex lg:m-9">
-                <div class="lg:m-2">
-                    <a href="" id="btnSubmit" class=" block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700"><span class="icon-checkmark"></span><input type="submit" value="Guardar"> </a>
+            <div class="lg:m-2">
+                    <p id="btnSubmit" class="lg:m-5 md:m-3 sm:m-3 block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700 cursor-pointer"><span class="icon-checkmark"></span> Guardar</p>
                 </div>
-                <div class="mx-2 lg:m-2">
+                <div class="lg:mt-7 md:mt-3 mx-2 lg:m-2">
                     <a href="index.php" class="block text-red-600 border-red-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-red-600"><span class='icon-cross'></span> Cancelar</a>
                 </div>
             </div>
