@@ -15,8 +15,8 @@
             if($ngraded['COUNT(*)']>0){
                 $materia = $query->getMatterById($a);
                 $html .= "
-                <div class='bg-white w-full shadow-xl p-2 flex flex-row justify-between my-3'>
-                <div class='text-center'>
+                <div class='bg-white w-full shadow-xl p-2 flex flex-row justify-between items-centermy-3'>
+                <div class='text-center w-8/12'>
                     <h1 class='text-2xl'>{$materia['nombre']}</h1>
                 </div>
                 <!--Un botón para seleccionar al grado-->
