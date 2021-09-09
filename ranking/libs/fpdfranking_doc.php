@@ -44,7 +44,7 @@ $gradoinfo = $query-> getGradobyID($idGrado);
         foreach($jurados as $camp){
             $dataUser = $query->getUserById($camp['usuario_idUsuario']);
                 $fpdf->cell(30,10,'#', 1,0, 'C');
-                $fpdf->Cell(250,10,utf8_decode("El usuario : {$dataUser['nombres']} {$dataUser['apellidos']} califico este proyecto con:  {$camp['puntaje']} puntos. " ),1,1,'c');
+                $fpdf->Cell(250,10,utf8_decode("El usuario : {$dataUser['nombres']} {$dataUser['apellidos']} calificó este proyecto con:  {$camp['puntaje']} puntos. " ),1,1,'c');
             
             //$txtJurados .= "El Jurado " .$camp['usuario_idUsuario'] . " entrego ". $camp['puntaje']. "PUNTOS";
         }
