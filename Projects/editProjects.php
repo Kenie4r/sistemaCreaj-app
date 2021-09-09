@@ -36,13 +36,9 @@ comparacionFecha("Ingreso de proyectos");
             <div class="flex flex-col m-9">
                 <div class="flex flex-row items-center text-gray-500 text-3xl">
                     <div id="ctNR" class="flex flex-row items-center content-center border-b-2 border-solid border-green-700">
-                        <input class="w-3/4 lg:w-full lg:text-5xl outline-none" type="text" name="txtNombre"  value="<?php echo $projects[$i]['nombreProyecto'] ?>" maxlength="45" required>
+                        <input class="w-3/4 lg:w-full lg:text-5xl outline-none" type="text" name="txtNombre" readonly value="<?php echo $projects[$i]['nombreProyecto'] ?>" maxlength="45" required>
                     </div>
-                    <label for="txtNombreRubrica" title="Editar" ><span class="icon-pencil"></span></label>
-                    <input type="checkbox" name="ckbNameValidate" id="ckbNameValidate" class="hidden" disabled>
-                </div>
-                <div>
-                    <p class="text-green-700" id="lbMensajeNR">Nombre válido</p>
+               
                 </div>
             </div>
             <div class="flex lg:justify-end ml-9 lg:m-9">
