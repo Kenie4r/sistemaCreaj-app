@@ -76,6 +76,7 @@ comparacionFecha("Ingreso de nuevos usuarios");
 
     ?>
                             <option value="c">Técnico - Científico</option>
+                            <option value="i">Instructor</option>
                             <option value="j">Jurado</option>
                         </select>
                     </div>

@@ -80,6 +80,18 @@
                   break;
                   ?>
                   <?php
+                  case 'i':
+
+                  ?>
+                  <a href="../Dashboard/profile.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Inicio</a>
+      
+                  <a href="../ranking/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Ranking</a>
+
+                  <a href="../Projects/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Proyectos</a>
+                  <?php
+                  break;
+                  ?>
+                  <?php
                   case 'j':
 
                   ?>

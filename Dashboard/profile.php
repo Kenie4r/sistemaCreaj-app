@@ -64,6 +64,9 @@
             case 'c':
                 echo "Tecnico cientifico" ;
             break;
+            case 'i':
+              echo "Instructor" ;
+              break;
             case 'j':
                 echo "Jurado";
             break;
