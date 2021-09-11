@@ -227,11 +227,12 @@ class Query{
     }
 
     //guardar puntos
-    public function savePuntos($puntos, $criterio){
+    public function savePuntos($puntos, $criterio, $user){
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql= "INSERT INTO puntos(puntos, criterios_idcriterios) VALUES(:puntos , :criterio)";
+        $sql= "INSERT INTO puntos VALUES(NULL, :usuarioID, :criterio, :puntos)";
         $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":usuarioID", $user);
         $sentencia->bindParam(":puntos", $puntos);
         $sentencia->bindParam(":criterio", $criterio);
         if(!$sentencia){

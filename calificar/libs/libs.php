@@ -47,7 +47,7 @@
         }
 
         //escribiremos todo el HTML con los datos obtenidos
-        $html="<body  class='bg-teal-900 w-screen h-screen rounded-lg overflow-auto'>
+        $html="<body  class='bg-teal-900 w-screen h-screen rounded-lg overflow-x-hidden'>
         <div class='container bg-white w-9/12 max-w-xl  m-auto max-w-xl  rounded-2xl mt-2'>
                 <div class='bg-gray-100 p-2'>
                     <div class='text-2xl font-bold uppercase'>
@@ -104,7 +104,7 @@
         $html.= "
         <div class='bg-gray-100'>
         <form action='libs/saveGrade.php' method='post' id='form'>
-            <input type='hidden' name='txtuserID' id=='txtuserID' value='$userID'>
+            <input type='hidden' name='txtuserID' id='txtuserID' value='$userID'>
             <input type='hidden' name='txtIdTeam'  id='txtIdTeam'  value='$idTeam'>
             <div class='text-center text-2xl'>
                 <h2>Evaluación de criterios</h2>
@@ -149,13 +149,13 @@
                         $j++;
                     }
                 }   
-                $html = "<input type='hidden' name='subjecttxt' value='{$idMateria}'> ";
-                $html .= "<input type='hidden' name='levelttxt' value='{$idGrado}'> ";
+                $html = "<input type='hidden' name='subjecttxt' id='materiaID' value='{$idMateria}'> ";
+                $html .= "<input type='hidden' name='levelttxt' id='gradoID' value='{$idGrado}'> ";
                 for($index = 0; $index<count($myCID); $index++){
                     $number = $index+1;
                     $html.=" 
                     <div class='tab w-full overflow-hidden border-t criterio p-5 h-full' id='criterio{$number}'>
-                    <input type='hidden' name='' value='{$criterioValue[$index]}' id='valor{$number}'>
+                    <input type='hidden' class='porcentajes' value='{$criterioValue[$index]}' id='valor{$number}'>
                     <input type='hidden' name='idCriterio' value='$myCID[$index]' id='idC{$number}' >
                     <input type='radio' name='rdbCriterio' class='absolute opacity-0 rdbCriterio'  id='btnCriterio_{$number}'>
                     <input type='hidden' id='Final{$number}' value='' class='final'>

@@ -305,11 +305,35 @@ function crearNotificacion(tipo, mensaje, opcion1, opcion2){
 
 
     $('#option-1').click(function(){
+    
+
         if(opcion1=="Volver atras"){
             window.location = "index.php";
         }else{
-            $('#form').submit();
-        }
+            var notafinal = $('#inputGrade').val(), team = $('#txtIdTeam').val();
+            var user = $('#txtuserID').val(), materia = $('#materiaID').val(), grado = $('#gradoID').val();
+            var inputsCriterio = document.getElementsByClassName('final');
+            var porcentajes = document.getElementsByClassName('porcentajes');
+            var inputsCriteriosID = document.getElementsByName('idCriterio');
+            var notas = new Array(), criterios = new Array();
+            for(var a = 0; a<inputsCriterio.length; a++){
+                notas[a] = inputsCriterio[a].value / (porcentajes[a].value/100);
+                criterios[a] = inputsCriteriosID[a].value;
+             }
+           $.post("libs/saveGrade.php",{
+                'finalGrade': notafinal ,
+                'txtIdTeam': team,
+                'txtuserID':  user,
+                'subjecttxt': materia,
+                'levelttxt': grado,
+                'notasc': notas,
+                'criterios': criterios
+            }, function(result){
+                $('#notification').remove();
+                document.body.innerHTML += result;
+            }, 
+            "html");
+      }
     })
     $('#option-2').click(function(){
         $('#notification').remove();

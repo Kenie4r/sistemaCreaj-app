@@ -10,10 +10,10 @@
             $_SESSION['nombres']=$usuario['nombres'];
             $_SESSION['apellidos']=$usuario['apellidos'];
             $_SESSION['email']=$usuario['email'];
-            header('Location: http://creaj21/Dashboard/profile.php');
+            header('Location: /Dashboard/profile.php');
             return true;
         }else{
-            header('Location: http://creaj21/');
+            header('Location: index.php');
             return false;
         }
     }
@@ -22,13 +22,13 @@
         if( !empty($_SESSION['uid']) ){
             return $_SESSION['uid'];
         }else{
-            header("Location: http://creaj21/");
+            header("Location: index.php");
         }
     }
     function cerrar(){
         session_destroy($_SESSION['uid']);
         session_destroy($_SESSION['rol']);
-        header("Location: http//creaj21/");
+        header("Location: ../index.php");
     }
 
    
