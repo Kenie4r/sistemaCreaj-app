@@ -9,6 +9,7 @@ $consulta = new Query; //Crear una consulta
 //$jurados = $consulta->getJurys(); //Obtener datos proyectos
 //Obtener datos rubrica
 //Obtener notas obtenidas
+$jurados = ["Diego Mancía", "Pedro Gómez"];//Obtener jurados
 
 //Variables
 $nombreProyecto = "Creacion de PDF";
@@ -51,18 +52,24 @@ $pdf->Cell(250,10,utf8_decode("Nota final obtenida:"), 1, 0, 'L'); //Clave
 $pdf->SetFont('Arial','',15); //Fuente Normal
 $pdf->Cell(27,10,utf8_decode($notaFinalProyecto), 1, 1, 'R'); //Contenido
 
-//Se añade una nueva página
-$pdf->AddPage();
-
-//ENCABEZADO: EVALUACIONES
-$pdf->SetFont('Arial','B',15); //Fuente Negrita
-$pdf->Cell(0,10,utf8_decode("Evaluaciones"), 0, 2, 'C'); //Titulo
-$pdf->Ln(); //Salto de línea
-
 //TABLA: EVALUACIONES
 for ($i=0; $i < 2; $i++) {
+    //Variables
+    $nombreJuradoActual = "Jurado: " . $jurados[$i];
+
+    //Se añade una nueva página
+    $pdf->AddPage();
+
+    if($i == 0){
+        //ENCABEZADO: EVALUACIONES
+        $pdf->SetFont('Arial','B',15); //Fuente Negrita
+        $pdf->Cell(0,10,utf8_decode("Evaluaciones"), 0, 2, 'C'); //Titulo
+        $pdf->Ln(); //Salto de línea
+    }
+
     $pdf->SetFont('Arial','B',15); //Fuente Negrita
-    $pdf->Cell(0,10,utf8_decode("Jurado: Diego Mancía"), 1, 1, 'C'); //Jurado
+    $pdf->Cell(0,10,utf8_decode($nombreJuradoActual), 1, 1, 'C'); //Jurado
+
     //Criterios de rubrica
     for ($j=0; $j < 2; $j++) { 
         //Variables
@@ -85,8 +92,6 @@ for ($i=0; $i < 2; $i++) {
         $pdf->MultiCell(0,10,utf8_decode("Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur dolore, quidem hic debitis repudiandae nihil fugit modi. Suscipit eius, ipsam nisi eum quam laudantium hic sapiente cupiditate quia iste provident."), "LRB", 'L');
     }
 
-    //Se añade una nueva página
-    $pdf->AddPage();
 }
 
 //Obtener nombre del evento para el pdf

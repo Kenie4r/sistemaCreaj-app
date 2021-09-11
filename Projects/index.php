@@ -32,9 +32,15 @@ $idProyecto=$consulta->getIdprojectsByNombre();
             <div class="mb-7 lg:m-0">
                 <h1 class="text-5xl text-gray-500">Proyectos</h1>
             </div>
+<?php
+if( $_SESSION['rol'] == 'a' || $_SESSION['rol'] == 'c'){
+?>
             <div class="flex lg:justify-end">
                 <a href="newProjects.php" class="text-blue-600 border-blue-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-blue-600"><span class="icon-plus"></span> Nuevo proyecto</a>
             </div>
+<?php
+}
+?>
         </div>
         <?php
 if(!empty($Proyecto)){
