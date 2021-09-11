@@ -15,6 +15,7 @@
                 <link rel="stylesheet" href="../recursos/icons/style.css">
                 <link rel="stylesheet" href="css/styles_insertG.css">
                 <script src="../js/script_insertGrades.js"></script>
+                <script src="../Dashboard/js/button2.js"></script>
             </head>
             
         EDO;
@@ -222,6 +223,7 @@ HEREDOC;
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
             <link rel="stylesheet" href="../recursos/icons/style.css">
             <script src="../js/script-search-project.js"></script>
+            <script src="../Dashboard/js/button2.js"></script>
         </head>
         <body>
             <div class= h-screen bg-white w-screen '>
