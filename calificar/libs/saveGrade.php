@@ -15,7 +15,7 @@
   $result = $query->savePuntaje($idTeam, $userID, $notaFinal);
     if($result =="Registro hecho"){
         for($index = 0; $index<count($criterios); $index++){
-            $saveGrades = $query->savePuntos($notasobtenidas[$index], $criterios[$index], $userID);
+            $saveGrades = $query->savePuntos($notasobtenidas[$index], $criterios[$index], $userID, $idTeam);
          }
        $counted = $query->getCountRatedProject($idTeam);
        if($counted['COUNT(*)']>1){

@@ -35,9 +35,32 @@
             //obtener todos los que calificaron
             $jurados = $query->getProjectsRateData($idProyecto);
             foreach($jurados as $jury){
+                //obtenemos la infotmación del usuario como nombres y apellidos
                 $infoPersonal  = $query->getUserById($jury['usuario_idUsuario']);
                 echo("<br/><b>Nombre del jurado</b>: <br/>{$infoPersonal['apellidos']} {$infoPersonal['nombres']}");
+                //luego en la tabla puntos sacamos aquellos que son del usuario y le pertenecen al proyecto
+                $criteriosC = $query->getPointsbyUserandTeam($jury['usuario_idUsuario'], $idProyecto);
                 
+                foreach($criteriosC as $criterio){
+                    //por cada uno vamos a obtener los datos 
+                   $criterioInfo = $query->getCriterioByID($criterio['criterios_idcriterios']);
+                   echo("<br/>" . $criterioInfo['titulo'] . " {$criterioInfo['puntaje']} PUNTOS");
+                   if($criterio['puntos']<=69){
+                    $nivel = "Inicial receptivo";
+                   }else if($criterio['puntos']>69 && $criterio['puntos']<80 ){
+                    $nivel = "Básico";
+                   }else if($criterio['puntos']>79 && $criterio['puntos']<90){
+                    $nivel = "Autonómo";
+                   }else{   
+                    $nivel = "Estratégico";
+                   }
+                   $naprobacion = $query-> getRange($criterio['criterios_idcriterios'], $nivel);
+            
+                   echo("<br/> Nivel obtenido: " . $naprobacion['rango']." : " . round($criterio['puntos'], 2));
+                   echo("<br/>Descripción: " .$naprobacion['descripcion']);
+                }
+
+                echo('<br/>Nota final: ' . $jury['puntaje']);
             }
 
 

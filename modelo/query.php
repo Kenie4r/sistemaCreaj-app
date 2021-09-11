@@ -227,13 +227,14 @@ class Query{
     }
 
     //guardar puntos
-    public function savePuntos($puntos, $criterio, $user){
+    public function savePuntos($puntos, $criterio, $user, $proyecto){
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql= "INSERT INTO puntos VALUES(NULL, :usuarioID, :criterio, :puntos)";
+        $sql= "INSERT INTO puntos VALUES(NULL, :usuarioID, :criterio,:proyecto,  :puntos)";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":usuarioID", $user);
         $sentencia->bindParam(":puntos", $puntos);
+        $sentencia->bindParam(":proyecto", $proyecto);
         $sentencia->bindParam(":criterio", $criterio);
         if(!$sentencia){
             return "Error, existe un fallo";
@@ -499,6 +500,35 @@ class Query{
             return $result;
         }
     }
+    public function getPointsbyUserandTeam($usuario, $team){
+        $model = new Conection();
+        $conexion = $model->_getConection();
+        $sql = "SELECT * FROM `puntos` WHERE puntos.usuario_idUsuario =:user AND puntos.proyecto_idproyecto =:proyecto ";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(':user', $usuario);
+        $sentencia->bindParam(':proyecto', $team);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+    }
+    public function getCriterioByID($criterio){
+        $model = new Conection();
+        $conexion = $model->_getConection();
+        $sql = "SELECT * FROM `criterios` WHERE criterios.idcriterios = :idCriterio";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(':idCriterio', $criterio);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
+    }
     //obtener información de 1 nivel por el IDCRITERIO y RANGO
     public function getRange($idCriterio, $rangeName){
         $model = new Conection();
@@ -508,7 +538,7 @@ class Query{
         $sentencia->bindParam(':idCriterio', $idCriterio);
         $sentencia->bindParam(':rangeName', $rangeName);
         if(!$sentencia){
-            return false;
+          return   print_r($conexion->errorInfo());
         }else{
             $sentencia->execute();
             $result = $sentencia->fetch(PDO::FETCH_ASSOC);
