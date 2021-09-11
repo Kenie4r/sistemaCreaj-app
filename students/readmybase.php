@@ -213,7 +213,7 @@
             }
          
         }
-    header('Location: http://creaj21/students/index.php');
+    header('Location: index.php');
     
 
 ?>
