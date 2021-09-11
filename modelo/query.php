@@ -1542,6 +1542,22 @@ class Query{
         }
 
     }
+    public function getRankingbyID($idProject){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT * FROM ranking WHERE ranking.proyecto_idproyecto = :idproyecto LIMIT 1";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":idproyecto", $idProject);
+        if(!$sentencia){
+            return "";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetch();
+            
+            return $resultado;
+        }
+
+    }
     //obtener grado por id
     public function getGradobyID($idGrado){
         $modelo = new Conection;
