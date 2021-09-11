@@ -17,6 +17,7 @@ require_once("soporteStudents.php")
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js"></script>
     <script src="../../Dashboard/button.js"></script>
+    <script src="../Dashboard/js/button2.js"></script>
 </head>
 <body class="bg-">
 <?php

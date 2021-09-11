@@ -14,12 +14,13 @@ $projects = $consulta->getProjectById($idproyecto);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crea J | Nueva rúbrica</title>
+    <title>Crea J | Ver Proyecto</title>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/script-newProjects.js"></script>
     <script src="../Dashboard/button.js"></script>
+    <script src="../Dashboard/js/button2.js"></script>
     <script src="StudentsGrade.js"></script>
 </head>
 <body>

@@ -23,6 +23,7 @@ $Datoestudiantes= $consulta->updateEstudiante($idestudiante, $name, $last_name, 
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../Dashboard/button.js"></script>
+    <script src="../Dashboard/js/button2.js"></script>
 </head>
 <body>
 <?php

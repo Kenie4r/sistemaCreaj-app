@@ -11,7 +11,7 @@ $idProyecto=$consulta->getIdprojectsByNombre();
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title></title>
+    <title>Crea J | Proyectos</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -19,6 +19,7 @@ $idProyecto=$consulta->getIdprojectsByNombre();
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="../js/script-Projects.js"></script>
     <script src="../Dashboard/button.js"></script>
+    <script src="../Dashboard/js/button2.js"></script>
 </head>
 <body >
     <?php
