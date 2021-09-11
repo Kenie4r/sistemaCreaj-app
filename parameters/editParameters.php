@@ -38,16 +38,16 @@ require('../Dashboard/Dashboard.php');
             </div>
         </div>
         <div class="flex grid grid-cols-1 lg:grid-cols-3 m-9 content-center lg:justify-center ml-24 lg:mt-0 md:mt-8">
-                <div class="lg:m-0 md:m-5 sm:m-5 content-center lg:justify-center md:justify-center sm:justify-center"> 
-                    <div class="flex flex-row items-center w-full lg:w-4/5 md:w-full h-full  border-gray-700 border-solid border-2 rounded-lg ">
-                        <label for="txtinicio" class="w-full lg:w-4/5 p-2 bg-gray-700 text-white">Fecha de inicio</label>
+                <div class="ml-9 lg:m-0 md:m-5 sm:m-5 content-center lg:justify-center md:justify-center sm:justify-center"> 
+                    <div class="flex flex-row items-center w-full lg:w-full md:w-full lg:h-full sm:h-full border-gray-700 border-solid border-2 rounded-lg ">
+                        <label for="txtinicio" class="w-full lg:w-full sm:w-full sm:h-full p-2 bg-gray-700 text-white">Fecha de inicio</label>
                         <input class="lg:w-full md:w-full sm:w-full p-1.5 rounded-r-lg outline-none" type="date" name="txtFechaInicio" value="<?php echo $FechaInico;?>" >
                     </div>
                </div>
                 <div class="flex lg:m-0 md:m-5 sm:m-5 content-center lg:justify-center"> 
-                    <div class="flex flex-row items-center w-full lg:w-4/5 h-full lg:m-0 border-gray-700 border-solid border-2 rounded-lg ">
-                        <label for="txtfin" class="w-full lg:w-4/5 p-2 bg-gray-700 text-white">Fecha de cierre</label>
-                        <input class="p-1.5 w-full rounded-r-lg outline-none" type="date" name="txtFechaFin" value="<?php echo $FechaFin;?>" >
+                    <div class="flex flex-row items-center w-full lg:w-full h-full lg:m-0 border-gray-700 border-solid border-2 rounded-lg ">
+                        <label for="txtfin" class="w-full lg:w-full p-2 bg-gray-700 text-white">Fecha de cierre</label>
+                        <input class="p-1.5 w-full sm:w-full sm:h-full rounded-r-lg outline-none" type="date" name="txtFechaFin" value="<?php echo $FechaFin;?>" >
                    </div>
                </div>
         </div>

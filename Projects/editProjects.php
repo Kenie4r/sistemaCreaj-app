@@ -29,18 +29,14 @@ require_once("../parameters/soporteParametros.php");
 comparacionFecha("Ingreso de proyectos");
 ?>
  <form id="frmProject" class="container box-content" method="POST" action="updateProjects.php">
-        <div class="grid grid-cols-1 lg:grid-cols-2">
+        <div class="grid grid-cols-1 lg:grid-cols-2 ">
              <?php
             for ($i=0; $i < count($projects); $i++) { 
             ?>
             <div class="flex flex-col m-9">
                 <div class="flex flex-row items-center text-gray-500 text-3xl">
                     <div id="ctNR" class="flex flex-row items-center content-center border-b-2 border-solid border-green-700">
-<<<<<<< Updated upstream
                         <input class="w-3/4 lg:w-full lg:text-5xl outline-none" type="text" name="txtNombre" readonly value="<?php echo $projects[$i]['nombreProyecto'] ?>" maxlength="45" required>
-=======
-                        <input class="w-3/4 lg:w-full lg:text-5xl md:text-3xl outline-none" type="text" name="txtNombre"  value="<?php echo $projects[$i]['nombreProyecto'] ?>" maxlength="45" required>
->>>>>>> Stashed changes
                     </div>
                
                 </div>
@@ -51,29 +47,29 @@ comparacionFecha("Ingreso de proyectos");
                 </div>
             </div>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-3 m-8 ">
-        <div class="lg:w-full md:w-full "> 
-                    <div class="lg:justify-center my-10 flex flex-row items-center lg:h-3/5 md:h-2/5 sm:h-3/5 border-gray-700 border-solid border-2 rounded-lg">
-                        <label for="txtID" class="p-10 items-center p-2 bg-gray-700 text-white lg:h-full md:h-full sm:h-full">Descripcion</label>
-                        <p class="lg:justify-center md:w-4/5 p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtDescripcion" value="" ><?php echo $projects[$i]['descripcion'] ?></p>
-                    </div>
-            </div>
-            <div class="lg:mt-10 md:mt-5 lg:ml-9">
-                <div class="flex flex-row items-center w-full lg:w-4/5 border-gray-700 border-solid border-2 rounded-lg">
-                    <label for="txtMateria" class="p-2 bg-gray-700 text-white">Materia</label>
-                    <p class="lg:w-full md:w-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtDescripcion" value="" ><?php echo $consulta->getNameMateria($projects[$i]['materia_idmateria']); ?> </p>
-                </div>
-            </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 m-8 ">
+
             <div class="lg:mt-10 lg:ml-9">
-                <div class="flex flex-row items-center w-full lg:w-4/5 border-gray-700 border-solid border-2 rounded-lg">
-                    <label for="txtNivel" class="p-2 bg-gray-700 text-white">Grado</label>
-                    <p class="w-1/4	 lg:w-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtDescripcion" value="" ><?php echo $consulta->getNameGrado($projects[$i]['grado_idgrado']); ?> </p>
+                <div class="flex flex-row items-center w-full lg:w-full border-gray-700 border-solid border-2 rounded-lg">
+                    <label for="txtMateria" class="md:h-full p-2 bg-gray-700 text-white">Materia</label>
+                    <p class="lg:w-full lg:h-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtDescripcion" value="" ><?php echo $consulta->getNameMateria($projects[$i]['materia_idmateria']); ?> </p>
                 </div>
             </div>
-       
-            <div class="md:w-full">
-                <div class="my-12 flex flex-row items-center lg:w-full lg:h-3/5 md:h-full sm:h-full border-gray-700 border-solid border-2 rounded-lg">
-                    <label for="txtNivel" class="p-10 items-center p-2 bg-gray-700 text-white lg:h-full md:h-full sm:h-full">Alumnos</label>
+            <div class="lg:mt-10 lg:ml-9 sm:mt-10">
+                <div class="flex flex-row items-center w-full lg:w-full border-gray-700 border-solid border-2 rounded-lg">
+                    <label for="txtNivel" class="p-2 bg-gray-700 text-white">Grado</label>
+                    <p class=" lg:w-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtDescripcion" value="" ><?php echo $consulta->getNameGrado($projects[$i]['grado_idgrado']); ?> </p>
+                </div>
+            </div>
+            <div class="lg:mt-20  lg:ml-9 sm:ml-0 sm:-mt-1"> 
+                    <div class="my-9 flex flex-row items-center lg:w-full lg:h-full border-gray-700 border-solid border-2 rounded-lg">
+                        <label for="txtID" class=" lg:h-full p-10 items-center p-2 bg-gray-700 text-white">Descripcion</label>
+                        <p class="lg:justify-center md:w-full p-1.5 outline-none focus:border-gray-700 border-b-2 focus:border-solid" type="text" name="txtDescripcion" value="" ><?php echo $projects[$i]['descripcion'] ?></p>
+                    </div>
+            </div>       
+            <div class="lg:mt-20 lg:ml-9 sm:-mt-10">
+                <div class="my-9 flex flex-row items-center lg:w-full lg:h-full sm:h-full border-gray-700 border-solid border-2 rounded-lg">
+                    <label for="txtNivel" class="p-10 items-center p-2 bg-gray-700 text-white lg:h-full sm:h-full ">Alumnos</label>
                     <?php 
                       $proyecto_idproyecto= $_GET['idproject'];
                       $estudiante = $consulta->getNameApellidos($proyecto_idproyecto); 
