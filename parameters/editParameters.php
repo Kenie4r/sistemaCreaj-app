@@ -28,8 +28,9 @@ require('../Dashboard/Dashboard.php');
  <form id="frmRubric" class="container box-content" method="POST" action="updateParameters.php?idparam= <?php echo $idparametros; ?>">
     <h1 class="lg:justify-center text-center lg:w-3/4 lg:w-full lg:text-5xl md:text-4xl sm:text-2xl outline-none focus:border-gray-500 border-b-2 focus:border-solid mt-8">Modificar parámetro</h1>
         <div class="grid grid-cols-1 lg:grid-cols-2 ml-24">
+            
             <div class="flex lg:m-9">
-                <div class="lg:m-2">
+                <div class="mx-2 lg:m-2 sm:-mt-3">
                 <a href="" id="btnSubmit" class=" lg:m-5 md:m-5 sm:m-5 block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700"><span class="icon-checkmark"></span><input type="submit" value="Guardar"> </a>
                 </div>
                 <div class="mx-2 lg:m-2">
@@ -37,14 +38,14 @@ require('../Dashboard/Dashboard.php');
                 </div>
             </div>
         </div>
-        <div class="flex grid grid-cols-1 lg:grid-cols-3 m-9 content-center lg:justify-center ml-24 lg:mt-0 md:mt-8">
-                <div class="ml-9 lg:m-0 md:m-5 sm:m-5 content-center lg:justify-center md:justify-center sm:justify-center"> 
+        <div class="lg:ml-24 sm:ml-28 flex lg:m-0 md:m-5 sm:m-5 content-center lg:justify-center">
+                <div class=" lg:m-0 md:m-5 sm:m-5 content-center lg:justify-center md:justify-center sm:justify-center"> 
                     <div class="flex flex-row items-center w-full lg:w-full md:w-full lg:h-full sm:h-full border-gray-700 border-solid border-2 rounded-lg ">
                         <label for="txtinicio" class="w-full lg:w-full sm:w-full sm:h-full p-2 bg-gray-700 text-white">Fecha de inicio</label>
                         <input class="lg:w-full md:w-full sm:w-full p-1.5 rounded-r-lg outline-none" type="date" name="txtFechaInicio" value="<?php echo $FechaInico;?>" >
                     </div>
                </div>
-                <div class="flex lg:m-0 md:m-5 sm:m-5 content-center lg:justify-center"> 
+                <div class="lg:ml-24 sm:ml-16 flex lg:m-0 md:m-5 sm:m-5 content-center lg:justify-center"> 
                     <div class="flex flex-row items-center w-full lg:w-full h-full lg:m-0 border-gray-700 border-solid border-2 rounded-lg ">
                         <label for="txtfin" class="w-full lg:w-full p-2 bg-gray-700 text-white">Fecha de cierre</label>
                         <input class="p-1.5 w-full sm:w-full sm:h-full rounded-r-lg outline-none" type="date" name="txtFechaFin" value="<?php echo $FechaFin;?>" >
