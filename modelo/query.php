@@ -976,6 +976,22 @@ class Query{
             return $resultado;
         }
     }
+//ver 2
+    public function getGradeById2($idgrado){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM grado WHERE idgrado = :gradoID";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":gradoID", $idgrado);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
     public function getLevelbyGradeID($idgrado){
         $modelo = new Conection();
         $conexion = $modelo->_getConection();

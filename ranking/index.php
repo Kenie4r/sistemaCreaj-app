@@ -9,7 +9,7 @@
     $create->header();
     require('../Dashboard/Dashboard.php');
     $create->body();
-    $create->generateGrades();
+    $create->generateGrades($_SESSION['rol'], $_SESSION['uid']);
     $create->creatematerias();
 
 ?>

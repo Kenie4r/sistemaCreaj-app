@@ -13,6 +13,7 @@
                 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
                 <link rel='stylesheet' href='../../recursos/icons/style.css'>
                 <script src='../js/script-ranking.js'></script>
+                <script src="../Dashboard/js/button2.js"></script>
             </head>
             <body>
             EDO;
@@ -34,6 +35,7 @@
                 <link rel='stylesheet' href='../recursos/icons/style.css'>
                 <link rel='stylesheet' href='../recursos/icons/style.css'>
                 <script src='../js/script-ranking.js'></script>
+                <script src="../Dashboard/js/button2.js"></script>
             </head>
             <body class='overflow-x-hidden'>
             EDO;
@@ -57,33 +59,60 @@
 
             print($html);
         }
-        public function generateGrades(){
+        public function generateGrades($type, $username){
             $blockhtml = "";
             $query = new Query();
-            $grados = $query->getGrado();
-            foreach($grados as $campo){
-               //vamos a escribir cada uno de los grados dentro del box
-               $nProyectos  = $query->getCountPojectsByGrade($campo['idgrado']);
-             if($nProyectos['COUNT(*)']>0){
-                $blockhtml .= "<div class='bg-white w-full shadow-xl p-2 flex flex-row justify-between my-2'>
-                <!--Primero irá el nombre del grado-->
-                <div class='text-center'>
-                    <h1 class='text-2xl'>{$campo['nombre']}  {$campo['seccion']}</h1>
-                </div>
-                <!--Un botón para seleccionar al grado-->
-                <div>
-                    <div class='button p-2 border border-2 bg-blue-500 text-white cursor-pointer btnGrade' id='btn-{$campo['idgrado']}'>
-                        <p>Ver materias</p>
-                    </div>
-                </div>
-                 </div>";
-
-               }
+            if($type == "a" || $type=="t"){
+                $grados = $query->getGrado();
+            }else if($type == "i"){
+                $userdata = $query->getUserByUsername($username);
+                $info = $query->getProjectsinfo($userdata['idUsuario']);
+                foreach($info as $datasc){
+                    $grado = $query->getGradeById2($datasc['materia_idmateria']);
+                    foreach($grado as $campo){
+                        //vamos a escribir cada uno de los grados dentro del box
+                        $nProyectos  = $query->getCountPojectsByGrade($campo['idgrado']);
+                        if($nProyectos['COUNT(*)']>0){
+                        $blockhtml .= "<div class='bg-white w-full shadow-xl p-2 flex flex-row justify-between my-2'>
+                        <!--Primero irá el nombre del grado-->
+                        <div class='text-center'>
+                         <h1 class='text-2xl'>{$campo['nombre']}  {$campo['seccion']}</h1>
+                        </div>
+                        <!--Un botón para seleccionar al grado-->
+                        <div>
+                            <div class='button p-2 border border-2 bg-blue-500 text-white cursor-pointer btnGrade' id='btn-{$campo['idgrado']}'>
+                                <p>Ver materias</p>
+                            </div>
+                        </div>
+                        </div>";
+                        }
+                    }
+                }
             }
-            $blockhtml.="</div>
-            </div>";
-            print($blockhtml);
-
+     
+            if(!empty($grados) && $type!="i"){
+                foreach($grados as $campo){
+                    //vamos a escribir cada uno de los grados dentro del box
+                    $nProyectos  = $query->getCountPojectsByGrade($campo['idgrado']);
+                    if($nProyectos['COUNT(*)']>0){
+                    $blockhtml .= "<div class='bg-white w-full shadow-xl p-2 flex flex-row justify-between my-2'>
+                    <!--Primero irá el nombre del grado-->
+                    <div class='text-center'>
+                     <h1 class='text-2xl'>{$campo['nombre']}  {$campo['seccion']}</h1>
+                    </div>
+                    <!--Un botón para seleccionar al grado-->
+                    <div>
+                        <div class='button p-2 border border-2 bg-blue-500 text-white cursor-pointer btnGrade' id='btn-{$campo['idgrado']}'>
+                            <p>Ver materias</p>
+                        </div>
+                    </div>
+                    </div>";
+                    }
+                }
+            }
+                $blockhtml.="</div>
+                </div>";
+                print($blockhtml);
         }
         public function creatematerias(){
             $html = <<<EDO
