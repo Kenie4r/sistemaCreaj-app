@@ -83,6 +83,9 @@ comparacionFecha("Ingreso de nuevos usuarios");
                 </div>
             </div>
             <div class="flex justify-center">
+                <div>
+                    <input type="checkbox" name="ckEstadoForm" id="ckEstadoForm" class="hidden" disabled>
+                </div>
                 <div class="lg:m-2">
                     <a href="#" id="btnSubmit" class="block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700"><span class="icon-checkmark"></span> Guardar</a>
                 </div>
@@ -91,6 +94,27 @@ comparacionFecha("Ingreso de nuevos usuarios");
                 </div>
             </div>
         </form>
+        <article id="sending" class="hidden fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+			<div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+				<div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+                <!-- Contenedor alerta -->
+                <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                    <div class="flex flex-col">
+                        <div class="flex items-center justify-center pt-6 px-6">
+                            <div>
+                                <p class="text-2xl leading-6 font-medium text-yellow-900">Creando Usuario...</p>
+                            </div>
+                        </div>
+                        <div class="p-6 text-center text-4xl text-yellow-900">
+                            <p id="spinnerSending" class="animate-spin mr-3"><span class="icon-spinner2"></span></p>
+                        </div>
+                    </div>
+                    <div class="pb-6 flex justify-center items-center">
+                        <a href="newProfile.php" class="block text-red-600 border-red-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-red-600"><span class='icon-cross'></span> Cancelar</a>
+                    </div>
+				</div>
+			</div>
+		</article>
     </section>
 </body>
 </html>

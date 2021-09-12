@@ -9,11 +9,38 @@
 
 $(document).ready(
     function(){
+        //ROL
+        $("#txtRolProfile").on("input",
+            function(){
+                validateFormUser();
+            }
+        );
+
+        //NOMBRE
+        $("#txtNameProfile").on("input",
+            function(){
+                validateFormUser();
+            }
+        );
+
+        //APELLIDO
+        $("#txtLastNameProfile").on("input",
+            function(){
+                validateFormUser();
+            }
+        );
+
+        //EMAIL
+        $("#txtEmailProfile").on("input",
+        function() {
+            validateFormUser();
+        }
+    );
 
         //Cuando se envio el formulario se validará antes de enviar
         $("#btnSubmit").on("click",
             function(){
-                validateFormUser();
+                submitFormulario();
             }
         )
     }
@@ -26,6 +53,7 @@ function validateFormUser() {
     var apellido = $("#txtLastNameProfile").val();
     var rol = $("#txtRolProfile").val();
     var username = $("#txtUserProfile").val();
+    var ckEstadoFormulario = $("#ckEstadoForm");
     var errores = 0;
 
     //NOMBRE
@@ -55,8 +83,22 @@ function validateFormUser() {
 
     //Si hay errores se muestra un alert, sino se procede con la solicitud
     if(errores > 0){
+        ckEstadoFormulario.prop('checked', false);
+    }else{
+        ckEstadoFormulario.prop('checked', true);
+    }
+}
+
+function submitFormulario() {
+    var estadoFormulario = $("#ckEstadoForm");
+    var frmProfile = $("#frmProfile");
+    var alertaSending = $("#sending");
+    var spinner = $("#spinnerSending");
+
+    if(!(estadoFormulario.is(':checked'))){
         alert("Error: Llene los campos");
     }else{
         frmProfile.submit();
+        alertaSending.removeClass('hidden');
     }
 }
