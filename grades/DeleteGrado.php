@@ -18,6 +18,7 @@ $asign=$consulta->getGradeIdInAssing($id);
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../Dashboard/button.js"></script>
        <title>Borrar grado</title>
+       <script src="../Dashboard/js/button2.js"></script>
    </head>
    <body> 
 
