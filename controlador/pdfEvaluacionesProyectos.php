@@ -200,7 +200,7 @@ function evaluacionProyecto($idproyecto){
                 }else if($criterio['puntos']>69 && $criterio['puntos']<80 ){
                     $nivelCriterio = "Básico";
                 }else if($criterio['puntos']>79 && $criterio['puntos']<90){
-                    $nivelCriterio = "Autonómo";
+                    $nivelCriterio = "Autónomo";
                 }else{   
                     $nivelCriterio = "Estratégico";
                 }
