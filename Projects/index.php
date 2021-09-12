@@ -50,7 +50,13 @@ if(!empty($Proyecto)){
             <div class='flex flex-row'>
                 <input type='text' name='txtBusqueda' id='txtBusqueda' class='p-1 border-gray-700 border-solid border-2 rounded-tl-lg rounded-bl-lg  outline-none' placeholder='Buscar por...'>
                 <select name="sltBusqueda" id="sltBusqueda" class="p-1 border-gray-700 border-solid border-2 rounded-tr-lg rounded-br-lg bg-gray-700 text-white outline-none">
+<?php
+if( $_SESSION['rol'] != 'i' ){
+?>
                     <option value="id">ID</option>
+<?php
+}
+?>
                     <option value="nombre">Nombre</option>
                 </select>
             </div>
@@ -71,34 +77,7 @@ if(!empty($Proyecto)){
                     </tr>
                 </thead>
                 <tbody id="table-body-rubrica" class="bg-gray-200">
-                <?php
-
-if(!empty($Proyecto)){
-    for ($i=0; $i < count($Proyecto); $i++) { 
-        echo "<tr class='lol'>";
-    echo "\t<td class='p-4'>" . $Proyecto[$i]["idproyecto"] . "</td>";
-    echo "\t<td class='p-4'>" . $Proyecto[$i]["nombreProyecto"] . "</td>";
-    echo "\t<td class='p-4'>" . $Proyecto[$i]["descripcion"] . "</td>";
-    $estudiante = $consulta->getNameApellidos($Proyecto[$i]["idproyecto"]); 
-    echo "<td colspan='3' class='p-4' >";
-    for($j=0; $j < count($estudiante); $j++){
-        
-        echo  $estudiante[$j]["nombre"] ." ". $estudiante[$j]["apellidos"]."<br>";
-        
-    }
-    echo "</td>";
-    echo "\t<td class='p-4'><a href='editProjects.php?idproject=" . $Proyecto[$i]["idproyecto"] . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Ver</a></td>";
-    echo "\t<td class='p-4'><a href='deleteProjects.php?idequipo=" . $Proyecto[$i]["idproyecto"] . "' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
-    echo "</tr>";
-    }
-}else{
-    echo "<tr class='lol'>";
-    echo "\t<td colspan='5' class='p-4'><span class='icon-blocked'></span> No hay proyectos  en el sistema<td>";
-    echo "</tr>";
-}
-
-?>
-  </tbody>
+                </tbody>
                 <tfoot class="bg-gray-900">
                     <tr>
                         <td colspan="8" class="rounded-b-lg p-2"> </td>

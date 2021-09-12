@@ -2,12 +2,36 @@
 
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
+require_once("../controlador/login.php");
 
+entrar();
+
+//variables
 $consulta = new Query; //Crear una consulta
-if($_POST["tiporubric"] == "id"){
-    $proyectos = $consulta->searchProyectById($_POST["filtrorubric"]); //Get Proyectos by id
-}else{
-    $proyectos = $consulta->searchProyectsByName($_POST["filtrorubric"]); //Get Proyectos by nombre
+$rolActivo = $_SESSION['rol'];
+
+switch ($rolActivo) {
+    case 'i':
+        $usernameActivo = $_SESSION['usario'];
+        $usuarioInfo = $consulta->getUserByUsername($usernameActivo);
+        $iduser = $usuarioInfo['idUsuario'];
+        $asignacionesUsuario = $consulta->getProjectsinfo($iduser); //Obtenemos las asignaciones de este jurado
+        $idgrado = $asignacionesUsuario[0]['materia_idmateria'];
+        $idmateria = $asignacionesUsuario[0]['grado_idgrado'];
+        if(empty($_POST["filtro"])){
+            $proyectos = $consulta->getProjectByGradeAndMatter($idgrado, $idmateria);
+        }else{
+            $proyectos = $consulta->searchProyectsByNameAndMatterAndGrade($_POST["filtro"], $idgrado, $idmateria);
+        }
+        break;
+    
+    default:
+        if($_POST["tipofiltro"] == "id"){
+            $proyectos = $consulta->searchProyectById($_POST["filtro"]); //Get Proyectos by id
+        }else{
+            $proyectos = $consulta->searchProyectsByName($_POST["filtro"]); //Get Proyectos by nombre
+        }
+        break;
 }
 
 if(!empty($proyectos)){

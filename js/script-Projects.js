@@ -1,17 +1,31 @@
 $(document).ready(
     function(){
-        //Objetos globales
-        var txtBusqueda = $("#txtBusqueda");
-        var tipoBusqueda = $("#sltBusqueda");
+        llenarTabla();
 
         //Filtrar las rubricas segun el textbox busqueda
-        txtBusqueda.on("input",
+        $("#txtBusqueda").on("input",
             function(){
+                llenarTabla();
+            }
+        );
 
-                $.post("../controlador/searchProjects.php", 
+        //Vaciar la busqueda cuando se cambie de tipo de busqueda
+        $("#sltBusqueda").on("change",
+            function(){
+                $("#txtBusqueda").val("");
+                llenarTabla();
+            }
+        );
+    }
+)
+
+function llenarTabla() {
+    var txtBusqueda = $("#txtBusqueda");
+    var tipoBusqueda = $("#sltBusqueda");
+    $.post("../controlador/searchProjects.php", 
                     {
-                        "filtrorubric": txtBusqueda.val(),
-                        "tiporubric" : tipoBusqueda.val()
+                        "filtro": txtBusqueda.val(),
+                        "tipofiltro" : tipoBusqueda.val()
                     },
                     function(respuesta){
                         var contenedorFilasRubric = $("#table-body-rubrica");
@@ -19,15 +33,5 @@ $(document).ready(
                         contenedorFilasRubric.html(respuesta);
                     },
                     "html"
-                );
-            }
-        );
-
-        //Vaciar la busqueda cuando se cambie de tipo de busqueda
-        tipoBusqueda.on("change",
-            function(){
-                txtBusqueda.val("");
-            }
-        );
-    }
-)
+    );
+}
