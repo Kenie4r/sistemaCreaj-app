@@ -1,7 +1,10 @@
 //definición de las vartiables globales
 var notafinal = 0;
+
 //funciones luego de que nuestro archivo cargue
 $(document).ready(function(){
+    var screen = $('#cargar');
+    loadingnotification(screen);
     //usos del botón terminar, para revisar 
     terminarCalificar();
     //calificar 
@@ -292,7 +295,7 @@ function crearNotificacion(tipo, mensaje, opcion1, opcion2){
 
 
     var notification  = "    <div id='notification' class='container  max-w-full  w-screen bg-gray-900 fixed h-screen bg-opacity-75 top-0  flex flex-col justify-center items-center'>"+
-    "<div class='bg-white max-w-sm text-center opacity-100 p-2 flex flex-col items-center justify-center w-full sm:max-w-md'>"+
+    "<div class='bg-white w.-5/12 h-3/6 text-center opacity-100 p-2 flex flex-col items-center justify-center w-full sm:max-w-md'>"+
     "<div class='w-10 h-10 "+ color + " text-white text-2xl flex items-center justify-center rounded-full'>"+
      "   <span class='"+classIcon+"'></span>"+
     "</div>"+
@@ -341,4 +344,15 @@ function crearNotificacion(tipo, mensaje, opcion1, opcion2){
     })
 
 
+}
+
+
+function loadingnotification(screen){
+    $(document)
+        .ajaxStart(function(){
+            screen.fadeIn();
+        })
+        .ajaxStop(function(){
+            screen.fadeOut();
+        })
 }
