@@ -202,7 +202,7 @@
                         <div class='text-center text-gray-400 text-xl'>
                             <h2>" . round($camps['notafinal'], 2) ." PUNTOS</h2>
                         </div>
-                        <a href='../libs/rubricbyproject.php?proyecto={$camps['proyecto_idproyecto']}&&materia={$idMateria}&&grado={$idGrado}' class='m-2 p-2 bg-red-500 text-white text-md rounded-md'>
+                        <a href='../../Projects/evaluacionProyecto.php?proyecto={$camps['proyecto_idproyecto']}' target='_blank' class='m-2 p-2 bg-red-500 text-white text-md rounded-md'>
                             <span class='icon-file-pdf'></span>
                             Rúbrica
                         </a>
@@ -219,7 +219,7 @@
                       <div class='text-center text-gray-400 text-xl'>
                           <h2>" . round($camps['notafinal'], 2) ." PUNTOS</h2>
                       </div>
-                      <a href='../libs/rubricbyproject.php?proyecto={$camps['proyecto_idproyecto']}&&materia={$idMateria}&&grado={$idGrado}' class='m-2 p-2 bg-red-500 text-white text-md rounded-md'>
+                      <a href='../../Projects/evaluacionProyecto.php?proyecto={$camps['proyecto_idproyecto']}' target='_blank' class='m-2 p-2 bg-red-500 text-white text-md rounded-md'>
                       <span class='icon-file-pdf'></span>
                       Rúbrica
                   </a>
@@ -238,7 +238,7 @@
                         <div class='text-center text-gray-400 text-xl'>
                             <h2>" . round($camps['notafinal'], 2) ." PUNTOS</h2>
                         </div>
-                        <a href='../libs/rubricbyproject.php?proyecto={$camps['proyecto_idproyecto']}&&materia={$idMateria}&&grado={$idGrado}' class='m-2 p-2 bg-red-500 text-white text-md rounded-md'>
+                        <a href='../../Projects/evaluacionProyecto.php?proyecto={$camps['proyecto_idproyecto']}' target='_blank' class='m-2 p-2 bg-red-500 text-white text-md rounded-md'>
                         <span class='icon-file-pdf'></span>
                         Rúbrica
                         </a>
@@ -262,7 +262,7 @@
                         <div class='text-center text-gray-400 text-xl p-5'>
                             <h2>" . round($camps['notafinal'], 2) ."  PUNTOS</h2>
                         </div>
-                        <a href='../libs/rubricbyproject.php?proyecto={$camps['proyecto_idproyecto']}&&materia={$idMateria}&&grado={$idGrado}' class='m-2 p-2 bg-red-500 text-white text-md rounded-md'>
+                        <a href='../../Projects/evaluacionProyecto.php?proyecto={$camps['proyecto_idproyecto']}' target='_blank' class='m-2 p-2 bg-red-500 text-white text-md rounded-md'>
                             <span class='icon-file-pdf'></span>
                             Rúbrica
                         </a>
@@ -277,7 +277,7 @@
                         <div class='text-center text-gray-400 text-xl p-5'>
                             <h2>" . round($camps['notafinal'], 2) ."  PUNTOS</h2>
                         </div>
-                        <a href='../libs/rubricbyproject.php?proyecto={$camps['proyecto_idproyecto']}&&materia={$idMateria}&&grado={$idGrado}' class='m-2 p-2 bg-red-500 text-white text-md rounded-md'>
+                        <a href='../../Projects/evaluacionProyecto.php?proyecto={$camps['proyecto_idproyecto']}' target='_blank' class='m-2 p-2 bg-red-500 text-white text-md rounded-md'>
                             <span class='icon-file-pdf'></span>
                             Rúbrica
                         </a>
