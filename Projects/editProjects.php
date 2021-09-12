@@ -44,6 +44,9 @@ comparacionFecha("Ingreso de proyectos");
             </div>
             <div class="flex lg:justify-end ml-9 lg:m-9">
                 <div class="mx-2 lg:m-2">
+                    <a href="evaluacionProyecto.php?proyecto=<?php echo $projects[$i]['idproyecto']; ?>" target="_blank" class="block text-yellow-700 border-yellow-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-yellow-700 cursor-pointer"><span class='icon-file-pdf'></span> Evaluación</a>
+                </div>
+                <div class="mx-2 lg:m-2">
                     <a href="index.php" class="block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700 cursor-pointer"><span class='icon-checkmark'></span> Regresar</a>
                 </div>
             </div>
