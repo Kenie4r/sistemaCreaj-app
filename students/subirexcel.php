@@ -31,7 +31,7 @@ require('../Dashboard/Dashboard.php');
              este es funcional desde Excel 2007, además es necesario usar un molde especifico para poder usar este tipo de guardado.</p>
         </div>
             <div class="flex lg:justify-end ml-9 lg:m-9 text-center content-center lg:justify-center md:justify-center sm:justify-center">
-                <a href="base_practica.xlsx">
+                <a href="https://docs.google.com/spreadsheets/d/1U5faoNZswzVH6fmEYYAMGF0SQRODLrgi/edit?usp=sharing&ouid=104834472187713484416&rtpof=true&sd=true">
                     <div class="lg:w-full md:w-full sm:w-full lg:mt-5 md:mt-5 sm:mt-5">
                         <p class="content-center lg:justify-center block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700"><span class=" icon-download"></span>  DESCARGAR BASE</p>
                     </div>
