@@ -202,8 +202,8 @@
             </div>
         </div>
         
-    <div class="fixed  h-screen w-screen bg-gray-900 top-0 left-0  bg-opacity-70 flex  flex-col items-center justify-center hidden" id="cargar">
-        <div class="bg-white h-3/6 w-5/12 rounded-lg flex justify-center flex-col items-center">
+    <div class="fixed  h-screen w-screen bg-gray-900 top-0 left-0  bg-opacity-70 flex  flex-col items-center  justify-center  hidden" id="cargar">
+        <div class="bg-white h-3/6 w-5/12 rounded-lg flex justify-center flex-col items-center m-auto my-40">
             <div class="text-green-600 text-center w-6/12  text-8xl">
                 <p class="animate-spin">
                     <span class="icon-spinner2"></span>

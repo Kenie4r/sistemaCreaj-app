@@ -4,6 +4,7 @@ var notafinal = 0;
 //funciones luego de que nuestro archivo cargue
 $(document).ready(function(){
     var screen = $('#cargar');
+    notificarCargar()
     loadingnotification(screen);
     //usos del botón terminar, para revisar 
     terminarCalificar();
@@ -356,3 +357,20 @@ function loadingnotification(screen){
             screen.fadeOut();
         })
 }
+
+
+/*function notificarCargar(){
+    var html = "<div class='fixed  h-screen w-screen bg-gray-900 top-0 left-0  bg-opacity-70 flex  flex-col items-center justify-center hidden' id='cargar'>"+
+        "<div class='bg-white h-3/6 w-5/12 rounded-lg flex justify-center flex-col items-center'>"+
+          "  <div class='text-green-600 text-center w-6/12  text-8xl'>"+
+                "<p class='animate-spin'>"+
+                    "<span class='icon-spinner2'></span>"+
+                "</p>"+    
+            "</div>"+
+            "<div class='animate-bounce m-2 text-2xl'>"+
+               "<p>Cargando...</p>"+
+            "</div>"+
+        "</div>"+
+    "</div>";
+      document.body.innerHTML += html;
+}*/
