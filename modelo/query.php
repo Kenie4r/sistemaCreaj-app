@@ -2357,6 +2357,240 @@ class Query{
         }
     }
 
+
+
+    //eliminar todo
+    public function deleteRank(){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql="DELETE FROM ranking";
+        $sentencia = $conexion->prepare($sql);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            return true;
+        }
+    }
+
+    public function deletePuntos(){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql="DELETE FROM puntos";
+        $sentencia = $conexion->prepare($sql);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            return true;
+        }
+    }
+    public function deletePuntaje(){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql="DELETE FROM puntaje";
+        $sentencia = $conexion->prepare($sql);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            return true;
+        }
+    }
+    public function deleteProyectos(){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql="DELETE FROM proyecto";
+        $sentencia = $conexion->prepare($sql);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            return true;
+        }
+    }
+    public function deleteEstudiantes(){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql="DELETE FROM estudiante";
+        $sentencia = $conexion->prepare($sql);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            return true;
+        }
+    }
+    public function deleteAsignacionJ(){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql="DELETE FROM asignacionj ";
+        $sentencia = $conexion->prepare($sql);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            return true;
+        }
+    }
+    public function deleteNAprobacion(){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql="DELETE FROM naprobacion ";
+        $sentencia = $conexion->prepare($sql);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            return true;
+        }
+    }
+    public function deleteCriterios(){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql="DELETE FROM criterios";
+        $sentencia = $conexion->prepare($sql);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            return true;
+        }
+    }
+    public function deleteRubricas(){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql="DELETE FROM rubrica ";
+        $sentencia = $conexion->prepare($sql);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            return true;
+        }
+    }
+    public function deleteGrados(){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql="DELETE FROM grado";
+        $sentencia = $conexion->prepare($sql);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            return true;
+        }
+    }
+    public function deleteMaterias(){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql="DELETE FROM materia";
+        $sentencia = $conexion->prepare($sql);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            return true;
+        }
+    }
+    public function deleteNivel(){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql="DELETE FROM nivel ";
+        $sentencia = $conexion->prepare($sql);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            return true;
+        }
+    }
+    public function deleteParams(){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql="DELETE FROM parametros ";
+        $sentencia = $conexion->prepare($sql);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            return true;
+        }
+    }
+    public function deleteUsuarios(){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql="DELETE FROM usuario";
+        $sentencia = $conexion->prepare($sql);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            return true;
+        }
+    }
+
+
+    public function createAdmin(){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql  = "INSERT INTO usuario (usuario, nombres, apellidos, rol, password, email) VALUES ( 'Admin' , 'Administrador', 'CDB','a','827ccb0eea8a706c4c34a16891f84e7b', 'creaj.evaluaciones@cdb.edu.sv');";
+        $sentencia= $connection->prepare($sql);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            return "Hecho";
+        }
+    }
+    public function createLevel(){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql  = "INSERT INTO nivel VALUES (1, 'UNDEFINED');";
+        $sentencia= $connection->prepare($sql);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            return "Hecho";
+        }
+    }
+    public function createGrade(){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql  = "INSERT INTO grado VALUES (1, 'UNDEFINED', NULL, 1);";
+        $sentencia= $connection->prepare($sql);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            return "Hecho";
+        }
+    }
+    public function createSubject(){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql  = "INSERT INTO materia VALUES (1, 'UNDEFINED');;";
+        $sentencia= $connection->prepare($sql);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            return "Hecho";
+        }
+    }
+    public function createParams(){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql  = "INSERT INTO parametros VALUES (1, 'Ingreso de estudiantes', '2021-01-01', '2021-12-31'),(2, 'Ingreso de proyectos', '2021-01-01', '2021-12-31'), (3, 'Ingreso de rubricas', '2021-01-01', '2021-12-31'),(4, 'Limite de calificacion','2021-01-01', '2021-12-31'),(5, 'Ingreso de nuevos usuarios', '2021-01-01','2021-12-31');";
+        $sentencia= $connection->prepare($sql);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            return "Hecho";
+        }
+    }
 }
 
 ?>
