@@ -4,7 +4,7 @@ var notafinal = 0;
 //funciones luego de que nuestro archivo cargue
 $(document).ready(function(){
     var screen = $('#cargar');
-    notificarCargar()
+
     loadingnotification(screen);
     //usos del botón terminar, para revisar 
     terminarCalificar();
@@ -205,20 +205,20 @@ function ObtenerRNotas(nivel){
     // por el momento ya que no se usa base de datos aun solo manejamos estas notas
     switch(nivel){
         case "Inicial receptivo":
-            nMin = 40;
-            nMax = 69;
+            nMin = 0;
+            nMax = 20;
         break;
         case "Básico":
-            nMin = 70;
-            nMax = 79;
+            nMin = 21;
+            nMax = 30;
         break;
         case "Autónomo":
-            nMin = 80;
-            nMax = 89;
+            nMin = 31;
+            nMax = 40;
         break;
         case "Estratégico":
-                nMax = 100;
-                nMin = 90;
+                nMax = 50;
+                nMin = 41;
         break;
 
     }
