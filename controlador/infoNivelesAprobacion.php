@@ -6,6 +6,6 @@
 $rangosNivelesAprobacion = array("Inicial receptivo", "Básico", "Autónomo", "Estratégico");
 
 //Notas de los niveles de aprobación
-$notasNivelesAprobacion = array(69, 79, 89, 100);
+$notasNivelesAprobacion = array(20, 30, 40, 50);
 
 ?>
