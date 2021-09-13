@@ -1294,6 +1294,23 @@ class Query{
         }
     }
 
+    //Obtener el proyecto por medio del ID
+    public function getProjectsByGrade($idgrado){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT * FROM proyecto WHERE grado_idgrado = :idgrade";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":idgrade", $idgrado);
+        if(!$sentencia){
+            return "";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
     //Obtener todos los parametros
 
     public function getParametros(){
@@ -1722,6 +1739,40 @@ class Query{
             return $resultado;
         }
     }
+
+    //ver si hay proyectos ya calificados por grado
+    public function getCountRatedPbyGrade($idGrado){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT * FROM ranking WHERE grado_idgrado = :idGrado";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":idGrado", $idGrado);
+        if(!$sentencia){
+            return "";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+        }
+    }
+
+    //ver si hay proyectos ya calificados por grado
+    public function getCountRatedPbyGradeAndMatter($idgrado, $idmateria){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT * FROM ranking WHERE grado_idgrado = :idGrado AND  materia_idmateria = :materiaID";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":idGrado", $idgrado);
+        $sentencia->bindParam(":materiaID", $idmateria);
+        if(!$sentencia){
+            return "";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+        }
+    }
+
     public function getCountRatedProject($idProject){
         $model = new Conection();
         $conexion = $model->_getConection();
