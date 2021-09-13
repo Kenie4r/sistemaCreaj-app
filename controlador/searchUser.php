@@ -63,22 +63,22 @@ if(!empty($usuarios)){
                     }else if($username == $usernameActivo){
                         echo "\t<td class='p-4' colspan='2'>No puedes eliminar tu propio perfil.</td>";
                     }else{
-                        echo "\t<td class='p-4' colspan='2'><a href='deleteUser.php?iduser=" . $id . "' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
+                        echo "\t<td class='p-4' colspan='2'><a href='deleteUser.php?iduser=" . $id . "&rolUser=" . $rol . "' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
                     }
                     break;
                 case 'c':
                     echo "\t<td class='p-4'>Técnico-Científico</td>";
-                    echo "\t<td class='p-4' colspan='2'><a href='deleteUser.php?iduser=" . $id . "' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
+                    echo "\t<td class='p-4' colspan='2'><a href='deleteUser.php?iduser=" . $id . "&rolUser=" . $rol . "' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
                     break;
                 case 'i':
                     echo "\t<td class='p-4'>Instructor</td>";
                     echo "\t<td class='p-4'><a href='assignJury.php?iduser=" . $id . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Asignar Grados</a></td>";
-                    echo "\t<td class='p-4'><a href='deleteUser.php?iduser=" . $id . "' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
+                    echo "\t<td class='p-4'><a href='deleteUser.php?iduser=" . $id . "&rolUser=" . $rol . "' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
                     break;
                 case 'j':
                     echo "\t<td class='p-4'>Jurado</td>";
                     echo "\t<td class='p-4'><a href='assignJury.php?iduser=" . $id . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Asignar Proyectos</a></td>";
-                    echo "\t<td class='p-4'><a href='deleteUser.php?iduser=" . $id . "' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
+                    echo "\t<td class='p-4'><a href='deleteUser.php?iduser=" . $id . "&rolUser=" . $rol . "' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
                     break;
             }
             echo "</tr>";
@@ -100,12 +100,12 @@ if(!empty($usuarios)){
                     case 'i':
                         echo "\t<td class='p-4'>Instructor</td>";
                         echo "\t<td class='p-4'><a href='assignJury.php?iduser=" . $id . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Asignar Grados</a></td>";
-                        echo "\t<td class='p-4'><a href='deleteUser.php?iduser=" . $id . "' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
+                        echo "\t<td class='p-4'><a href='deleteUser.php?iduser=" . $id . "&rolUser=" . $rol . "' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
                         break;
                     case 'j':
                         echo "\t<td class='p-4'>Jurado</td>";
                         echo "\t<td class='p-4'><a href='assignJury.php?iduser=" . $id . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Asignar Proyectos</a></td>";
-                        echo "\t<td class='p-4'><a href='deleteUser.php?iduser=" . $id . "' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
+                        echo "\t<td class='p-4'><a href='deleteUser.php?iduser=" . $id . "&rolUser=" . $rol . "' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
                         break;
                 }
                 echo "</tr>";

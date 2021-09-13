@@ -32,6 +32,7 @@ $criterios = $consulta->getCriteriosByIdRubric($idrubrica);
     <script src="../js/script-editRubric.js"></script>
     <script src="../js/script-frmRubricValidate.js"></script>
     <script src="../Dashboard/button.js"></script>
+    <script src="../Dashboard/js/button2.js"></script>
 </head>
 <body>
 <?php

@@ -27,6 +27,7 @@ $nombreCompleto = $usuario["nombres"] . " " . $usuario["apellidos"]; //Formamos 
     <script src="../js/script-newAssignJury.js"></script>
     <script src="../js/script-frmAsignacionValidate.js"></script>
     <script src="../Dashboard/button.js"></script>
+    <script src="../Dashboard/js/button2.js"></script>
 </head>
 <body>
 <?php
