@@ -97,12 +97,15 @@
                     if($nProyectos['COUNT(*)']>0){
                     $blockhtml .= "<div class='bg-white w-full shadow-xl p-2 flex flex-row justify-between my-2'>
                     <!--Primero irá el nombre del grado-->
-                    <div class='text-center'>
-                     <h1 class='text-2xl'>{$campo['nombre']}  {$campo['seccion']}</h1>
+                    <div class='text-center w-4/12'>
+                     <h1 class='text-xl'>{$campo['nombre']}  {$campo['seccion']}</h1>
                     </div>
                     <!--Un botón para seleccionar al grado-->
-                    <div>
-                        <div class='button p-2 border border-2 bg-blue-500 text-white cursor-pointer btnGrade' id='btn-{$campo['idgrado']}'>
+                    <div class='w-8/12 flex flex-row items-center justify-end'>
+                        <a class='button p-2 border border-2 bg-blue-500 text-white cursor-pointer  text-sm' href='../Projects/porcentProjectsByGrade.php'>
+                            Ver proyectos
+                        </a>
+                        <div class='button p-2 border border-2 bg-blue-500 text-white cursor-pointer btnGrade text-sm'  id='btn-{$campo['idgrado']}'>
                             <p>Ver materias</p>
                         </div>
                     </div>
