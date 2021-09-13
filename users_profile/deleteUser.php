@@ -6,13 +6,14 @@ require_once("../modelo/query.php");
 $consulta = new Query; //Consulta
 $idUser = $_GET["iduser"]; //El id del usuario
 $roluser = $_GET["rolUser"]; //El id del usuario
-$asignacionesUsuario = $consulta->getProjectsinfo($idUser); //Obtenemos las asignaciones de este jurado
+$asignacionesUsuario = $consulta->getProjectsinfo($idUser); //Obtenemos las asignaciones del usuario
+$notasCalificadasUsuario = $consulta->getPuntosByUser($idUser); //Obtenemos las notas asociadas del usuario
 
 //Eliminamos el usuario
 //Pasamos una capa de seguridad, al validar que no sea el usuario por defecto
 if($idUser != 1){
-    if($roluser == 'j' && true){
-        //Si es el usuario tiene proyectos calificados
+    if( !(empty($notasCalificadasUsuario)) ){
+        //Si es el usuario tiene notas asociadas, no se puede eliminar
         $estadoEliminaciones = false;
     }else{
         //Primero eliminamos todas sus asignaciones en el caso de que tenga asignaciones

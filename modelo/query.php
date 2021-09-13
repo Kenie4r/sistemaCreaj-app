@@ -311,6 +311,23 @@ class Query{
             return $resultado;
         }
     }
+
+    //obtener los datos de asignación de proyectos
+    public function getPuntosByUser($userid){
+        $model = new Conection();
+        $connection = $model->_getConection();
+        $sql = "SELECT * FROM puntos WHERE usuario_idUsuario = :userID";
+        $sentencia = $connection->prepare($sql);
+        $sentencia->bindParam(":userID", $userid);
+        if(!$sentencia){
+            return "";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+        }
+    }
+
     //revisar si está calificado un proyecto
     public function isSavedProject($idProject, $idUser){
         $model = new Conection();
