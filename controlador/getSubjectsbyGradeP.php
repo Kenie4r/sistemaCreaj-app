@@ -17,20 +17,20 @@
                 $html .= "
                 <div class='bg-white w-full shadow-xl p-2 flex flex-col items-center my-3'>
                 <div class='w-full flex flex-row justify-between'>
-                    <div class='text-center w-8/12'>
+                    <div class='text-center w-8/12 text-sm'>
                         <h1 class='text-2xl'>{$materia['nombre']}</h1>
                     </div>
                     <!--Un botón para seleccionar al grado-->
                     <div w-4/12>
                         <div >
-                            <a target='_blank' href='rank/rank.php?idSubject={$a}&idGrade={$grado}' class='text-lg button p-2 border border-2 bg-blue-600 text-white cursor-pointer btnGrade' id='btn-{$a}'>
+                            <a target='_blank' href='rank/rank.php?idSubject={$a}&idGrade={$grado}' class='text-md button p-2 border border-2 bg-blue-600 text-white cursor-pointer btnGrade' id='btn-{$a}'>
                             Ver ranking
                             </a>
                         </div>
                     </div>
                 </div> 
-                <div class='w-full p-2'>
-                    <div><p>Proyecto calificados: 10 de 100</p></div>
+                <div class='w-full p-2 text-sm'>
+                    <div><p class='text-gray-500'>Proyecto calificados: 10 de 100</p></div>
                     <div class='w-full h-2 bg-gray-300 relative  '>
                         <div class='absolute w-2/12  h-full bg-red-700'></div>
                     </div>

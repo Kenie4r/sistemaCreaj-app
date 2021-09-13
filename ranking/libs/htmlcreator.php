@@ -102,8 +102,8 @@
                     </div>
                     <!--Un botón para seleccionar al grado-->
                     <div class='w-8/12 flex flex-row items-center justify-end'>
-                        <a class='button p-2 border border-2 bg-blue-500 text-white cursor-pointer  text-sm' href='../Projects/porcentProjectsByGrade.php'>
-                            Ver proyectos
+                        <a class='button p-2 border border-2 bg-blue-500 text-white cursor-pointer  text-sm' href='../Projects/porcentProjectsByGrade.php?proyecto={$campo['idgrado']}'>
+                            %- Proyecto calificados
                         </a>
                         <div class='button p-2 border border-2 bg-blue-500 text-white cursor-pointer btnGrade text-sm'  id='btn-{$campo['idgrado']}'>
                             <p>Ver materias</p>
