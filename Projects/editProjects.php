@@ -65,15 +65,15 @@ comparacionFecha("Ingreso de proyectos");
                     <p class="p-1 w-full rounded-r-lg" type="text" name="txtDescripcion" value="" ><?php echo $consulta->getNameGrado($projects[$i]['grado_idgrado']); ?> </p>
                 </div>
             </div>
-            <div class="lg:mt-20  lg:ml-9 sm:ml-0 sm:-mt-1"> 
-                    <div class="flex flex-row items-center w-full lg:w-4/5 border-gray-700 border-solid border-2 rounded-lg">
-                        <label for="txtID" class=" md:h-full p-10 items-center p-2 bg-gray-700 text-white">Descripcion</label>
+            <div class="lg:mt-10 lg:ml-9 sm:mt-2 mb-5"> 
+                    <div class="flex flex-row items-center w-full h-full lg:w-4/5 border-gray-700 border-solid border-2 rounded-lg">
+                        <label for="txtID" class=" md:h-full h-full p-10 items-center p-2 bg-gray-700 text-white">Descripcion</label>
                         <p class="lg:justify-end p-1 lg:w-4/5 rounded-r-lg" type="text" name="txtDescripcion" value="" ><?php echo $projects[$i]['descripcion'] ?></p>
                     </div>
             </div>       
-            <div class="lg:mt-20  lg:ml-9 sm:ml-0 sm:-mt-1">
-                <div class="flex flex-row items-center w-full lg:w-4/5 border-gray-700 border-solid border-2 rounded-lg">
-                    <label for="txtNivel" class="p-12 items-center  bg-gray-700 text-white lg:h-full sm:h-full ">Alumnos</label>
+            <div class="lg:mt-10 lg:ml-9 sm:mt-2">
+                <div class="flex flex-row items-center w-full h-full lg:w-4/5 border-gray-700 border-solid border-2 rounded-lg">
+                    <label for="txtNivel" class="p-12 items-center  bg-gray-700 text-white h-full  lg:h-full ">Alumnos</label>
                     <?php 
                       $proyecto_idproyecto= $_GET['idproject'];
                       $estudiante = $consulta->getNameApellidos($proyecto_idproyecto); 
