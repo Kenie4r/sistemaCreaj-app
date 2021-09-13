@@ -33,6 +33,9 @@ function formValidate(){
     var etiquetaNombreCriterio = "";
     var etiquetaPuntajeCriterio = "";
     var etiquetaDescripcionNivel = "";
+    var alertaSending = $("#sending");
+
+    alertaSending.removeClass('hidden'); //Pantalla de carga
 
     //Validacion Rubrica
     if(!(controladorNameRubric.is(':checked'))){

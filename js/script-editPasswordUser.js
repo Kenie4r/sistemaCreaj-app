@@ -49,6 +49,9 @@ function validateFrmPass() {
     var ckConfirmPassword = $("#ckConfirmPass"); 
     var ckActualPassword = $("#ckActualPass");
     var errores = 0;
+    var alertaSending = $("#sending");
+
+    alertaSending.removeClass('hidden'); //Pantalla de carga
     
     //CONFIRM PASSWORD
     if( !(ckConfirmPassword.is(':checked')) ){

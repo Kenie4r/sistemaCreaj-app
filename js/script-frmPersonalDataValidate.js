@@ -28,6 +28,10 @@ function validateFormUser() {
     var ckEmail = $("#ckEmail");
     var errores = 0;
 
+    var alertaSending = $("#sending");
+
+    alertaSending.removeClass('hidden'); //Pantalla de carga
+
     //NOMBRE
     if(nombre == "" || nombre.length > 50){
         errores++;

@@ -93,7 +93,6 @@ function submitFormulario() {
     var estadoFormulario = $("#ckEstadoForm");
     var frmProfile = $("#frmProfile");
     var alertaSending = $("#sending");
-    var spinner = $("#spinnerSending");
 
     if(!(estadoFormulario.is(':checked'))){
         alert("Error: Llene los campos");

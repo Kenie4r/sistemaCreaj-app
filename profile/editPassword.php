@@ -62,6 +62,25 @@ if(!isset($_GET["primeraVez"])){
 ?>
             </div>
         </form>
+        <!-- LOADING... -->
+        <article id="sending" class="hidden fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+			<div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+				<div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+                <!-- Contenedor alerta -->
+                <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                    <div class="flex flex-col">
+                        <div class="flex items-center justify-center pt-6 px-6">
+                            <div>
+                                <p class="text-2xl leading-6 font-medium text-yellow-900">Actualizando contraseña...</p>
+                            </div>
+                        </div>
+                        <div class="p-6 text-center text-4xl text-yellow-900">
+                            <p id="spinnerSending" class="animate-spin mr-3"><span class="icon-spinner2"></span></p>
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</article>
     </section>
 </body>
 </html>
