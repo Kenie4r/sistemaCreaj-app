@@ -43,7 +43,6 @@ function validateFormUser() {
     //CONTRASEÑA
     if( !(ckActualPassword.is(':checked')) ){
         errores++;
-        alert(3);
     }
     //EMAIL
     if( !(ckEmail.is(':checked')) ){
