@@ -9,6 +9,7 @@ $id= $_POST["txtCodigo"];
 $name= $_POST["txtNombre"];
 $last_name= $_POST["txtApellido"];
 $grado_idgrado= $_POST["txtGrado"];
+$existente= $consulta->existenteAlumnoID($id);
 $Datoestudiantes= $consulta->saveStudent($id, $name, $last_name, $grado_idgrado);
 /*$id_estudiante= $_POST["txtCodigo"];
 $proyecto= $_POST["txtProject"];
@@ -32,32 +33,47 @@ $Datosteam= $consulta->saveTeam($id_estudiante, $proyecto);*/
 <body>
 <?php
 require('../Dashboard/Dashboard.php');
-if($Datoestudiantes  == "Registro hecho"){
-?>
-    <section class="container">
-        <div class="m-4 lg:m-7 bg-green-500 border-2 border-solid border-green-800 rounded-lg">
-            <div class="m-4 lg:m-7 text-center">
-                <p class="lg:text-4xl text-green-900">se ha guardado con éxito los datos del estudiante.</p>
+if($Datoestudiantes  == "Registro hecho" && $id !="" && $name != "" && $last_name != "" && $grado_idgrado != ""){
+    if($existente == $id){
+        ?>
+        <section class="container">
+            <div class="m-4 lg:m-7 bg-red-400 border-2 border-solid border-red-800 rounded-lg">
+                <div class="m-4 lg:m-7 text-center">
+                    <p class="lg:text-4xl text-red-900">Sucedio un error, Ya existe un estudiante con ese código.</p>
+                </div>
+                <div class="m-4 lg:m-7 flex justify-center">
+                    <a href="index.php" class="text-red-700 border-red-700 border-2 border-solid rounded-lg p-2 hover:text-red-400 hover:bg-red-700 cursor-pointer"><span class="icon-circle-left"></span> Regresar</a>
+                </div>
             </div>
-            <div class="m-4 lg:m-7 flex justify-center">
-                <a href="index.php" class="text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-green-500 hover:bg-green-700 cursor-pointer"><span class="icon-circle-left"></span> Regresar</a>
+        </section>
+        <?php
+    }else{
+        ?>
+        <section class="container">
+            <div class="m-4 lg:m-7 bg-green-500 border-2 border-solid border-green-800 rounded-lg">
+                <div class="m-4 lg:m-7 text-center">
+                    <p class="lg:text-4xl text-green-900">se ha guardado con éxito los datos del estudiante.</p>
+                </div>
+                <div class="m-4 lg:m-7 flex justify-center">
+                    <a href="index.php" class="text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-green-500 hover:bg-green-700 cursor-pointer"><span class="icon-circle-left"></span> Regresar</a>
+                </div>
             </div>
-        </div>
-    </section>
-<?php
-}else{
-?>
-    <section class="container">
-        <div class="m-4 lg:m-7 bg-red-400 border-2 border-solid border-red-800 rounded-lg">
-            <div class="m-4 lg:m-7 text-center">
-                <p class="lg:text-4xl text-red-900">Sucedio un error, el estudiante no se ha guardado correctamente.</p>
-            </div>
-            <div class="m-4 lg:m-7 flex justify-center">
-                <a href="index.php" class="text-red-700 border-red-700 border-2 border-solid rounded-lg p-2 hover:text-red-400 hover:bg-red-700 cursor-pointer"><span class="icon-circle-left"></span> Regresar</a>
-            </div>
-        </div>
-    </section>
+        </section>
     <?php
+    }
+}else{
+    ?>
+        <section class="container">
+            <div class="m-4 lg:m-7 bg-red-400 border-2 border-solid border-red-800 rounded-lg">
+                <div class="m-4 lg:m-7 text-center">
+                    <p class="lg:text-4xl text-red-900">Sucedio un error, el estudiante no se ha guardado correctamente.</p>
+                </div>
+                <div class="m-4 lg:m-7 flex justify-center">
+                    <a href="index.php" class="text-red-700 border-red-700 border-2 border-solid rounded-lg p-2 hover:text-red-400 hover:bg-red-700 cursor-pointer"><span class="icon-circle-left"></span> Regresar</a>
+                </div>
+            </div>
+        </section>
+        <?php
 }
 ?>
 </body>

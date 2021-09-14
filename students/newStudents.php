@@ -41,28 +41,28 @@ comparacionFecha("Ingreso de estudiantes");
             <div>
                 <div class=" flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
                     <label for="txtID" class="p-2 bg-gray-700 text-white ">Código</label>
-                    <input class="w-1/4	 p-1.5   lg:w-full  outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtCodigo" id="txtNombreRubrica" value="" >
+                    <input class="w-1/4	 p-1.5   lg:w-full  outline-none focus:border-gray-500 border-b-2 focus:border-solid" required type="text" name="txtCodigo" id="txtNombreRubrica" value="" >
                     <label for="txtNombreRubrica" title="Editar" ><span class="hidden lg:block icon-pencil"></span></label>
                 </div>
             </div>
                 <div> 
                     <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
                         <label for="txtID" class="p-2 bg-gray-700 text-white">Nombre</label>
-                        <input class="w-1/4	  p-1.5  lg:w-full  outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtNombre" id="txtNombreRubrica" value="" >
+                        <input class="w-1/4	  p-1.5  lg:w-full  outline-none focus:border-gray-500 border-b-2 focus:border-solid" required type="text" name="txtNombre" id="txtNombreRubrica" value="" >
                         <label for="txtNombreRubrica" title="Editar" ><span class="hidden lg:block icon-pencil"></span></label>
                     </div>
                 </div>
                 <div> 
                     <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
                         <label for="txtID" class="p-2 bg-gray-700 text-white">Apellido</label>
-                        <input class="w-1/4	 lg:w-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtApellido" id="txtNombreRubrica" value="" >
+                        <input class="w-1/4	 lg:w-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" required type="text" name="txtApellido" id="txtNombreRubrica" value="" >
                         <label for="txtNombreRubrica" title="Editar" ><span class="hidden lg:block icon-pencil"></span></label>
                     </div>
                 </div>
                 <div class="mt-10">  
                     <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
                         <label for="txtID" class="p-2 bg-gray-700 text-white">Grado:</label>
-                        <select name="txtGrado" id="txtGrado" class="p-1 w-full rounded-r-lg outline-none">
+                        <select name="txtGrado" required id="txtGrado" class="p-1 w-full rounded-r-lg outline-none">
                             <?php writeLevelForNewRubric(); ?>
                         </select>
                     </div>

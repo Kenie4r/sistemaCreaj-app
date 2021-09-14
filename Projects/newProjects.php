@@ -41,7 +41,7 @@ comparacionFecha("Ingreso de proyectos");
             </div>
             <div class="flex lg:justify-end ml-9 lg:m-9">
                 <div class="mx-2 lg:m-2 lg:mt-7">
-                <p id="btnSubmit" class="block text-green-600 border-green-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-red-600"><span class="icon-checkmark"></span> Guardar</p>
+                <p id="btnSubmit" class="block text-green-600 border-green-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700 "><span class="icon-checkmark"></span> Guardar</p>
                 </div>
                 <div class="mx-2 lg:m-2 lg:mt-7">
                     <a href="index.php" class="block text-red-600 border-red-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-red-600"><span class='icon-cross'></span> Cancelar</a>
