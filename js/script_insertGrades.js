@@ -140,8 +140,8 @@ function sencondActivity(){
               inputsGet()
              var idBox  = id_Number(  $(this).attr('id'));
              var input = "#Grade_"+ idBox;
-             var grade = $(input).val();
-            var  gradeEnd = grade *  ($('#valor' + idBox).val()/100);
+             var grade = $(input).val()*2;
+            var  gradeEnd = grade *  (($('#valor' + idBox).val())/100);
              var nowGrade = $('#finalGrade').text();
              var NewGrade = parseFloat(nowGrade);
              NewGrade+= gradeEnd;
@@ -255,7 +255,7 @@ function definirNivel(rangoGanado){
 function escribirNotaFIn(grade, number){
     var text = "<div class='w-full text-center font-bold m-2 col-span-2'>"+  
         "<p>La nota obtenida en este criterio es:</p>"+ 
-        "<h1 class='text-4xl  notas' id='notaFin" + number+ "'>"+ grade + "</h1>"+
+        "<h1 class='text-4xl  notas' id='notaFin" + number+ "'>"+ grade/2 + "</h1>"+
         "</div>"+
     
         "<div class='w-60 m-auto text-lg text-center text-blue-500 border-blue-500  border-2 cursor-pointer p-1 hover:bg-blue-500 hover:text-white btnEdit' id='btnEdit_"+number+"'>"+
