@@ -39,7 +39,7 @@
                     <span class='icon-checkmark'></span>
                 </div>
                 <div class='text-lg'>
-                    <h1>El proyecto ha sido calificado, este obtuvo: {$notaFinal} puntos</h1>
+                    <h1>El proyecto ha sido calificado, este obtuvo: {$notaFinal}/50 puntos</h1>
                 </div>
                 <a class='bg-gray-200 p-3 rounded-lg cursor-pointer ' href='index.php'>
                     <h1>Volver a mis proyectos</h1>
