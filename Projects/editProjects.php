@@ -27,7 +27,7 @@ $projects = $consulta->getProjectById($idproyecto);
 <?php
 require('../Dashboard/Dashboard.php');
 require_once("../parameters/soporteParametros.php");
-comparacionFecha("Ingreso de proyectos");
+
 ?>
  <form id="frmProject" class="container box-content" method="POST" action="updateProjects.php">
         <div class="grid grid-cols-1 lg:grid-cols-2 ">

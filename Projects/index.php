@@ -72,7 +72,6 @@ if( $_SESSION['rol'] != 'i' ){
                         <td class="rounded-tl-lg p-5">ID</td>
                         <td class="p-4">Nombre</td>
                         <td class="p-4">Descripción</td>
-                        <td class="p-4">Integrantes</td>
                         <td colspan="4" class="rounded-tr-lg p-4">Opciones</td>
                     </tr>
                 </thead>

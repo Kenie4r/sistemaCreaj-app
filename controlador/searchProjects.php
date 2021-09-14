@@ -40,7 +40,7 @@ if(!empty($proyectos)){
         echo "\t<td class='p-6'>" . $proyectos[$i]["idproyecto"] . "</td>";
         echo "\t<td class='p-6'>" . $proyectos[$i]["nombreProyecto"] . "</td>";
         echo "\t<td class='p-6'>" . $proyectos[$i]["descripcion"] . "</td>";
-        echo "\t<td class='p-6'><a href='editProjects.php?idproject=" . $proyectos[$i]["idproyecto"] . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Editar</a></td>";
+        echo "\t<td class='p-6'><a href='editProjects.php?idproject=" . $proyectos[$i]["idproyecto"] . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Ver</a></td>";
         echo "\t<td class='p-6'><a href='deleteProjects.php?idequipo=" . $proyectos[$i]["idproyecto"] . "' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
         echo "</tr>";
     }

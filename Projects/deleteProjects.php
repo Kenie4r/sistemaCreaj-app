@@ -25,10 +25,24 @@ $consulta = new Query; //Crear una consulta
 <body>
 <?php
 require('../Dashboard/Dashboard.php');
-
-
-//Eliminar equipos
 $proyecto_idproyecto = $_GET["idequipo"];
+$contador = $consulta->isSavedProjectID($proyecto_idproyecto);
+if($contador == $proyecto_idproyecto){
+    ?>
+    <section class="container">
+                <div class="m-4 lg:m-7 bg-red-400 border-2 border-solid border-red-800 rounded-lg">
+                    <div class="m-4 lg:m-7 text-center">
+                        <p class="lg:text-4xl text-red-900">El proyecto ya fue calificado no se puede eliminar.</p>
+                    </div>
+                    <div class="m-4 lg:m-7 flex justify-center">
+                        <a href="index.php" class="text-red-700 border-red-700 border-2 border-solid rounded-lg p-2 hover:text-red-400 hover:bg-red-700 cursor-pointer"><span class="icon-circle-left"></span> Regresar</a>
+                    </div>
+                </div>
+            </section>
+   <?php     
+}else{
+    //Eliminar equipos
+
 $idestudiante= $consulta-> getIdestudianteByIdproyecto($proyecto_idproyecto);
 $idestudiantes=$consulta->getIDestudiantes($proyecto_idproyecto);
 foreach($idestudiantes as $valor){
@@ -38,33 +52,34 @@ foreach($idestudiantes as $valor){
 
 $deleteEquipo= $consulta-> deleteequipo($proyecto_idproyecto);
 $deleteProyecto= $consulta-> deleteprojects($proyecto_idproyecto);
-
-if($deleteEquipo == "Hecho" && $deleteProyecto == "Hecho" &&  $deleteEstudiantes ==  "Hecho"){
-?>
-    <section class="container">
-        <div class="m-4 lg:m-7 bg-green-500 border-2 border-solid border-green-800 rounded-lg">
-            <div class="m-4 lg:m-7 text-center">
-                <p class="lg:text-4xl text-green-900">Se ha eliminado con éxito el proyecto.</p>
-            </div>
-            <div class="m-4 lg:m-7 flex justify-center">
-                <a href="index.php" class="text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-green-500 hover:bg-green-700 cursor-pointer"><span class="icon-circle-left"></span> Regresar</a>
-            </div>
-        </div>
-    </section>
-<?php
-}else{
-?>
-    <section class="container">
-        <div class="m-4 lg:m-7 bg-red-400 border-2 border-solid border-red-800 rounded-lg">
-            <div class="m-4 lg:m-7 text-center">
-                <p class="lg:text-4xl text-red-900">Sucedio un error, el proyecto no se ha eliminado correctamente.</p>
-            </div>
-            <div class="m-4 lg:m-7 flex justify-center">
-                <a href="index.php" class="text-red-700 border-red-700 border-2 border-solid rounded-lg p-2 hover:text-red-400 hover:bg-red-700 cursor-pointer"><span class="icon-circle-left"></span> Regresar</a>
-            </div>
-        </div>
-    </section>
-    <?php
+ 
+    if($deleteEquipo == "Hecho" && $deleteProyecto == "Hecho" &&  $deleteEstudiantes ==  "Hecho"){
+        ?>
+            <section class="container">
+                <div class="m-4 lg:m-7 bg-green-500 border-2 border-solid border-green-800 rounded-lg">
+                    <div class="m-4 lg:m-7 text-center">
+                        <p class="lg:text-4xl text-green-900">Se ha eliminado con éxito el proyecto.</p>
+                    </div>
+                    <div class="m-4 lg:m-7 flex justify-center">
+                        <a href="index.php" class="text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-green-500 hover:bg-green-700 cursor-pointer"><span class="icon-circle-left"></span> Regresar</a>
+                    </div>
+                </div>
+            </section>
+        <?php
+        }else{
+        ?>
+            <section class="container">
+                <div class="m-4 lg:m-7 bg-red-400 border-2 border-solid border-red-800 rounded-lg">
+                    <div class="m-4 lg:m-7 text-center">
+                        <p class="lg:text-4xl text-red-900">Sucedio un error, el proyecto no se ha eliminado correctamente.</p>
+                    </div>
+                    <div class="m-4 lg:m-7 flex justify-center">
+                        <a href="index.php" class="text-red-700 border-red-700 border-2 border-solid rounded-lg p-2 hover:text-red-400 hover:bg-red-700 cursor-pointer"><span class="icon-circle-left"></span> Regresar</a>
+                    </div>
+                </div>
+            </section>
+            <?php
+        }
 }
 ?>
 </body>

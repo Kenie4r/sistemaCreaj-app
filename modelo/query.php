@@ -344,6 +344,20 @@ class Query{
             return $resultado;
         }
     }
+    public function isSavedProjectID($proyecto_idproyecto){
+        $model = new Conection();
+        $connection = $model->_getConection();
+        $sql ="SELECT proyecto_idproyecto FROM puntaje WHERE proyecto_idproyecto =:proyecto_idproyecto";
+        $sentencia = $connection->prepare($sql);
+        $sentencia ->bindParam(":proyecto_idproyecto", $proyecto_idproyecto);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetchColumn();
+            return $result;
+        }
+    }
 
     //Obtenr el ID del proyecto segun el ID del quipo
     public function getIdestudianteByIdproyecto($proyecto_idproyecto){
