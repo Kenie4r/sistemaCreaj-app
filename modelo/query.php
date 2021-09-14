@@ -344,7 +344,62 @@ class Query{
             return $resultado;
         }
     }
-
+    public function isSavedProjectID($proyecto_idproyecto){
+        $model = new Conection();
+        $connection = $model->_getConection();
+        $sql ="SELECT proyecto_idproyecto FROM puntaje WHERE proyecto_idproyecto =:proyecto_idproyecto";
+        $sentencia = $connection->prepare($sql);
+        $sentencia ->bindParam(":proyecto_idproyecto", $proyecto_idproyecto);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetchColumn();
+            return $result;
+        }
+    }
+    public function existenteProyecto($name){
+        $model = new Conection();
+        $connection = $model->_getConection();
+        $sql ="SELECT nombreProyecto FROM proyecto WHERE nombreProyecto =:nombreProyecto";
+        $sentencia = $connection->prepare($sql);
+        $sentencia ->bindParam(":nombreProyecto", $name);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetchColumn();
+            return $result;
+        }
+    }
+   public function existenteAlumnoProyecto($id_estudiante){
+        $model = new Conection();
+        $connection = $model->_getConection();
+        $sql ="SELECT estudiante_idestudiante FROM equipo WHERE estudiante_idestudiante =:estudiante_idestudiante";
+        $sentencia = $connection->prepare($sql);
+        $sentencia ->bindParam(":estudiante_idestudiante", $id_estudiante);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetchColumn();
+            return $result;
+        }
+    }
+    public function existenteAlumnoID($id){
+        $model = new Conection();
+        $connection = $model->_getConection();
+        $sql ="SELECT idestudiante FROM estudiante WHERE idestudiante =:idestudiante";
+        $sentencia = $connection->prepare($sql);
+        $sentencia ->bindParam(":idestudiante", $id);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $result = $sentencia->fetchColumn();
+            return $result;
+        }
+    }
     //Obtenr el ID del proyecto segun el ID del quipo
     public function getIdestudianteByIdproyecto($proyecto_idproyecto){
         $model = new Conection();

@@ -116,7 +116,7 @@ if(!empty($parametros)){
                         </div>
                         <div class="px-2 flex items-center justify-center">
                             <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
-                                <label for="txtActualPassProfile" class="p-2 bg-gray-700 w-full">Confirmar Contraseña:</label>
+                                <label for="txtActualPassProfile" class="p-2 text-white bg-gray-700 w-full">Confirmar Contraseña:</label>
                                 <div class="p-1 w-full rounded-r-lg outline-none bg-white h-full">
                                     <input type="password" name="txtActualPassProfile" id="txtActualPassProfile" class=" w-4/5 outline-none">
                                     <input type="checkbox" name="ckActualPass" id="ckActualPass" class="hidden" disabled>
