@@ -195,11 +195,11 @@ function evaluacionProyecto($idproyecto){
                 $nombreCriterio = $criterioInfo['titulo']; //Nombre
                 $porcentajeCriterio = $criterioInfo['puntaje'] . "%"; //Porcentaje
                 //Nivel de aprobación
-                if($criterio['puntos']<=69){
+                if($criterio['puntos']<=20){
                     $nivelCriterio = "Inicial receptivo";
-                }else if($criterio['puntos']>69 && $criterio['puntos']<80 ){
+                }else if($criterio['puntos']>20 && $criterio['puntos']<=30 ){
                     $nivelCriterio = "Básico";
-                }else if($criterio['puntos']>79 && $criterio['puntos']<90){
+                }else if($criterio['puntos']>30 && $criterio['puntos']<=40){
                     $nivelCriterio = "Autónomo";
                 }else{   
                     $nivelCriterio = "Estratégico";

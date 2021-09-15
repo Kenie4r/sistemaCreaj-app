@@ -43,9 +43,6 @@ if( $_SESSION['rol'] == 'a' || $_SESSION['rol'] == 'c'){
 }
 ?>
         </div>
-        <?php
-if(!empty($Proyecto)){
-    ?>
       <div class='flex flex-row items-center m-7'>
             <div class='flex flex-row'>
                 <input type='text' name='txtBusqueda' id='txtBusqueda' class='p-1 border-gray-700 border-solid border-2 rounded-tl-lg rounded-bl-lg  outline-none' placeholder='Buscar por...'>
@@ -61,9 +58,6 @@ if( $_SESSION['rol'] != 'i' ){
                 </select>
             </div>
         </div>
- <?php
-}
-?>
 
         <div class="box-border m-7">
             <table class="w-full border-collapse text-center">
