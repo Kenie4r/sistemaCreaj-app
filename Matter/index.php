@@ -43,7 +43,7 @@ $nMat=count($materias);
                     <div class="col-span-6 sm:col-span-3">
                     <div class="col-span-6">
                       <label for="materia" class="block text-sm font-medium text-gray-700">Ingresar una nueva materia</label>
-                      <input type="text" name="materia" id="materia" autocomplete="mat" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                      <input type="text" name="materia" id="materia" autocomplete="mat" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required>
                     </div>
                       </div>
                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
