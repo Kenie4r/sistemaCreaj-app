@@ -145,7 +145,7 @@ function sencondActivity(){
              var nowGrade = $('#finalGrade').text();
              var NewGrade = parseFloat(nowGrade);
              NewGrade+= gradeEnd;
-             if( NewGrade<=100){
+             if( NewGrade<=50){
                  $('#finalGrade').text(NewGrade.toFixed(2));
                  var width = NewGrade*2+"%";
                  $('#progress').css('width', width);
