@@ -13,6 +13,8 @@ $existente= $consulta->existenteProyecto($name);
 $descripcion= $_POST["txtDescripcion"];
 $idGrado= $_POST["txtGrado"];
 $idMateria= $_POST["txtMateria"];
+
+
 $hayrepetidos = false;
 $Datoprojects= $consulta->saveProjects($name, $descripcion, $idGrado, $idMateria);
 $idProyecto=$consulta->getIdprojectsByNombre();

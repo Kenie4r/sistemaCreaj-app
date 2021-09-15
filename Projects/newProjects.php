@@ -52,14 +52,14 @@ comparacionFecha("Ingreso de proyectos");
         <div class="sm:-mt-9 "> 
                     <div class="mt-10  flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
                         <label for="txtID" class="p-2 bg-gray-700 text-white">Descripcion</label>
-                        <input class="w-1/4	 lg:w-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtDescripcion" value="" >
+                        <input class="w-1/4	 lg:w-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtDescripcion" value="" requiered >
                         <label for="txtNombreRubrica" title="Editar" ><span class="hidden lg:block icon-pencil"></span></label>
                     </div>
             </div>
             <div class="lg:-mt-9">
                 <div class="flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
                     <label for="txtMateria" class="p-2 bg-gray-700 text-white">Materia</label>
-                    <select name="txtMateria" id="txtMateria" class="p-1 w-full rounded-r-lg outline-none">
+                    <select name="txtMateria" id="txtMateria" class="p-1 w-full rounded-r-lg outline-none" requiered>
 <?php writeMatterForNewRubric(); ?>
                     </select>
                 </div>
@@ -67,7 +67,7 @@ comparacionFecha("Ingreso de proyectos");
             <div class="lg:-mt-9">
                 <div class="flex flex-row items-center w-full lg:w-4/5 border-gray-700 border-solid border-2 rounded-lg">
                     <label for="txtNivel" class="p-2 bg-gray-700 text-white">Grado</label>
-                    <select name="txtGrado" id="txtGrado" class="p-1 w-full rounded-r-lg outline-none" >
+                    <select name="txtGrado" id="txtGrado" class="p-1 w-full rounded-r-lg outline-none"  required>
 <?php writeLevelForNewRubric(); ?>
                     </select>
                 </div>
@@ -76,7 +76,7 @@ comparacionFecha("Ingreso de proyectos");
             <div>
                 <div class="my-10 flex flex-row items-center lg:w-full lg:h-3/5 md:h-full sm:h-full border-gray-700 border-solid border-2 rounded-lg">
                     <label for="txtNivel" class="p-10 items-center p-2 bg-gray-700 text-white lg:h-full md:h-full sm:h-full">Alumnos</label>
-                    <select name="txtAlumnos[]" id="txtAlumnos" class="p-1 w-full rounded-r-lg outline-none " multiple>
+                    <select name="txtAlumnos[]" id="txtAlumnos" class="p-1 w-full rounded-r-lg outline-none " multiple required>
                         
                     </select>
                 </div>
