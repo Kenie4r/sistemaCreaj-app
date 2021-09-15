@@ -49,7 +49,7 @@ $query = new Query();
                     </p>    
                 </div>
             <div class=' m-2 text-xl'>
-                <a href='../index.php' class='bg-blue-400 text-white p-2'>Volver al incio</a>
+                <a href='index.php' class='bg-blue-400 text-white p-2'>Volver al incio</a>
                 </div>
             </div>
         </div>
