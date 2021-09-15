@@ -51,6 +51,7 @@ function validateFormUser() {
 
     //Si hay errores se muestra un alert, sino se continua con la solicitud
     if(errores > 0){
+        alertaSending.addClass('hidden'); //Pantalla de carga
         alert("Error: Llene los campos correctamente.");
     }else{
         frmProfile.submit();

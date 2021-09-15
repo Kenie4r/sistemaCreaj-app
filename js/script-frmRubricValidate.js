@@ -69,6 +69,7 @@ function formValidate(){
 
     //Ver cuantos errores hay para enviar el formulario
     if(errores > 0){
+        alertaSending.addClass('hidden');
         alert("Error: Llene todos los campos.")
     }else{
         frmRubric.submit();

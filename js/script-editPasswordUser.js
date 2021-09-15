@@ -64,6 +64,7 @@ function validateFrmPass() {
 
     //Si hay errores se mestra un alert, sino se procede con la solicitud
     if(errores > 0){
+        alertaSending.addClass('hidden'); //Pantalla de carga
         alert("Error: Llene los campos correctamente.")
     }else{
         frmPassword.submit();
