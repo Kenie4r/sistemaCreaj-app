@@ -29,12 +29,6 @@
                         </div>
                     </div>
                 </div> 
-                <div class='w-full p-2 text-sm'>
-                    <div><p class='text-gray-500'>Proyecto calificados: 10 de 100</p></div>
-                    <div class='w-full h-2 bg-gray-300 relative  '>
-                        <div class='absolute w-2/12  h-full bg-red-700'></div>
-                    </div>
-                </div>
                
                 </div>
                 ";
