@@ -32,12 +32,9 @@ comparacionFecha("Ingreso de proyectos");
                     <div id="ctNR" class="flex flex-row items-center content-center border-b-2 border-solid border-green-700">
                         <input class="w-3/4 lg:w-full lg:text-5xl outline-none" type="text" name="txtNombre"  value="Nuevo proyecto" maxlength="45" required>
                     </div>
-                    <label for="txtNombreRubrica" title="Editar" ><span class="icon-pencil"></span></label>
-                    <input type="checkbox" name="ckbNameValidate" id="ckbNameValidate" class="hidden" disabled>
+                    <label for="txtProjects" title="Editar" ><span class="icon-pencil"></span></label>
                 </div>
-                <div>
-                    <p class="text-green-700" id="lbMensajeNR">Nombre válido</p>
-                </div>
+            
             </div>
             <div class="flex lg:justify-end ml-9 lg:m-9">
                 <div class="mx-2 lg:m-2 lg:mt-7">
@@ -53,7 +50,7 @@ comparacionFecha("Ingreso de proyectos");
                     <div class="mt-10  flex flex-row items-center w-full lg:w-4/5 mb-7 lg:m-0 border-gray-700 border-solid border-2 rounded-lg">
                         <label for="txtID" class="p-2 bg-gray-700 text-white">Descripcion</label>
                         <input class="w-1/4	 lg:w-full p-1.5 outline-none focus:border-gray-500 border-b-2 focus:border-solid" type="text" name="txtDescripcion" value="" requiered >
-                        <label for="txtNombreRubrica" title="Editar" ><span class="hidden lg:block icon-pencil"></span></label>
+                        <label for="txtProjects" title="Editar" ><span class="hidden lg:block icon-pencil"></span></label>
                     </div>
             </div>
             <div class="lg:-mt-9">

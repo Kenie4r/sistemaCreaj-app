@@ -45,14 +45,32 @@ if($contador == $proyecto_idproyecto){
 
 $idestudiante= $consulta-> getIdestudianteByIdproyecto($proyecto_idproyecto);
 $idestudiantes=$consulta->getIDestudiantes($proyecto_idproyecto);
-foreach($idestudiantes as $valor){
-    $id_estudiantes = $valor;
-    $deleteEstudiantes= $consulta-> deleteStudents($id_estudiantes);
-}
 
-$deleteEquipo= $consulta-> deleteequipo($proyecto_idproyecto);
-$deleteProyecto= $consulta-> deleteprojects($proyecto_idproyecto);
- 
+
+
+ if(empty($idestudiantes)){
+     
+    $deleteEquipo= $consulta-> deleteequipo($proyecto_idproyecto);
+    $deleteProyecto= $consulta-> deleteprojects($proyecto_idproyecto);
+    ?>
+    <section class="container">
+        <div class="m-4 lg:m-7 bg-green-500 border-2 border-solid border-green-800 rounded-lg">
+            <div class="m-4 lg:m-7 text-center">
+                <p class="lg:text-4xl text-green-900">Se ha eliminado con éxito el proyecto.</p>
+            </div>
+            <div class="m-4 lg:m-7 flex justify-center">
+                <a href="index.php" class="text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-green-500 hover:bg-green-700 cursor-pointer"><span class="icon-circle-left"></span> Regresar</a>
+            </div>
+        </div>
+    </section>
+<?php
+ }else{
+    foreach($idestudiantes as $valor){
+        $id_estudiantes = $valor;
+        $deleteEstudiantes= $consulta-> deleteStudents($id_estudiantes);
+    }
+    $deleteEquipo= $consulta-> deleteequipo($proyecto_idproyecto);
+    $deleteProyecto= $consulta-> deleteprojects($proyecto_idproyecto);
     if($deleteEquipo == "Hecho" && $deleteProyecto == "Hecho" &&  $deleteEstudiantes ==  "Hecho"){
         ?>
             <section class="container">
@@ -80,6 +98,7 @@ $deleteProyecto= $consulta-> deleteprojects($proyecto_idproyecto);
             </section>
             <?php
         }
+}
 }
 ?>
 </body>
