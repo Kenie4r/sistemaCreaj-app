@@ -1,8 +1,6 @@
 <?php
-    require_once("../modelo/conection.php");
-    require_once("../modelo/query.php");
-    
-//Verificar session
+require_once("../modelo/conection.php");
+require_once("../modelo/query.php");
 
 $consulta = new Query; //Crear una consulta
 
@@ -16,31 +14,40 @@ $idMateria= $_POST["txtMateria"];
 
 
 $hayrepetidos = false;
-$Datoprojects= $consulta->saveProjects($name, $descripcion, $idGrado, $idMateria);
-$idProyecto=$consulta->getIdprojectsByNombre();
-if(isset($_POST["txtAlumnos"])){
-    echo "no se ve";
-$id_estudiante= $_POST["txtAlumnos"];
-foreach($id_estudiante as $valor){
-    $id_estudiante =$valor;
-    $existenteEstudiante=$consulta->existenteAlumnoProyecto($id_estudiante);
-    if($existenteEstudiante != ""){
-        $hayrepetidos = true;
-        break;
+if( empty($descripcion) && empty($idGrado) && empty($idMateria) ){
+    $Datoprojects= "";
+}else{
+    if(isset($_POST["txtAlumnos"])){
+        //echo "no se ve";
+        $id_estudiante= $_POST["txtAlumnos"];
+        foreach($id_estudiante as $valor){
+            $id_estudiante =$valor;
+            $existenteEstudiante=$consulta->existenteAlumnoProyecto($id_estudiante);
+            if($existenteEstudiante != ""){
+                $hayrepetidos = true;
+                break;
+            }
+        }
+
+        //print_r ($id_estudiante);
+        if(!($hayrepetidos)){
+            $Datoprojects= $consulta->saveProjects($name, $descripcion, $idGrado, $idMateria);
+            $idProyecto=$consulta->getIdprojectsByNombre();
+            if(is_array($id_estudiante) > 1){
+                foreach($id_estudiante as $valor){
+                    $id_estudiante =$valor;
+                    $proyecto= $idProyecto;
+                    $Datosteam= $consulta->saveTeam($id_estudiante, $proyecto);
+                }
+            }else{
+                $Datosteam= $consulta->saveTeam($id_estudiante, $idProyecto);
+            }
+        }else{
+            $Datoprojects = "";
+        }
+    }else{
+        $Datoprojects = "";
     }
-}
-
-print_r ($id_estudiante);
-if(!($hayrepetidos)){
-    foreach($id_estudiante as $valor){
-        $id_estudiante =$valor;
-        $proyecto= $idProyecto;
-        $Datosteam= $consulta->saveTeam($id_estudiante, $proyecto);
-    }
-}
-
-
-
 }
 ?>
 
