@@ -180,9 +180,9 @@ class Query{
     public function saveProjects($name, $descripcion, $idGrado, $idMateria){
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql = "INSERT INTO proyecto(nombreProyecto, descripcion, grado_idgrado, materia_idmateria) VALUES (:name, :descripcion, :idGrado, :idMateria)";
+        $sql = "INSERT INTO proyecto(nombreProyecto, descripcion, grado_idgrado, materia_idmateria) VALUES (:nombre, :descripcion, :idGrado, :idMateria)";
         $sentencia= $connection->prepare($sql);
-        $sentencia->bindParam(":name", $name);
+        $sentencia->bindParam(":nombre", $name);
         $sentencia->bindParam(":descripcion", $descripcion);
         $sentencia->bindParam(":idGrado", $idGrado);
         $sentencia->bindParam(":idMateria", $idMateria);
