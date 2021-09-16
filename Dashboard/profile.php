@@ -7,7 +7,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!--<script src="js/dashboard.js"></script> -->
     <link rel="stylesheet" href="../recursos/icons/style.css">
-   
+    <script src="button.js"></script>
+    <script src="js/button2.js"></script>
 </head>
 <body >
 <?php
