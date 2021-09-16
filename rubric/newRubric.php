@@ -69,9 +69,9 @@ comparacionFecha("Ingreso de rubricas");
             </div>
             <div>
                 <div class="flex flex-row items-center w-full lg:w-4/5 border-gray-700 border-solid border-2 rounded-lg">
-                    <label for="txtNivel" class="p-2 bg-gray-700 text-white">Nivel</label>
+                    <label for="txtNivel" class="p-2 bg-gray-700 text-white">Grado</label>
                     <select name="txtNivel" id="txtNivel" class="p-1 w-full rounded-r-lg outline-none">
-<?php writeLevelForNewRubric(); ?>
+<?php writeGradeForNewRubric(); ?>
                     </select>
                 </div>
             </div>

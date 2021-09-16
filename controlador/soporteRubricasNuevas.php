@@ -49,6 +49,21 @@ function writeMatterForNewRubric(){
 }
 
 //Declarar la funcion para escribir los niveles para la siguiente rubrica
+function writeGradeForNewRubric(){
+    $consulta = new Query; //Crear una consulta
+    $grados = $consulta->getGrade(); //Get niveles
+
+    if(empty($grados)){
+        echo "<option value=''>No hay grados para elegir</option>\n";
+    }else{
+        echo "<option value=''>Elige un grado para asignar...</option>\n";
+        foreach ($grados as $key => $grado) {
+            echo "<option value='" . $grado["idgrado"] . "'>" . $grado["nombre"] . "</option>\n";
+        }
+    }
+}
+
+//Declarar la funcion para escribir los niveles para la siguiente rubrica
 function writeLevelForNewRubric(){
     $consulta = new Query; //Crear una consulta
     $niveles = $consulta->getLevel(); //Get niveles

@@ -49,7 +49,7 @@ class Query{
     public function saveRubrica($id_rubrica, $name, $id_materia, $id_nivel){
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql = "INSERT INTO rubrica (idrubrica, nombre, materia_idmateria, nivel_idnivel) VALUES(:idrubric, :nombr, :materia, :nivel)";
+        $sql = "INSERT INTO rubrica (idrubrica, nombre, materia_idmateria, grado_idgrado) VALUES(:idrubric, :nombr, :materia, :nivel)";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":idrubric", $id_rubrica, PDO::PARAM_STR);
         $sentencia->bindParam(":nombr", $name, PDO::PARAM_STR);
@@ -1051,6 +1051,23 @@ class Query{
             return $resultado[0];
         }
     }
+
+    //Obtener el grado por medio del ID
+    public function getGrade(){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM grado";
+        $sentencia= $connection->prepare($sql);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
     //Obtener el grado por medio del ID
     public function getGradeById($idgrado){
         $model = new Conection();

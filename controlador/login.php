@@ -10,7 +10,7 @@
             $_SESSION['nombres']=$usuario['nombres'];
             $_SESSION['apellidos']=$usuario['apellidos'];
             $_SESSION['email']=$usuario['email'];
-            header('Location: /Dashboard/profile.php');
+            header('Location: /sistemaCreaj-app/Dashboard/profile.php');
             return true;
         }else{
             header('Location: index.php');
@@ -22,7 +22,7 @@
         if( !empty($_SESSION['uid']) ){
             return $_SESSION['uid'];
         }else{
-            header("Location: index.php");
+            header("Location: sistemaCreaj-app/index.php");
         }
     }
     function cerrar(){

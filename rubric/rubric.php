@@ -13,7 +13,7 @@ $idrubrica = $_GET["idrubric"];
 
 $rubrica = $consulta->getRubricById($idrubrica);
 $materia_rubrica = $consulta->getMatterById($rubrica["materia_idmateria"]);
-$nivel_rubrica = $consulta->getLevelById($rubrica["nivel_idnivel"]);
+$nivel_rubrica = $consulta->getGradeById2($rubrica["grado_idgrado"]);
 
 $criterios = $consulta->getCriteriosByIdRubric($idrubrica);
 
@@ -72,7 +72,7 @@ require('../Dashboard/Dashboard.php');
             <div>
                 <div class="flex flex-row items-center w-full lg:w-4/5 border-gray-700 border-solid border-2 rounded-lg">
                     <p class="p-2 bg-gray-700 text-white">Nivel</p>
-                    <p class="p-1 w-full rounded-r-lg outline-none"><?php echo $nivel_rubrica["nombre"]; ?></p>
+                    <p class="p-1 w-full rounded-r-lg outline-none"><?php echo $nivel_rubrica[0]["nombre"] . " " . $nivel_rubrica[0]["seccion"]; ?></p>
                 </div>
             </div>
         </div>

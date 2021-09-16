@@ -6,14 +6,14 @@ require_once("../controlador/infoNivelesAprobacion.php");
 
 $consulta = new Query; //Crear una consulta
 $materias = $consulta->getMatter(); //Get materias
-$niveles = $consulta->getLevel(); //Get niveles
+$grados = $consulta->getGrade(); //Get grados
 
 //ID
 $idrubrica = $_GET["idrubric"];
 
 $rubrica = $consulta->getRubricById($idrubrica);
 $materia_rubrica = $consulta->getMatterById($rubrica["materia_idmateria"]);
-$nivel_rubrica = $consulta->getLevelById($rubrica["nivel_idnivel"]);
+$grado_rubrica = $consulta->getGradeById2($rubrica["grado_idgrado"]);
 
 $criterios = $consulta->getCriteriosByIdRubric($idrubrica);
 
@@ -98,10 +98,12 @@ foreach ($materias as $key => $materia) {
                     <select name="txtNivel" id="txtNivel" class="p-1 w-full rounded-r-lg outline-none">
 <?php
 
-echo "<option value='" . $nivel_rubrica["idnivel"] . "'>" . $nivel_rubrica["nombre"] . "</option>\n";
-foreach ($niveles as $key => $nivel) {
-    if($nivel["idnivel"] != $nivel_rubrica["idnivel"]){
-        echo "<option value='" . $nivel["idnivel"] . "'>" . $nivel["nombre"] . "</option>\n";
+$nombreGradoRubrica = $grado_rubrica[0]["nombre"] . " " . $grado_rubrica[0]["seccion"];
+
+echo "<option value='" . $grado_rubrica[0]["idgrado"] . "'>" . $nombreGradoRubrica . "</option>\n";
+foreach ($grados as $key => $grado) {
+    if($grado["idgrado"] != $grado_rubrica[0]["idgrado"]){
+        echo "<option value='" . $grado["idnivel"] . "'>" . $grado["nombre"] . "</option>\n";
     }
 }
 
