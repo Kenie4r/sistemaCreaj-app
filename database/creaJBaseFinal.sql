@@ -103,7 +103,7 @@ COLLATE = utf8_spanish2_ci;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `calificador_creaj`.`proyecto` (
   `idproyecto` INT NOT NULL AUTO_INCREMENT,
-  `nombreProyecto` VARCHAR(45) NULL,
+  `nombreProyecto` LONGTEXT NULL,
   `descripcion` MEDIUMTEXT NULL,
   `grado_idgrado` INT NOT NULL,
   `materia_idmateria` INT NOT NULL,
@@ -157,18 +157,18 @@ CREATE TABLE IF NOT EXISTS `calificador_creaj`.`rubrica` (
   `idrubrica` VARCHAR(15) NOT NULL,
   `nombre` VARCHAR(45) NULL,
   `materia_idmateria` INT NOT NULL,
-  `nivel_idnivel` INT NOT NULL,
-  PRIMARY KEY (`idrubrica`, `materia_idmateria`, `nivel_idnivel`),
+  `grado_idgrado` INT NOT NULL,
+  PRIMARY KEY (`idrubrica`, `materia_idmateria`, `grado_idgrado`),
   INDEX `fk_rubrica_materia1_idx` (`materia_idmateria` ASC) ,
-  INDEX `fk_rubrica_nivel1_idx` (`nivel_idnivel` ASC) ,
+  INDEX `fk_rubrica_grado1_idx` (`grado_idgrado` ASC) ,
   CONSTRAINT `fk_rubrica_materia1`
     FOREIGN KEY (`materia_idmateria`)
     REFERENCES `calificador_creaj`.`materia` (`idmateria`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_rubrica_nivel1`
-    FOREIGN KEY (`nivel_idnivel`)
-    REFERENCES `calificador_creaj`.`nivel` (`idnivel`)
+  CONSTRAINT `fk_rubrica_grado1`
+   FOREIGN KEY (`grado_idgrado`)
+    REFERENCES `calificador_creaj`.`grado` (`idgrado`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
