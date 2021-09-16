@@ -560,7 +560,7 @@ class Query{
     public function getNewRubric($idMateria, $idNivel){
         $model = new Conection();
         $conexion = $model->_getConection();
-        $sql = "SELECT rubrica.idrubrica FROM rubrica  WHERE rubrica.materia_idmateria =:idMateria AND rubrica.nivel_idnivel = :idNivel";
+        $sql = "SELECT rubrica.idrubrica FROM rubrica  WHERE rubrica.materia_idmateria =:idMateria AND rubrica.grado_idgrado = :idNivel";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(':idMateria', $idMateria);
         $sentencia->bindParam(':idNivel', $idNivel);

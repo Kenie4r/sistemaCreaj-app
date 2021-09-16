@@ -123,7 +123,7 @@
             $html="<script>crearNotificacion(0, 'Aún no puedes calificar', 'Volver atras', null)</script>";
             print($html);
         }else{
-        $myRubric = $query->getNewRubric($idMateria, $idNivel['idnivel']);
+        $myRubric = $query->getNewRubric($idMateria, $idGrado);
             if(empty($myRubric)){
                 $html="<script>crearNotificacion(0, 'Aún no puedes calificar', 'Volver atras', null)</script>";
             }else{
