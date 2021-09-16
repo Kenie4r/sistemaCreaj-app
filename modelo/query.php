@@ -761,10 +761,29 @@ class Query{
         $nombreProyecto = "%".$nombreProyecto."%";
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql = "SELECT * FROM proyecto WHERE grado_idgrado = :idgrade AND materia_idmateria = :idgrade AND nombreProyecto LIKE :nombreProyecto";
+        $sql = "SELECT * FROM proyecto WHERE grado_idgrado = :idgrade AND materia_idmateria = :idma AND nombreProyecto LIKE :nombreProyecto";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":nombreProyecto", $nombreProyecto);
         $sentencia->bindParam(":idgrade", $idgrado);
+        $sentencia->bindParam(":idma", $idmateria);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
+    //Obtener los proyectos filtrados segun el nombre y materia
+    public function searchProyectsByNameAndMatter($nombreProyecto, $idmateria){
+        $nombreProyecto = "%".$nombreProyecto."%";
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM proyecto WHERE materia_idmateria = :idgrade AND nombreProyecto LIKE :nombreProyecto";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":nombreProyecto", $nombreProyecto);
         $sentencia->bindParam(":idgrade", $idmateria);
         if(!$sentencia){
             return "Error";
@@ -775,6 +794,26 @@ class Query{
             return $resultado;
         }
     }
+
+    //Obtener los proyectos filtrados segun el nombre y grado
+    public function searchProyectsByNameAndGrade($nombreProyecto, $idgrado){
+        $nombreProyecto = "%".$nombreProyecto."%";
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM proyecto WHERE grado_idgrade = :idgrade AND nombreProyecto LIKE :nombreProyecto";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":nombreProyecto", $nombreProyecto);
+        $sentencia->bindParam(":idgrade", $idgrado);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
     //Obtener los proyectos filtrados segun el nombre
     public function searchProyectsByName($nombreProyecto){
         $nombreProyecto = "%".$nombreProyecto."%";
@@ -809,6 +848,43 @@ class Query{
             return $resultado;
         }
     }
+
+    //Obtener los proyectos filtrados segun el ID
+    public function searchProyectByMatter($idproyecto){
+        $idproyecto = "%".$idproyecto."%";
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM proyecto WHERE materia_idmateria LIKE :idproyecto";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":idproyecto", $idproyecto);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
+    //Obtener los proyectos filtrados segun el ID
+    public function searchProyectByGrade($idproyecto){
+        $idproyecto = "%".$idproyecto."%";
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM proyecto WHERE grado_idgrado  LIKE :idproyecto";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":idproyecto", $idproyecto);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
     //Obtener los estudiantes filtrados segun el ID
     public function searchAlumnosById($idestudiante){
         $idestudiante = "%".$idestudiante."%";
@@ -1480,23 +1556,8 @@ class Query{
             return $resultado;
         }
     }
-    public function getMatterIdInproyects($idMateria){
-        
-        $modelo = new Conection;
-        $conexion = $modelo->_getConection();
-        $sql = "SELECT idmateria FROM materia WHERE idmateria IN(SELECT materia_idmateria FROM proyecto)AND idmateria=:idmateria";
-        $sentencia = $conexion->prepare($sql);
-        $sentencia->bindParam(":idmateria", $idMateria);
-        
-        if(!$sentencia){
-            return "";
-        }else{
-            $sentencia->execute();
-            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-            
-            return $resultado;
-        }
-    }
+
+    
     #ver cuantas foraneas de niveles en grados
     public function getLevelIdInGrades($idnivel){
         

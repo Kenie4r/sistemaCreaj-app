@@ -10,9 +10,15 @@ $(document).ready(
         );
 
         //Vaciar la busqueda cuando se cambie de tipo de busqueda
-        $("#sltBusqueda").on("change",
+        $("#txtMateria").on("change",
             function(){
-                $("#txtBusqueda").val("");
+                llenarTabla();
+            }
+        );
+
+        //Vaciar la busqueda cuando se cambie de tipo de busqueda
+        $("#txtNivel").on("change",
+            function(){
                 llenarTabla();
             }
         );
@@ -20,12 +26,15 @@ $(document).ready(
 )
 
 function llenarTabla() {
-    var txtBusqueda = $("#txtBusqueda");
-    var tipoBusqueda = $("#sltBusqueda");
+    var busquedaNombre = $("#txtBusqueda");
+    var busquedaMateria = $("#txtMateria");
+    var busquedaGrado = $("#txtNivel");
+
     $.post("../controlador/searchProjects.php", 
                     {
-                        "filtro": txtBusqueda.val(),
-                        "tipofiltro" : tipoBusqueda.val()
+                        "nombre": busquedaNombre.val(),
+                        "materia" : busquedaMateria.val(),
+                        "grado": busquedaGrado.val()
                     },
                     function(respuesta){
                         var contenedorFilasRubric = $("#table-body-rubrica");

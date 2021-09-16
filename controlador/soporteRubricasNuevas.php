@@ -41,7 +41,7 @@ function writeMatterForNewRubric(){
     if(empty($materias)){
         echo "<option value=''>No hay materias para elegir</option>\n";
     }else{
-        echo "<option value=''>Elige una materia para asignar...</option>\n";
+        echo "<option value=''>Elige una materia...</option>\n";
         foreach ($materias as $key => $materia) {
             echo "<option value='" . $materia["idmateria"] . "'>" . $materia["nombre"] . "</option>\n";
         }
@@ -56,9 +56,9 @@ function writeGradeForNewRubric(){
     if(empty($grados)){
         echo "<option value=''>No hay grados para elegir</option>\n";
     }else{
-        echo "<option value=''>Elige un grado para asignar...</option>\n";
+        echo "<option value=''>Elige un grado...</option>\n";
         foreach ($grados as $key => $grado) {
-            echo "<option value='" . $grado["idgrado"] . "'>" . $grado["nombre"] . "</option>\n";
+            echo "<option value='" . $grado["idgrado"] . "'>" . $grado["nombre"] . " " . $grado["seccion"] . "</option>\n";
         }
     }
 }
@@ -71,7 +71,7 @@ function writeLevelForNewRubric(){
     if(empty($niveles)){
         echo "<option value=''>No hay niveles para elegir</option>\n";
     }else{
-        echo "<option value=''>Elige un nivel para asignar...</option>\n";
+        echo "<option value=''>Elige un nivel...</option>\n";
         foreach ($niveles as $key => $nivel) {
             echo "<option value='" . $nivel["idnivel"] . "'>" . $nivel["nombre"] . "</option>\n";
         }

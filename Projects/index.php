@@ -2,6 +2,7 @@
 
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
+require_once("../controlador/soporteRubricasNuevas.php");
 
 $consulta = new Query; //Crear una consulta
 $Proyecto = $consulta->getProject(); //Get Estudiantes
@@ -43,28 +44,30 @@ if( $_SESSION['rol'] == 'a' || $_SESSION['rol'] == 'c'){
 }
 ?>
         </div>
-      <div class='flex flex-row items-center m-7'>
+      <div class='flex flex-col lg:flex-row gap-2 m-7'>
             <div class='flex flex-row'>
                 <input type='text' name='txtBusqueda' id='txtBusqueda' class='p-1 border-gray-700 border-solid border-2 rounded-tl-lg rounded-bl-lg  outline-none' placeholder='Buscar por...'>
-                <select name="sltBusqueda" id="sltBusqueda" class="p-1 border-gray-700 border-solid border-2 rounded-tr-lg rounded-br-lg bg-gray-700 text-white outline-none">
-<?php
-if( $_SESSION['rol'] != 'i' ){
-?>
-                    <option value="id">ID</option>
-<?php
-}
-?>
-                    <option value="nombre">Nombre</option>
-                </select>
+                <label for="txtBusqueda" class="p-1 border-gray-700 border-solid border-2 rounded-tr-lg rounded-br-lg bg-gray-700 text-white outline-none">Nombre</label>
             </div>
+            <div class="flex flex-row items-center  border-gray-700 border-solid border-2 rounded-lg">
+                    <label for="txtMateria" class="p-1 bg-gray-700 text-white">Materia</label>
+                    <select name="txtMateria" id="txtMateria" class="p-1 w-full rounded-r-lg outline-none">
+<?php writeMatterForNewRubric(); ?>
+                    </select>
+                </div>
+                <div class="flex flex-row items-center border-gray-700 border-solid border-2 rounded-lg">
+                    <label for="txtNivel" class="p-1 bg-gray-700 text-white">Grado</label>
+                    <select name="txtNivel" id="txtNivel" class="p-1 w-full rounded-r-lg outline-none">
+<?php writeGradeForNewRubric(); ?>
+                    </select>
+                </div>
         </div>
 
         <div class="box-border m-7">
             <table class="w-full border-collapse text-center">
                 <thead class="bg-gray-900 text-white">
                     <tr>
-                        <td class="rounded-tl-lg p-5">ID</td>
-                        <td class="p-4">Nombre</td>
+                        <td class="p-4 rounded-tl-lg">Nombre</td>
                         <td class="p-4">Descripción</td>
                         <td colspan="4" class="rounded-tr-lg p-4">Opciones</td>
                     </tr>

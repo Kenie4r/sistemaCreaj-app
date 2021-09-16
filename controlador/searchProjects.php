@@ -9,29 +9,26 @@ entrar();
 //variables
 $consulta = new Query; //Crear una consulta
 $rolActivo = $_SESSION['rol'];
+$nombre = $_POST["nombre"];
+$materia = $_POST["materia"];
+$grado = $_POST["grado"];
 
 switch ($rolActivo) {
     case 'i':
-        $usernameActivo = $_SESSION['usario'];
-        $usuarioInfo = $consulta->getUserByUsername($usernameActivo);
-        $iduser = $usuarioInfo['idUsuario'];
-        $asignacionesUsuario = $consulta->getProjectsinfo($iduser); //Obtenemos las asignaciones de este jurado
-        $idgrado = $asignacionesUsuario[0]['materia_idmateria'];
-        $idmateria = $asignacionesUsuario[0]['grado_idgrado'];
-        if(empty($_POST["filtro"])){
-            $proyectos = $consulta->getProjectByGradeAndMatter($idgrado, $idmateria);
-        }else{
-            $proyectos = $consulta->searchProyectsByNameAndMatterAndGrade($_POST["filtro"], $idgrado, $idmateria);
-        }
+        //
         break;
     
     default:
-        if($_POST["tipofiltro"] == "id"){
-            $proyectos = $consulta->searchProyectById($_POST["filtro"]); //Get Proyectos by id
+
+        if( empty($materia) && empty($grado) ){
+            $proyectos = $consulta->searchProyectsByName($nombre);
+        }else if( empty($materia) && !empty($grado) ){
+            $proyectos = $consulta->searchProyectsByNameAndGrade($nombre, $grado);
+        }else if( empty($grado) && !empty($materia) ){
+            $proyectos = $consulta->searchProyectsByNameAndMatter($nombre, $materia);
         }else{
-            $proyectos = $consulta->searchProyectsByName($_POST["filtro"]); //Get Proyectos by nombre
+            $proyectos = $consulta->searchProyectsByNameAndMatterAndGrade($nombre, $grado, $materia);
         }
-        break;
 }
 
 if(!empty($proyectos)){
