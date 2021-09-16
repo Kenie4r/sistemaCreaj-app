@@ -15,14 +15,14 @@ function enviarCorreo($correo, $nombre, $username, $year, $asunto, $saludo, $pas
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'trabajosocialcdbhelp@gmail.com';
-        $mail->Password   = 'hSaYweXa38';
-        //$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        $mail->SMTPSecure = 'tls';
-        $mail->Port       = 587; //587 computadora normal //465 computadora del colegio
+        $mail->Username   = 'creaj.evaluaciones@cdb.edu.sv';
+        $mail->Password   = 'JqDD#&UXFwJF';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        //$mail->SMTPSecure = 'tls';
+        $mail->Port       = 465; //587 servidor local del equipo //465 servidor del colegio
 
         //Recipients
-        $mail->setFrom('trabajosocialcdbhelp@gmail.com', 'Soporte: CDB');
+        $mail->setFrom('creaj.evaluaciones@cdb.edu.sv', 'Sistema de Calificación: CDB');
         $mail->addAddress($correo);
 
         // Content
