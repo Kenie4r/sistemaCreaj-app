@@ -1,9 +1,11 @@
-    <nav class="bg-gray-800">
-        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+    <nav class="bg-gray-800 ">
+        <div class="max-w-7xl mx-auto lg:px-8">
           <div class="relative flex items-center justify-between h-16">
             <div class="absolute inset-y-0 flex items-center md:hidden">
               <!-- Mobile menu button-->
-              <button  type="button" onclick="mostrar();" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+              <button
+              id="boton"  
+              type="button" onclick="mostrar();" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
                 <?php 
                 require_once("../controlador/login.php");
@@ -31,7 +33,70 @@
                 </svg>
               </button>
             </div>
-            <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+              <div class="hidden lg:hidden" id="mobile-menu">
+                 <div class="bg-gray-800 mt-60 px-20 text-center pt-4 pb-3 lg:hidden md:hidden">
+                            <?php
+                          switch($_SESSION['rol']){
+                            case 'a':
+                            ?>
+                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                        <a href="../Dashboard/profile.php" class="sm:mb-10 text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md  text-xl text-sm font-medium" aria-current="page">Inicio</a><br>
+
+                        <a href="../users_profile/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md mt-10 text-xl text-sm font-medium" aria-current="page">Usuarios</a><br>
+                      
+                        <a href="../rubric/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md  text-xl text-sm font-medium">Rubrica</a><br>
+
+                        <a href="../students/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md  text-xl text-sm font-medium">Estudiantes</a><br>
+            
+                        <a href="../academico/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md  text-xl text-sm font-medium">Acádemico</a><br>
+            
+                        <a href="../Projects/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md  text-xl text-sm font-medium">Proyectos</a><br>
+
+                        <a href="../calificar/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md  text-xl text-sm font-medium">Cálificar</a><br>
+
+                        <a href="../ranking/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md  text-xl text-sm font-medium">Ranking</a><br>
+
+                        <a href="../parameters/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md  text-xl text-sm font-medium">Parametros</a>
+                          <?php
+                          break;
+                          ?>
+                          <?php
+                          case 'c':
+                            
+                          ?>
+                        <a href="../Dashboard/profile.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium" aria-current="page">Inicio</a>
+
+                        <a href="../rubric/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium">Rubrica</a>
+
+                        <a href="../users_profile/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium" aria-current="page">Usuarios</a>
+
+                        <a href="../students/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium">Estudiantes</a>
+
+                        <a href="../ranking/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium">Ranking</a>
+
+                        <a href="../academico/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium">Acádemico</a>
+
+                        <a href="../Projects/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium">Proyectos</a>
+                        <?php
+                          break;
+                          ?>
+                          <?php
+                          case 'j':
+
+                          ?>
+                        <a href="../Dashboard/profile.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium" aria-current="page">Inicio</a>
+
+                        <a href="../calificar/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium">Cálificar</a>
+                        <?php
+                        break;
+                        ?>
+                        <?php
+                        }
+                        ?>
+                    
+                  </div>
+                </div>
+            <div id="menu" class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
               <div class="hidden md:block sm:ml-6">
                 <div class="flex space-x-4">
                   <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
@@ -107,69 +172,7 @@
                 </div>
               </div>
             </div>
-            <div class="hidden lg:hidden" id="mobile-menu">
-                 <div class="bg-gray-800 mt-20  -ml-5 pt-4 pb-3 lg:hidden md:hidden">
-                            <?php
-                          switch($_SESSION['rol']){
-                            case 'a':
-                            ?>
-                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                        <a href="../Dashboard/profile.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Inicio</a><br>
-
-                        <a href="../users_profile/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Usuarios</a><br>
-                      
-                        <a href="../rubric/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Rubrica</a><br>
-
-                        <a href="../students/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Estudiantes</a><br>
-            
-                        <a href="../academico/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Acádemico</a><br>
-            
-                        <a href="../Projects/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Proyectos</a><br>
-
-                        <a href="../calificar/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Cálificar</a><br>
-
-                        <a href="../ranking/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Ranking</a><br>
-
-                        <a href="../parameters/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Parametros</a>
-                          <?php
-                          break;
-                          ?>
-                          <?php
-                          case 'c':
-                            
-                          ?>
-                        <a href="../Dashboard/profile.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Inicio</a>
-
-                        <a href="../rubric/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Rubrica</a>
-
-                        <a href="../users_profile/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Usuarios</a>
-
-                        <a href="../students/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Estudiantes</a>
-
-                        <a href="../ranking/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Ranking</a>
-
-                        <a href="../academico/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Acádemico</a>
-
-                        <a href="../Projects/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Proyectos</a>
-                        <?php
-                          break;
-                          ?>
-                          <?php
-                          case 'j':
-
-                          ?>
-                        <a href="../Dashboard/profile.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Inicio</a>
-
-                        <a href="../calificar/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Cálificar</a>
-                        <?php
-                        break;
-                        ?>
-                        <?php
-                        }
-                        ?>
-                    
-                  </div>
-                </div>
+          
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm: sm:pr-0">
               <!-- Profile dropdown -->
               <div class="ml-3 relative">

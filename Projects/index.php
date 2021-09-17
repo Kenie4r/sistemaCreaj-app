@@ -24,18 +24,15 @@ require_once("../controlador/soporteProyectos.php");
 <body >
 <?php
 require('../Dashboard/Dashboard.php');
-
-$username = $_SESSION['usario'];
-$rol = $_SESSION['rol'];
-
 ?>
+
       <article class="container">
         <div class="grid grid-cols-1 lg:grid-cols-2 m-9">
             <div class="mb-7 lg:m-0">
                 <h1 class="text-5xl text-gray-500">Proyectos</h1>
             </div>
 <?php
-if( $rol == 'a' || $rol == 'c'){
+if($_SESSION['rol'] == 'a' || $_SESSION['rol'] == 'c'){
 ?>
             <div class="flex lg:justify-end">
                 <a href="newProjects.php" class="text-blue-600 border-blue-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-blue-600"><span class="icon-plus"></span> Nuevo proyecto</a>
@@ -69,14 +66,14 @@ if( $rol == 'a' || $rol == 'c'){
                     <tr>
                         <td class="p-4 rounded-tl-lg">Nombre</td>
                         <td class="p-4">Descripción</td>
-                        <td colspan="4" class="rounded-tr-lg p-4">Opciones</td>
+                        <td colspan="3" class="rounded-tr-lg p-4">Opciones</td>
                     </tr>
                 </thead>
                 <tbody id="table-body" class="bg-gray-200">
                 </tbody>
                 <tfoot class="bg-gray-900">
                     <tr>
-                        <td colspan="8" class="rounded-b-lg p-2"> </td>
+                        <td colspan="5" class="rounded-b-lg p-2"> </td>
                     </tr>
                 </tfoot>
                 </table>

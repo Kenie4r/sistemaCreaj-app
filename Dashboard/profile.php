@@ -21,7 +21,7 @@
         primeraVez();
 ?>
     <!-- This example requires Tailwind CSS v2.0+ -->
-<div class="px-52 mt-20 bg-white shadow overflow-hidden sm:rounded-lg">
+<div class="lg:ml-36 lg:mr-36 px-50 mt-20 bg-white shadow overflow-hidden sm:rounded-lg">
   <div class="px-4 py-5 sm:px-6">
     <h3 class="text-xl leading-6 font-medium text-gray-900">
       Perfil
@@ -77,7 +77,8 @@
             break;
         }
         ?>
-        <div class="mt-2 flex -ml-64 flex-row items-center justify-center p-5 w-full">
+        <div class="ml-36 mr-36">
+        <div class="mt-2 flex  flex-row items-center sm:items-center justify-center p-5 w-full">
             <div class="border-2 border-blue-500 text-xl p-2 text-blue-500 hover:bg-blue-400 hover:text-white cursor-pointer" >
                <a href="../profile/editPersonalData.php" > Editar </a>
             </div>
@@ -85,6 +86,7 @@
                <a href="../profile/editPassword.php">Cambiar contraseña</a>
             </div>
         </div>
+      </div>
         </dd>
       </div>
     </dl>
