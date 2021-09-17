@@ -49,7 +49,7 @@ if( $estadoGrado ){
 ?>
         <div class="m-9">
             <div class="mb-7 lg:m-0">
-                <h1 class="text-5xl text-gray-400 text-center">Proyectos de <?php echo $grado[0]['nombre']; ?></h1>
+                <h1 class="text-5xl text-gray-400 text-center">Proyectos de <?php echo $grado[0]['nombre'] . " " . $grado[0]['seccion']; ?></h1>
             </div>
         </div>
         <div class="m-6 flex lg:justify-center">
