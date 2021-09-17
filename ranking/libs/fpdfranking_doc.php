@@ -36,14 +36,14 @@ $gradoinfo = $query-> getGradobyID($idGrado);
 
         $jurados = $query->getProjectsRateData($camps['proyecto_idproyecto']);
         $proyectoInfo =$query->getTeambyID($camps['proyecto_idproyecto']);
-        $fpdf->MultiCell(270,10, $c . utf8_decode("°") . utf8_decode("   Nombre del proyecto es: " . $proyectoInfo['nombreProyecto']), 'RBLT', 'C' , false);
-        $fpdf->Cell(270,10, "Gano : " .$camps['notafinal'] . " Puntos",1,1,'C');
+        $fpdf->MultiCell(275,10, $c . utf8_decode("°") . utf8_decode("   Nombre del proyecto es: " . $proyectoInfo['nombreProyecto']), 'RBLT', 'C' , false);
+        $fpdf->Cell(275,10, "Gano : " .$camps['notafinal'] . " Puntos",1,1,'C');
         $c++;
 
         foreach($jurados as $camp){
             $dataUser = $query->getUserById($camp['usuario_idUsuario']);
                 $fpdf->cell(30,10,'#', 1,0, 'C');
-                $fpdf->Cell(240,10,utf8_decode("El usuario : {$dataUser['nombres']} {$dataUser['apellidos']} calificó este proyecto con:  {$camp['puntaje']} puntos. " ),1,1,'c');
+                $fpdf->Cell(245,10,utf8_decode("El usuario : {$dataUser['nombres']} {$dataUser['apellidos']} calificó este proyecto con:  {$camp['puntaje']} puntos. " ),1,1,'c');
             
             //$txtJurados .= "El Jurado " .$camp['usuario_idUsuario'] . " entrego ". $camp['puntaje']. "PUNTOS";
         }
