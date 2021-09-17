@@ -23,7 +23,7 @@ function enviarCorreo($correo, $nombre, $username, $year, $asunto, $saludo, $pas
         $mail->Port       = 587; //587 servidor local del equipo
 
         //Recipients
-        $mail->setFrom('creaj.evaluaciones@cdb.edu.sv', 'Sistema de Calificación: CDB');
+        $mail->setFrom('creaj.evaluaciones@cdb.edu.sv', 'Sistema de Calificacion: CDB');
         $mail->addAddress($correo);
 
         // Content

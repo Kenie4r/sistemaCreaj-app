@@ -1128,6 +1128,23 @@ class Query{
         }
     }
 
+    //Obtener la materia según el ID
+    public function getMatterById2($idmateria){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM materia WHERE idmateria = :materiaID";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":materiaID", $idmateria);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado;
+        }
+    }
+
     //Obtener el grado por medio del ID
     public function getGrade(){
         $model = new Conection();
@@ -1176,6 +1193,24 @@ class Query{
             return $resultado;
         }
     }
+
+    //ver 2
+    public function getOneGradeById3($idgrado){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "SELECT * FROM grado WHERE idgrado = :gradoID";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":gradoID", $idgrado);
+        if(!$sentencia){
+            return "Error";
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $resultado[0];
+        }
+    }
+
     public function getLevelbyGradeID($idgrado){
         $modelo = new Conection();
         $conexion = $modelo->_getConection();

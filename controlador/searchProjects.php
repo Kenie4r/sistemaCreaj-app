@@ -2,35 +2,21 @@
 
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
-require_once("../controlador/login.php");
-
-entrar();
 
 //variables
 $consulta = new Query; //Crear una consulta
-$rolActivo = $_SESSION['rol'];
 $nombre = $_POST["nombre"];
 $materia = $_POST["materia"];
 $grado = $_POST["grado"];
 
-switch ($rolActivo) {
-    case 'i':
-        //
-        break;
-    
-    default:
-
-        if( empty($materia) && empty($grado) ){
-            $proyectos = $consulta->searchProyectsByName($nombre);
-        }else if( empty($materia) && !empty($grado) ){
-            $proyectos = $consulta->searchProyectsByNameAndGrade($nombre, $grado);
-        }else if( empty($grado) && !empty($materia) ){
-            $proyectos = $consulta->searchProyectsByNameAndMatter($nombre, $materia);
-        }else{
-            $proyectos = $consulta->searchProyectsByNameAndMatterAndGrade($nombre, $grado, $materia);
-        }
-
-    break;
+if( empty($materia) && empty($grado) ){
+    $proyectos = $consulta->searchProyectsByName($nombre);
+}else if( empty($materia) && !empty($grado) ){
+    $proyectos = $consulta->searchProyectsByNameAndGrade($nombre, $grado);
+}else if( empty($grado) && !empty($materia) ){
+    $proyectos = $consulta->searchProyectsByNameAndMatter($nombre, $materia);
+}else{
+    $proyectos = $consulta->searchProyectsByNameAndMatterAndGrade($nombre, $grado, $materia);
 }
 
 if(!empty($proyectos)){

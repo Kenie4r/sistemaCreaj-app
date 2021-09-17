@@ -2,11 +2,7 @@
 
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
-require_once("../controlador/soporteRubricasNuevas.php");
-
-$consulta = new Query; //Crear una consulta
-$Proyecto = $consulta->getProject(); //Get Estudiantes
-$idProyecto=$consulta->getIdprojectsByNombre();
+require_once("../controlador/soporteProyectos.php");
 
 ?>
 <!DOCTYPE html>
@@ -26,19 +22,20 @@ $idProyecto=$consulta->getIdprojectsByNombre();
     <script src="../Dashboard/js/button2.js"></script>
 </head>
 <body >
-    <?php
-         require('../Dashboard/Dashboard.php');
-         require_once("../modelo/conection.php");
-         require_once("../modelo/query.php");
-         
-    ?>
+<?php
+require('../Dashboard/Dashboard.php');
+
+$username = $_SESSION['usario'];
+$rol = $_SESSION['rol'];
+
+?>
       <article class="container">
         <div class="grid grid-cols-1 lg:grid-cols-2 m-9">
             <div class="mb-7 lg:m-0">
                 <h1 class="text-5xl text-gray-500">Proyectos</h1>
             </div>
 <?php
-if( $_SESSION['rol'] == 'a' || $_SESSION['rol'] == 'c'){
+if( $rol == 'a' || $rol == 'c'){
 ?>
             <div class="flex lg:justify-end">
                 <a href="newProjects.php" class="text-blue-600 border-blue-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-blue-600"><span class="icon-plus"></span> Nuevo proyecto</a>
@@ -55,13 +52,13 @@ if( $_SESSION['rol'] == 'a' || $_SESSION['rol'] == 'c'){
             <div class="flex flex-row items-center  border-gray-700 border-solid border-2 rounded-lg">
                     <label for="txtMateria" class="p-1 bg-gray-700 text-white">Materia</label>
                     <select name="txtMateria" id="txtMateria" class="p-1 w-full rounded-r-lg outline-none">
-<?php writeMatterForNewRubric(); ?>
+<?php writeMatter($username); ?>
                     </select>
                 </div>
                 <div class="flex flex-row items-center border-gray-700 border-solid border-2 rounded-lg">
                     <label for="txtNivel" class="p-1 bg-gray-700 text-white">Grado</label>
                     <select name="txtNivel" id="txtNivel" class="p-1 w-full rounded-r-lg outline-none">
-<?php writeGradeForNewRubric(); ?>
+<?php writeGrade($username); ?>
                     </select>
                 </div>
         </div>
