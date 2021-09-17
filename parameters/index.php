@@ -22,6 +22,8 @@ $parametros = $consulta->getParametros(); //Get Estudiantes
     <script src="../js/script-validateActualPassword.js"></script>
     <script src="../js/script-validateRestartDB.js"></script>
     <script src="../Dashboard/button.js"></script>
+    <script src="../Dashboard/js/button2.js"></script>
+
 </head>
 <body >
     <?php

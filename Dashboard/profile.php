@@ -9,10 +9,6 @@
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="button.js"></script>
     <script src="js/button2.js"></script>
-<<<<<<< Updated upstream
-=======
-   
->>>>>>> Stashed changes
 </head>
 <body class="bg-">
 <?php
