@@ -62,7 +62,7 @@
         public function generateGrades($type, $username){
             $blockhtml = "";
             $query = new Query();
-            if($type == "a" || $type=="t"){
+            if($type == "a" || $type=="c"){
                 $grados = $query->getGrado();
             }else if($type == "i"){
                 $userdata = $query->getUserByUsername($username);
