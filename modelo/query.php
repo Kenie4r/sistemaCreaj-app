@@ -800,7 +800,7 @@ class Query{
         $nombreProyecto = "%".$nombreProyecto."%";
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql = "SELECT * FROM proyecto WHERE grado_idgrade = :idgrade AND nombreProyecto LIKE :nombreProyecto";
+        $sql = "SELECT * FROM proyecto WHERE grado_idgrado = :idgrade AND nombreProyecto LIKE :nombreProyecto";
         $sentencia= $connection->prepare($sql);
         $sentencia->bindParam(":nombreProyecto", $nombreProyecto);
         $sentencia->bindParam(":idgrade", $idgrado);
