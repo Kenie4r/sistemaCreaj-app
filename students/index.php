@@ -70,11 +70,11 @@ if(!empty($estudiante)){
 if(!empty($estudiante)){
     for ($i=0; $i < count($estudiante); $i++) { 
         echo "<tr class='lol'>";
-    echo "\t<td class='p-6'>" . $estudiante[$i]["idestudiante"] . "</td>";
-    echo "\t<td class='p-6'>" . $estudiante[$i]["nombre"] . "</td>";
-    echo "\t<td class='p-6'>" . $estudiante[$i]["apellidos"] . "</td>";
-    echo "\t<td class='p-6'><a href='editStudents.php?student=" . $estudiante[$i]["idestudiante"] . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Editar</a></td>";
-    echo "\t<td class='p-6'><a href='deleteStudents.php?student=" . $estudiante[$i]["idestudiante"] . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Eliminar</a></td>";
+    echo "\t<td class='p-4'>" . $estudiante[$i]["idestudiante"] . "</td>";
+    echo "\t<td class='p-4'>" . $estudiante[$i]["nombre"] . "</td>";
+    echo "\t<td class='p-4'>" . $estudiante[$i]["apellidos"] . "</td>";
+    echo "\t<td class='p-4'><a href='editStudents.php?student=" . $estudiante[$i]["idestudiante"] . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Editar</a></td>";
+    echo "\t<td class='p-4'><a href='deleteStudents.php?student=" . $estudiante[$i]["idestudiante"] . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Eliminar</a></td>";
     echo "</tr>";
     }
 }else{
@@ -84,6 +84,14 @@ if(!empty($estudiante)){
 }
 
 ?>
-                 
+           </tbody>
+                <tfoot class="bg-gray-900">
+                    <tr>
+                        <td colspan="5" class="rounded-b-lg p-2"> </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </article>           
 </body>
 </html> 
