@@ -23,7 +23,7 @@ $gradoinfo = $query-> getGradobyID($idGrado);
     //se agregra una página donde podemos descargar todos los 
     $fpdf->AddPage('landscape');
     $fpdf->setX(25);
-    $fpdf->Cell(250,10, "Ranking de {$gradoinfo['nombre']}  {$gradoinfo['seccion']} y {$materiaInfo['nombre']}  ",0,1,'C');
+    $fpdf->Cell(250,10,utf8_decode("Ranking de {$gradoinfo['nombre']}{$gradoinfo['seccion']} y {$materiaInfo['nombre']}  "),0,1,'C');
     $fpdf->SetFont('Arial','' ,14);
     $fpdf->setX(35);
     $fpdf->Cell(250,10, "Se mostraran todos los proyectos del grado seleccionado en orden descendente al puntaje promedio entre los jurados",0,1,'C');
@@ -36,15 +36,14 @@ $gradoinfo = $query-> getGradobyID($idGrado);
 
         $jurados = $query->getProjectsRateData($camps['proyecto_idproyecto']);
         $proyectoInfo =$query->getTeambyID($camps['proyecto_idproyecto']);
-        $fpdf->Cell(30,10, $c . utf8_decode("°"), 1,0,'c');
-        $fpdf->Cell(200,10,utf8_decode("Nombre del proyecto es: " . $proyectoInfo['nombreProyecto']), 1, 0,'c');
-        $fpdf->Cell(50,10, "Gano : " .$camps['notafinal'] . " Puntos",1,1,'c');
+        $fpdf->MultiCell(270,10, $c . utf8_decode("°") . utf8_decode("   Nombre del proyecto es: " . $proyectoInfo['nombreProyecto']), 'RBLT', 'C' , false);
+        $fpdf->Cell(270,10, "Gano : " .$camps['notafinal'] . " Puntos",1,1,'C');
         $c++;
 
         foreach($jurados as $camp){
             $dataUser = $query->getUserById($camp['usuario_idUsuario']);
                 $fpdf->cell(30,10,'#', 1,0, 'C');
-                $fpdf->Cell(250,10,utf8_decode("El usuario : {$dataUser['nombres']} {$dataUser['apellidos']} calificó este proyecto con:  {$camp['puntaje']} puntos. " ),1,1,'c');
+                $fpdf->Cell(240,10,utf8_decode("El usuario : {$dataUser['nombres']} {$dataUser['apellidos']} calificó este proyecto con:  {$camp['puntaje']} puntos. " ),1,1,'c');
             
             //$txtJurados .= "El Jurado " .$camp['usuario_idUsuario'] . " entrego ". $camp['puntaje']. "PUNTOS";
         }
