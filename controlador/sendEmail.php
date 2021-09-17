@@ -17,9 +17,10 @@ function enviarCorreo($correo, $nombre, $username, $year, $asunto, $saludo, $pas
         $mail->SMTPAuth   = true;
         $mail->Username   = 'creaj.evaluaciones@cdb.edu.sv';
         $mail->Password   = 'JqDD#&UXFwJF';
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        //$mail->SMTPSecure = 'tls';
-        $mail->Port       = 465; //587 servidor local del equipo //465 servidor del colegio
+        //$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->SMTPSecure = 'tls';
+        //$mail->Port       = 465; //465 servidor del colegio
+        $mail->Port       = 587; //587 servidor local del equipo
 
         //Recipients
         $mail->setFrom('creaj.evaluaciones@cdb.edu.sv', 'Sistema de Calificación: CDB');
