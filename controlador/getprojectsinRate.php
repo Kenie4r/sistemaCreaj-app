@@ -76,7 +76,7 @@ require_once("../modelo/query.php");
                 }
             }
         }else{
-            if(!empty($info)){
+           
                 foreach($info as $result){
                     $calificado = $query->isSavedProject($result['idproyecto'], $userID);
                     foreach( $calificado as $camp){
@@ -136,24 +136,6 @@ require_once("../modelo/query.php");
                         }
                     }
                 }
-
-            }else{
-                $html = "
-                <div class='text-gray-400 text-xl w-8/12 h-full m-auto  mt-10'>
-                    <h1 class='text-center text-6xl'>
-                    <span class='icon-sad2'></span>
-                </h1>
-                <h1 class='text-center'>
-                    No se encuentra ningún proyecto.
-                </h1>
-                 </div>
-                
-                
-                ";
-
-
-
-            }
         
         }
     
