@@ -97,7 +97,7 @@ comparacionFecha("Ingreso de rubricas");
                         <!-- D A T O S -->
                         <div class='grid grid-cols-3 m-4'>
                             <div class='w-full'>
-                                <input type='text' name='0-txtNombreCriterio' id='0-txtNombreCriterio' value='Criterio 0' maxlength='45' class='w-4/5  outline-none focus:border-gray-800 border-b-2 focus:border-solid'>
+                                <input type='text' name='0-txtNombreCriterio' id='0-txtNombreCriterio' value='Criterio 0' class='w-4/5  outline-none focus:border-gray-800 border-b-2 focus:border-solid'>
                                 <label for='0-txtNombreCriterio' title='Editar' class="w-1/5"><span class="icon-pencil"></span></label>
                             </div>
                             <div class='w-full'>

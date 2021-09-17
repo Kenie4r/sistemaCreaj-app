@@ -76,7 +76,7 @@ function criterio(numero) {
     texto += "<input type='hidden' id='" + numero + "-idcriterio' name='" + numero + "-idcriterio' value='inexistente'>";
     texto += "<div class='grid grid-cols-3 m-4'>";
     texto += "<div class='w-full'>";
-    texto += "<input type='text' name='" + numero + "-txtNombreCriterio' id='" + numero + "-txtNombreCriterio' value='Criterio " + numero + "' maxlength='45' class='w-4/5 outline-none focus:border-gray-800 border-b-2 focus:border-solid'>";
+    texto += "<input type='text' name='" + numero + "-txtNombreCriterio' id='" + numero + "-txtNombreCriterio' value='Criterio " + numero + "' class='w-4/5 outline-none focus:border-gray-800 border-b-2 focus:border-solid'>";
     texto += "<label for='" + numero + "-txtNombreCriterio' title='Editar' class='w-1/5'><span class='icon-pencil'></span></label>";
     texto += "</div>";
     texto += "<div class='w-full'>";

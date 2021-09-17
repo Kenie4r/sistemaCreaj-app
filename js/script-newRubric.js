@@ -66,7 +66,7 @@ $(document).ready(
 function criterio(numero) {
     var texto = "<div id='" + numero + "-criterio' class='bg-white rounded-lg shadow-lg container'><div class='grid grid-cols-3 m-4'>";
     texto += "<div class='w-full'>";
-    texto += "<input type='text' name='" + numero + "-txtNombreCriterio' id='" + numero + "-txtNombreCriterio' value='Criterio " + numero + "' maxlength='45' class='w-4/5 outline-none focus:border-gray-800 border-b-2 focus:border-solid'>";
+    texto += "<input type='text' name='" + numero + "-txtNombreCriterio' id='" + numero + "-txtNombreCriterio' value='Criterio " + numero + "' class='w-4/5 outline-none focus:border-gray-800 border-b-2 focus:border-solid'>";
     texto += "<label for='" + numero + "-txtNombreCriterio' title='Editar' class='w-1/5'><span class='icon-pencil'></span></label>";
     texto += "</div>";
     texto += "<div class='w-full'>";

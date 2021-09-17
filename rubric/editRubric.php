@@ -140,7 +140,7 @@ for ($i=0; $i < count($criterios); $i++) {
                         <input type='hidden' id='<?php echo $i; ?>-idcriterio' name='<?php echo $i; ?>-idcriterio' value='<?php echo $criterios[$i]["idcriterios"]; ?>'>
                         <div class='grid grid-cols-3 m-4'>
                             <div class='w-full'>
-                                <input type='text' name='<?php echo $i; ?>-txtNombreCriterio' id='<?php echo $i; ?>-txtNombreCriterio' value='<?php echo $criterios[$i]["titulo"]; ?>' maxlength='45' class='w-4/5 outline-none focus:border-gray-800 border-b-2 focus:border-solid'>
+                                <input type='text' name='<?php echo $i; ?>-txtNombreCriterio' id='<?php echo $i; ?>-txtNombreCriterio' value='<?php echo $criterios[$i]["titulo"]; ?>' class='w-4/5 outline-none focus:border-gray-800 border-b-2 focus:border-solid'>
                                 <label for='<?php echo $i; ?>-txtNombreCriterio' title='Editar' class="w-1/5"><span class="icon-pencil"></span></label>
                             </div>
                             <div class='w-full'>
