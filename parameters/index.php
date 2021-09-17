@@ -40,7 +40,7 @@ $parametros = $consulta->getParametros(); //Get Estudiantes
             </div>
         </div>
 
-        <div class="box-border m-7 mt-20">
+        <div class="box-border m-7 mt-20 overflow-scroll lg:overflow-hidden">
             <table class="w-full border-collapse text-center">
                 <thead class="bg-gray-900 text-white">
                     <tr>

@@ -34,11 +34,12 @@
               </button>
             </div>
               <div class="hidden lg:hidden" id="mobile-menu">
-                 <div class="bg-gray-800 mt-60 px-20 text-center pt-4 pb-3 lg:hidden md:hidden">
+                 <div class="bg-gray-800 px-20 text-center pt-4 pb-3 lg:hidden md:hidden">
                             <?php
                           switch($_SESSION['rol']){
                             case 'a':
                             ?>
+                      <div class="mt-60"> 
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                         <a href="../Dashboard/profile.php" class="sm:mb-10 text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md  text-xl text-sm font-medium" aria-current="page">Inicio</a><br>
 
@@ -57,6 +58,7 @@
                         <a href="../ranking/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md  text-xl text-sm font-medium">Ranking</a><br>
 
                         <a href="../parameters/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md  text-xl text-sm font-medium">Parametros</a>
+                      </div>
                           <?php
                           break;
                           ?>
@@ -64,19 +66,21 @@
                           case 'c':
                             
                           ?>
-                        <a href="../Dashboard/profile.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium" aria-current="page">Inicio</a>
+                      <div class="mt-40">
+                        <a href="../Dashboard/profile.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium" aria-current="page">Inicio</a><br>
 
-                        <a href="../rubric/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium">Rubrica</a>
+                        <a href="../rubric/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium">Rubrica</a><br>
 
-                        <a href="../users_profile/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium" aria-current="page">Usuarios</a>
+                        <a href="../users_profile/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium" aria-current="page">Usuarios</a><br>
 
-                        <a href="../students/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium">Estudiantes</a>
+                        <a href="../students/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium">Estudiantes</a><br>
 
-                        <a href="../ranking/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium">Ranking</a>
+                        <a href="../ranking/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium">Ranking</a><br>
 
-                        <a href="../academico/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium">Acádemico</a>
+                        <a href="../academico/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium">Acádemico</a><br>
 
-                        <a href="../Projects/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium">Proyectos</a>
+                        <a href="../Projects/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium">Proyectos</a><br>
+                      </div>
                         <?php
                           break;
                           ?>
@@ -84,9 +88,12 @@
                           case 'j':
 
                           ?>
-                        <a href="../Dashboard/profile.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium" aria-current="page">Inicio</a>
+                      
+                        <a href="../Dashboard/profile.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium" aria-current="page">Inicio</a><br>
 
-                        <a href="../calificar/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium">Cálificar</a>
+                        <a href="../calificar/index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-xl text-sm font-medium">Cálificar</a><br>
+                    
+                        
                         <?php
                         break;
                         ?>
