@@ -6,17 +6,16 @@ require_once("../modelo/query.php");
     $texto = $_POST['name'];
     $query = new Query();
     $html = "";
-    $nombre = "%{$texto}%";
     $c = 0; $withGrade="<div class='text-center text-xl'><h1>Proyectos ya calificados</h1></div>";
     $asigna = $query->getProjectsinfo($userID);
     $k = 0;
     foreach($asigna as $campo ){
-        echo( ++$k);
+   
+        $nombre = "%" .$texto. "%";
+        $info = $query->findPorjectbyN($nombre, $campo['grado_idgrado'],  $campo['materia_idmateria']);
+        $dataMateria = $query->getMatterById($campo['materia_idmateria']);
+        $dataGrado = $query->getGradeById2($campo['grado_idgrado']);
         if($texto == "" || empty($texto)){
-           
-            $info = $query->getAllProjects($campo['materia_idmateria'], $campo['grado_idgrado']);
-            $dataMateria = $query->getMatterById($campo['materia_idmateria']);
-            $dataGrado = $query->getGradeById2($campo['grado_idgrado']);
             foreach($info as $result){
                 $calificado = $query->isSavedProject($result['idproyecto'], $userID);
                 foreach( $calificado as $camp){
@@ -77,10 +76,7 @@ require_once("../modelo/query.php");
                 }
             }
         }else{
-       
-            $info = $query->findPorjectbyN($nombre, $campo['materia_idmateria'], $campo['grado_idgrado']);
-            $dataMateria = $query->getMatterById($campo['materia_idmateria']);
-            $dataGrado = $query->getGradeById2($campo['grado_idgrado']);
+      
             foreach($info as $result){
                 $calificado = $query->isSavedProject($result['idproyecto'], $userID);
                 foreach( $calificado as $camp){
