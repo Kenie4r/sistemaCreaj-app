@@ -36,7 +36,7 @@ function formValidate(){
     var alertaSending = $("#sending");
 
     alertaSending.removeClass('hidden'); //Pantalla de carga
-
+    
     //Validacion Rubrica
     if(!(controladorNameRubric.is(':checked'))){
         errores++;

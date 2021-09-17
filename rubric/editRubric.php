@@ -94,7 +94,7 @@ foreach ($materias as $key => $materia) {
             </div>
             <div>
                 <div class="flex flex-row items-center w-full lg:w-4/5 border-gray-700 border-solid border-2 rounded-lg">
-                    <label for="txtNivel" class="p-2 bg-gray-700 text-white">Nivel</label>
+                    <label for="txtNivel" class="p-2 bg-gray-700 text-white">Grado</label>
                     <select name="txtNivel" id="txtNivel" class="p-1 w-full rounded-r-lg outline-none">
 <?php
 
@@ -103,7 +103,7 @@ $nombreGradoRubrica = $grado_rubrica[0]["nombre"] . " " . $grado_rubrica[0]["sec
 echo "<option value='" . $grado_rubrica[0]["idgrado"] . "'>" . $nombreGradoRubrica . "</option>\n";
 foreach ($grados as $key => $grado) {
     if($grado["idgrado"] != $grado_rubrica[0]["idgrado"]){
-        echo "<option value='" . $grado["idnivel"] . "'>" . $grado["nombre"] . "</option>\n";
+        echo "<option value='" . $grado["idgrado"] . "'>" . $grado["nombre"] . " " . $grado["seccion"] . "</option>\n";
     }
 }
 

@@ -207,7 +207,7 @@ function evaluacionProyecto($idproyecto){
                 $pdf->Cell(250,10,utf8_decode($numeroCriterio), 1, 0, 'L');
                 $pdf->Cell(27,10,utf8_decode($porcentajeCriterio), 1, 1, 'R');
                 $pdf->SetFont('Arial','',15); //Fuente Normal
-                $pdf->Cell(0,10,utf8_decode($nombreCriterio), 1, 1, 'L');
+                $pdf->MultiCell(0,10,utf8_decode($nombreCriterio), 1, 1, 'L');
                 $pdf->SetFont('Arial','B',15); //Fuente Negrita
                 $pdf->Cell(60,10,utf8_decode("Descripción:"), "L", 0, 'L');
                 $pdf->Cell(65,10,utf8_decode("Nivel de aprendizaje:"), 1, 0, 'L');
