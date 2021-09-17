@@ -46,27 +46,20 @@ function infoProyecto($idproyecto){
         $materiaProyecto = $campo['nombreMateria']; //Materia
         $descripcionProyecto = $campo['descripcion']; //Descripción
         $notaFinalProyecto = $consulta->getRankingbyID($idproyecto); //Promedio final
-        //Dependiendo de que tan largo sea la materia se asignará un espacio espacial para esa fila
-        if(strlen($materiaProyecto) > 21 || strlen($gradoProyecto) > 21){
-            $alturaCelda = 20;
-        }else{
-            $alturaCelda = 10;
-        }
 
         //Cuerpo de la tabla proyecto
         $pdf->SetFont('Arial','B',15); //Fuente Negrita
-        $pdf->Cell(150,10,utf8_decode("Proyecto:"), 1, 0, 'L'); //Clave
-        $pdf->Cell(62,10,utf8_decode("Grado:"), 1, 0, 'L'); //Clave
-        $pdf->Cell(65,10,utf8_decode("Materia:"), 1, 1, 'L'); //Clave
+        $pdf->Cell(0,10,utf8_decode("Proyecto:"), 1, 1, 'L'); //Clave
         $pdf->SetFont('Arial','',15); //Fuente Normal
-        $pdf->Cell(150, $alturaCelda,utf8_decode($nombreProyecto), 1, 0, 'L'); //Contenido
-        $pdf->Cell(62, $alturaCelda,utf8_decode($gradoProyecto), 1, 0, 'L'); //Contenido
-        //Dependiendo de que tan largo sea la materia se asignará un espacio espacial para esa fila
-        if($alturaCelda == 20){
-            $pdf->MultiCell(65, 10,utf8_decode($materiaProyecto), 1, 'L'); //Contenido
-        }else{
-            $pdf->Cell(65, $alturaCelda,utf8_decode($materiaProyecto), 1, 1, 'L'); //Contenido
-        }
+        $pdf->MultiCell(0, 10,utf8_decode($nombreProyecto), 1, 'L'); //Contenido
+        $pdf->SetFont('Arial','B',15); //Fuente Negrita
+        $pdf->Cell(0,10,utf8_decode("Grado:"), 1, 1, 'L'); //Clave
+        $pdf->SetFont('Arial','',15); //Fuente Normal
+        $pdf->MultiCell(0, 10,utf8_decode($gradoProyecto), 1, 'L'); //Contenido
+        $pdf->SetFont('Arial','B',15); //Fuente Negrita
+        $pdf->Cell(0,10,utf8_decode("Materia:"), 1, 1, 'L'); //Clave
+        $pdf->SetFont('Arial','',15); //Fuente Normal
+        $pdf->MultiCell(0, 10,utf8_decode($materiaProyecto), 1, 'L'); //Contenido
         $pdf->SetFont('Arial','B',15); //Fuente Negrita
         $pdf->Cell(0,10,utf8_decode("Descripción:"), 1, 1, 'L'); //Clave
         $pdf->SetFont('Arial','',15); //Fuente Normal
@@ -124,18 +117,17 @@ function evaluacionProyecto($idproyecto){
 
         //Cuerpo de la tabla proyecto
         $pdf->SetFont('Arial','B',15); //Fuente Negrita
-        $pdf->Cell(150,10,utf8_decode("Proyecto:"), 1, 0, 'L'); //Clave
-        $pdf->Cell(62,10,utf8_decode("Grado:"), 1, 0, 'L'); //Clave
-        $pdf->Cell(65,10,utf8_decode("Materia:"), 1, 1, 'L'); //Clave
+        $pdf->Cell(0,10,utf8_decode("Proyecto:"), 1, 1, 'L'); //Clave
         $pdf->SetFont('Arial','',15); //Fuente Normal
-        $pdf->Cell(150, $alturaCelda,utf8_decode($nombreProyecto), 1, 0, 'L'); //Contenido
-        $pdf->Cell(62, $alturaCelda,utf8_decode($gradoProyecto), 1, 0, 'L'); //Contenido
-        //Dependiendo de que tan largo sea la materia se asignará un espacio espacial para esa fila
-        if($alturaCelda == 20){
-            $pdf->MultiCell(65, 10,utf8_decode($materiaProyecto), 1, 'L'); //Contenido
-        }else{
-            $pdf->Cell(65, $alturaCelda,utf8_decode($materiaProyecto), 1, 1, 'L'); //Contenido
-        }
+        $pdf->MultiCell(0, 10,utf8_decode($nombreProyecto), 1, 'L'); //Contenido
+        $pdf->SetFont('Arial','B',15); //Fuente Negrita
+        $pdf->Cell(0,10,utf8_decode("Grado:"), 1, 1, 'L'); //Clave
+        $pdf->SetFont('Arial','',15); //Fuente Normal
+        $pdf->MultiCell(0, 10,utf8_decode($gradoProyecto), 1, 'L'); //Contenido
+        $pdf->SetFont('Arial','B',15); //Fuente Negrita
+        $pdf->Cell(0,10,utf8_decode("Materia:"), 1, 1, 'L'); //Clave
+        $pdf->SetFont('Arial','',15); //Fuente Normal
+        $pdf->MultiCell(0, 10,utf8_decode($materiaProyecto), 1, 'L'); //Contenido
         $pdf->SetFont('Arial','B',15); //Fuente Negrita
         $pdf->Cell(0,10,utf8_decode("Descripción:"), 1, 1, 'L'); //Clave
         $pdf->SetFont('Arial','',15); //Fuente Normal
