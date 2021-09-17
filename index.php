@@ -52,7 +52,7 @@
             </article>
         </section>
     <!-- Pie de página -->
-        <footer class="text-center lg:-mt-4 py-9 text-white bg-black px-4 py-2 bottom-auto ">- Copyright Colegio Don Bosco 2021 -</footer>
+        <footer class="text-center lg:-mt-4 py-9 text-white bg-black px-4 py-2 bottom-auto ">Colegio Don Bosco 2021 </footer>
     </div>
 </body>
 </html>
