@@ -29,6 +29,7 @@ function llenarTabla() {
     var busquedaNombre = $("#txtBusqueda");
     var busquedaMateria = $("#txtMateria");
     var busquedaGrado = $("#txtNivel");
+    var contenedorTabla = $("#table-body");
 
     $.post("../controlador/searchProjects.php", 
                     {
@@ -37,9 +38,8 @@ function llenarTabla() {
                         "grado": busquedaGrado.val()
                     },
                     function(respuesta){
-                        var contenedorFilasRubric = $("#table-body-rubrica");
-                        contenedorFilasRubric.empty();
-                        contenedorFilasRubric.html(respuesta);
+                        contenedorTabla.empty();
+                        contenedorTabla.html(respuesta);
                     },
                     "html"
     );

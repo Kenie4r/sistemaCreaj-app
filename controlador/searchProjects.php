@@ -29,6 +29,8 @@ switch ($rolActivo) {
         }else{
             $proyectos = $consulta->searchProyectsByNameAndMatterAndGrade($nombre, $grado, $materia);
         }
+
+    break;
 }
 
 if(!empty($proyectos)){
@@ -40,9 +42,10 @@ if(!empty($proyectos)){
         echo "\t<td class='p-6'><a href='deleteProjects.php?idequipo=" . $proyectos[$i]["idproyecto"] . "' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
         echo "</tr>";
     }
+    echo "k";
 }else{
     echo "<tr class='lol'>";
-    echo "\t<td colspan='5' class='p-4'><span class='icon-blocked'></span> No hay ningun proyecto con ese " . $_POST["tiporubric"] . "<td>";
+    echo "\t<td colspan='5' class='p-4'><span class='icon-blocked'></span> No hay ningun proyecto con ese filtro.<td>";
     echo "</tr>";
 }
 

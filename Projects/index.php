@@ -72,7 +72,7 @@ if( $_SESSION['rol'] == 'a' || $_SESSION['rol'] == 'c'){
                         <td colspan="4" class="rounded-tr-lg p-4">Opciones</td>
                     </tr>
                 </thead>
-                <tbody id="table-body-rubrica" class="bg-gray-200">
+                <tbody id="table-body" class="bg-gray-200">
                 </tbody>
                 <tfoot class="bg-gray-900">
                     <tr>
