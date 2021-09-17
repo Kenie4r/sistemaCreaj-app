@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="recursos_login/css/estilologin.css">
@@ -10,16 +13,16 @@
 <body class="h-screen" onload="Iniciar()">
         <!-- Formulario -->
         
-        <section class="flex md:flex-row h-full justify-center lg:justify-center">
+        <section class="flex md:flex-row h-full justify-center lg:justify-center lg:ml-20">
            <article class="w-96 flex justify-center item-center ml-22 lg:w-2/5 mt-24 flex-col ">
-               <h1 class=" text-2xl ml-4 ">Sistema de calificación</h1>
+               <h1 class=" text-2xl ml-4 lg:text-2xl">Sistema de calificación</h1>
                     <form class="px-8 pt-6 pb-8 mb-4 bg-white rounded " action="index.php" method="POST" id="formLogin">
                         <div class="mb-4" >
-                            <label class="block mb-2 text-sm font-bold text-gray-700"><span>Usuario:</span></label>
+                            <label class="md:text-2xl sm:text-2xl block mb-2 lg:text-sm font-bold text-gray-700"><span>Usuario:</span></label>
                             <input type="text" name="usuario"  class=" px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" maxlength="20" size="30" placeholder="Código" title="Ingresa tu código de usuario para ingresar al sistema" autofocus required>
                         </div>
                         <div>
-                            <label class="block mb-2 text-sm font-bold text-gray-700" ><span>Contraseña:</span></label>
+                            <label class="md:text-2xl sm:text-2xl block mb-2 lg:text-sm font-bold text-gray-700" ><span>Contraseña:</span></label>
                             <div class="text" id="contenedor02">
                                 <input type="password" name="contra" class="px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" maxlength="20" size="25" placeholder="Contraseña" title="Ingresa tu contraseña para ingresar al sistema" required>
                                 <button type="button" id="cambiarType" class="eye" onclick="cambiar01()"></button>

@@ -9,8 +9,12 @@
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="button.js"></script>
     <script src="js/button2.js"></script>
+<<<<<<< Updated upstream
+=======
+   
+>>>>>>> Stashed changes
 </head>
-<body >
+<body class="bg-">
 <?php
         require('Dashboard.php');
         require_once("../controlador/firstTime.php");
@@ -19,44 +23,44 @@
     <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="px-52 mt-20 bg-white shadow overflow-hidden sm:rounded-lg">
   <div class="px-4 py-5 sm:px-6">
-    <h3 class="text-xl leading-6 font-medium text-gray-900">
+    <h3 class="lg:text-xl sm:text-2xl md:text-2xl  leading-6 font-medium text-gray-900">
       Perfil
     </h3>
-    <p class="mt-1 max-w-2xl text-base text-gray-500">
+    <p class="mt-1 lg:ax-w-2xl sm:text-2xl md:text-2xl text-base text-gray-500">
       Informacion personal
     </p>
   </div>
   <div class="border-t border-gray-200">
     <dl>
       <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-lg font-medium text-gray-500">
+        <dt class="lg:text-lg sm:text-2xl md:text-2xl font-medium text-gray-500">
           Nombre
         </dt>
-        <dd class="mt-1 text-lg text-gray-900 sm:mt-0 sm:col-span-2">
+        <dd class="lg:text-lg sm:text-2xl md:text-2xl mt-1 text-gray-900 sm:mt-0 sm:col-span-2">
          <?php echo $_SESSION['nombres'];?> 
         </dd>
       </div>
       <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-lg font-medium text-gray-500">
+        <dt class="lg:text-lg sm:text-2xl md:text-2xl font-medium text-gray-500">
           Apellido
         </dt>
-        <dd class="mt-1 text-lg text-gray-900 sm:mt-0 sm:col-span-2">
+        <dd class="lg:text-lg sm:text-2xl md:text-2xl mt-1 text-gray-900 sm:mt-0 sm:col-span-2">
         <?php echo $_SESSION['apellidos'];?> 
         </dd>
       </div>
       <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-lg font-medium text-gray-500">
+        <dt class="lg:text-lg sm:text-2xl md:text-2xl font-medium text-gray-500">
           Email 
         </dt>
-        <dd class="mt-1 text-lg text-gray-900 sm:mt-0 sm:col-span-2">
+        <dd class="lg:text-lg sm:text-2xl md:text-2xl mt-1 text-gray-900 sm:mt-0 sm:col-span-2">
         <?php echo $_SESSION['email'];?> 
         </dd>
       </div>
       <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-        <dt class="text-lg font-medium text-gray-500">
+        <dt class="lg:text-lg sm:text-2xl md:text-2xl font-medium text-gray-500">
           Rol
         </dt>
-        <dd class="mt-1 text-lg text-gray-900 sm:mt-0 sm:col-span-2">
+        <dd class="lg:text-lg sm:text-2xl md:text-2xl mt-1 text-gray-900 sm:mt-0 sm:col-span-2">
         <?php
          switch($_SESSION['rol']){
             case 'a':
