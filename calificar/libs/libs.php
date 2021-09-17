@@ -98,6 +98,7 @@
                     <p class='p-5'> $teamData[2]</p>
             </div>
         </div>
+            
         </div>
         </div>
         ";
@@ -272,17 +273,23 @@ HEREDOC;
             EDO;
         
         }else{
-            $html.="<div class='bg-black w-11/12 p-2 text-white mx-auto rounded-sm my-2 flex flex-row justify-between items-center' >
+            $html.="<div class='bg-black w-11/12 p-2 text-white mx-auto rounded-sm my-2 flex flex-col sm:flex-row justify-between items-center' >
             <div class='text-xl'>
                 <h2>Proyectos a calificar</h2>
             </div>
-          
+            <div class='border border-white rounded-md  max-w-8 overflow-hidden'>
+                <span class='icon-search text-white p-2'></span>
+                <input type='text' placeholder='Buscar poryecto' id='txtNombre' class='p-1 text-black'>
+            </div>
 
         </div>
-        <div id='teamsBox'>";
+        <div id='teamsBox'>
+        ";
           $data = $query->getProjectsinfo($userID);
           foreach($data as $campo){
             $info = $query->getAllProjects($campo['materia_idmateria'], $campo['grado_idgrado']);
+            $dataMateria = $query->getMatterById($campo['materia_idmateria']);
+            $dataGrado = $query->getGradeById2($campo['grado_idgrado']);
             foreach($info as $result){
                 $calificado = $query->isSavedProject($result['idproyecto'], $userID);
                 foreach( $calificado as $camp){
@@ -293,13 +300,13 @@ HEREDOC;
                             foreach($graded as $mycamp){
                                 $grade = $mycamp['points'];
                             }
-                            $withGrade .="<div class='bg-white w-8/12  border border-2 p-5 roundend-full m-auto shadow-md my-7'>
-                            <div class='flex w-full flex-row items-center justify-between'>
+                            $withGrade .="<div class='bg-white sm:w-8/12 w-10/12 border border-2 p-5 roundend-full m-auto shadow-md my-7'>
+                            <div class='flex w-full flex-col sm:flex-row items-center justify-between'>
                                     <div class='text-lg font-bold '>
                                         <h1>{$result['nombreProyecto'] }</h1>
                                     </div>
                                     <div class='text-center '>
-                                        <p class='p-1 border border-2 border-blue-400 text-blue-400 w-40 mx-auto mt-2r'>
+                                        <p class='p-1 border border-2 border-blue-400 text-blue-400 w-40 mx-auto mt-2'>
                                            Obtuvo: {$grade}
                                         </p>
                                     </div>
@@ -307,12 +314,16 @@ HEREDOC;
                                 <div>
                                     {$result['descripcion']}
                                 </div>   
+                                <div class='w-full flex flex-row items-center text-sm text-white my-1'> 
+                                    <div class='text-gray-400 p-1 rounded-lg m-1'><span class='icon-book'></span> {$dataMateria['nombre']}</div>
+                                    <div class='text-gray-400 p-1 rounded-lg m-1'><span class='icon-user'></span> {$dataGrado[0]['nombre']} {$dataGrado[0]['seccion']}</div>
+                                </div>
                             </div>
                         ";
                         }else{ 
                         
-                            $html.="<div class='bg-white w-8/12  border border-2 p-5 roundend-full m-auto shadow-md my-7'>
-                                                <div class='flex w-full flex-row items-center justify-between'>
+                            $html.="<div class='bg-white sm:w-8/12 w-10/12 border border-2 p-5 roundend-full m-auto shadow-md my-7'>
+                                                <div class='flex w-full flex-col sm:flex-row items-center justify-between'>
                                                         <div class='text-lg font-bold '>
                                                             <h1>{$result['nombreProyecto'] }</h1>
                                                         </div>
@@ -327,6 +338,10 @@ HEREDOC;
                                                     <div>
                                                         {$result['descripcion']}
                                                     </div>   
+                                                    <div class='w-full flex flex-row items-center text-sm text-white my-1'> 
+                                    <div class='text-gray-400 p-1 rounded-lg m-1'><span class='icon-book'></span> {$dataMateria['nombre']}</div>
+                                    <div class='text-gray-400 p-1 rounded-lg m-1'><span class='icon-user'></span> {$dataGrado[0]['nombre']} {$dataGrado[0]['seccion']}</div>
+                                </div>
                                                 </div>
                                     ";
                         
@@ -339,7 +354,22 @@ HEREDOC;
         if($c>0){
                 $html.= $withGrade;
         }
-        $html .="</div><input type='hidden' value='{$userID}' id='hdUserID'>";
+        $html .="</div><input type='hidden' value='{$userID}' id='hdUserID'>
+        
+        <script src='../js/script-search-project.js'></script>
+        <div class='fixed  h-screen w-screen bg-gray-900 top-0 left-0  bg-opacity-70 flex  flex-col items-center  justify-center  hidden' id='cargar'>
+        <div class='bg-white h-3/6 w-5/12 rounded-lg flex justify-center flex-col items-center m-auto my-40'>
+            <div class='text-green-600 text-center w-6/12  text-8xl'>
+                <p class='animate-spin'>
+                    <span class='icon-spinner2'></span>
+                </p>    
+            </div>
+            <div class='animate-bounce m-2 text-2xl'>
+                <p>Cargando...</p>
+            </div>
+        </div>
+    </div>
+        ";
         print($html);
     }
 

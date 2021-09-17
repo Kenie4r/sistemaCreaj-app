@@ -1648,6 +1648,23 @@ class Query{
             return $result;
         }
     }
+    public function findPorjectbyN($nombre, $idGrado, $idMateria){
+        $modelo = new Conection;
+        $conexion = $modelo->_getConection();
+        $sql = "SELECT * FROM `proyecto` WHERE proyecto.nombreProyecto LIKE :nombre AND proyecto.grado_idgrado =:idGrado AND proyecto.materia_idmateria =:idMateria";
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->bindParam(":nombre", $nombre);
+        $sentencia->bindParam(":idGrado", $idGrado);
+        $sentencia->bindParam(":idMateria", $idMateria);
+        if(!($sentencia)){
+            return false;
+
+        }else{
+            $sentencia->execute();
+            $result= $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+    }
     public function findStudent($idStudent){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
