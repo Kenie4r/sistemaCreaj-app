@@ -80,7 +80,7 @@ function rankingProyecto($materia, $grado){
             
             //Estudiantes del proyecto
             foreach ($equipoData as $key => $estudiante) {
-                $nombreEstudiante = $estudiante['idestudiante']." ".$estudiante['apellidos'];
+                $nombreEstudiante = $estudiante['idestudiante']." ".$estudiante['apellidos'] . ", " . $estudiante['nombre'];
                 $pdf->Cell(0,10,utf8_decode($nombreEstudiante), "LR", 1, 'L'); //Contenido
             }
             $pdf->SetFont('Arial','B',15); //Fuente Negrita
