@@ -91,7 +91,7 @@ function rankingProyecto($materia, $grado){
     }
 
     //Obtener nombre del evento para el pdf
-    $nombrePDF = "Evaluacion_Proyecto_" . $nombreProyecto . ".pdf";
+    $nombrePDF = "Ranking_" . $gradoProyecto . "_" . $materiaProyecto . ".pdf";
     //Escribir información
     $pdf->Output("I", $nombrePDF, true);
 }
