@@ -34,7 +34,7 @@ function rankingProyecto($materia, $grado){
     $pdf->AddPage(); //Se añade una nueva página
 
     //-----     Creación de consultas     -----
-    $consulta = new Query; //Crear una consulta
+    $consulta = new Query(); //Crear una consulta
     $teamData = $consulta->getTeamData($idproyecto); //Obtenemos los datos del proyecto
     //Generamos un apartado por proyecto
     foreach($teamData as $campo){
@@ -45,12 +45,6 @@ function rankingProyecto($materia, $grado){
         $materiaProyecto = $campo['nombreMateria']; //Materia
         $descripcionProyecto = $campo['descripcion']; //Descripción
         $notaFinalProyecto = $consulta->getRankingbyID($idproyecto); //Promedio final
-        //Dependiendo de que tan largo sea la materia se asignará un espacio espacial para esa fila
-        if(strlen($materiaProyecto) > 21 || strlen($gradoProyecto) > 21){
-            $alturaCelda = 20;
-        }else{
-            $alturaCelda = 10;
-        }
 
         //Cuerpo de la tabla proyecto
         $pdf->SetFont('Arial','B',15); //Fuente Negrita
@@ -86,15 +80,10 @@ function rankingProyecto($materia, $grado){
         $pdf->SetFont('Arial','',15); //Fuente Normal
         $pdf->Cell(27,10,utf8_decode($notaFinalProyecto['notafinal']), 1, 1, 'R'); //Contenido
 
-        //Variables de proyecto
-        $jurados = $consulta->getProjectsRateData($idproyecto); //Obtener los jurados del proyecto
-        $i = 0;
-
-
     }
 
     //Obtener nombre del evento para el pdf
-    $nombrePDF = "Evaluacion_Proyecto_" . $nombreProyecto . ".pdf";
+    $nombrePDF = "Ranking.pdf";
     //Escribir información
     $pdf->Output("I", $nombrePDF, true);
 }
