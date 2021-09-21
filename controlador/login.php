@@ -10,10 +10,9 @@
             $_SESSION['nombres']=$usuario['nombres'];
             $_SESSION['apellidos']=$usuario['apellidos'];
             $_SESSION['email']=$usuario['email'];
-            header('Location: Dashboard/profile.php');
+
             return true;
         }else{
-            header('Location: index.php');
             return false;
         }
     }

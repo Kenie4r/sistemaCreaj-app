@@ -37,7 +37,14 @@
                                 require('controlador/login.php');
                                 $user=filter_input(INPUT_POST,'usuario');
                                 $pass=filter_input(INPUT_POST,'contra');
-                                logear($user,$pass);
+                                $logear = logear($user,$pass);
+                                if($logear){
+                                    header('Location: Dashboard/profile.php');
+                                }else{
+                                    print("<div class='bg-red-200 text-red-600 text-center border border-1 border-red-600 p-2 m-2'>
+                                            Ha surgido un error, verique que sus datos esten correctos
+                                    </div>");
+                                }
                             }
                     ?>    
                         </div>
