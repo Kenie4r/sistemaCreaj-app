@@ -25,7 +25,7 @@ require('../Dashboard/Dashboard.php');
 require_once("../parameters/soporteParametros.php");
 comparacionFecha("Ingreso de estudiantes");
 ?>
-    <form id="frmNewProyecto" class="container box-content" method="POST" action="saveStudents.php">
+    <form id="frmNewStudents" class="container box-content" method="POST" action="saveStudents.php">
         <h1 class="lg:justify-center text-center lg:w-3/4 lg:w-full lg:text-5xl md:text-2xl sm:text-2xl outline-none focus:border-gray-500 border-b-2 focus:border-solid mt-8">Agregar estudiante</h1>
         <div class="grid grid-cols-1 lg:grid-cols-2">
             <div class="flex lg:m-9">
