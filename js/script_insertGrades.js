@@ -57,12 +57,13 @@ function editarNota(){
         var minusGrade = $('#Final' + idBox).val();
         var NewGrade = parseFloat($('#finalGrade').text())
         NewGrade-= minusGrade;
-        $('#finalGrade').text(NewGrade.toFixed(2));
+        $('#finalGrade').text(NewGrade.toFixed(3));
         var width = NewGrade*2+"%";
         $('#progress').css('width', width);
         var box = "#div"+idBox;
         $(box).fadeIn('slow')//esta hace que aparezca
         $('#calificar'+idBox).empty();    
+        $('#inputGrade').val(NewGrade);
      })
   $('#btnTerminar').click(function(){
         var nota = $('#inputGrade').val();
@@ -166,6 +167,7 @@ function sencondActivity(){
                  $('#progress').css('width', width);
                  var box = "#div"+idBox;
                  $(box).fadeIn('slow')//esta hace que aparezca
+                 $('#inputGrade').val(NewGrade);
                  $('#calificar'+idBox).empty();
                  $('#Final' + idBox).val("")
 
