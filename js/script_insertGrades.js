@@ -37,8 +37,8 @@ function terminarCalificar(){
         }else{
             var inputsCalificados = 0;
             var inputsCriterios = document.getElementsByClassName('final');
-            for(let i = 0; i<inputsCriterios.lenght; i++){
-                if( inputsCriterios[i].value=="" ||  inputsCriterios[i].value==NaN ){
+            for(let i = 0; i<inputsCriterios.length; i++){
+                if( inputsCriterios[i].value=="" ||  inputsCriterios[i].value==NaN || inputsCriterio[i]==0 ){
                     inputsCalificados++
                 }
             }
