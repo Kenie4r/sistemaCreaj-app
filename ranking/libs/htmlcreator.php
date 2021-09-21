@@ -182,7 +182,7 @@
                     <span class='icon-file-pdf'></span>
                    Todo el ranking
                 </a>
-                <a href='' class='p-3 bg-red-500 text-white text-lg rounded-md m-2'>
+                <a href='pdfranking.php?idGrado={$idGrado}&idMateria={$idMateria}' class='p-3 bg-red-500 text-white text-lg rounded-md m-2'>
                     <span class='icon-file-pdf'></span>
                     Los ganadores
                 </a>
