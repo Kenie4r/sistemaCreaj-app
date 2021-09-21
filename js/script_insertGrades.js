@@ -156,7 +156,7 @@ function sencondActivity(){
              var text = escribirNotaFIn(grade, idBox);
              $('#descr' + idBox).fadeIn('slow');
              $('#calificar' + idBox).append(text);
-            $('#inputGrade').val( NewGrade);
+            $('#inputGrade').val( NewGrade.toFixed(2));
              //funcionamiento de editar
              $('.btnEdit').click(function(){
                  idBox= id_Number($(this).attr('id'));
@@ -167,7 +167,7 @@ function sencondActivity(){
                  $('#progress').css('width', width);
                  var box = "#div"+idBox;
                  $(box).fadeIn('slow')//esta hace que aparezca
-                 $('#inputGrade').val(NewGrade);
+                 $('#inputGrade').val(NewGrade.toFixed(2));
                  $('#calificar'+idBox).empty();
                  $('#Final' + idBox).val("")
 

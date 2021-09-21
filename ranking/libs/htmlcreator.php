@@ -178,11 +178,15 @@
             }else{
                 $blockhtml .= " 
                 <div class='flex justify-center'>
-                <a href='../libs/fpdfranking_doc.php?idGrado={$idGrado}&idMateria={$idMateria}' class='p-3 bg-red-500 text-white text-lg rounded-md'>
+                <a href='../libs/fpdfranking_doc.php?idGrado={$idGrado}&idMateria={$idMateria}' class='p-3 bg-red-500 text-white text-lg rounded-md m-2'>
                     <span class='icon-file-pdf'></span>
-                    Descargar PDF
+                   Todo el ranking
                 </a>
-            </div>
+                <a href='' class='p-3 bg-red-500 text-white text-lg rounded-md m-2'>
+                    <span class='icon-file-pdf'></span>
+                    Los ganadores
+                </a>
+                </div>
         </div>
                 <div class='w-full flex flex-col items-center'>
 
