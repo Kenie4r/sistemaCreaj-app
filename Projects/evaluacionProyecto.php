@@ -11,6 +11,7 @@ if(isset($_GET['proyecto']) && !(empty($_GET['proyecto']))){
     }
 }else{
     emptyEvaluacionProyecto();
+    
 }
 
 ?>

@@ -33,8 +33,13 @@ function rankingProyecto($materia, $grado){
     $pdf->SetSubject("Sistema de Calificación de Crea J", true);
     $pdf->AddPage(); //Se añade una nueva página
 
+
+
     //-----     Creación de consultas     -----
     $consulta = new Query; //Crear una consulta
+
+    $datosRank = $consulta->getRankingDESC($grado, $materia)    //obtener el ranking completo 
+
     $teamData = $consulta->getTeamData($idproyecto); //Obtenemos los datos del proyecto
     //Generamos un apartado por proyecto
     foreach($teamData as $campo){
