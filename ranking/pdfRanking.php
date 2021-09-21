@@ -1,13 +1,13 @@
 <?php
 require('../controlador/pdfRanking.php');
 
-if(isset($_GET["idSubject"]) && isset($_GET["idGrade"])){
-    if(empty($_GET["idSubject"]) && empty($_GET["idGrade"])){
+if(isset($_GET["idMateria"]) && isset($_GET["idGrado"])){
+    if(empty($_GET["idMateria"]) && empty($_GET["idGrado"])){
         emptyRankingProyecto();
     }else{
         //Imprime el pdf
-        $materia = $_GET["idSubject"];
-        $grado = $_GET["idGrade"];
+        $materia = $_GET["idMateria"];
+        $grado = $_GET["idGrado"];
         rankingProyecto($materia, $grado);
     }
 }else{
