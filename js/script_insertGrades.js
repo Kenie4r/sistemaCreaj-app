@@ -1,6 +1,6 @@
 //definición de las vartiables globales
 var notafinal = 0;
-
+var contadora = 0;
 //funciones luego de que nuestro archivo cargue
 $(document).ready(function(){
     var screen = $('#cargar');
@@ -158,7 +158,11 @@ function sencondActivity(){
              $('#calificar' + idBox).append(text);
             $('#inputGrade').val( NewGrade.toFixed(2));
              //funcionamiento de editar
-             editarNota();
+             if(contadora == 0){
+                editarNota();
+                contadora++;
+            }
+
         })
 }
 
