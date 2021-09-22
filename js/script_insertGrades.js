@@ -79,7 +79,7 @@ function editarNota(idNumber){
         }
        
      })
-    
+    /*
   $('#btnTerminar').click(function(){
         var nota = $('#inputGrade').val();
         var faltan = false;
@@ -99,7 +99,7 @@ function editarNota(idNumber){
             }
         }
 
-    });
+    });*/
   //  mainActivity();
     //sencondActivity()
     
@@ -353,8 +353,9 @@ function crearNotificacion(tipo, mensaje, opcion1, opcion2){
       }
     })
     $('#option-2').click(function(){
+
         $('#notification').remove();
-      editarNota();
+         editarNota();
     })
 
 
