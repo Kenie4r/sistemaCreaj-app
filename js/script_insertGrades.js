@@ -53,9 +53,9 @@ function terminarCalificar(){
         }
     })
 }
-function editarNota(){
+function editarNota(idNumber){
     //funcionamiento de editar
-    $('.btnEdit').click(function(){
+    $('#btnEdit_' + idNumber).click(function(){
         if(contadora==0){
             alert("2");
             var idBox= id_Number($(this).attr('id'));
@@ -73,7 +73,7 @@ function editarNota(){
             $(box).fadeIn('slow')//esta hace que aparezca
             $('#calificar'+idBox).empty();    
             $('#inputGrade').val(NewGrade);
-            contadora++;
+            
         }else{
             contadora=0;
         }
@@ -177,12 +177,12 @@ function sencondActivity(){
              $('#calificar' + idBox).append(text);
             $('#inputGrade').val( NewGrade.toFixed(2));
              //funcionamiento de editar
-           if(contadora == 0){
-                editarNota();
-            }else if(contadora%2!=0){
-                editarNota();
-            }
-            contadora++;
+           //if(contadora == 0){
+                editarNota(idBox);
+            //}else if(contadora%2!=0){
+              //  editarNota();
+            //}
+            //contadora++;
         })
 }
 
