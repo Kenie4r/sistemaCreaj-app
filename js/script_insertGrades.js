@@ -13,7 +13,6 @@ $(document).ready(function(){
 });
 
 function bloquearInputs(input){
-    alert("1");
        var criteriosdiv = document.getElementsByClassName('criterio');
        for(let count = 0; count<criteriosdiv.length; count++){
            if( $(input).attr('id')==criteriosdiv[count].id  ){
@@ -57,7 +56,6 @@ function editarNota(idNumber){
     //funcionamiento de editar
     $('#btnEdit_' + idNumber).click(function(){
         if(contadora==0){
-            alert("2");
             var idBox= id_Number($(this).attr('id'));
             var minusGrade = $('#Final' + idBox).val();
             var NewGrade = parseFloat($('#finalGrade').text())
@@ -65,7 +63,6 @@ function editarNota(idNumber){
             if(NewGrade<0){
                 NewGrade = 0;
             }
-            
             $('#finalGrade').text(NewGrade.toFixed(3));
             var width = NewGrade*2+"%";
             $('#progress').css('width', width);
@@ -73,36 +70,12 @@ function editarNota(idNumber){
             $(box).fadeIn('slow')//esta hace que aparezca
             $('#calificar'+idBox).empty();    
             $('#inputGrade').val(NewGrade);
-            
+            $('#Final' + idBox).val(0);
         }else{
             contadora=0;
         }
        
      })
-     /*
-  $('#btnTerminar').click(function(){
-      document.getElementById('btnTerminar').addEventListener("click", function(e){
-        if($('#inputGrade').val() == "" || $('#inputGrade')==NaN){
-            crearNotificacion(1, "Aún no has calificado", null, "Terminar");
-        }else{
-            var inputsCalificados = 0;
-            var inputsCriterios = document.getElementsByClassName('final');
-            for(let i = 0; i<inputsCriterios.length; i++){
-                if( inputsCriterios[i].value=="" ||  inputsCriterios[i].value==NaN || inputsCriterios[i].value==0 ){
-                    inputsCalificados++
-                }
-            }
-            if(inputsCalificados == 0){
-                crearNotificacion(1,"¿Quieres guardar?", "Sí", "Aún no");
-            }else{
-                crearNotificacion(1, "Aún no has calificado", null, "Terminar");
-            }
-        }
-    })
-
-    });*/
-    //sencondActivity()
-    
 }
 //funcionamiento de los botones de nivle y demás
 function mainActivity(){
@@ -377,19 +350,3 @@ function loadingnotification(screen){
         })
 }
 
-
-/*function notificarCargar(){
-    var html = "<div class='fixed  h-screen w-screen bg-gray-900 top-0 left-0  bg-opacity-70 flex  flex-col items-center justify-center hidden' id='cargar'>"+
-        "<div class='bg-white h-3/6 w-5/12 rounded-lg flex justify-center flex-col items-center'>"+
-          "  <div class='text-green-600 text-center w-6/12  text-8xl'>"+
-                "<p class='animate-spin'>"+
-                    "<span class='icon-spinner2'></span>"+
-                "</p>"+    
-            "</div>"+
-            "<div class='animate-bounce m-2 text-2xl'>"+
-               "<p>Cargando...</p>"+
-            "</div>"+
-        "</div>"+
-    "</div>";
-      document.body.innerHTML += html;
-}*/
