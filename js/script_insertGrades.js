@@ -79,6 +79,7 @@ function editarNota(idNumber){
         }
        
      })
+     /*
   $('#btnTerminar').click(function(){
       document.getElementById('btnTerminar').addEventListener("click", function(e){
         if($('#inputGrade').val() == "" || $('#inputGrade')==NaN){
@@ -99,7 +100,7 @@ function editarNota(idNumber){
         }
     })
 
-    });
+    });*/
     //sencondActivity()
     
 }
@@ -352,7 +353,9 @@ function crearNotificacion(tipo, mensaje, opcion1, opcion2){
       }
     })
     $('#option-2').click(function(){
-            //mainActivity();
+        sencondActivity()
+        mainActivity();
+        terminarCalificar()
         $('#notification').remove();
         var inputs = document.getElementsByClassName('porcentajes');
         for(var i = 1; i<=inputs.length; i++){
