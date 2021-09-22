@@ -79,27 +79,27 @@ function editarNota(idNumber){
         }
        
      })
-    /*
   $('#btnTerminar').click(function(){
-        var nota = $('#inputGrade').val();
-        var faltan = false;
-        var inputs = document.getElementsByClassName('final');
-        for(var index = 0; index<inputs.length; index++){
-            if(inputs[index].value ==0){
-                faltan = true;
-            }
-        }
-        if( nota==""){
-            crearNotificacion(1, "Aún no has terminado de calificar", null , "Ok");
+      document.getElementById('btnTerminar').addEventListener("click", function(e){
+        if($('#inputGrade').val() == "" || $('#inputGrade')==NaN){
+            crearNotificacion(1, "Aún no has calificado", null, "Terminar");
         }else{
-            if (faltan==true ){
-                crearNotificacion(1, "Aún no has terminado de calificar", null , "Ok");
+            var inputsCalificados = 0;
+            var inputsCriterios = document.getElementsByClassName('final');
+            for(let i = 0; i<inputsCriterios.length; i++){
+                if( inputsCriterios[i].value=="" ||  inputsCriterios[i].value==NaN || inputsCriterios[i].value==0 ){
+                    inputsCalificados++
+                }
+            }
+            if(inputsCalificados == 0){
+                crearNotificacion(1,"¿Quieres guardar?", "Sí", "Aún no");
             }else{
-                crearNotificacion(1, "¿Quiéres guardar la nota?","Guardar", "Cancelar");
+                crearNotificacion(1, "Aún no has calificado", null, "Terminar");
             }
         }
+    })
 
-    });*/
+    });
   //  mainActivity();
     //sencondActivity()
     
