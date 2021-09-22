@@ -177,12 +177,12 @@ function sencondActivity(){
              $('#calificar' + idBox).append(text);
             $('#inputGrade').val( NewGrade.toFixed(2));
              //funcionamiento de editar
-           // if(contadora == 0){
+           if(contadora == 0){
                 editarNota();
-           /* }else if(contadora%2==0){
+            }else if(contadora%2!=0){
                 editarNota();
             }
-            contadora++;*/
+            contadora++;
         })
 }
 
