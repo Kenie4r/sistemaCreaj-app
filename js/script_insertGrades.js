@@ -57,6 +57,9 @@ function editarNota(){
         var minusGrade = $('#Final' + idBox).val();
         var NewGrade = parseFloat($('#finalGrade').text())
         NewGrade-= minusGrade;
+        if(NewGrade<0){
+            NewGrade = 0;
+        }
         $('#finalGrade').text(NewGrade.toFixed(3));
         var width = NewGrade*2+"%";
         $('#progress').css('width', width);
@@ -161,7 +164,11 @@ function sencondActivity(){
              if(contadora == 0){
                 editarNota();
                 contadora++;
+               
+            }else if(contadora%2==0){
+                editarNota();
             }
+            contadora++;
 
         })
 }
