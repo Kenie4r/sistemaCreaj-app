@@ -158,20 +158,7 @@ function sencondActivity(){
              $('#calificar' + idBox).append(text);
             $('#inputGrade').val( NewGrade.toFixed(2));
              //funcionamiento de editar
-             $('.btnEdit').click(function(){
-                 idBox= id_Number($(this).attr('id'));
-                 var minusGrade = $('#Final' + idBox).val();
-                 NewGrade-= minusGrade;
-                 $('#finalGrade').text(NewGrade.toFixed(2));
-                 var width = NewGrade*2+"%";
-                 $('#progress').css('width', width);
-                 var box = "#div"+idBox;
-                 $(box).fadeIn('slow')//esta hace que aparezca
-                 $('#inputGrade').val(NewGrade.toFixed(2));
-                 $('#calificar'+idBox).empty();
-                 $('#Final' + idBox).val("")
-
-             })
+             editarNota();
         })
 }
 
