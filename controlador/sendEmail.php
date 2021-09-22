@@ -9,21 +9,25 @@ require '../PHPMailer/src/SMTP.php';
 
 function enviarCorreo($correo, $nombre, $username, $year, $asunto, $saludo, $pass = ""){
     $mail = new PHPMailer(true);
+    //$correoElectronico = 'creaj.evaluaciones@cdb.edu.sv'; //Institucional
+    //$passwordEmail = 'JqDD#&UXFwJF'; //Institucional
+    $correoElectronico = 'trabajosocialcdbhelp@gmail.com'; //Externa
+    $passwordEmail = 'hSaYweXa38'; //Externa
     try {
         //Server settings
         $mail->SMTPDebug = 0;
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'creaj.evaluaciones@cdb.edu.sv';
-        $mail->Password   = 'JqDD#&UXFwJF';
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; //Servidor colegio
-        //$mail->SMTPSecure = 'tls'; //local equipo
-        $mail->Port       = 465; //465 servidor del colegio
-        //$mail->Port       = 587; //587 servidor local del equipo
+        $mail->Username   = $correoElectronico;
+        $mail->Password   = $passwordEmail;
+        //$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; //Servidor colegio
+        $mail->SMTPSecure = 'tls'; //local equipo
+        //$mail->Port       = 465; //465 servidor del colegio
+        $mail->Port       = 587; //587 servidor local del equipo
 
         //Recipients
-        $mail->setFrom('creaj.evaluaciones@cdb.edu.sv', 'Sistema de Calificacion: CDB');
+        $mail->setFrom($correoElectronico, 'Sistema de Calificacion: CDB');
         $mail->addAddress($correo);
 
         // Content

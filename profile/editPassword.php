@@ -26,7 +26,7 @@ require('../Dashboard/Dashboard.php');
             <input type="hidden" name="username" id="username" value="<?php echo $_SESSION["usario"]; ?>">
             <div class="grid grid-cols-1 lg:grid-cols-2 text-gray-300">
                 <div class="flex flex-col items-center m-8 rounded-lg">
-                    <label for="txtNewPassProfile">Nueva Password:</label>
+                    <label for="txtNewPassProfile">Nueva Password (Max. 10 caracteres):</label>
                     <input type="password" name="txtNewPassProfile" id="txtNewPassProfile" class="p-1 w-4/5 bg-gray-800 border-b-2 border-solid border-gray-900 focus:border-gray-600 outline-none" size="10" maxlength="10" autofocus>
                 </div>
                 <div class="flex flex-col items-center w-full m-8 rounded-lg">
