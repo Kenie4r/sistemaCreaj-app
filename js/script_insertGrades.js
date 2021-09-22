@@ -56,21 +56,28 @@ function terminarCalificar(){
 function editarNota(){
     //funcionamiento de editar
     $('.btnEdit').click(function(){
-        var idBox= id_Number($(this).attr('id'));
-        var minusGrade = $('#Final' + idBox).val();
-        var NewGrade = parseFloat($('#finalGrade').text())
-        NewGrade-= minusGrade;
-        if(NewGrade<0){
-            NewGrade = 0;
+        if(contadora==0){
+            alert("2");
+            var idBox= id_Number($(this).attr('id'));
+            var minusGrade = $('#Final' + idBox).val();
+            var NewGrade = parseFloat($('#finalGrade').text())
+            NewGrade-= minusGrade;
+            if(NewGrade<0){
+                NewGrade = 0;
+            }
+            
+            $('#finalGrade').text(NewGrade.toFixed(3));
+            var width = NewGrade*2+"%";
+            $('#progress').css('width', width);
+            var box = "#div"+idBox;
+            $(box).fadeIn('slow')//esta hace que aparezca
+            $('#calificar'+idBox).empty();    
+            $('#inputGrade').val(NewGrade);
+            contadora++;
+        }else{
+            contadora=0;
         }
-        alert("2");
-        $('#finalGrade').text(NewGrade.toFixed(3));
-        var width = NewGrade*2+"%";
-        $('#progress').css('width', width);
-        var box = "#div"+idBox;
-        $(box).fadeIn('slow')//esta hace que aparezca
-        $('#calificar'+idBox).empty();    
-        $('#inputGrade').val(NewGrade);
+       
      })
     
   $('#btnTerminar').click(function(){
@@ -170,13 +177,12 @@ function sencondActivity(){
              $('#calificar' + idBox).append(text);
             $('#inputGrade').val( NewGrade.toFixed(2));
              //funcionamiento de editar
-            if(contadora == 0){
+           // if(contadora == 0){
                 editarNota();
-            }else if(contadora%2==0){
+           /* }else if(contadora%2==0){
                 editarNota();
             }
-            contadora++;
-
+            contadora++;*/
         })
 }
 
