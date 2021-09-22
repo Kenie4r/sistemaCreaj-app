@@ -11,7 +11,6 @@ $id_rubrica = $_POST["txtID"];
 $name = $_POST["txtNombreRubrica"];
 $id_materia = $_POST["txtMateria"];
 $id_nivel = $_POST["txtNivel"];
-
 //Actualizar la rúbrica
 $estadoRubrica = $consulta->updateRubrica($id_rubrica, $name, $id_materia, $id_nivel);
 

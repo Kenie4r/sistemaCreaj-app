@@ -2095,7 +2095,7 @@ class Query{
     public function updateRubrica($idRubrica, $name, $idMateria, $idNivel){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "UPDATE rubrica SET nombre = :nombreR, materia_idmateria = :materia, nivel_idnivel = :nivel WHERE rubrica.idrubrica = :idRubrica";
+        $sql = "UPDATE rubrica SET nombre = :nombreR, materia_idmateria = :materia, grado_idgrado = :nivel WHERE rubrica.idrubrica = :idRubrica";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":nombreR", $name);
         $sentencia->bindParam(":materia", $idMateria);
