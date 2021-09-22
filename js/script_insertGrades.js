@@ -85,8 +85,8 @@ function editarNota(){
         }
 
     });
-    mainActivity();
-    sencondActivity()
+  //  mainActivity();
+    //sencondActivity()
     
 }
 //funcionamiento de los botones de nivle y demás
