@@ -353,9 +353,7 @@ function crearNotificacion(tipo, mensaje, opcion1, opcion2){
       }
     })
     $('#option-2').click(function(){
-        if(opcion2=="Terminar"){
             mainActivity();
-        }
         $('#notification').remove();
          editarNota();
     })
