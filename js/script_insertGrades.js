@@ -100,7 +100,6 @@ function editarNota(idNumber){
     })
 
     });
-   mainActivity();
     //sencondActivity()
     
 }
@@ -355,7 +354,10 @@ function crearNotificacion(tipo, mensaje, opcion1, opcion2){
     $('#option-2').click(function(){
             //mainActivity();
         $('#notification').remove();
-         editarNota();
+        var inputs = document.getElementsByClassName('porcentajes');
+        for(var i = 1; i<=inputs.length; i++){
+            editarNota(i);
+        }     
     })
 
 
