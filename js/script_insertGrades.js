@@ -176,13 +176,13 @@ function sencondActivity(){
              $('#descr' + idBox).fadeIn('slow');
              $('#calificar' + idBox).append(text);
             $('#inputGrade').val( NewGrade.toFixed(2));
-             //funcionamiento de editar
-           // if(contadora == 0){
+            //funcionamiento de editar
+            if(contadora == 0){
                 editarNota();
-           /* }else if(contadora%2==0){
+            }else if(contadora%2==0){
                 editarNota();
             }
-            contadora++;*/
+            contadora++;
         })
 }
 
