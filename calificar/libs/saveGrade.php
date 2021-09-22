@@ -11,6 +11,14 @@
     $grado = $_POST['levelttxt']?$_POST['levelttxt']:"";
     $criterios = $_POST['criterios'];
     $notasobtenidas = $_POST['notasc'];
+    $notasM = $_POST['notasM'];
+    $notasumada = 0;
+    for($i = 0; $i<count($notasM); $i++){
+        $notasumada += $notasM[$i];
+    }
+    if($notasumada!= $notaFinal){
+        $notaFinal = $notasumada;
+    }
     $notaFinal = round($notaFinal, 2);
   $result = $query->savePuntaje($idTeam, $userID, $notaFinal);
     if($result =="Registro hecho"){
@@ -65,4 +73,4 @@
        ";
     }
     print($html);
-?>
+    ?>

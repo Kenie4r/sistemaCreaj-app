@@ -305,10 +305,13 @@ function crearNotificacion(tipo, mensaje, opcion1, opcion2){
             var inputsCriterio = document.getElementsByClassName('final');
             var porcentajes = document.getElementsByClassName('porcentajes');
             var inputsCriteriosID = document.getElementsByName('idCriterio');
-            var notas = new Array(), criterios = new Array();
+            var notas = new Array(), criterios = new Array(), notasMl = new Array();
+            var notasM = document.getElementsByClassName('final');
+
             for(var a = 0; a<inputsCriterio.length; a++){
                 notas[a] = inputsCriterio[a].value / (porcentajes[a].value/100);
                 criterios[a] = inputsCriteriosID[a].value;
+                notasMl[a] = notasM[a].value;
              }
            $.post("libs/saveGrade.php",{
                 'finalGrade': notafinal ,
@@ -317,7 +320,8 @@ function crearNotificacion(tipo, mensaje, opcion1, opcion2){
                 'subjecttxt': materia,
                 'levelttxt': grado,
                 'notasc': notas,
-                'criterios': criterios
+                'criterios': criterios,
+                'notasM': notasMl
             }, function(result){
                 $('#notification').remove();
                 document.body.innerHTML += result;
