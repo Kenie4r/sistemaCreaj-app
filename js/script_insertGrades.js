@@ -11,7 +11,9 @@ $(document).ready(function(){
     //calificar 
     mainActivity();
 });
+
 function bloquearInputs(input){
+    alert("1");
        var criteriosdiv = document.getElementsByClassName('criterio');
        for(let count = 0; count<criteriosdiv.length; count++){
            if( $(input).attr('id')==criteriosdiv[count].id  ){
@@ -21,6 +23,7 @@ function bloquearInputs(input){
            }
        }
 }
+
 function inputsGet(){
       var criteriosdiv = document.getElementsByClassName('criterio');
        for(let count = 0; count<criteriosdiv.length; count++){
@@ -53,10 +56,11 @@ function terminarCalificar(){
 function editarNota(){
     //funcionamiento de editar
     $('.btnEdit').click(function(){
-        idBox= id_Number($(this).attr('id'));
+        var idBox= id_Number($(this).attr('id'));
         var minusGrade = $('#Final' + idBox).val();
         var NewGrade = parseFloat($('#finalGrade').text())
         NewGrade-= minusGrade;
+        alert("2");
         $('#finalGrade').text(NewGrade.toFixed(3));
         var width = NewGrade*2+"%";
         $('#progress').css('width', width);
@@ -65,6 +69,7 @@ function editarNota(){
         $('#calificar'+idBox).empty();    
         $('#inputGrade').val(NewGrade);
      })
+    
   $('#btnTerminar').click(function(){
         var nota = $('#inputGrade').val();
         var faltan = false;
@@ -107,6 +112,7 @@ function mainActivity(){
         sencondActivity();
     })
 };
+
 function sencondActivity(){
     $('.backbutton').click(function(){
         
@@ -122,6 +128,7 @@ function sencondActivity(){
              $(thisBox).empty()
               inputsGet()
          })
+    
          //función para obtener, verificar el valor de la barra range que nos da  la nota
         $('.gradeinput').change( function(){      
              var value  = $(this).val();
@@ -130,6 +137,7 @@ function sencondActivity(){
              var box = "#nota_"+boxNumber;
            $(box).text(value);
          })
+        
          $('.notas').click(function(){
              var max= $(this).attr('value');
              $(this).text(max);
@@ -137,6 +145,7 @@ function sencondActivity(){
              var input = "#Grade_"+NumberId;
             $(input).val(max)
          })
+
          $('.btnGuardar').click(function(){
               inputsGet()
              var idBox  = id_Number(  $(this).attr('id'));
@@ -158,8 +167,9 @@ function sencondActivity(){
              $('#calificar' + idBox).append(text);
             $('#inputGrade').val( NewGrade.toFixed(2));
              //funcionamiento de editar
-             if(contadora == 0){
+            if(contadora == 0){
                 editarNota();
+            }else{
                 contadora++;
             }
 
