@@ -48,7 +48,7 @@ function terminarCalificar(){
             if(inputsCalificados == 0){
                 crearNotificacion(1,"¿Quieres guardar?", "Sí", "Aún no");
             }else{
-                crearNotificacion(1, "Aún no has terminado de calificar", null , "Ok");
+                crearNotificacion(1, "Aún no has calificado", null, "Terminar");
             }
         }
     })
@@ -353,7 +353,9 @@ function crearNotificacion(tipo, mensaje, opcion1, opcion2){
       }
     })
     $('#option-2').click(function(){
-
+        if(opcion2=="Terminar"){
+            mainActivity();
+        }
         $('#notification').remove();
          editarNota();
     })
