@@ -100,7 +100,7 @@ function editarNota(idNumber){
     })
 
     });
-  //  mainActivity();
+   mainActivity();
     //sencondActivity()
     
 }
@@ -353,7 +353,7 @@ function crearNotificacion(tipo, mensaje, opcion1, opcion2){
       }
     })
     $('#option-2').click(function(){
-            mainActivity();
+            //mainActivity();
         $('#notification').remove();
          editarNota();
     })
