@@ -16,12 +16,12 @@
                 $materia = $query->getMatterById($a);
                 $html .= "
                 <div class='bg-white w-full shadow-xl p-2 flex flex-col items-center my-3'>
-                <div class='w-full flex md:flex-row flex-col  sm:justify-between justify-center items-center'>
-                    <div class='text-center md:w-8/12 w-full text-sm'>
+                <div class='w-full flex lg:flex-row flex-col  lg:justify-between justify-center items-center'>
+                    <div class='text-center lg:w-7/12 w-full text-sm'>
                         <h1 class='text-2xl'>{$materia['nombre']}</h1>
                     </div>
                     <!--Un botón para seleccionar al grado-->
-                    <div class= 'md:w-4/12 w-full m-2 text-center' >
+                    <div class= 'lg:w-5/12 w-full m-2 text-center' >
                         <div >
                             <a target='_blank' href='rank/rank.php?idSubject={$a}&idGrade={$grado}' class='text-md button p-2 border border-2 bg-blue-600 text-white cursor-pointer btnGrade' id='btn-{$a}'>
                             Ver ranking

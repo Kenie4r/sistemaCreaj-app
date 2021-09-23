@@ -79,7 +79,7 @@
                          <h1 class='text-xl'>{$campo['nombre']}  {$campo['seccion']}</h1>
                         </div>
                         <!--Un botón para seleccionar al grado-->
-                        <div class='sm:w-8/12 w-full flex flex-row items-center justify-end'>
+                        <div class='sm:w-8/12 w-full flex flex-row items-center justify-center '>
                             <a class='button p-2 border border-2 bg-blue-500 text-white cursor-pointer  text-sm' href='../Projects/porcentProjectsByGrade.php?grado={$campo['idgrado']}'>
                                 %- Proyecto calificados
                             </a>
@@ -104,7 +104,7 @@
                      <h1 class='text-xl'>{$campo['nombre']}  {$campo['seccion']}</h1>
                     </div>
                     <!--Un botón para seleccionar al grado-->
-                    <div class='md:w-8/12 w-full flex flex-row items-center justify-end'>
+                    <div class='md:w-8/12 w-full flex flex-row items-center justify-center'>
                         <a class='button p-2 border border-2 bg-blue-500 text-white cursor-pointer  text-sm' href='../Projects/porcentProjectsByGrade.php?grado={$campo['idgrado']}'>
                             %- Proyecto calificados
                         </a>
