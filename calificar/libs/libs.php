@@ -49,7 +49,7 @@
 
         //escribiremos todo el HTML con los datos obtenidos
         $html="<body  class='bg-teal-900 w-screen h-screen rounded-lg overflow-x-hidden'>
-        <div class='container bg-white w-9/12 max-w-xl  m-auto max-w-xl  rounded-2xl mt-2'>
+        <div class='container bg-white md:w-9/12 w-11/12 max-w-xl  m-auto max-w-xl  rounded-2xl mt-2'>
                 <div class='bg-gray-100 p-2'>
                     <div class='text-2xl font-bold uppercase'>
                         <h1 class='text-center'>sistema de calificación</h1>
