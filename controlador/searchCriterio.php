@@ -20,9 +20,17 @@
         <h1> Descripción del rango obtenido</h1>
             <p class='text-justify p-2'>{$resultado[1]}</p> 
     </div>
-    <div class='w-full text-center font-bold m-2'>  
-        <p>La nota obtenida es:</p> 
-        <h1 class='text-4xl cursor-pointer notas' id='nota_$number'  value='".$max."'>$min</h1>
+
+    <div>
+        <div class='w-full text-center font-bold m-2'>  
+            <p>La nota obtenida es:</p> 
+            <h1 class='text-4xl cursor-pointer notas' id='nota_$number'  value='".$max."'>$min</h1>
+        </div>
+        <div>
+            <p id='insert_$number' class='text-center text-md  btnEditGrade cursor-pointer text-blue-500'> 
+                Ingresar manualmente <span class='icon-pencil' ></span>
+            </p>
+        </div>
     </div>
     <div  class='flex flex-row mt-2'>
       <div class='mx-2'>$min </div>

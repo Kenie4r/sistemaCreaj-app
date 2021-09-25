@@ -173,10 +173,57 @@ function inputCreation(number, contenedor, nivel){
     },function(result){
         $(contenedor).append(result);  
         sencondActivity();
+        insertarNota(number, contenedor, nivel, notas);
     }, 
     "html");
 }
+function insertarNota(idBox, box, level, grades){
+    $('#insert_' + idBox).click(function(){
+        //vamos a crear una caja en la cual puedan insertar el valor de manera manual
+        var html = "<div class='fixed z-50  h-screen w-screen bg-black bg-opacity-70 text-lg flex flex-row items-center justify-center top-0 left-0 ' id='newGrade"+idBox+"'>" + 
+        "<div class='bg-white h-3/6 w-9/12 m-auto p-1 flex flex-col  ' > "+
+        "<div class='flex flex-row justify-end items-end w-full'><div class='flex border-red-500 border border-2 text-center justify-center text-red-500 rounded-full text-md p-2 cursor-pointer' id='btnCerrar'><span class='icon-cross'><span> </div></div> <div class='flex flex-col items-center w-full justify-center'>"+
+        "<div class='text-center w-full text-2xl'><h1 >Inserte una nota para este críterio</h1></div>"+
+        "<div class='w-full flex flex-col items-center text-center'><div><h2>El nivel escogido es: " + level + "</h2><p>La nota máxima es de: " +grades[0]+ " y el mínimo es de: "+grades[1]+ "</p></div><div><input typer='number' id='txtNumber_" + idBox+"' class='text-4xl h-20 w-min  text-bold text-center border' autofocus  step='0.1' value='"+grades[1]+"' min='"+grades[1]+"' max='"+grades[0]+"'></div></div>"+
+        "<div class='w-full'><div class='w-full '><p class=' w-6/12 m-auto my-5 text-center p-3 bg-blue-500 text-white cursor-pointer' id='saveGrade_"+idBox+"'>Ingresar nota</p></div></div>"+
+        "</div></div></div>";
+    
+        //simplemente insertamos el input en el body
+        $(box).append(html);
 
+        $('#btnCerrar').click(function(){
+            $('#newGrade'+idBox).remove();
+        })
+        var continu = true;
+        var nota = 0;
+        $('#txtNumber_'+idBox).on('input', function(){
+            var value =  $(this).val();
+            if(isNaN(value)){
+                $(this).css('background', '#F87171');
+                continu = false
+            }else{
+                if(value==""){
+                         $(this).css('background', '#F87171');
+                                 continu = false;
+                }else if(value<grades[1] || value>grades[0]){
+                    $(this).css('background', '#F87171');
+                               continu = false;
+                }else{
+                       $(this).css('background', '#6EE7B7');
+                       continu = true;
+                       nota = value;
+                }
+            }
+        })
+        $('#saveGrade_'+idBox).click(function () {
+            if(continu){
+                $('#Grade_'+ idBox).val(nota);
+                $('#nota_'+idBox).html(nota);
+                $('#newGrade'+idBox).remove();
+            }
+        })
+    });
+}
 
 
 
