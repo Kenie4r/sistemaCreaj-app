@@ -35,7 +35,7 @@ function terminarCalificar(){
 
     document.getElementById('btnTerminar').addEventListener("click", function(e){
         if($('#inputGrade').val() == "" || $('#inputGrade')==NaN){
-            crearNotificacion(1, "Aún no has calificado", null, "Terminar");
+            crearNotificacion(1, "Aún no has calificado", null, "Continuar calificando");
         }else{
             var inputsCalificados = 0;
             var inputsCriterios = document.getElementsByClassName('final');
@@ -47,7 +47,7 @@ function terminarCalificar(){
             if(inputsCalificados == 0){
                 crearNotificacion(1,"¿Quieres guardar?", "Sí", "Aún no");
             }else{
-                crearNotificacion(1, "Aún no has calificado", null, "Terminar");
+                crearNotificacion(1, "Aún no has calificado", null, "Continuar calificando");
             }
         }
     })
