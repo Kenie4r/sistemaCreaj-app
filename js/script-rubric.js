@@ -17,6 +17,12 @@ $(document).ready(
             }
         );
 
+        $(".chosen-select").on("change",
+            function(){
+                llenarTabla();
+            }
+        );
+
         $(".chosen-select").chosen(
             {no_results_text: "Sin coincidencias para:"}
         );
@@ -40,18 +46,22 @@ function llenarTabla() {
     //Objetos globales
     var txtBusqueda = $("#txtBusqueda");
     var tipoBusqueda = $("#sltBusqueda");
+    var materia = $("#txtMateria");
+    var grado = $("#txtGrado");
 
     $.post("../controlador/searchRubric.php", 
-                    {
-                        "filtrorubric": txtBusqueda.val(),
-                        "tiporubric" : tipoBusqueda.val()
-                    },
-                    function(respuesta){
-                        var contenedorFilasRubric = $("#table-body-rubrica");
-                        contenedorFilasRubric.empty();
-                        contenedorFilasRubric.html(respuesta);
-                        configurarConfirmacionEliminacion();
-                    },
-                    "html"
+        {
+            "filtrorubric": txtBusqueda.val(),
+            "tiporubric" : tipoBusqueda.val(),
+            "filtroMateria" : materia.val(),
+            "filtroGrado" : grado.val()
+        },
+        function(respuesta){
+            var contenedorFilasRubric = $("#table-body-rubrica");
+            contenedorFilasRubric.empty();
+            contenedorFilasRubric.html(respuesta);
+            configurarConfirmacionEliminacion();
+        },
+        "html"
     );
 }

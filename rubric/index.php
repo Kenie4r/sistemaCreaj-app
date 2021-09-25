@@ -49,15 +49,15 @@ $username = $_SESSION['usario'];
                     <option value="nombre">Nombre</option>
                 </select>
             </div>
-            <div class="flex flex-row items-center  border-gray-700 border-solid border-2 rounded-lg">
+            <div class="flex flex-row items-center border-gray-700 border-solid border-2 rounded-lg">
                 <label for="txtMateria" class="p-1 bg-gray-700 text-white">Materia</label>
                 <select name="txtMateria" id="txtMateria" class="p-1 w-full rounded-r-lg chosen-select">
 <?php writeMatter($username); ?>
                 </select>
             </div>
             <div class="flex flex-row items-center border-gray-700 border-solid border-2 rounded-lg">
-                <label for="txtNivel" class="p-1 bg-gray-700 text-white">Grado</label>
-                <select name="txtNivel" id="txtNivel" class="p-1 w-full rounded-r-lg chosen-select">
+                <label for="txtGrado" class="p-1 bg-gray-700 text-white">Grado</label>
+                <select name="txtGrado" id="txtGrado" class="p-1 w-full rounded-r-lg chosen-select">
 <?php writeGrade($username); ?>
                 </select>
             </div>
