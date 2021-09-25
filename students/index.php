@@ -53,8 +53,8 @@ $username = $_SESSION['usario'];
             </select>
         </div>
         <div class="flex flex-row items-center border-gray-700 border-solid border-2 rounded-lg">
-            <label for="txtNivel" class="p-1 bg-gray-700 text-white">Grado</label>
-            <select name="txtNivel" id="txtNivel" class="p-1 w-full rounded-r-lg chosen-select">
+            <label for="txtGrado" class="p-1 bg-gray-700 text-white">Grado</label>
+            <select name="txtGrado" id="txtGrado" class="p-1 w-full rounded-r-lg chosen-select">
 <?php writeGrade($username); ?>
             </select>
         </div>
@@ -67,30 +67,12 @@ $username = $_SESSION['usario'];
                         <td class="rounded-tl-lg p-4">ID</td>
                         <td class="p-4">Nombre</td>
                         <td class="p-4">Apellido</td>
-                        <td colspan="3" class="rounded-tr-lg p-4">Opciones</td>
+                        <td colspan="2" class="rounded-tr-lg p-4">Opciones</td>
                     </tr>
                 </thead>
                 <tbody id="table-body-rubrica" class="bg-gray-200">
-<?php
 
-if(!empty($estudiante)){
-    for ($i=0; $i < count($estudiante); $i++) { 
-        echo "<tr class='lol'>";
-    echo "\t<td class='p-4'>" . $estudiante[$i]["idestudiante"] . "</td>";
-    echo "\t<td class='p-4'>" . $estudiante[$i]["nombre"] . "</td>";
-    echo "\t<td class='p-4'>" . $estudiante[$i]["apellidos"] . "</td>";
-    echo "\t<td class='p-4'><a href='editStudents.php?student=" . $estudiante[$i]["idestudiante"] . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Editar</a></td>";
-    echo "\t<td class='p-4'><a href='deleteStudents.php?student=" . $estudiante[$i]["idestudiante"] . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Eliminar</a></td>";
-    echo "</tr>";
-    }
-}else{
-    echo "<tr class='lol'>";
-    echo "\t<td colspan='5' class='p-4'><span class='icon-blocked'></span> No hay estudiantes en el sistema<td>";
-    echo "</tr>";
-}
-
-?>
-           </tbody>
+                </tbody>
                 <tfoot class="bg-gray-900">
                     <tr>
                         <td colspan="5" class="rounded-b-lg p-2"> </td>
