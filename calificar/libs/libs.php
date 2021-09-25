@@ -293,8 +293,8 @@ HEREDOC;
             $dataMateria = $query->getMatterById($campo['materia_idmateria']);
             $dataGrado = $query->getGradeById2($campo['grado_idgrado']);
             $html2 .= " <div class='tab w-10/12 overflow-hidden border-t m-auto'>
-            <input class='absolute opacity-0' type='checkbox' id='btn-{$campo['grado_idgrado']}' name='btns'>
-            <label for='btn-{$campo['grado_idgrado']}' class='block p-5 leading-normal cursor-pointer'>{$dataGrado[0]['nombre']} {$dataGrado[0]['seccion']}</label>
+            <input class='absolute opacity-0' type='checkbox' id='btn-{$campo['grado_idgrado']}_{$campo['materia_idmateria']}' name='btns'>
+            <label for='btn-{$campo['grado_idgrado']}_{$campo['materia_idmateria']}' class='block p-5 leading-normal cursor-pointer'>{$dataGrado[0]['nombre']} {$dataGrado[0]['seccion']} / {$dataMateria['nombre']}</label>
             <div class='contenido overflow-scroll  border-1-2 bg-gray-100 border-blue-500 leading-normal''> <div class='h-full	'>";
             foreach($info as $result){
                 $calificado = $query->isSavedProject($result['idproyecto'], $userID);
