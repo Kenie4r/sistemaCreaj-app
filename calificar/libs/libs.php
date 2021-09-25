@@ -237,6 +237,7 @@ HEREDOC;
             <link rel="stylesheet" href="../recursos/icons/style.css">
             <script src="../js/script-search-project.js"></script>
             <script src="../Dashboard/js/button2.js"></script>
+            <link rel='stylesheet' href='css/styles_insertG.css'>
         </head>
         <body>
             <div class= h-screen bg-white w-screen '>
@@ -285,11 +286,16 @@ HEREDOC;
         </div>
         <div id='teamsBox'>
         ";
+        $html2 = "";
           $data = $query->getProjectsinfo($userID);
           foreach($data as $campo){
             $info = $query->getAllProjects($campo['materia_idmateria'], $campo['grado_idgrado']);
             $dataMateria = $query->getMatterById($campo['materia_idmateria']);
             $dataGrado = $query->getGradeById2($campo['grado_idgrado']);
+            $html2 .= " <div class='tab w-10/12 overflow-hidden border-t m-auto'>
+            <input class='absolute opacity-0' type='checkbox' id='btn-{$campo['grado_idgrado']}' name='btns'>
+            <label for='btn-{$campo['grado_idgrado']}' class='block p-5 leading-normal cursor-pointer'>{$dataGrado[0]['nombre']} {$dataGrado[0]['seccion']}</label>
+            <div class='contenido overflow-hidden border-1-2 bg-gray-100 border-blue-500 leading-normal''>";
             foreach($info as $result){
                 $calificado = $query->isSavedProject($result['idproyecto'], $userID);
                 foreach( $calificado as $camp){
@@ -322,7 +328,7 @@ HEREDOC;
                         ";
                         }else{ 
                         
-                            $html.="<div class='bg-white sm:w-8/12 w-10/12 border border-2 p-5 roundend-full m-auto shadow-md my-7'>
+                            $html2.="<div class='bg-white sm:w-8/12 w-10/12 border border-2 p-5 roundend-full m-auto shadow-md my-7'>
                                                 <div class='flex w-full flex-col sm:flex-row items-center justify-between'>
                                                         <div class='text-lg font-bold '>
                                                             <h1>{$result['nombreProyecto'] }</h1>
@@ -349,10 +355,11 @@ HEREDOC;
                     }
                 }
             }
+            $html2.= $withGrade . "</div></div>" ;
           }
         }
         if($c>0){
-                $html.= $withGrade;
+                $html.=  $html2;
         }
         $html .="</div><input type='hidden' value='{$userID}' id='hdUserID'>
         
