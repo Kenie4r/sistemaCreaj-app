@@ -1,35 +1,19 @@
 $(document).ready(
     function(){
-        //Objetos globales
-        var txtBusqueda = $("#txtBusqueda");
-        var tipoBusqueda = $("#sltBusqueda");
 
-        configurarConfirmacionEliminacion();
+        llenarTabla();
 
         //Filtrar las rubricas segun el textbox busqueda
-        txtBusqueda.on("input",
+        $("#txtBusqueda").on("input",
             function(){
-
-                $.post("../controlador/searchRubric.php", 
-                    {
-                        "filtrorubric": txtBusqueda.val(),
-                        "tiporubric" : tipoBusqueda.val()
-                    },
-                    function(respuesta){
-                        var contenedorFilasRubric = $("#table-body-rubrica");
-                        contenedorFilasRubric.empty();
-                        contenedorFilasRubric.html(respuesta);
-                        configurarConfirmacionEliminacion();
-                    },
-                    "html"
-                );
+                llenarTabla();
             }
         );
 
         //Vaciar la busqueda cuando se cambie de tipo de busqueda
-        tipoBusqueda.on("change",
+        $("#sltBusqueda").on("change",
             function(){
-                txtBusqueda.val("");
+                llenarTabla();
             }
         );
     }
@@ -45,5 +29,25 @@ function configurarConfirmacionEliminacion() {
             
             return estado;
         }
+    );
+}
+
+function llenarTabla() {
+    //Objetos globales
+    var txtBusqueda = $("#txtBusqueda");
+    var tipoBusqueda = $("#sltBusqueda");
+
+    $.post("../controlador/searchRubric.php", 
+                    {
+                        "filtrorubric": txtBusqueda.val(),
+                        "tiporubric" : tipoBusqueda.val()
+                    },
+                    function(respuesta){
+                        var contenedorFilasRubric = $("#table-body-rubrica");
+                        contenedorFilasRubric.empty();
+                        contenedorFilasRubric.html(respuesta);
+                        configurarConfirmacionEliminacion();
+                    },
+                    "html"
     );
 }

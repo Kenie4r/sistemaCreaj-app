@@ -50,33 +50,14 @@ require('../Dashboard/Dashboard.php');
                     <tr>
                         <td class="rounded-tl-lg p-4">ID</td>
                         <td class="p-4">Nombre</td>
-                        <td colspan="3" class="rounded-tr-lg p-4">Opciones</td>
+                        <td colspan="4" class="rounded-tr-lg p-4">Opciones</td>
                     </tr>
                 </thead>
                 <tbody id="table-body-rubrica" class="bg-gray-200">
-<?php
-
-if(!empty($rubricas)){
-    for ($i=0; $i < count($rubricas); $i++) { 
-        echo "<tr class='lol'>";
-    echo "\t<td class='p-4'>" . $rubricas[$i]["idrubrica"] . "</td>";
-    echo "\t<td class='p-4'>" . $rubricas[$i]["nombre"] . "</td>";
-    echo "\t<td class='p-4'><a href='rubric.php?idrubric=" . $rubricas[$i]["idrubrica"] . "' class='hover:text-blue-900'><span class='icon-eye'></span> Ver</a></td>";
-    echo "\t<td class='p-4'><a href='editRubric.php?idrubric=" . $rubricas[$i]["idrubrica"] . "' class='hover:text-blue-900'><span class='icon-pencil'></span> Editar</a></td>";
-    echo "\t<td class='p-4'><a href='deleteRubric.php?idrubric=" . $rubricas[$i]["idrubrica"] . "' class='hover:text-blue-900 btn-delete'><span class='icon-cross'></span> Eliminar</a></td>";
-    echo "</tr>";
-    }
-}else{
-    echo "<tr class='lol'>";
-    echo "\t<td colspan='5' class='p-4'><span class='icon-blocked'></span> No hay rubricas en el sistema<td>";
-    echo "</tr>";
-}
-
-?>
                 </tbody>
                 <tfoot class="bg-gray-900">
                     <tr>
-                        <td colspan="5" class="rounded-b-lg p-2"> </td>
+                        <td colspan="6" class="rounded-b-lg p-2"> </td>
                     </tr>
                 </tfoot>
             </table>
