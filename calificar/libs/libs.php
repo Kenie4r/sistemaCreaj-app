@@ -295,7 +295,10 @@ HEREDOC;
             $html2 .= " <div class='tab w-10/12 overflow-hidden border-t m-auto'>
             <input class='absolute opacity-0' type='checkbox' id='btn-{$campo['grado_idgrado']}_{$campo['materia_idmateria']}' name='btns'>
             <label for='btn-{$campo['grado_idgrado']}_{$campo['materia_idmateria']}' class='block p-5 leading-normal cursor-pointer'>{$dataGrado[0]['nombre']} {$dataGrado[0]['seccion']} / {$dataMateria['nombre']}</label>
-            <div class='contenido overflow-scroll  border-1-2 bg-gray-100 border-blue-500 leading-normal''> <div class='h-full	'>";
+            <div class='contenido overflow-y-scroll  border-1-2 bg-gray-100 border-blue-500 leading-normal''> <div class='h-full	'>";
+            if(count($info)<0){
+                $html2.= "<p>No hay ningun proyecto</p>";
+            }else{
             foreach($info as $result){
                 $calificado = $query->isSavedProject($result['idproyecto'], $userID);
                 foreach( $calificado as $camp){
@@ -355,6 +358,7 @@ HEREDOC;
                     }
                 }
             }
+        }
             $html2.= $withGrade . "</div></div></div>" ;
           }
         }
