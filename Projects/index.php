@@ -13,9 +13,11 @@ require_once("../controlador/soporteEscribirAcademico.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crea J | Proyectos</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../plugin_JS/chosen_JQuery/chosen.css">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!--<script src="js/dashboard.js"></script> -->
+    <script src="../plugin_JS/chosen_JQuery/chosen.jquery.min.js"></script>
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="../js/script-Projects.js"></script>
     <script src="../Dashboard/button.js"></script>
@@ -51,13 +53,13 @@ if($_SESSION['rol'] == 'a' || $_SESSION['rol'] == 'c'){
             </div>
             <div class="flex flex-row items-center  border-gray-700 border-solid border-2 rounded-lg">
                 <label for="txtMateria" class="p-1 bg-gray-700 text-white">Materia</label>
-                <select name="txtMateria" id="txtMateria" class="p-1 w-full rounded-r-lg outline-none">
+                <select name="txtMateria" id="txtMateria" class="p-1 w-full rounded-r-lg chosen-select">
 <?php writeMatter($username); ?>
                 </select>
             </div>
             <div class="flex flex-row items-center border-gray-700 border-solid border-2 rounded-lg">
                 <label for="txtNivel" class="p-1 bg-gray-700 text-white">Grado</label>
-                <select name="txtNivel" id="txtNivel" class="p-1 w-full rounded-r-lg outline-none">
+                <select name="txtNivel" id="txtNivel" class="p-1 w-full rounded-r-lg chosen-select">
 <?php writeGrade($username); ?>
                 </select>
             </div>

@@ -17,8 +17,10 @@ $estudiante = $consulta->getEstudiantes(); //Get Estudiantes
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crea J | Estudiantes</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../plugin_JS/chosen_JQuery/chosen.css">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../plugin_JS/chosen_JQuery/chosen.jquery.min.js"></script>
     <!--<script src="js/dashboard.js"></script> -->
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="../Dashboard/button.js"></script>
@@ -52,7 +54,7 @@ $username = $_SESSION['usario'];
         </div>
         <div class="flex flex-row items-center border-gray-700 border-solid border-2 rounded-lg">
             <label for="txtNivel" class="p-1 bg-gray-700 text-white">Grado</label>
-            <select name="txtNivel" id="txtNivel" class="p-1 w-full rounded-r-lg outline-none">
+            <select name="txtNivel" id="txtNivel" class="p-1 w-full rounded-r-lg chosen-select">
 <?php writeGrade($username); ?>
             </select>
         </div>

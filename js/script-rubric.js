@@ -16,6 +16,10 @@ $(document).ready(
                 llenarTabla();
             }
         );
+
+        $(".chosen-select").chosen(
+            {no_results_text: "Sin coincidencias para:"}
+        );
     }
 )
 
