@@ -2,6 +2,7 @@
 
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
+require_once("../controlador/soporteEscribirAcademico.php");
 
 $consulta = new Query; //Crear una consulta
 $rubricas = $consulta->getRubrics(); //Get rúbricas
@@ -25,6 +26,9 @@ $rubricas = $consulta->getRubrics(); //Get rúbricas
 <body>
 <?php
 require('../Dashboard/Dashboard.php');
+
+$username = $_SESSION['usario'];
+
 ?>
     <article class="container">
         <div class="grid grid-cols-1 lg:grid-cols-2 m-9">
@@ -35,12 +39,24 @@ require('../Dashboard/Dashboard.php');
                 <a href="newRubric.php" class="text-blue-600 border-blue-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-blue-600"><span class="icon-plus"></span> Nueva rúbrica</a>
             </div>
         </div>
-        <div class='flex flex-row items-center m-7'>
+        <div class='flex flex-col lg:flex-row gap-2 m-7'>
             <div class='flex flex-row'>
                 <input type='text' name='txtBusqueda' id='txtBusqueda' class='p-1 border-gray-700 border-solid border-2 rounded-tl-lg rounded-bl-lg  outline-none' placeholder='Buscar por...'>
                 <select name="sltBusqueda" id="sltBusqueda" class="p-1 border-gray-700 border-solid border-2 rounded-tr-lg rounded-br-lg bg-gray-700 text-white outline-none">
                     <option value="id">ID</option>
                     <option value="nombre">Nombre</option>
+                </select>
+            </div>
+            <div class="flex flex-row items-center  border-gray-700 border-solid border-2 rounded-lg">
+                <label for="txtMateria" class="p-1 bg-gray-700 text-white">Materia</label>
+                <select name="txtMateria" id="txtMateria" class="p-1 w-full rounded-r-lg outline-none">
+<?php writeMatter($username); ?>
+                </select>
+            </div>
+            <div class="flex flex-row items-center border-gray-700 border-solid border-2 rounded-lg">
+                <label for="txtNivel" class="p-1 bg-gray-700 text-white">Grado</label>
+                <select name="txtNivel" id="txtNivel" class="p-1 w-full rounded-r-lg outline-none">
+<?php writeGrade($username); ?>
                 </select>
             </div>
         </div>

@@ -2,7 +2,7 @@
 
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
-require_once("../controlador/soporteProyectos.php");
+require_once("../controlador/soporteEscribirAcademico.php");
 
 ?>
 <!DOCTYPE html>
@@ -24,6 +24,9 @@ require_once("../controlador/soporteProyectos.php");
 <body >
 <?php
 require('../Dashboard/Dashboard.php');
+
+$username = $_SESSION['usario'];
+
 ?>
 
       <article class="container">
@@ -47,17 +50,17 @@ if($_SESSION['rol'] == 'a' || $_SESSION['rol'] == 'c'){
                 <label for="txtBusqueda" class="p-1 border-gray-700 border-solid border-2 rounded-tr-lg rounded-br-lg bg-gray-700 text-white outline-none">Nombre</label>
             </div>
             <div class="flex flex-row items-center  border-gray-700 border-solid border-2 rounded-lg">
-                    <label for="txtMateria" class="p-1 bg-gray-700 text-white">Materia</label>
-                    <select name="txtMateria" id="txtMateria" class="p-1 w-full rounded-r-lg outline-none">
+                <label for="txtMateria" class="p-1 bg-gray-700 text-white">Materia</label>
+                <select name="txtMateria" id="txtMateria" class="p-1 w-full rounded-r-lg outline-none">
 <?php writeMatter($username); ?>
-                    </select>
-                </div>
-                <div class="flex flex-row items-center border-gray-700 border-solid border-2 rounded-lg">
-                    <label for="txtNivel" class="p-1 bg-gray-700 text-white">Grado</label>
-                    <select name="txtNivel" id="txtNivel" class="p-1 w-full rounded-r-lg outline-none">
+                </select>
+            </div>
+            <div class="flex flex-row items-center border-gray-700 border-solid border-2 rounded-lg">
+                <label for="txtNivel" class="p-1 bg-gray-700 text-white">Grado</label>
+                <select name="txtNivel" id="txtNivel" class="p-1 w-full rounded-r-lg outline-none">
 <?php writeGrade($username); ?>
-                    </select>
-                </div>
+                </select>
+            </div>
         </div>
 
         <div class="box-border m-7 overflow-scroll lg:overflow-hidden">
