@@ -296,6 +296,36 @@ class Query{
         }
     }
 
+
+    //GET TODOS LAS GRADOS QUE SE HAN ASIGNADO
+    public function getgradeinfo($userID){
+        $model = new Conection();
+        $connection = $model->_getConection();
+        $sql = "SELECT grado_idgrado FROM asignacionj WHERE asignacionj.usuario_idUsuario = :userID GROUP BY grado_idgrado";
+        $sentencia = $connection->prepare($sql);
+        $sentencia->bindParam(":userID", $userID);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+        }
+    }
+    public function getsubinfo($userID){
+        $model = new Conection();
+        $connection = $model->_getConection();
+        $sql = "SELECT materia_idmateria FROM asignacionj WHERE asignacionj.usuario_idUsuario = :userID GROUP BY materia_idmateria";
+        $sentencia = $connection->prepare($sql);
+        $sentencia->bindParam(":userID", $userID);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+        }
+    }
     //obtener los datos de asignación de proyectos
     public function getProjectsinfo($userID){
         $model = new Conection();
@@ -312,6 +342,55 @@ class Query{
         }
     }
 
+    public function getProjectsinfobyM($userID, $subject){
+        $model = new Conection();
+        $connection = $model->_getConection();
+        $sql = "SELECT * FROM asignacionj WHERE asignacionj.usuario_idUsuario = :userID AND asignacionj.materia_idmateria = :subject";
+        $sentencia = $connection->prepare($sql);
+        $sentencia->bindParam(":userID", $userID);
+        $sentencia->bindParam(":subject", $subject);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+        }
+    }
+
+    public function getProjectsinfobyG($userID, $grado){
+        $model = new Conection();
+        $connection = $model->_getConection();
+        $sql = "SELECT * FROM asignacionj WHERE asignacionj.usuario_idUsuario = :userID AND asignacionj.grado_idgrado = :grado";
+        $sentencia = $connection->prepare($sql);
+        $sentencia->bindParam(":userID", $userID);
+        $sentencia->bindParam(":grado", $grado);
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+        }
+    }
+
+    public function getProjectsinfobyGandM($userID, $grado, $subject){
+        $model = new Conection();
+        $connection = $model->_getConection();
+        $sql = "SELECT * FROM asignacionj WHERE asignacionj.usuario_idUsuario = :userID AND asignacionj.grado_idgrado = :grado AND asignacionj.materia_idmateria = :subject";
+        $sentencia = $connection->prepare($sql);
+        $sentencia->bindParam(":userID", $userID);
+        $sentencia->bindParam(":grado", $grado);
+        $sentencia->bindParam(":subject", $subject);
+
+        if(!$sentencia){
+            return false;
+        }else{
+            $sentencia->execute();
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultado;
+        }
+    }
     //obtener los datos de asignación de proyectos
     public function getPuntosByUser($userid){
         $model = new Conection();

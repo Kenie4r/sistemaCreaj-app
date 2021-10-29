@@ -1,0 +1,22 @@
+.desaparecer{
+    margin-left: -100%;
+    transition: margin-left 1s;
+}
+.aparecer{
+    margin-left: 0;
+    transition: margin-left 1s;
+}
+.btn-desaparecer{
+    margin-left: -100%;
+    transition: margin-left 1s;
+}
+.btn-aparecer{
+    margin-left: 0;
+    transition: margin-left 1s;
+}
+
+@media (min-width: 768px ){
+    .desaparecer{
+        margin-left: 0;
+    }
+}
