@@ -2,6 +2,7 @@
 
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
+require_once("../controlador/soporteEscribirAcademico.php");
 
 $consulta = new Query; //Crear una consulta
 $rubricas = $consulta->getRubrics(); //Get rúbricas
@@ -15,9 +16,11 @@ $rubricas = $consulta->getRubrics(); //Get rúbricas
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crea J | Rúbricas</title>
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../plugin_JS/chosen_JQuery/chosen.css">
     <link rel="stylesheet" href="../recursos/icons/style.css">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../plugin_JS/chosen_JQuery/chosen.jquery.min.js"></script>
     <script src="../js/script-rubric.js"></script>
     <script src="../Dashboard/button.js"></script>
     <script src="../Dashboard/js/button2.js"></script>
@@ -25,6 +28,9 @@ $rubricas = $consulta->getRubrics(); //Get rúbricas
 <body>
 <?php
 require('../Dashboard/Dashboard.php');
+
+$username = $_SESSION['usario'];
+
 ?>
     <article class="container">
         <div class="grid grid-cols-1 lg:grid-cols-2 m-9">
@@ -35,12 +41,24 @@ require('../Dashboard/Dashboard.php');
                 <a href="newRubric.php" class="text-blue-600 border-blue-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-blue-600"><span class="icon-plus"></span> Nueva rúbrica</a>
             </div>
         </div>
-        <div class='flex flex-row items-center m-7'>
+        <div class='flex flex-col lg:flex-row gap-2 m-7'>
             <div class='flex flex-row'>
                 <input type='text' name='txtBusqueda' id='txtBusqueda' class='p-1 border-gray-700 border-solid border-2 rounded-tl-lg rounded-bl-lg  outline-none' placeholder='Buscar por...'>
                 <select name="sltBusqueda" id="sltBusqueda" class="p-1 border-gray-700 border-solid border-2 rounded-tr-lg rounded-br-lg bg-gray-700 text-white outline-none">
                     <option value="id">ID</option>
                     <option value="nombre">Nombre</option>
+                </select>
+            </div>
+            <div class="flex flex-row items-center border-gray-700 border-solid border-2 rounded-lg">
+                <label for="txtMateria" class="p-1 bg-gray-700 text-white">Materia</label>
+                <select name="txtMateria" id="txtMateria" class="p-1 w-full rounded-r-lg chosen-select">
+<?php writeMatter($username); ?>
+                </select>
+            </div>
+            <div class="flex flex-row items-center border-gray-700 border-solid border-2 rounded-lg">
+                <label for="txtGrado" class="p-1 bg-gray-700 text-white">Grado</label>
+                <select name="txtGrado" id="txtGrado" class="p-1 w-full rounded-r-lg chosen-select">
+<?php writeGrade($username); ?>
                 </select>
             </div>
         </div>

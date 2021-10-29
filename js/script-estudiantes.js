@@ -1,33 +1,54 @@
 $(document).ready(
     function(){
-        //Objetos globales
-        var txtBusqueda = $("#txtBusqueda");
-        var tipoBusqueda = $("#sltBusqueda");
+
+        llenartabla();
 
         //Filtrar las rubricas segun el textbox busqueda
-        txtBusqueda.on("input",
+        $("#txtBusqueda").on("input",
             function(){
-
-                $.post("../controlador/searchEstudiantes.php", 
-                    {
-                        "filtrorubric": txtBusqueda.val(),
-                        "tiporubric" : tipoBusqueda.val()
-                    },
-                    function(respuesta){
-                        var contenedorFilasRubric = $("#table-body-rubrica");
-                        contenedorFilasRubric.empty();
-                        contenedorFilasRubric.html(respuesta);
-                    },
-                    "html"
-                );
+                llenartabla();
             }
         );
 
         //Vaciar la busqueda cuando se cambie de tipo de busqueda
-        tipoBusqueda.on("change",
+        $("#sltBusqueda").on("change",
             function(){
-                txtBusqueda.val("");
+                llenartabla();
+            }
+        );
+
+        $(".chosen-select").chosen({
+            no_results_text: "Sin coincidencias para:",
+            disable_search_threshold: 5
+        });
+
+        $(".chosen-select").on("change",
+            function(){
+                llenartabla();
             }
         );
     }
 )
+
+//Llenar la tabla de estudiantes con los resultados
+function llenartabla() {
+    //Variables
+    var txtBusqueda = $("#txtBusqueda");
+    var tipoBusqueda = $("#sltBusqueda");
+    var grado = $("#txtGrado");
+    var contenedorFilasRubric = $("#table-body-rubrica");
+
+    //Ajax
+    $.post("../controlador/searchEstudiantes.php", 
+        {
+            "filtro": txtBusqueda.val(),
+            "tipo" : tipoBusqueda.val(),
+            "grado" : grado.val()
+        },
+        function(respuesta){
+            contenedorFilasRubric.empty();
+            contenedorFilasRubric.html(respuesta);
+        },
+        "html"
+    );
+}
