@@ -57,10 +57,14 @@ function formValidate(){
                 errores++;
             }else if($(etiquetaPuntajeCriterio).val() <= 0){
                 errores++;
+            }else if( !isNaN($(etiquetaNombreCriterio).val()) ){
+                errores++;
             }
             for(let j = 0; j < 4; j++){
                 etiquetaDescripcionNivel = "#" + i + "-" + j + "-descripcionNivel";
                 if($(etiquetaDescripcionNivel).val() == ""){
+                    errores++;
+                }else if( !isNaN($(etiquetaDescripcionNivel).val()) ){
                     errores++;
                 }
             }
@@ -70,7 +74,7 @@ function formValidate(){
     //Ver cuantos errores hay para enviar el formulario
     if(errores > 0){
         alertaSending.addClass('hidden');
-        alert("Error: Llene todos los campos.")
+        alert("Error: Llene todos los campos correctamente.")
     }else{
         frmRubric.submit();
     }
@@ -92,6 +96,8 @@ function validateNameRubric(title){
                 incorrectNameRubric("Los caracteres máximos son de 45.");
             }else if(title.length == 0){
                 incorrectNameRubric("Este campo no puede estar vacío.");
+            }else if(!isNaN(title)){
+                incorrectNameRubric("Este campo no acepta solo número.");
             }else{
                 correctNameRubric();
             }

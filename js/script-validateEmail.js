@@ -1,5 +1,5 @@
 //-----     Validación del Objeto Email     -----
-//EMAIL: ocupando toda la estructura del input, que el email cumpla con la expresión regular de un correo
+//EMAIL: ocupando toda la estructura del input, que el email cumpla con la expresión regular de un correo y no sea un número
 
 $(document).ready(
     function(){
@@ -28,6 +28,13 @@ function validateEmail() {
 
     //Comprobamos el email
     estadoEmail = patron.test(email);
+
+    //Comprobamos que no sea un número con @
+    email.split("@").forEach(element => {
+        if( !isNaN(element) ){
+            estadoEmail = false;
+        }
+    });
 
     //Configuramos su input según el estado
     if(estadoEmail){

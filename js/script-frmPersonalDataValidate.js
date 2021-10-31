@@ -33,11 +33,11 @@ function validateFormUser() {
     alertaSending.removeClass('hidden'); //Pantalla de carga
 
     //NOMBRE
-    if(nombre == "" || nombre.length > 50){
+    if(nombre == "" || nombre.length > 50 || !isNaN(nombre)){
         errores++;
     }
     //APELLIDO
-    if(apellido == "" || apellido.length > 50){
+    if(apellido == "" || apellido.length > 50 || !isNaN(apellido)){
         errores++;
     }
     //CONTRASEÑA

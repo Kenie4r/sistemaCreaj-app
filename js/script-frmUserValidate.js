@@ -1,7 +1,7 @@
 //----    Validación del Formulario para crear Usuarios    ----
 //Objetos que se validan
-//NOMBRE: que no este vacío y su longitud sea menor de 50
-//APELLIDO: que no este vacío y su longitud sea menor de 50
+//NOMBRE: que no este vacío, no sea un número y su longitud sea menor de 50
+//APELLIDO: que no este vacío, no sea un número y su longitud sea menor de 50
 //USERNAME: que no este vacío y que no sea solo un punto, se autocompleta a partir de NOMBRE y APELLIDO ocupando un script externo
 //EMAIL: que no este vacío y cumpla la expresión regular de un email, para lo cual se usa un script externo
 //PASWORD: que no este vacío, se autocompleta por defecto
@@ -57,12 +57,12 @@ function validateFormUser() {
     var errores = 0;
 
     //NOMBRE
-    if(nombre == "" || nombre.length > 50){
+    if(nombre == "" || nombre.length > 50 || !isNaN(nombre)){
         errores++;
     }
 
     //APELLIDO
-    if(apellido == "" || apellido.length > 50){
+    if(apellido == "" || apellido.length > 50 || !isNaN(apellido)){
         errores++;
     }
 
@@ -95,7 +95,7 @@ function submitFormulario() {
     var alertaSending = $("#sending");
 
     if(!(estadoFormulario.is(':checked'))){
-        alert("Error: Llene los campos");
+        alert("Error: Llene los campos correctamente, recuerde que no permitimos números en los textbox.");
     }else{
         frmProfile.submit();
         alertaSending.removeClass('hidden');
