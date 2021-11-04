@@ -16,7 +16,80 @@ require_once("soporteStudents.php");
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/script-newStudents.js"></script>
     <script src="../Dashboard/js/button2.js"></script>
-
+    <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() {
+              applyInputMask('txtCodigo', '0--0*0 000_000');
+            });
+            document.addEventListener('DOMContentLoaded', function() {
+              applyInputMask2('txtApellidos', '0--0*0 000_000');
+            });
+            document.addEventListener('DOMContentLoaded', function() {
+              applyInputMask2('txtNombres', '0--0*0 000_000');
+            });
+            function applyInputMask(elementId, mask) {
+          let inputElement = document.getElementById(elementId);
+          let content = '';
+          let maxChars = numberCharactersPattern(mask);
+          
+          inputElement.addEventListener('keydown', function(e) {
+            e.preventDefault();
+            if (isNumeric(e.key) && content.length < maxChars) {
+              content += e.key;
+            }
+            if(e.keyCode == 8) {
+              if(content.length > 0) {
+                content = content.substr(0, content.length - 1);
+              }
+            }
+            inputElement.value = maskIt('00000000', content);
+          })
+        }
+        function applyInputMask2(elementId, mask) {
+          let inputElement = document.getElementById(elementId);
+          let content = '';
+          
+          inputElement.addEventListener('keydown', function(e) {
+            e.preventDefault();
+            if (!isNumeric(e.key) && content.length < 20) {
+                if(e.keyCode >= 65 && e.keyCode <= 90 ||  e.keyCode == 32)
+                    content += e.key;
+            }
+            if(e.keyCode == 8) {
+              if(content.length > 0) {
+                content = content.substr(0, content.length - 1);
+              }
+            }
+            inputElement.value = content;
+          })
+        }
+        function maskIt(pattern, value) {
+          let position = 0;
+          let currentChar = 0;
+          let masked = '';
+          while(position < pattern.length && currentChar < value.length) {
+            if(pattern[position] === '0') {
+              masked += value[currentChar];
+              currentChar++;
+            } else {
+              masked += pattern[position];
+            }
+            position++;
+          }
+          return masked;
+        }
+        function numberCharactersPattern(pattern) {
+          let numberChars = 0;
+          for(let i = 0; i < pattern.length; i++) {
+            if(pattern[i] === '0') {
+              numberChars ++;
+            }
+          }
+          return numberChars;
+        }
+        function isNumeric(char) {
+          return !isNaN(char - parseInt(char));
+        }
+    </script>
     <script src="../Dashboard/button.js"></script>
 </head>
 <body class="bg-">
@@ -30,7 +103,7 @@ comparacionFecha("Ingreso de estudiantes");
         <div class="grid grid-cols-1 lg:grid-cols-2">
             <div class="flex lg:m-9">
                 <div class="lg:m-2 sm:ml-7">
-                    <p id="btnSubmit" class="lg:m-5 md:m-3 sm:m-3 block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700 cursor-pointer"><span class="icon-checkmark"></span> Guardar</p>
+                    <p id="btnSubmit" onclick="this.submit();" class="lg:m-5 md:m-3 sm:m-3 block text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-green-700 cursor-pointer"><span class="icon-checkmark"></span> Guardar</p>
                 </div>
                 <div class="mx-2 lg:m-2">
                     <a href="index.php" class="lg:m-5 md:m-3 sm:m-3 block text-red-600 border-red-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-red-600"><span class='icon-cross'></span> Cancelar</a>
