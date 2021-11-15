@@ -52,7 +52,6 @@ COLLATE = utf8_spanish2_ci;
 CREATE TABLE IF NOT EXISTS `calificador_creaj`.`grado` (
   `idgrado` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL,
-  `seccion` VARCHAR(45) NULL,
   `nivel_idnivel` INT NOT NULL,
   PRIMARY KEY (`idgrado`, `nivel_idnivel`),
   INDEX `fk_grado_nivel1_idx` (`nivel_idnivel` ASC) ,
