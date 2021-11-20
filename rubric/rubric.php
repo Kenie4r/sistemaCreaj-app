@@ -72,7 +72,7 @@ require('../Dashboard/Dashboard.php');
             <div>
                 <div class="flex flex-row items-center w-full lg:w-4/5 border-gray-700 border-solid border-2 rounded-lg">
                     <p class="p-2 bg-gray-700 text-white">Grado</p>
-                    <p class="p-1 w-full rounded-r-lg outline-none"><?php echo $nivel_rubrica[0]["nombre"] . " " . $nivel_rubrica[0]["seccion"]; ?></p>
+                    <p class="p-1 w-full rounded-r-lg outline-none"><?php echo $nivel_rubrica[0]["nombre"]; ?></p>
                 </div>
             </div>
         </div>

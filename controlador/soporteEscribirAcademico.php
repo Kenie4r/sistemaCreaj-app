@@ -57,7 +57,7 @@ function writeGrade($username){
             echo "<option value=''>Elige un grado para buscar...</option>\n";
         }
         foreach ($grados as $key => $grado) {
-            echo "<option value='" . $grado["idgrado"] . "'>" . $grado["nombre"] . " " . $grado["seccion"] . "</option>\n";
+            echo "<option value='" . $grado["idgrado"] . "'>" . $grado["nombre"] . "</option>\n";
         }
     }
 }

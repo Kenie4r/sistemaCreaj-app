@@ -103,7 +103,7 @@ $nombreGradoRubrica = $grado_rubrica[0]["nombre"] . " " . $grado_rubrica[0]["sec
 echo "<option value='" . $grado_rubrica[0]["idgrado"] . "'>" . $nombreGradoRubrica . "</option>\n";
 foreach ($grados as $key => $grado) {
     if($grado["idgrado"] != $grado_rubrica[0]["idgrado"]){
-        echo "<option value='" . $grado["idgrado"] . "'>" . $grado["nombre"] . " " . $grado["seccion"] . "</option>\n";
+        echo "<option value='" . $grado["idgrado"] . "'>" . $grado["nombre"] . "</option>\n";
     }
 }
 

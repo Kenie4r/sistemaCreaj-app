@@ -58,7 +58,7 @@ function writeGradeForNewRubric(){
     }else{
         echo "<option value=''>Elige un grado para asignar...</option>\n";
         foreach ($grados as $key => $grado) {
-            echo "<option value='" . $grado["idgrado"] . "'>" . $grado["nombre"] . " " . $grado["seccion"] . "</option>\n";
+            echo "<option value='" . $grado["idgrado"] . "'>" . $grado["nombre"] . "</option>\n";
         }
     }
 }
