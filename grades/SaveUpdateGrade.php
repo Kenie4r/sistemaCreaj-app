@@ -2,16 +2,7 @@
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
 $consulta = new Query; 
-/*if (isset($_POST['guardar'])) {
-    
-    $id=$_GET['id'];
-    $inName=$_POST['grado'];
-    $inSeccion=strtoupper($_POST['seccion']) ;
-    $inLevel=$_POST['nivel'];
-    //$update=$consulta->updateGrado($id, $inName, $inSeccion, $inLevel);
-    $guardarGrado=$consulta->updateGrado($inName,$inSeccion,$inLevel,$id);
-    echo "se actualiza";
-    }*/
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -35,10 +26,8 @@ $consulta = new Query;
     
             $id=$_GET['id'];
             $inName=$_POST['grado'];
-            $inSeccion=strtoupper($_POST['seccion']) ;
             $inLevel=$_POST['nivel'];
-            //$update=$consulta->updateGrado($id, $inName, $inSeccion, $inLevel);
-            $guardarGrado=$consulta->updateGrado($inName,$inSeccion,$inLevel,$id);
+            $guardarGrado=$consulta->updateGrado($inName,$inLevel,$id);
             ?>
     <section class="container">
         <div class="m-4 lg:m-7 bg-green-500 border-2 border-solid border-green-800 rounded-lg">

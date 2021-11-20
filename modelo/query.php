@@ -98,13 +98,12 @@ class Query{
     }
 
     //guardat Grado
-    public function saveGrado($name, $seccion, $nivel_idnivel){
+    public function saveGrado($name, $nivel_idnivel){
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql = "INSERT INTO grado(nombre, seccion, nivel_idnivel) VALUES(:name, :seccion, :idnivel)";
+        $sql = "INSERT INTO grado(nombre, nivel_idnivel) VALUES(:name, :idnivel)";
         $sentencia = $connection->prepare($sql);
         $sentencia->bindParam(":name", $name);
-        $sentencia->bindParam(":seccion", $seccion);
         $sentencia->bindParam(":idnivel", $nivel_idnivel);
         if(!$sentencia){
             return "Error, existe un fallo";
@@ -1320,14 +1319,13 @@ class Query{
         }
     }
     //ver si existe el grado por el nombre 
-    public function isAGradeCreated($idNivel, $nameGrado, $seccion){
+    public function isAGradeCreated($idNivel, $nameGrado){
         $modelo = new Conection();
         $conexion = $modelo->_getConection();
-        $sql = "SELECT grado.idgrado FROM `grado` WHERE grado.nombre LIKE :grado AND grado.seccion LIKE :seccion AND grado.nivel_idnivel = :idNivel LIMIT 1";
+        $sql = "SELECT grado.idgrado FROM `grado` WHERE grado.nombre LIKE :grado AND grado.nivel_idnivel = :idNivel LIMIT 1";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":idNivel", $idNivel);
         $sentencia->bindParam(":grado", $nameGrado);
-        $sentencia->bindParam(":seccion", $seccion);
         if(!$sentencia){
             return false;
         }else{
@@ -2307,14 +2305,13 @@ class Query{
     }
 
     //Grado
-    public function updateGrado($idGrado, $name, $seccion, $nivel){
+    public function updateGrado($idGrado, $name, $nivel){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "UPDATE grado SET nombre	 = :nombre, seccion = :seccion, nivel_idnivel = :nivel WHERE grado.idgrado = :idGrado";
+        $sql = "UPDATE grado SET nombre	 = :nombre, nivel_idnivel = :nivel WHERE grado.idgrado = :idGrado";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":nombre", $idGrado);
-        $sentencia->bindParam(":seccion", $name);
-        $sentencia->bindParam(":nivel", $seccion);
+        $sentencia->bindParam(":nivel", $seccion); //?
         $sentencia->bindParam(":idGrado", $nivel);
         if(!$sentencia){
             return false;
@@ -2606,12 +2603,9 @@ class Query{
     public function selectGradobyID($idGrado){
         $modelo = new Conection;
         $conexion = $modelo->_getConection();
-        $sql = "SELECT nombre,seccion,nivel_idnivel FROM grado WHERE idgrado=:id";
+        $sql = "SELECT nombre, nivel_idnivel FROM grado WHERE idgrado=:id";
         $sentencia = $conexion->prepare($sql);
         $sentencia->bindParam(":id", $idGrado);
-        /*$sentencia->bindParam(":seccion", $name);
-        $sentencia->bindParam(":nivel", $seccion);
-        $sentencia->bindParam(":idGrado", $nivel);*/
         if(!$sentencia){
             return false;
         }else{

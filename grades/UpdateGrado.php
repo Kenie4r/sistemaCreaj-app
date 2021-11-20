@@ -12,7 +12,6 @@ $Proyec=$consulta-> getGradeIdInProjects($id);
 $asign=$consulta->getGradeIdInAssing($id);
 foreach ($grado as $name) {
     $nombre=$name['nombre'];
-    $seccion=$name['seccion'];
     $idNiGra=$name['nivel_idnivel'];
     //compara el id de nivel dentro de grado con el id del nivel
     foreach($niveles as $nivel){
@@ -54,12 +53,6 @@ foreach ($grado as $name) {
                       <label for="grado" class="block text-sm font-medium text-gray-700">Grado</label>
                       <p id="gra"></p>
                         <input type="text" name="grado" id="grado" value="<?php echo $nombre?>">
-                    </div>
-      
-                    <div class="col-span-6">
-                      <label for="seccion" class="block text-sm font-medium text-gray-700">Seccion</label>
-                      <p id="sec"></p>
-                      <input type="text" pattern="[a-zA-Z]{1}"title="Solamente se permiten letras y un Caracter" value="<?php echo $seccion?>" name="seccion" id="seccion" autocomplete="seccion" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                     </div>
                     <div class="col-span-6 sm:col-span-3">
                         <label for="nivel" class="block text-sm font-medium text-gray-700">Nivel</label>

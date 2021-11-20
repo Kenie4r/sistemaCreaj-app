@@ -40,9 +40,6 @@ $Ngra=count($grado);
                           Grado
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          Sección
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Nivel
                         </th>
                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -55,12 +52,10 @@ $Ngra=count($grado);
                         
                         foreach ($grado as $name) {
                           $nombre=$name['nombre'];
-                          $seccion=$name['seccion'];
                           $idNiGra=$name['nivel_idnivel'];
                           
                           echo "<tr>";
                           echo "\t<td class='p-4'>" . $nombre . "</td>";
-                          echo "\t<td class='p-4'>" .$seccion. "</td>";
                          
                           foreach($niveles as $nivel){
                               if ($idNiGra==$nivel['idnivel']) {

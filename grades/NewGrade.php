@@ -52,11 +52,6 @@ $Nopc=count($opc);
                       <p id="gra"></p>
                         <input type="text" name="grado" id="grado" class="w-1/4	 p-1.5   lg:w-full  outline-none focus:border-gray-500 border-b-2 focus:border-solid" >
                     </div>
-                    <div class="col-span-6">
-                      <label for="seccion" class="block text-sm font-medium text-gray-700">Seccion</label>
-                      <p id="sec"></p>
-                      <input type="text" name="seccion" pattern="[a-zA-Z]{1}"title="Solamente se permiten letras y un Caracter" id="seccion" autocomplete="seccion" class="w-1/4	 p-1.5   lg:w-full  outline-none focus:border-gray-500 border-b-2 focus:border-solid">
-                    </div>
                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                   <button type="submit" id="guardar" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Guardar

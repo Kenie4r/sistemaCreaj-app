@@ -2,7 +2,6 @@
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
 $grado=$_POST['grado'];
-$seccion=strtoupper($_POST['seccion']);
 $nivel=$_POST['nivel'];
       ?>
       <!DOCTYPE html>
@@ -24,9 +23,9 @@ $nivel=$_POST['nivel'];
 
 ?>
           <?php
-      if (isset($_POST['grado'])&&$seccion!=""&&$nivel!="") {
+      if (isset($_POST['grado'])&&$nivel!="") {
                 $consulta=new Query;
-                $guardarGrado=$consulta->saveGrado($grado,$seccion,$nivel);
+                $guardarGrado=$consulta->saveGrado($grado,$nivel);
                 ?>
     <section class="container">
         <div class="m-4 lg:m-7 bg-green-500 border-2 border-solid border-green-800 rounded-lg">
