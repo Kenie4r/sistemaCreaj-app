@@ -17,10 +17,6 @@ require_once("../controlador/soporteRubricasNuevas.php");
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="../js/script-newRubric.js"></script>
-    <script src="../js/script-frmRubricValidate.js"></script>
-    <script src="../Dashboard/button.js"></script>
-    <script src="../Dashboard/js/button2.js"></script>
 </head>
 <body>
 <?php
@@ -178,5 +174,10 @@ comparacionFecha("Ingreso de rubricas");
 				</div>
 			</div>
 		</article>
+    
+    <script src="../js/script-newRubric.js"></script>
+    <script src="../js/script-frmRubricValidate.js"></script>
+    <script src="../Dashboard/button.js"></script>
+    <script src="../Dashboard/js/button2.js"></script>
 </body>
 </html>
