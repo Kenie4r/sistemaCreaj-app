@@ -15,7 +15,13 @@ require_once("soporteStudents.php");
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../js/script-newStudents.js"></script>
+    <script src="../Dashboard/button.js"></script>
     <script src="../Dashboard/js/button2.js"></script>
+    <?php
+require('../Dashboard/Dashboard.php');
+require_once("../parameters/soporteParametros.php");
+comparacionFecha("Ingreso de estudiantes");
+?>
     <script type="text/javascript">
             document.addEventListener('DOMContentLoaded', function() {
               applyInputMask('txtCodigo', '0--0*0 000_000');
@@ -90,14 +96,9 @@ require_once("soporteStudents.php");
           return !isNaN(char - parseInt(char));
         }
     </script>
-    <script src="../Dashboard/button.js"></script>
 </head>
 <body class="bg-">
-<?php
-require('../Dashboard/Dashboard.php');
-require_once("../parameters/soporteParametros.php");
-comparacionFecha("Ingreso de estudiantes");
-?>
+
     <form id="frmNewStudents" class="container box-content" method="POST" action="saveStudents.php">
         <h1 class="lg:justify-center text-center lg:w-3/4 lg:w-full lg:text-5xl md:text-2xl sm:text-2xl outline-none focus:border-gray-500 border-b-2 focus:border-solid mt-8">Agregar estudiante</h1>
         <div class="grid grid-cols-1 lg:grid-cols-2">

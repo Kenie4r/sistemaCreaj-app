@@ -24,7 +24,7 @@ $estudiante = $consulta->getEstudiantes(); //Get Estudiantes
     <!--<script src="js/dashboard.js"></script> -->
     <link rel="stylesheet" href="../recursos/icons/style.css">
     <script src="../Dashboard/button.js"></script>
-    <script src="../Dashboard/js/button2.js"></script>
+
     <script src="../js/script-estudiantes.js"></script>
     
 </head>
