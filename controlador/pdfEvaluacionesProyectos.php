@@ -42,7 +42,7 @@ function infoProyecto($idproyecto){
         //-----     TABLA: PROYECTO     -----
         //Variables de proyecto
         $nombreProyecto = $campo['nombreProyecto']; //Nombre
-        $gradoProyecto = $campo['nombre'] ." " . $campo['seccion']; //Grado
+        $gradoProyecto = $campo['nombre']; //Grado
         $materiaProyecto = $campo['nombreMateria']; //Materia
         $descripcionProyecto = $campo['descripcion']; //Descripción
         $notaFinalProyecto = $consulta->getRankingbyID($idproyecto); //Promedio final
@@ -104,7 +104,7 @@ function evaluacionProyecto($idproyecto){
         //-----     TABLA: PROYECTO     -----
         //Variables de proyecto
         $nombreProyecto = $campo['nombreProyecto']; //Nombre
-        $gradoProyecto = $campo['nombre'] ." " . $campo['seccion']; //Grado
+        $gradoProyecto = $campo['nombre']; //Grado
         $materiaProyecto = $campo['nombreMateria']; //Materia
         $descripcionProyecto = $campo['descripcion']; //Descripción
         $notaFinalProyecto = $consulta->getRankingbyID($idproyecto); //Promedio final
