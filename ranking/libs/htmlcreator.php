@@ -76,7 +76,7 @@
                         $blockhtml .="<div class='bg-white w-full shadow-xl p-2 flex flex-col sm:flex-row sm:justify-between justify-center items-center my-2'>
                         <!--Primero irá el nombre del grado-->
                         <div class='text-center sm:w-4/12 w-full'>
-                         <h1 class='text-xl'>{$campo['nombre']}  {$campo['seccion']}</h1>
+                         <h1 class='text-xl'>{$campo['nombre']}</h1>
                         </div>
                         <!--Un botón para seleccionar al grado-->
                         <div class='sm:w-8/12 w-full flex flex-row items-center justify-center '>
@@ -101,7 +101,7 @@
                     $blockhtml .= "<div class='bg-white w-full shadow-xl p-2 flex flex-col md:flex-row md:justify-between justify-center items-center my-2'>
                     <!--Primero irá el nombre del grado-->
                     <div class='text-center md:w-4/12 w-full'>
-                     <h1 class='text-xl'>{$campo['nombre']}  {$campo['seccion']}</h1>
+                     <h1 class='text-xl'>{$campo['nombre']} </h1>
                     </div>
                     <!--Un botón para seleccionar al grado-->
                     <div class='md:w-8/12 w-full flex flex-row items-center justify-center'>
