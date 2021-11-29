@@ -18,7 +18,7 @@
         foreach($teamData as $campo){
             //escribimos los datos de cada uno del proyecto
             echo("<b>Nombre del proeycto: </b>" . $campo['nombreProyecto']);
-            echo("<br/><b>Grado: </b>" . $campo['nombre'] ." " .$campo['seccion']);
+            echo("<br/><b>Grado: </b>" . $campo['nombre']);
             echo("<br/><b>Materia:</b> {$campo['nombreMateria']}");
             echo("<br/><b>Descripción del proyecto:</b> {$campo['descripcion']}");
 

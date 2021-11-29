@@ -23,7 +23,7 @@ $gradoinfo = $query-> getGradobyID($idGrado);
     //se agregra una página donde podemos descargar todos los 
     $fpdf->AddPage('landscape');
     $fpdf->setX(25);
-    $fpdf->Cell(250,10,utf8_decode("Ranking de {$gradoinfo['nombre']}{$gradoinfo['seccion']} y {$materiaInfo['nombre']}  "),0,1,'C');
+    $fpdf->Cell(250,10,utf8_decode("Ranking de {$gradoinfo['nombre']} y {$materiaInfo['nombre']}  "),0,1,'C');
     $fpdf->SetFont('Arial','' ,14);
     $fpdf->setX(35);
     $fpdf->Cell(250,10, "Se mostraran todos los proyectos del grado seleccionado en orden descendente al puntaje promedio entre los jurados",0,1,'C');
