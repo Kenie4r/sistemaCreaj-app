@@ -294,7 +294,7 @@ HEREDOC;
             $dataGrado = $query->getGradeById2($campo['grado_idgrado']);
             $html2 .= " <div class='tab w-10/12 overflow-hidden border-t m-auto'>
             <input class='absolute opacity-0' type='checkbox' id='btn-{$campo['grado_idgrado']}_{$campo['materia_idmateria']}' name='btns'>
-            <label for='btn-{$campo['grado_idgrado']}_{$campo['materia_idmateria']}' class='block p-5 leading-normal cursor-pointer'>{$dataGrado[0]['nombre']} {$dataGrado[0]['seccion']} / {$dataMateria['nombre']}</label>
+            <label for='btn-{$campo['grado_idgrado']}_{$campo['materia_idmateria']}' class='block p-5 leading-normal cursor-pointer'>{$dataGrado[0]['nombre']} / {$dataMateria['nombre']}</label>
             <div class='contenido overflow-y-scroll  border-1-2 bg-gray-100 border-blue-500 leading-normal''> <div class='h-full	'>";
             if(count($info)<0){
                 $html2.= "<p>No hay ningun proyecto</p>";
@@ -325,7 +325,7 @@ HEREDOC;
                                 </div>   
                                 <div class='w-full flex flex-row items-center text-sm text-white my-1'> 
                                     <div class='text-gray-400 p-1 rounded-lg m-1'><span class='icon-book'></span> {$dataMateria['nombre']}</div>
-                                    <div class='text-gray-400 p-1 rounded-lg m-1'><span class='icon-user'></span> {$dataGrado[0]['nombre']} {$dataGrado[0]['seccion']}</div>
+                                    <div class='text-gray-400 p-1 rounded-lg m-1'><span class='icon-user'></span> {$dataGrado[0]['nombre']} </div>
                                 </div>
                             </div>
                         ";
@@ -349,7 +349,7 @@ HEREDOC;
                                                     </div>   
                                                     <div class='w-full flex flex-row items-center text-sm text-white my-1'> 
                                     <div class='text-gray-400 p-1 rounded-lg m-1'><span class='icon-book'></span> {$dataMateria['nombre']}</div>
-                                    <div class='text-gray-400 p-1 rounded-lg m-1'><span class='icon-user'></span> {$dataGrado[0]['nombre']} {$dataGrado[0]['seccion']}</div>
+                                    <div class='text-gray-400 p-1 rounded-lg m-1'><span class='icon-user'></span> {$dataGrado[0]['nombre']} </div>
                                 </div>
                                                 </div>
                                     ";

@@ -43,7 +43,7 @@
                 case "GRADO:":
                     //vamos a insertar el grado de todos los proyectos
                      $grado = $row[1];
-                    $seccion = $row[3];
+                    
                     switch($grado){
                         case "III":
                         case "III año":
@@ -130,12 +130,12 @@
                     $grado = ucfirst($grado);
 
                      //luego debemos verificar si existe un grado con este nombre  si no pues debemos insertarlo
-                    $gradocreado = $query->isAGradeCreated($idNivel, $grado, $seccion);
+                    $gradocreado = $query->isAGradeCreated($idNivel, $grado);
                     if(empty($gradocreado)){
                         //vamos a guardar el grado
-                       $query->saveGrado($grado, $seccion, $idNivel);
+                       $query->saveGrado($grado, $idNivel);
                        //luego lo volvemos a buscar para que este nos regrese su id
-                       $gradocreado = $query->isAGradeCreated($idNivel, $grado, $seccion);
+                       $gradocreado = $query->isAGradeCreated($idNivel, $grado);
                        //definimos el id y tenemos listo
                        $idGrado = $gradocreado['idgrado'];
                     }else{

@@ -79,7 +79,7 @@
                 foreach($dataM as $campo){
                     $grado =  $querys->getGradeById2($campo['grado_idgrado']);
                     $html.= "<div class=' py-1 px-5  text-gray-200  w-full flex justify-between  items-center  '>
-                    <label for='checkGrado_{$campo['grado_idgrado']}' class='m-2 cursor-pointer'>{$grado[0]['nombre']} {$grado[0]['seccion']}</label>
+                    <label for='checkGrado_{$campo['grado_idgrado']}' class='m-2 cursor-pointer'>{$grado[0]['nombre']} </label>
                     <input type='radio' name='rdbGrados' id='checkGrado_{$campo['grado_idgrado']}' class='check_grados' value='{$campo['grado_idgrado']}' data-name='{$grado[0]['nombre']}'>
                     </div>";
                 }
@@ -165,7 +165,7 @@
                             </div>
                             <div class='w-full flex flex-row items-center text-sm text-white my-1'> 
                             <div class='text-gray-400 p-1 rounded-lg m-1'><span class='icon-book'></span> {$dataMateria['nombre']}</div>
-                            <div class='text-gray-400 p-1 rounded-lg m-1'><span class='icon-user'></span> {$dataGrado[0]['nombre']} {$dataGrado[0]['seccion']}</div>
+                            <div class='text-gray-400 p-1 rounded-lg m-1'><span class='icon-user'></span> {$dataGrado[0]['nombre']} </div>
                         </div>
                         </div>";
                         }else{
@@ -189,14 +189,14 @@
                             </div>
                             <div class='w-full flex flex-row items-center text-sm text-white my-1'> 
                             <div class='text-gray-400 p-1 rounded-lg m-1'><span class='icon-book'></span> {$dataMateria['nombre']}</div>
-                            <div class='text-gray-400 p-1 rounded-lg m-1'><span class='icon-user'></span> {$dataGrado[0]['nombre']} {$dataGrado[0]['seccion']}</div>
+                            <div class='text-gray-400 p-1 rounded-lg m-1'><span class='icon-user'></span> {$dataGrado[0]['nombre']} </div>
                         </div>
                         </div>";
                         }
                     }
                     
                 }
-                if( $existe == true){
+                if( $exist == true){
                     $html.= $calificadoshtml;
                 }
 

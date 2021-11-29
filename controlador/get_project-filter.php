@@ -61,7 +61,7 @@
                 </div>
                 <div class='w-full flex flex-row items-center text-sm text-white my-1'> 
                 <div class='text-gray-400 p-1 rounded-lg m-1'><span class='icon-book'></span> {$dataMateria['nombre']}</div>
-                <div class='text-gray-400 p-1 rounded-lg m-1'><span class='icon-user'></span> {$dataGrado[0]['nombre']} {$dataGrado[0]['seccion']}</div>
+                <div class='text-gray-400 p-1 rounded-lg m-1'><span class='icon-user'></span> {$dataGrado[0]['nombre']} </div>
             </div>
             </div>";
             }else{
@@ -85,7 +85,7 @@
                 </div>
                 <div class='w-full flex flex-row items-center text-sm text-white my-1'> 
                 <div class='text-gray-400 p-1 rounded-lg m-1'><span class='icon-book'></span> {$dataMateria['nombre']}</div>
-                <div class='text-gray-400 p-1 rounded-lg m-1'><span class='icon-user'></span> {$dataGrado[0]['nombre']} {$dataGrado[0]['seccion']}</div>
+                <div class='text-gray-400 p-1 rounded-lg m-1'><span class='icon-user'></span> {$dataGrado[0]['nombre']} </div>
             </div>
             </div>";
             }

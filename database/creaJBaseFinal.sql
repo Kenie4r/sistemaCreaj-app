@@ -360,7 +360,7 @@ INSERT INTO usuario (usuario, nombres, apellidos, rol, password, email)
 
 INSERT INTO nivel VALUES (1, 'UNDEFINED');
 
-INSERT INTO grado VALUES (1, 'UNDEFINED', NULL, 1);
+INSERT INTO grado VALUES (1, 'UNDEFINED',1);
 
 INSERT INTO materia VALUES (1, 'UNDEFINED');
 
