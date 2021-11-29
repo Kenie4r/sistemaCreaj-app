@@ -48,7 +48,7 @@ function rankingProyecto($materia, $grado){
                 $pdf->AddPage(); //Se añade una nueva página
                 //Variables de proyecto
                 $nombreProyecto = $campo['nombreProyecto']; //Nombre
-                $gradoProyecto = $campo['nombre'] ." " . $campo['seccion']; //Grado
+                $gradoProyecto = $campo['nombre']; //Grado
                 $materiaProyecto = $campo['nombreMateria']; //Materia
                 $descripcionProyecto = $campo['descripcion']; //Descripción
                 $notaFinalProyecto = $consulta->getRankingbyID($idproyecto); //Promedio final

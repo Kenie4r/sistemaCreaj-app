@@ -39,17 +39,17 @@ function writeGrade($gradoA = ""){
         if(empty($gradoA)){
             echo "<option value=''>Elige un grado para asignar...</option>\n";
             foreach ($grados as $key => $grado) {
-                echo "<option value='" . $grado["idgrado"] . "'>" . $grado["nombre"] . " " . $grado["seccion"] . "</option>\n";
+                echo "<option value='" . $grado["idgrado"] . "'>" . $grado["nombre"] . "</option>\n";
             }
         }else{
             foreach ($grados as $key => $grado) {
                 if($grado["idgrado"] == $gradoA){
-                    echo "<option value='" . $grado["idgrado"] . "'>" . $grado["nombre"] . " " . $grado["seccion"] . "</option>\n";
+                    echo "<option value='" . $grado["idgrado"] . "'>" . $grado["nombre"] . "</option>\n";
                 }
             }
             foreach ($grados as $key => $grado) {
                 if($grado["idgrado"] != $gradoA){
-                    echo "<option value='" . $grado["idgrado"] . "'>" . $grado["nombre"] . " " . $grado["seccion"] . "</option>\n";
+                    echo "<option value='" . $grado["idgrado"] . "'>" . $grado["nombre"] . "</option>\n";
                 }
             }
         }
