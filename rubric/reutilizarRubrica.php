@@ -93,7 +93,7 @@ foreach ($materias as $key => $materia) {
                     <select name="txtNivel" id="txtNivel" class="p-1 w-full rounded-r-lg outline-none">
 <?php
 
-$nombreGradoRubrica = $grado_rubrica[0]["nombre"] . " " . $grado_rubrica[0]["seccion"];
+$nombreGradoRubrica = $grado_rubrica[0]["nombre"];
 
 echo "<option value='" . $grado_rubrica[0]["idgrado"] . "'>" . $nombreGradoRubrica . "</option>\n";
 foreach ($grados as $key => $grado) {
