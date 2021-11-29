@@ -113,7 +113,7 @@
             </div>
         ";
         print($html);
-        return array($teamData[3], $teamData[7]);
+        return array($teamData[3], $teamData[6]);
     }
 
     public function writeRubric($idGrado, $idMateria){
