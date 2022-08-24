@@ -1688,6 +1688,7 @@ class Query{
             return $resultado;
         }
     }
+    //NO FUNCIONA
     #ver cuantas foraneas de niveles en grados
     public function getLevelIdInRubrics($idnivel){
         
