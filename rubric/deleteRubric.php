@@ -30,16 +30,18 @@ $idrubric = $_GET["idrubric"];
 $criterios = $consulta->getIdCriterioByIdRubric($idrubric);
 
 for($i = 0; $i < count($criterios); $i++){
-    //Eliminar niveles
-    $niveles = $consulta->getIdNivelByIdCriterio($criterios[$i]["idcriterios"]);
-    for($j = 0; $j < 4; $j++){
-        $estadoNiveles = $consulta->deleteNivelesAById($niveles[$j]["idnaprobacion"]);
-    }
+    if(isset($criterios[$i]["idcriterios"])){
+        //Eliminar niveles
+        $niveles = $consulta->getIdNivelByIdCriterio($criterios[$i]["idcriterios"]);
+        for($j = 0; $j < 4; $j++){
+            if(isset($niveles[$j]["idnaprobacion"])){
+                $estadoNiveles = $consulta->deleteNivelesAById($niveles[$j]["idnaprobacion"]);
+            }
+        }
 
-    //Eliminar criterio
-    $id_criterio = $consulta->deleteCiterioById($criterios[$i]["idcriterios"]);
-    
-    
+        //Eliminar criterio
+        $id_criterio = $consulta->deleteCiterioById($criterios[$i]["idcriterios"]);
+    }
 }
 
 //Eliminar rubrica
