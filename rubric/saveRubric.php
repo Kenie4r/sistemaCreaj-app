@@ -16,24 +16,37 @@ $estadoRubrica = $consulta->saveRubrica($id_rubrica, $name, $id_materia, $id_niv
 //Guardar criterios
 $numeroCriterios = $_POST["siguienteCriterio"];
 
-for($i = 0; $i < $numeroCriterios; $i++){
-    $etiquetaNameCriterio = $i . "-txtNombreCriterio";
-    $etiquetaPuntajeCriterio = $i . "-nbPuntaje";
+//Registros guardados
+$numCri = 0;
+$numNivel = 0;
 
-    if( isset($_POST[$etiquetaNameCriterio]) ){
-        $titulo = $_POST[$etiquetaNameCriterio];
-        $puntajeCriterio = $_POST[$etiquetaPuntajeCriterio];
-        $estadoCriterio = $consulta->saveCriterio($titulo, $puntajeCriterio, $id_rubrica);
-        $id_criterio = $consulta->getIDCriterio($titulo, $id_rubrica);
-        
-        //Guardar niveles
-        for($j = 0; $j < 4; $j++){
-            $etiquetaDescriptioNivel = $i . "-" .  $j . "-descripcionNivel";
-
-            $descriptionNivel = $_POST[$etiquetaDescriptioNivel];
-            $range = $rangosNivelesAprobacion[$j];
-            $note = $notasNivelesAprobacion[$j];
-            $estadoNiveles = $consulta->savenAprobacion($descriptionNivel, $range, $note, $id_criterio[0]["idcriterios"]);
+if($estadoRubrica == "Registro hecho"){ //Rubrica guardada
+    for($i = 0; $i < $numeroCriterios; $i++){
+        $etiquetaNameCriterio = $i . "-txtNombreCriterio";
+        $etiquetaPuntajeCriterio = $i . "-nbPuntaje";
+    
+        if( isset($_POST[$etiquetaNameCriterio]) ){ //Existe nombre del criterio
+            $titulo = $_POST[$etiquetaNameCriterio];
+            $puntajeCriterio = $_POST[$etiquetaPuntajeCriterio];
+            $estadoCriterio = $consulta->saveCriterio($titulo, $puntajeCriterio, $id_rubrica);
+            if($estadoCriterio == "Registro hecho"){ //Criterio guardado
+                $id_criterio = $consulta->getIDCriterio($titulo, $id_rubrica);
+                $numCri++; //Aumentar criterios guardados
+                //Guardar niveles
+                if(isset($id_criterio[0]["idcriterios"])){
+                    if($id_criterio[0]["idcriterios"] != null){
+                        for($j = 0; $j < 4; $j++){
+                            $etiquetaDescriptioNivel = $i . "-" .  $j . "-descripcionNivel";
+                
+                            $descriptionNivel = $_POST[$etiquetaDescriptioNivel];
+                            $range = $rangosNivelesAprobacion[$j];
+                            $note = $notasNivelesAprobacion[$j];
+                            $estadoNiveles = $consulta->savenAprobacion($descriptionNivel, $range, $note, $id_criterio[0]["idcriterios"]);
+                            $numNivel++;
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -60,7 +73,7 @@ if($estadoRubrica == "Registro hecho"){
     <section class="container">
         <div class="m-4 lg:m-7 bg-green-500 border-2 border-solid border-green-800 rounded-lg">
             <div class="m-4 lg:m-7 text-center">
-                <p class="lg:text-4xl text-green-900">La rúbrica se ha guardado con éxito.</p>
+                <p class="lg:text-4xl text-green-900">La rúbrica se ha guardado con éxito. Se han guardado <?php echo $numCri; ?> criterios con <?php echo $numNivel; ?> niveles de aprobación.</p>
             </div>
             <div class="m-4 lg:m-7 flex justify-center">
                 <a href="index.php" class="text-green-700 border-green-700 border-2 border-solid rounded-lg p-2 hover:text-green-500 hover:bg-green-700 cursor-pointer"><span class="icon-circle-left"></span> Regresar</a>
