@@ -9,10 +9,10 @@ require '../PHPMailer/src/SMTP.php';
 
 function enviarCorreo($correo, $nombre, $username, $year, $asunto, $saludo, $pass = ""){
     $mail = new PHPMailer(true);
-    //$correoElectronico = 'creaj.evaluaciones@cdb.edu.sv'; //Institucional
-    //$passwordEmail = 'JqDD#&UXFwJF'; //Institucional
-    $correoElectronico = 'trabajosocialcdbhelp@gmail.com'; //Externa
-    $passwordEmail = 'lkfuyblrloouecbb'; //old password: 'hSaYweXa38' //Externa
+    $correoElectronico = 'ecreaj@cdb.edu.sv'; //Institucional
+    $passwordEmail = 'donbosco222@'; //Institucional
+    //$correoElectronico = 'trabajosocialcdbhelp@gmail.com'; //Externa
+    //$passwordEmail = 'lkfuyblrloouecbb'; //old password: 'hSaYweXa38' //Externa
     try {
         //Server settings
         $mail->SMTPDebug = 0;
@@ -21,10 +21,10 @@ function enviarCorreo($correo, $nombre, $username, $year, $asunto, $saludo, $pas
         $mail->SMTPAuth   = true;
         $mail->Username   = $correoElectronico;
         $mail->Password   = $passwordEmail;
-        //$mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; //Servidor colegio
-        $mail->SMTPSecure = 'tls'; //local equipo
-        //$mail->Port       = 465; //465 servidor del colegio
-        $mail->Port       = 587; //587 servidor local del equipo
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; //Servidor colegio
+        //$mail->SMTPSecure = 'tls'; //local equipo
+        $mail->Port       = 465; //465 servidor del colegio
+        //$mail->Port       = 587; //587 servidor local del equipo
 
         //Recipients
         $mail->setFrom($correoElectronico, 'Sistema de Calificacion: CDB');
@@ -43,7 +43,7 @@ function enviarCorreo($correo, $nombre, $username, $year, $asunto, $saludo, $pas
             <article style="grid-row-start: 1; grid-row-end: 2;  padding: 1em; text-align: center; font-weight: bold; background-color: darkcyan; border-radius: 5px 5px 0px 0px;">Sistema de calificación de Crea J</article>
             <article style="grid-row-start: 2; grid-row-end: 3;  padding: 1em;">
                 <p>Hola <span style="font-weight: bold;">' . $username . '</span>. ' . $saludo . '.</p>
-                <p><a href="http://creajevaluacion.cdb.edu.sv/" style="color: rgba(30, 58, 138, 1); ">Accede al programa web mediante este enlace</a></p>
+                <p><a href="http://ecreaj.cdb.edu.sv/" style="color: rgba(30, 58, 138, 1); ">Accede al programa web mediante este enlace</a></p>
             </article>
             <article style="grid-row-start: 3; grid-row-end: 4; background-color: silver; padding: 1em;  border-radius: 0px 0px 5px 5px; text-align: center;">- Copyright Colegio Don Bosco ' . $year . ' -</article>
         </section>
@@ -65,7 +65,7 @@ function enviarCorreo($correo, $nombre, $username, $year, $asunto, $saludo, $pas
                  tus datos para iniciar sesión son:</p>
                 <p>Nombre de usuario: <span style="font-weight: bold;">' . $username . '</span></p>
                 <p>Contraseña: <span style="font-weight: bold;">' . $pass . '</span></p>
-                <p><a href="http://creajevaluacion.cdb.edu.sv/" style="color: rgba(30, 58, 138, 1); ">Accede al programa web mediante este enlace</a></p>
+                <p><a href="http://ecreaj.cdb.edu.sv/" style="color: rgba(30, 58, 138, 1); ">Accede al programa web mediante este enlace</a></p>
             </article>
             <article style="grid-row-start: 3; grid-row-end: 4; background-color: silver; padding: 1em;  border-radius: 0px 0px 5px 5px; text-align: center;">- Copyright Colegio Don Bosco ' . $year . ' -</article>
         </section>
