@@ -180,9 +180,7 @@
                         if($row[0]!="ingrese la descripción aquí"){
                             $exist = $query->findPorjectbyNGM($proyecto, $idGrado, $idMateria);
                             if(empty($exist)){
-                                $query->saveProjects($proyecto, $row[0], $idGrado, $idMateria);
-                                $exist = $query->findPorjectbyNGM($proyecto, $idGrado, $idMateria);
-                                $idproyecto  = $exist['idproyecto'];
+                                $idproyecto  = $query->saveProjects2($proyecto, $row[0], $idGrado, $idMateria);
                             }else{
                                 $idproyecto  = $exist['idproyecto'];
                             }
@@ -195,11 +193,15 @@
                         }else{
                         //aquí podemos guardar estudiantes de manera sencilla 0 = codigo , 1= apellidos, 2= Nombres
                             $codigo = $row[0];
-                            if(is_numeric($codigo)){
+                            $codigo = trim($codigo);
+                            
+                            if(is_numeric($codigo) && strlen($codigo)==8){
                                 $apellidos =  $row[1];
                                 $nombres =  $row[2];
                                 $estudiantes = $query->findStudent($codigo);
+                                //echo($estudiantes['COUNT(*)'] . "<br>"); 
                                 if($estudiantes['COUNT(*)']==0){
+                                    echo($codigo); 
                                     $query-> saveStudent($codigo, $nombres, $apellidos, $idGrado);
                                 }
                                 $equipocreado = $query->equipoExiste($codigo, $idproyecto);

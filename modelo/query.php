@@ -192,6 +192,24 @@ class Query{
             return "Registro hecho";
         }
     }
+
+       //Guardar Proyectos
+    public function saveProjects2($name, $descripcion, $idGrado, $idMateria){
+        $model = new Conection();
+        $connection  = $model->_getConection();
+        $sql = "INSERT INTO proyecto(nombreProyecto, descripcion, grado_idgrado, materia_idmateria) VALUES (:nombre, :descripcion, :idGrado, :idMateria)";
+        $sentencia= $connection->prepare($sql);
+        $sentencia->bindParam(":nombre", $name);
+        $sentencia->bindParam(":descripcion", $descripcion);
+        $sentencia->bindParam(":idGrado", $idGrado);
+        $sentencia->bindParam(":idMateria", $idMateria);
+        if(!$sentencia){
+            return "Error, existe un fallo";
+        }else{
+            $sentencia->execute();
+            return $connection->lastInsertId(); 
+        }
+    }
     //save materia
     public function saveMateria($nombre){
         $model = new Conection();
