@@ -12,7 +12,7 @@ function enviarCorreo($correo, $nombre, $username, $year, $asunto, $saludo, $pas
     //$correoElectronico = 'creaj.evaluaciones@cdb.edu.sv'; //Institucional
     //$passwordEmail = 'JqDD#&UXFwJF'; //Institucional
     $correoElectronico = 'trabajosocialcdbhelp@gmail.com'; //Externa
-    $passwordEmail = 'hSaYweXa38'; //Externa
+    $passwordEmail = 'lkfuyblrloouecbb'; //old password: 'hSaYweXa38' //Externa
     try {
         //Server settings
         $mail->SMTPDebug = 0;

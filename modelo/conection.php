@@ -4,8 +4,8 @@ class Conection{
 
     public function _getConection(){
 
-        $user = "admin";
-        $pass = "123456";
+        $user = "root";
+        $pass = "";
         $host = "localhost";
         $db = "calificador_creaj";
 

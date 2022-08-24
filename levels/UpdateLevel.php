@@ -9,7 +9,7 @@ $niveles=$consulta->getLevelById($id);
 
 $Grados=$consulta-> getLevelIdInGrades($id);
 //consulta de rubricas
-$rubricas=$consulta-> getLevelIdInRubrics($id);
+$rubricas=0;//$consulta-> getLevelIdInRubrics($id);
 
 
 $nombre=$niveles['nombre'];
