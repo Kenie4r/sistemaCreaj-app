@@ -2,7 +2,15 @@
 require_once("../modelo/conection.php");
 require_once("../modelo/query.php");
 
-function comparacionFecha($nombre){
+function comparacionFecha($nombre, $index = 0){
+	$url = "index.php"; 
+	if($index!=0){
+		$url = ""; 
+		for($i = 0; $i < $index ; $i++){
+			$url .= "../"; 
+		}
+		$url.="Dashboard/profile.php"; 
+	}
     $consulta = new Query; //Crear una consulta
 	$DatosParametros= $consulta->getFechas($nombre);
 	date_default_timezone_set("America/El_Salvador");
@@ -58,7 +66,7 @@ function comparacionFecha($nombre){
 					</div>
 				</div>
 				<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-				<a href="index.php" class="block text-red-600 border-red-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-red-600"><span class='icon-cross'></span> Regresar</a>
+				<a href="<?=$url?>" class="block text-red-600 border-red-600 border-2 border-solid rounded-lg p-2 hover:text-white hover:bg-red-600"><span class='icon-cross'></span> Regresar</a>
 				</div>
 				</div>
 			</div>

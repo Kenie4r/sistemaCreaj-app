@@ -4,7 +4,7 @@
     require('../modelo/query.php');
     require('libs/calificar_libs.php');
     require_once("../parameters/soporteParametros.php");
-    comparacionFecha("Limite de calificacion");
+    comparacionFecha("Limite de calificacion", 1);
     //vamos a crear un nuevo html usando la clase creada para esto, llamada html
     $htmlCreator= new htmlCreator();
     $htmlCreator->header();
