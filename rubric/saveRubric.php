@@ -29,8 +29,10 @@ if($estadoRubrica == "Registro hecho"){ //Rubrica guardada
             $titulo = $_POST[$etiquetaNameCriterio];
             $puntajeCriterio = $_POST[$etiquetaPuntajeCriterio];
             $estadoCriterio = $consulta->saveCriterio($titulo, $puntajeCriterio, $id_rubrica);
-            if($estadoCriterio == "Registro hecho"){ //Criterio guardado
-                $id_criterio = $consulta->getIDCriterio($titulo, $id_rubrica);
+           // echo ($estadoCriterio); 
+            if($estadoCriterio != "Error, existe un fallo"){ //Criterio guardado
+                $id_criterio = array(array("idcriterios"=>$estadoCriterio)); 
+                //$id_criterio = $consulta->getIDCriterio($titulo, $id_rubrica);
                 $numCri++; //Aumentar criterios guardados
                 //Guardar niveles
                 if(isset($id_criterio[0]["idcriterios"])){

@@ -75,7 +75,7 @@ class Query{
             return "Error, existe un fallo";
         }else{
             $sentencia->execute();
-            return "Registro hecho";
+            return $connection->lastInsertId() ;
         }
     }
 
