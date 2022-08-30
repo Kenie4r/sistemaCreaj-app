@@ -2835,7 +2835,7 @@ class Query{
     public function createGrade(){
         $model = new Conection();
         $connection  = $model->_getConection();
-        $sql  = "INSERT INTO grado VALUES (1, 'UNDEFINED', NULL, 1);";
+        $sql  = "INSERT INTO grado VALUES (1, 'UNDEFINED', 1);";
         $sentencia= $connection->prepare($sql);
         if(!$sentencia){
             return "Error";

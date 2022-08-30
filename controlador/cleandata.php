@@ -19,14 +19,14 @@ $query = new Query();
     $query->deleteGrados();
     $query->deleteMaterias();
     $query->deleteNivel();
-    $query->deleteParams();
+    //$query->deleteParams();
     $query->deleteUsuarios();
 
    $query->createAdmin();
     $query->createLevel();
     $query->createGrade();
     $query->createSubject();
-    $query->createParams();
+    //$query->createParams();
 
     $html  = <<<EDO
     <!DOCTYPE html>
