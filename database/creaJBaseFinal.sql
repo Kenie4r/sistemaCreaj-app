@@ -370,3 +370,5 @@ INSERT INTO parametros VALUES (1, 'Ingreso de estudiantes', '2021-01-01', '2021-
 (3, 'Ingreso de rubricas', '2021-01-01', '2021-12-31'),
 (4, 'Limite de calificacion','2021-01-01', '2021-12-31'),
 (5, 'Ingreso de nuevos usuarios', '2021-01-01','2021-12-31');
+
+ALTER TABLE calificador_creaj.criterios modify column titulo longtext;
