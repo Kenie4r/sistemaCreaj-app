@@ -6,7 +6,7 @@ $id=$_GET['id'];
 //consulta de grados
 $Grados=$consulta-> getLevelIdInGrades($id);
 //consulta de rubricas
-$rubricas=$consulta-> getLevelIdInRubrics($id);
+//$rubricas=$consulta-> getLevelIdInRubrics($id);
 
 ?>
 <!DOCTYPE html>
@@ -27,7 +27,7 @@ $rubricas=$consulta-> getLevelIdInRubrics($id);
 ?>
     <?php
 //Si existe el id y si los contadores de la foranea son 0 se puede actualizar el dato
-     if (isset($_GET['id'])&&$Grados<1&&$rubricas<1) {
+     if (isset($_GET['id'])&&$Grados<1) {//&&$rubricas<1
       
        #echo"el id que se quiere borrar es".$id;
        $guardardato=$consulta->deleteLevel($id);
